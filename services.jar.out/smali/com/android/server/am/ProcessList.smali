@@ -4,7 +4,7 @@
 
 
 # static fields
-.field static final BACKUP_APP_ADJ:I = 0x4
+.field static final BACKUP_APP_ADJ:I = 0x7
 
 .field static final CONTENT_APP_IDLE_OFFSET:J = 0x3a98L
 
@@ -12,13 +12,13 @@
 
 .field static final FOREGROUND_APP_ADJ:I = 0x0
 
-.field static final HEAVY_WEIGHT_APP_ADJ:I = 0x3
+.field static final HEAVY_WEIGHT_APP_ADJ:I = 0x4
 
 .field static final HIDDEN_APP_MAX_ADJ:I = 0xf
 
 .field static HIDDEN_APP_MIN_ADJ:I = 0x0
 
-.field static final HOME_APP_ADJ:I = 0x5
+.field static final HOME_APP_ADJ:I = 0x0
 
 .field static MAX_HIDDEN_APPS:I = 0x0
 
@@ -32,7 +32,7 @@
 
 .field static final PERSISTENT_PROC_ADJ:I = -0xc
 
-.field static final PREVIOUS_APP_ADJ:I = 0x7
+.field static final PREVIOUS_APP_ADJ:I = 0x5
 
 .field static final SERVICE_ADJ:I = 0x6
 
@@ -40,7 +40,7 @@
 
 .field static final SYSTEM_ADJ:I = -0x10
 
-.field static final VISIBLE_APP_ADJ:I = 0x1
+.field static final VISIBLE_APP_ADJ:I = 0x3
 
 
 # instance fields

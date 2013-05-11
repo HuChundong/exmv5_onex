@@ -1148,13 +1148,13 @@
         0xf0t 0xfft 0xfft 0xfft
         0xf4t 0xfft 0xfft 0xfft
         0x0t 0x0t 0x0t 0x0t
-        0x1t 0x0t 0x0t 0x0t
-        0x2t 0x0t 0x0t 0x0t
         0x3t 0x0t 0x0t 0x0t
+        0x2t 0x0t 0x0t 0x0t
         0x4t 0x0t 0x0t 0x0t
+        0x7t 0x0t 0x0t 0x0t
         0x5t 0x0t 0x0t 0x0t
         0x6t 0x0t 0x0t 0x0t
-        0x7t 0x0t 0x0t 0x0t
+        0x5t 0x0t 0x0t 0x0t
         0x8t 0x0t 0x0t 0x0t
         0xft 0x0t 0x0t 0x0t
     .end array-data
@@ -1761,7 +1761,6 @@
 
     .line 1717
     :cond_1
-
     invoke-static {}, Lcom/android/server/am/ExtraActivityManagerService;->init()V
 
     new-instance v2, Lcom/android/server/am/BatteryStatsService;
@@ -10570,12 +10569,12 @@
     if-eqz v2, :cond_1f
 
     .line 15121
-    const/4 v2, 0x1
+    const/4 v2, 0x3
 
     if-le v11, v2, :cond_9
 
     .line 15122
-    const/4 v11, 0x1
+    const/4 v11, 0x3
 
     .line 15123
     const-string v2, "visible"
@@ -10647,7 +10646,7 @@
 
     .line 15168
     :cond_c
-    const/4 v2, 0x3
+    const/4 v2, 0x4
 
     if-le v11, v2, :cond_d
 
@@ -10660,7 +10659,7 @@
     if-ne v0, v2, :cond_d
 
     .line 15170
-    const/4 v11, 0x3
+    const/4 v11, 0x4
 
     .line 15171
     const/16 v36, 0x0
@@ -10681,7 +10680,7 @@
 
     .line 15177
     :cond_d
-    const/4 v2, 0x5
+    const/4 v2, 0x0
 
     if-le v11, v2, :cond_f
 
@@ -10701,7 +10700,7 @@
 
     .line 15180
     :cond_e
-    const/4 v11, 0x5
+    const/4 v11, 0x0
 
     .line 15181
     const/16 v36, 0x0
@@ -10722,7 +10721,7 @@
 
     .line 15186
     :cond_f
-    const/4 v2, 0x7
+    const/4 v2, 0x5
 
     if-le v11, v2, :cond_26
 
@@ -10751,7 +10750,7 @@
 
     if-nez v2, :cond_25
 
-    const/4 v11, 0x7
+    const/4 v11, 0x5
 
     .line 15194
     :goto_6
@@ -10809,12 +10808,12 @@
     if-ne v0, v2, :cond_11
 
     .line 15221
-    const/4 v2, 0x4
+    const/4 v2, 0x7
 
     if-le v11, v2, :cond_11
 
     .line 15223
-    const/4 v11, 0x4
+    const/4 v11, 0x7
 
     .line 15224
     const-string v2, "backup"
@@ -11875,7 +11874,7 @@
 
     .line 15354
     :cond_3b
-    const/4 v2, 0x1
+    const/4 v2, 0x3
 
     move/from16 v0, v16
 
@@ -11895,12 +11894,12 @@
     iput-boolean v2, v0, Lcom/android/server/am/ProcessRecord;->pendingUiClean:Z
 
     .line 15358
-    const/4 v2, 0x1
+    const/4 v2, 0x3
 
     if-le v11, v2, :cond_37
 
     .line 15359
-    const/4 v11, 0x1
+    const/4 v11, 0x3
 
     goto :goto_10
 
@@ -16956,7 +16955,7 @@
 
     move/from16 v23, v0
 
-    const/16 v24, 0x7
+    const/16 v24, 0x5
 
     move/from16 v0, v23
 
@@ -16973,7 +16972,7 @@
 
     move/from16 v25, v0
 
-    const/16 v26, 0x7
+    const/16 v26, 0x5
 
     invoke-static/range {v23 .. v26}, Lcom/android/server/am/ActivityManagerService;->buildOomTag(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
 
@@ -17022,7 +17021,7 @@
 
     move/from16 v23, v0
 
-    const/16 v24, 0x5
+    const/16 v24, 0x0
 
     move/from16 v0, v23
 
@@ -17039,7 +17038,7 @@
 
     move/from16 v25, v0
 
-    const/16 v26, 0x5
+    const/16 v26, 0x0
 
     invoke-static/range {v23 .. v26}, Lcom/android/server/am/ActivityManagerService;->buildOomTag(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
 
@@ -17055,7 +17054,7 @@
 
     move/from16 v23, v0
 
-    const/16 v24, 0x4
+    const/16 v24, 0x7
 
     move/from16 v0, v23
 
@@ -17072,7 +17071,7 @@
 
     move/from16 v25, v0
 
-    const/16 v26, 0x4
+    const/16 v26, 0x7
 
     invoke-static/range {v23 .. v26}, Lcom/android/server/am/ActivityManagerService;->buildOomTag(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
 
@@ -17088,7 +17087,7 @@
 
     move/from16 v23, v0
 
-    const/16 v24, 0x3
+    const/16 v24, 0x4
 
     move/from16 v0, v23
 
@@ -17105,7 +17104,7 @@
 
     move/from16 v25, v0
 
-    const/16 v26, 0x3
+    const/16 v26, 0x4
 
     invoke-static/range {v23 .. v26}, Lcom/android/server/am/ActivityManagerService;->buildOomTag(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
 
@@ -17154,7 +17153,7 @@
 
     move/from16 v23, v0
 
-    const/16 v24, 0x1
+    const/16 v24, 0x3
 
     move/from16 v0, v23
 
@@ -17171,7 +17170,7 @@
 
     move/from16 v25, v0
 
-    const/16 v26, 0x1
+    const/16 v26, 0x3
 
     invoke-static/range {v23 .. v26}, Lcom/android/server/am/ActivityManagerService;->buildOomTag(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
 
@@ -49845,7 +49844,7 @@
 
     iget v5, v0, Lcom/android/server/am/ActivityManagerService$MemItem;->id:I
 
-    const/4 v6, 0x5
+    const/4 v6, 0x0
 
     if-eq v5, v6, :cond_1b
 
@@ -49853,7 +49852,7 @@
 
     iget v5, v0, Lcom/android/server/am/ActivityManagerService$MemItem;->id:I
 
-    const/4 v6, 0x7
+    const/4 v6, 0x5
 
     if-ne v5, v6, :cond_19
 
@@ -51875,7 +51874,7 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const/4 v0, 0x1
+    const/4 v0, 0x3
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(I)V
 
@@ -51893,7 +51892,7 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const/4 v0, 0x3
+    const/4 v0, 0x4
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(I)V
 
@@ -51902,7 +51901,7 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const/4 v0, 0x4
+    const/4 v0, 0x7
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(I)V
 
@@ -51920,7 +51919,7 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const/4 v0, 0x5
+    const/4 v0, 0x0
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(I)V
 
@@ -51929,7 +51928,7 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->print(Ljava/lang/String;)V
 
-    const/4 v0, 0x7
+    const/4 v0, 0x5
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(I)V
 
@@ -60340,7 +60339,7 @@
     .line 5981
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mProcessList:Lcom/android/server/am/ProcessList;
 
-    const/4 v7, 0x5
+    const/4 v7, 0x0
 
     invoke-virtual {v4, v7}, Lcom/android/server/am/ProcessList;->getMemLevel(I)J
 
