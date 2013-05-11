@@ -53,5 +53,9 @@ system/bin/uptime|system/bin/toolbox
 system/bin/vmstat|system/bin/toolbox
 system/bin/watchprops|system/bin/toolbox
 system/bin/wipe|system/bin/toolbox
+system/xbin/pkill|system/xbin/busybox
+system/xbin/poweroff|system/xbin/busybox
+system/xbin/reboot|system/xbin/busybox
+system/xbin/run-parts|system/xbin/busybox
 system/fonts/DroidSans-Bold.ttf|system/fonts/Roboto-Bold.ttf
 system/fonts/DroidSans.ttf|system/fonts/Roboto-Regular.ttf

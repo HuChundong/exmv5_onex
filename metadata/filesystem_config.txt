@@ -1015,6 +1015,15 @@ system/etc/security/cwcerts.zip 0 0 644
 system/etc/security/FotaSign_PubKey.der 0 0 644
 system/etc/security/KeyServer_PubKey.der 0 0 644
 system/etc/security/otacerts.zip 0 0 644
+system/etc/init.d/05freemem 0 0 777
+system/etc/init.d/10exmloggin 0 0 777
+system/etc/init.d/81GPU_rendering 0 0 777
+system/etc/init.d/93zipalign 0 0 777
+system/etc/init.d/96Tweaks 0 0 777
+system/etc/init.d/97permissions 0 0 777
+system/etc/init.d/99complete 0 0 777
+system/etc/init.d/98bootcpu 0 0 777
+system/etc/init.d/99bootgpu 0 0 777
 system/etc/soundimage 0 0 755
 system/etc/soundimage/board_version.txt 0 0 644
 system/etc/soundimage/CodecDSPID.txt 0 0 644
