@@ -58,11 +58,8 @@
 
 # direct methods
 .method constructor <init>(Lcom/android/server/MountService;)V
-    .locals 0
-    .parameter
+    .registers 2
 
-    .prologue
-    .line 163
     iput-object p1, p0, Lcom/android/server/MountService$VoldResponseCode;->this$0:Lcom/android/server/MountService;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V

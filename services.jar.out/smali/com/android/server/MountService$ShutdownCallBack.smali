@@ -22,36 +22,26 @@
 
 # direct methods
 .method constructor <init>(Lcom/android/server/MountService;Ljava/lang/String;Landroid/os/storage/IMountShutdownObserver;)V
-    .locals 2
-    .parameter
-    .parameter "path"
-    .parameter "observer"
+    .registers 6
 
-    .prologue
-    .line 400
     iput-object p1, p0, Lcom/android/server/MountService$ShutdownCallBack;->this$0:Lcom/android/server/MountService;
 
-    .line 401
     const/4 v0, 0x1
 
     const/4 v1, 0x0
 
     invoke-direct {p0, p1, p2, v0, v1}, Lcom/android/server/MountService$UnmountCallBack;-><init>(Lcom/android/server/MountService;Ljava/lang/String;ZZ)V
 
-    .line 402
     iput-object p3, p0, Lcom/android/server/MountService$ShutdownCallBack;->observer:Landroid/os/storage/IMountShutdownObserver;
 
-    .line 403
     return-void
 .end method
 
 
 # virtual methods
 .method handleFinished()V
-    .locals 6
+    .registers 7
 
-    .prologue
-    .line 407
     iget-object v2, p0, Lcom/android/server/MountService$ShutdownCallBack;->this$0:Lcom/android/server/MountService;
 
     iget-object v3, p0, Lcom/android/server/MountService$UnmountCallBack;->path:Ljava/lang/String;
@@ -65,36 +55,29 @@
 
     move-result v1
 
-    .line 408
-    .local v1, ret:I
     iget-object v2, p0, Lcom/android/server/MountService$ShutdownCallBack;->observer:Landroid/os/storage/IMountShutdownObserver;
 
-    if-eqz v2, :cond_0
+    if-eqz v2, :cond_14
 
-    .line 410
-    :try_start_0
+    :try_start_f
     iget-object v2, p0, Lcom/android/server/MountService$ShutdownCallBack;->observer:Landroid/os/storage/IMountShutdownObserver;
 
     invoke-interface {v2, v1}, Landroid/os/storage/IMountShutdownObserver;->onShutDownComplete(I)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    :try_end_14
+    .catch Landroid/os/RemoteException; {:try_start_f .. :try_end_14} :catch_15
 
-    .line 415
-    :cond_0
-    :goto_0
+    :cond_14
+    :goto_14
     return-void
 
-    .line 411
-    :catch_0
+    :catch_15
     move-exception v0
 
-    .line 412
-    .local v0, e:Landroid/os/RemoteException;
     const-string v2, "MountService"
 
     const-string v3, "RemoteException when shutting down"
 
     invoke-static {v2, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    goto :goto_0
+    goto :goto_14
 .end method

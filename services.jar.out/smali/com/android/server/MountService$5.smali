@@ -23,11 +23,8 @@
 
 # direct methods
 .method constructor <init>(Lcom/android/server/MountService;)V
-    .locals 0
-    .parameter
+    .registers 2
 
-    .prologue
-    .line 2678
     iput-object p1, p0, Lcom/android/server/MountService$5;->this$0:Lcom/android/server/MountService;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,10 +35,8 @@
 
 # virtual methods
 .method public run()V
-    .locals 6
+    .registers 7
 
-    .prologue
-    .line 2681
     :try_start_0
     iget-object v1, p0, Lcom/android/server/MountService$5;->this$0:Lcom/android/server/MountService;
 
@@ -63,24 +58,20 @@
     aput-object v5, v3, v4
 
     invoke-virtual {v1, v2, v3}, Lcom/android/server/NativeDaemonConnector;->execute(Ljava/lang/String;[Ljava/lang/Object;)Lcom/android/server/NativeDaemonEvent;
-    :try_end_0
-    .catch Lcom/android/server/NativeDaemonConnectorException; {:try_start_0 .. :try_end_0} :catch_0
+    :try_end_13
+    .catch Lcom/android/server/NativeDaemonConnectorException; {:try_start_0 .. :try_end_13} :catch_14
 
-    .line 2685
-    :goto_0
+    :goto_13
     return-void
 
-    .line 2682
-    :catch_0
+    :catch_14
     move-exception v0
 
-    .line 2683
-    .local v0, e:Lcom/android/server/NativeDaemonConnectorException;
     const-string v1, "MountService"
 
     const-string v2, "problem executing in background"
 
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    goto :goto_0
+    goto :goto_13
 .end method

@@ -22,12 +22,8 @@
 
 # direct methods
 .method constructor <init>(Lcom/android/server/MountService;Ljava/lang/String;)V
-    .locals 0
-    .parameter
-    .parameter
+    .registers 3
 
-    .prologue
-    .line 957
     iput-object p1, p0, Lcom/android/server/MountService$3;->this$0:Lcom/android/server/MountService;
 
     iput-object p2, p0, Lcom/android/server/MountService$3;->val$path:Ljava/lang/String;
@@ -40,10 +36,8 @@
 
 # virtual methods
 .method public run()V
-    .locals 7
+    .registers 8
 
-    .prologue
-    .line 962
     :try_start_0
     iget-object v2, p0, Lcom/android/server/MountService$3;->this$0:Lcom/android/server/MountService;
 
@@ -64,9 +58,8 @@
 
     move-result v2
 
-    if-eqz v2, :cond_1
+    if-eqz v2, :cond_1f
 
-    .line 964
     iget-object v2, p0, Lcom/android/server/MountService$3;->this$0:Lcom/android/server/MountService;
 
     iget-object v3, p0, Lcom/android/server/MountService$3;->val$path:Ljava/lang/String;
@@ -78,13 +71,11 @@
     #calls: Lcom/android/server/MountService;->doShareUnshareVolume(Ljava/lang/String;Ljava/lang/String;Z)V
     invoke-static {v2, v3, v4, v5}, Lcom/android/server/MountService;->access$400(Lcom/android/server/MountService;Ljava/lang/String;Ljava/lang/String;Z)V
 
-    .line 971
-    :cond_0
-    :goto_0
+    :cond_1e
+    :goto_1e
     return-void
 
-    .line 965
-    :cond_1
+    :cond_1f
     iget-object v2, p0, Lcom/android/server/MountService$3;->this$0:Lcom/android/server/MountService;
 
     iget-object v3, p0, Lcom/android/server/MountService$3;->val$path:Ljava/lang/String;
@@ -94,10 +85,8 @@
 
     move-result v1
 
-    .local v1, rc:I
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_1e
 
-    .line 966
     const-string v2, "MountService"
 
     const-string v3, "Insertion mount failed (%d)"
@@ -119,23 +108,19 @@
     move-result-object v3
 
     invoke-static {v2, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    :try_end_3e
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_3e} :catch_3f
 
-    goto :goto_0
+    goto :goto_1e
 
-    .line 968
-    .end local v1           #rc:I
-    :catch_0
+    :catch_3f
     move-exception v0
 
-    .line 969
-    .local v0, ex:Ljava/lang/Exception;
     const-string v2, "MountService"
 
     const-string v3, "Failed to mount media on insertion"
 
     invoke-static {v2, v3, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    goto :goto_0
+    goto :goto_1e
 .end method

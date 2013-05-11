@@ -23,11 +23,8 @@
 
 # direct methods
 .method constructor <init>(Lcom/android/server/MountService;)V
-    .locals 0
-    .parameter
+    .registers 2
 
-    .prologue
-    .line 338
     iput-object p1, p0, Lcom/android/server/MountService$DefaultContainerConnection;->this$0:Lcom/android/server/MountService;
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
@@ -38,33 +35,25 @@
 
 # virtual methods
 .method public onServiceConnected(Landroid/content/ComponentName;Landroid/os/IBinder;)V
-    .locals 4
-    .parameter "name"
-    .parameter "service"
+    .registers 7
 
-    .prologue
-    .line 340
     invoke-static {}, Lcom/android/server/MountService;->access$100()Z
 
     move-result v1
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_d
 
-    .line 341
     const-string v1, "MountService"
 
     const-string v2, "onServiceConnected"
 
     invoke-static {v1, v2}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 342
-    :cond_0
+    :cond_d
     invoke-static {p2}, Lcom/android/internal/app/IMediaContainerService$Stub;->asInterface(Landroid/os/IBinder;)Lcom/android/internal/app/IMediaContainerService;
 
     move-result-object v0
 
-    .line 343
-    .local v0, imcs:Lcom/android/internal/app/IMediaContainerService;
     iget-object v1, p0, Lcom/android/server/MountService$DefaultContainerConnection;->this$0:Lcom/android/server/MountService;
 
     #getter for: Lcom/android/server/MountService;->mObbActionHandler:Lcom/android/server/MountService$ObbActionHandler;
@@ -87,30 +76,24 @@
 
     invoke-virtual {v1, v2}, Lcom/android/server/MountService$ObbActionHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 344
     return-void
 .end method
 
 .method public onServiceDisconnected(Landroid/content/ComponentName;)V
-    .locals 2
-    .parameter "name"
+    .registers 4
 
-    .prologue
-    .line 347
     invoke-static {}, Lcom/android/server/MountService;->access$100()Z
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_d
 
-    .line 348
     const-string v0, "MountService"
 
     const-string v1, "onServiceDisconnected"
 
     invoke-static {v0, v1}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 349
-    :cond_0
+    :cond_d
     return-void
 .end method
