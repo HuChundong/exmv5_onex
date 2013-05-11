@@ -528,7 +528,10 @@
         <item>10</item>
     </integer-array>
     <integer-array name="config_autoBrightnessLevels">
-        <item>11</item>
+        <item>4</item>
+        <item>9</item>
+        <item>13</item>
+        <item>20</item>
         <item>41</item>
         <item>91</item>
         <item>161</item>
@@ -539,46 +542,58 @@
         <item>2601</item>
     </integer-array>
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>64</item>
-        <item>64</item>
-        <item>64</item>
-        <item>99</item>
-        <item>125</item>
-        <item>142</item>
-        <item>170</item>
-        <item>199</item>
-        <item>227</item>
+        <item>1</item>
+        <item>11</item>
+        <item>20</item>
+        <item>30</item>
+        <item>51</item>
+        <item>81</item>
+        <item>112</item>
+        <item>143</item>
+        <item>163</item>
+        <item>186</item>
+        <item>208</item>
+        <item>231</item>
         <item>255</item>
     </integer-array>
     <integer-array name="config_autoBrightnessLcdBacklightValuesUp">
-        <item>64</item>
-        <item>64</item>
-        <item>64</item>
-        <item>99</item>
-        <item>125</item>
-        <item>142</item>
-        <item>170</item>
-        <item>199</item>
-        <item>227</item>
+        <item>1</item>
+        <item>11</item>
+        <item>20</item>
+        <item>30</item>
+        <item>51</item>
+        <item>81</item>
+        <item>112</item>
+        <item>143</item>
+        <item>163</item>
+        <item>186</item>
+        <item>208</item>
+        <item>231</item>
         <item>255</item>
     </integer-array>
     <integer-array name="config_autoBrightnessLcdBacklightValuesDown">
-        <item>64</item>
-        <item>64</item>
-        <item>64</item>
-        <item>99</item>
-        <item>125</item>
-        <item>142</item>
-        <item>170</item>
-        <item>199</item>
-        <item>227</item>
+        <item>1</item>
+        <item>11</item>
+        <item>20</item>
+        <item>30</item>
+        <item>51</item>
+        <item>81</item>
+        <item>112</item>
+        <item>143</item>
+        <item>163</item>
+        <item>186</item>
+        <item>208</item>
+        <item>231</item>
         <item>255</item>
     </integer-array>
     <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
+        <item>11</item>
+        <item>21</item>
+        <item>30</item>
+        <item>40</item>
+        <item>61</item>
+        <item>81</item>
+        <item>101</item>
         <item>-1</item>
         <item>0</item>
         <item>0</item>
