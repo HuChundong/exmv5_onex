@@ -1,0 +1,27 @@
+#!/system/bin/sh
+sleep 30
+#Max freq
+echo 1500000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+#Min freq
+echo 51000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+#User Cap
+echo 1500000 > /sys/module/cpu_tegra/parameters/cpu_user_cap
+#Governor
+echo smartmax > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+#I/O Scheduler
+echo row > /sys/block/mmcblk0/queue/scheduler
+#Smartdimmer
+echo 0 > /sys/devices/tegradc.0/smartdimmer/enable
+#Smartdimmer aggressiveness
+#LP_OC
+echo 1 > /sys/module/cpu_tegra/parameters/enable_lp_oc
+#
+#MAX-CPU
+echo 4 > /sys/kernel/tegra_mpdecision/conf/max_cpus
+
+#DT2W
+echo 240 /sys/android_touch/s2w_double_tap_barrier_x
+echo 840 /sys/android_touch/s2w_double_tap_barrier_x2
+echo 900 /sys/android_touch/s2w_double_tap_barrier_y
+echo 1500 /sys/android_touch/s2w_double_tap_barrier_y2
+

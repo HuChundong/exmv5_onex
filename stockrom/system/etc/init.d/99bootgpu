@@ -1,0 +1,2 @@
+#!/system/bin/sh
+echo 520 520 520 520 484 400 304 247 > sys/devices/system/cpu/cpu0/cpufreq/gpu_oc
