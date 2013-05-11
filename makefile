@@ -15,15 +15,15 @@ local-modified-jars := HTCExtension
 
 local-miui-modified-apps := Phone Mms MiuiHome Settings MiuiSystemUI Music MiuiGallery
 # All apks from MIUI
-local-miui-removed-apps  := LatinIME MediaProvider
+local-miui-removed-apps  := LatinIME MediaProvider AirkanPhoneService Stk
 
 # All apps need to be reserved from original ZIP file
-local-phone-apps := AppSharing BackupRestoreConfirmation \
+local-phone-apps :=BackupRestoreConfirmation \
 	CertInstaller CustomizationSettingsProvider Camera DefaultContainerService DFPI DrmProvider \
-	FilePicker FaceLock FM_Radio FMRadioService GoogleTTS HTC_IME HtcBeatsNotify \
-	HTMLViewer IMEHWRPenPower IMEXT9English KeyChain LMW MarketUpdater \
-	Nfc OneTimeInitializer PhaseBeam PluginManager SDCardWizard SharedStorageBackup \
-	TrimIt Usage WifiRouter MediaProvider CIMEXT9 HTCAlbum \
+	FilePicker FaceLock FM_Radio FMRadioService HtcBeatsNotify \
+	HTMLViewer LMW MarketUpdater \
+	Nfc OneTimeInitializer SharedStorageBackup \
+	WifiRouter MediaProvider HTCAlbum \
 	HtcSoundEnhancerSetting HtcDMC DLNAMiddleLayer HtcPhotoEnhancer
 
 # To include the local targets before and after zip the final ZIP file, 
@@ -51,6 +51,8 @@ local-zip-misc:
 	@echo update bootanimation
 	rm $(ZIP_DIR)/system/bin/bootanimation
 	cp other/bootanimation $(ZIP_DIR)/system/bin/bootanimation
+	rm $(ZIP_DIR)/system/media/bootanimation.zip
+	cp other/bootanimation.zip $(ZIP_DIR)/system/media/bootanimation.zip
 
 	@echo add system app
 	cp other/system_app/* $(ZIP_DIR)/system/app/
