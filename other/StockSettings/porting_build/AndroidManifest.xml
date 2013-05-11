@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest android:sharedUserId="android.uid.system" android:versionCode="418799999" android:versionName="4.5.2221191031.491827.478668" package="com.android.htcsettings" coreApp="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <HTC-SDK version="4.63" />
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="16" />
+    <original-package android:name="com.android.htcsettings" />
+    <permission android:name="com.android.htcsettings.permission.ACCESS_SETTINGS" android:protectionLevel="signatureOrSystem" />
+    <permission android:name="com.android.htcsettings.accounts.permission.SEND_BROADCAST" android:protectionLevel="signatureOrSystem" />
+    <permission android:name="android.permission.DPM_INTERNAL_OPERATION" android:protectionLevel="signatureOrSystem" />
+    <permission android:name="htc.permission.FONT_SIZE_CHANGED" android:protectionLevel="signatureOrSystem" />
+    <uses-permission android:name="htc.permission.FONT_SIZE_CHANGED" />
+    <uses-permission android:name="com.android.htcsettings.permission.ACCESS_SETTINGS" />
+    <uses-permission android:name="com.android.htcsettings.accounts.permission.SEND_BROADCAST" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.DEVICE_POWER" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.HARDWARE_TEST" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.MASTER_CLEAR" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIMAX_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIMAX_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CLEAR_APP_USER_DATA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES" />
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MOVE_PACKAGE" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.BACKUP" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.STATUS_BAR" />
+    <uses-permission android:name="android.permission.MANAGE_USB" />
+    <uses-permission android:name="com.android.updater.permission.ACCESS_UPDATER_DATA" />
+    <uses-permission android:name="android.permission.SET_POINTER_SPEED" />
+    <uses-permission android:name="android.permission.ACCESS_WIMAX_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIMAX_STATE" />
+    <uses-permission android:name="com.dropbox.android.provider.DROPBOX_SDK_READ" />
+    <uses-permission android:name="android.permission.DPM_INTERNAL_OPERATION" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="Android.permission.MANAGE_NETWORK_POLICT" />
+    <permission android:name="com.android.htcsettings.wifi.permission.READ_WISPR_ACCOUNT" android:protectionLevel="signatureOrSystem" />
+    <permission android:name="com.android.htcsettings.wifi.permission.WRITE_WISPR_ACCOUNT" android:protectionLevel="signatureOrSystem" />
+    <uses-permission android:name="com.android.htcsettings.wifi.permission.READ_WISPR_ACCOUNT" />
+    <uses-permission android:name="com.android.htcsettings.wifi.permission.WRITE_WISPR_ACCOUNT" />
+    <uses-permission android:name="com.htc.closeconnect.PRIVATE_ACCESS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.htc.permission.ACCESS_HTCIME_DATA" />
+    <uses-permission android:name="com.htc.permission.useHtcSoundProfileServices" />
+    <uses-permission android:name="com.htc.permission.useHtcSoundProfileProvider" />
+    <uses-permission android:name="android.permission.SET_KEYBOARD_LAYOUT" />
+    <uses-permission android:name="com.kddi.android.permission.MANAGE_CPA" />
+    <uses-permission android:name="com.htc.statusbar.permission.UPDATE_CUSTOMIZED_ICON" />
+    <uses-permission android:name="com.htc.dnatransfer.permission.RECV_RESTORE_COMPLETED" />
+    <application android:label="@string/settings_label" android:icon="@com.htc:drawable/icon_launcher_settings" android:name="com.android.htcsettings.framework.app.HtcSettingsApplication" android:taskAffinity="" android:hardwareAccelerated="true" allowSkinChange="true">
+        <service android:name=".framework.app.HtcIntentService" android:exported="false" android:process=":remote">
+        </service>
+        <provider android:label="@string/wifi_whisper" android:name="com.android.htcsettings.wifi.WISPrProvider" android:readPermission="com.android.htcsettings.wifi.permission.READ_WISPR_ACCOUNT" android:writePermission="com.android.htcsettings.wifi.permission.WRITE_WISPR_ACCOUNT" android:multiprocess="false" android:authorities="wispr" />
+        <service android:name=".framework.app.HtcPhoneService" android:exported="false" android:process="com.android.phone">
+        </service>
+        <receiver android:name=".framework.app.HtcIntentReceiver" android:permission="com.android.htcsettings.permission.ACCESS_SETTINGS">
+        </receiver>
+        <receiver android:name=".framework.content.custom.HtcCustomNotificationReceiver" android:permission="htc.permission.CUSTOMIZATION_CHANGE" android:process=":settingsprovider">
+        </receiver>
+        <service android:name=".framework.content.custom.HtcCustomNotificationService" android:exported="false" android:process=":remote" />
+        <receiver android:name=".framework.content.plugin.HtcPluginReceiver" android:exported="true">
+        </receiver>
+        <activity android:theme="@style/fakeScreen" android:label="@string/settings_label_launcher" android:name="Settings" android:taskAffinity="com.android.htcsettings" android:launchMode="singleTask" android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity android:theme="@style/fakeScreen" android:name=".SubSettings" android:taskAffinity="com.android.htcsettings" android:configChanges="orientation|screenSize" android:parentActivityName="Settings" />
+        <activity android:label="@string/settings_label_launcher" android:name=".framework.activity.HtcSettings" android:exported="true" android:excludeFromRecents="true" />
+        <activity android:label="@string/htc_charm_settings_category_title" android:name="Settings$HtcCharmSettingsActivity">
+        </activity>
+        <receiver android:name=".framework.activity.charm.HtcCharmIndicatorReceiver">
+        </receiver>
+        <activity android:label="@string/personal_settings_title" android:name=".framework.activity.personalize.HtcPersonalizeSettingsProxy" android:screenOrientation="unspecified" android:configChanges="orientation|screenSize">
+        </activity>
+        <receiver android:name=".framework.os.HtcFactoryDataResetReceiver" android:permission="com.android.htcsettings.permission.ACCESS_SETTINGS">
+        </receiver>
+        <activity android:theme="@style/Theme.NoPreview" android:label="@string/settings_shortcut" android:name="HtcCreateShortcut">
+        </activity>
+        <activity android:label="@string/wireless_networks_settings_title" android:name="Settings$WirelessSettingsActivity" android:parentActivityName="Settings">
+        </activity>
+        <activity android:label="@string/wifi_settings" android:icon="@drawable/ic_settings_wireless" android:name="Settings$WifiSettingsActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/wifi_settings" android:name=".wifi.WifiSettings" android:exported="true" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:targetActivity="Settings$WifiSettingsActivity">
+        </activity-alias>
+        <activity android:name=".wifi.WifiPickerActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings">
+        </activity>
+        <activity android:theme="@style/setup_wizard_theme" android:label="@string/wifi_setup_wizard_title" android:icon="@drawable/empty_icon" android:name=".wifi.WifiSetupActivity" android:clearTaskOnLaunch="true">
+        </activity>
+        <activity android:theme="@style/Theme.Transparent" android:name=".framework.core.wireless.mobilenetwork.HtcMobileDataDialog" android:exported="true" android:clearTaskOnLaunch="true" android:excludeFromRecents="true" android:launchMode="singleTask">
+        </activity>
+        <activity android:name="LocalePickerSetupWizard" android:exported="true" android:screenOrientation="unspecified" android:configChanges="locale|mcc|mnc|keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|fontScale" />
+        <service android:name="LocaleChangeService" android:exported="false" android:process=":remote">
+        </service>
+        <activity android:label="@string/chooseoperator" android:name="OperatorPicker" android:screenOrientation="unspecified">
+        </activity>
+        <activity android:label="@string/chooseoperator" android:name="OperatorPickerSetupWizard" android:exported="true" android:screenOrientation="unspecified" android:configChanges="orientation|screenSize" />
+        <activity android:name=".wifi.WifiSettingsSetupWizard" android:exported="true" android:screenOrientation="unspecified" android:configChanges="orientation|screenSize" />
+        <activity android:theme="@android:style/Theme.Holo.NoActionBar" android:name=".wifi.WifiSettingsForSetupWizardXL" android:exported="true" android:clearTaskOnLaunch="true" android:screenOrientation="behind" android:windowSoftInputMode="adjustResize" />
+        <activity android:label="@string/wifi_advanced_settings_label" android:name="Settings$AdvancedWifiSettingsActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings$WifiSettingsActivity">
+        </activity>
+        <activity-alias android:label="@string/cw_account_info_titlebar" android:name=".wifi.CWAccountInfo" android:targetActivity="Settings">
+        </activity-alias>
+        <activity-alias android:label="@string/wifi_lan_info" android:name=".wifi.LanInfo" android:screenOrientation="unspecified" android:targetActivity="Settings">
+        </activity-alias>
+        <activity android:theme="@android:style/Theme.Holo.DialogWhenLarge" android:name=".wifi.WifiInfo" android:parentActivityName="Settings$WifiSettingsActivity">
+        </activity>
+        <receiver android:name=".wifi.WifiStatusReceiver" android:enabled="true" android:exported="true">
+        </receiver>
+        <activity android:theme="@style/Skin" android:label="@string/wifi_sign_in" android:name=".wifi.RedirectDialog" android:exported="false" android:excludeFromRecents="true">
+        </activity>
+        <activity android:theme="@style/Skin" android:label="@string/wps_preference_title" android:name=".wifi.WpsDialog" android:exported="false" android:excludeFromRecents="true" android:configChanges="keyboardHidden|orientation">
+        </activity>
+        <activity android:theme="@style/DummyStyle" android:name=".wifi.IPTAlertDialog" android:excludeFromRecents="true" android:screenOrientation="unspecified" />
+        <activity android:theme="@style/Skin" android:label="@string/common_warning" android:name=".wifi.EapErrorDialog" android:excludeFromRecents="true" android:configChanges="keyboardHidden|orientation">
+        </activity>
+        <activity android:theme="@style/Skin" android:label="@string/common_wifi" android:name=".wifi.WifiOffloadAutoOnDialog" android:exported="false" android:excludeFromRecents="true" android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity android:theme="@android:style/Theme.Holo.DialogWhenLarge" android:name=".wifi.WifiConfigInfo" android:parentActivityName="Settings$WifiSettingsActivity">
+        </activity>
+        <activity android:theme="@android:style/Theme.Holo.DialogWhenLarge" android:name=".wifi.WifiAPITest">
+        </activity>
+        <activity android:theme="@android:style/Theme.Holo.DialogWhenLarge" android:name=".wifi.WifiStatusTest">
+        </activity>
+        <activity android:name=".wifi.WISPrAccountEditor" android:screenOrientation="unspecified" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".wifi.WISPrAccountList" android:screenOrientation="unspecified" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:name=".wifi.WifiNotifyBlockManage" android:screenOrientation="unspecified" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity-alias android:name=".wifi.WifiApSettings" android:targetActivity="Settings">
+        </activity-alias>
+        <activity android:label="@string/apn_settings" android:name="ApnSettings" android:launchMode="singleTask" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings$WirelessSettingsActivity">
+        </activity>
+        <activity android:label="@string/apn_settings" android:name="CdmaApnSettings" android:launchMode="singleTask" android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <receiver android:name=".APNSetReceiver" android:permission="com.kddi.android.permission.MANAGE_CPA">
+        </receiver>
+        <receiver android:name="MLReceiver">
+        </receiver>
+        <receiver android:name="NSReceiver">
+        </receiver>
+        <activity android:theme="@android:style/Theme.Dialog" android:name="ISActivity" android:excludeFromRecents="true" android:launchMode="singleTop" android:screenOrientation="unspecified">
+        </activity>
+        <receiver android:name="PSReceiver">
+            <intent-filter>
+                <action android:name="com.htc.android.start_IPT" />
+                <action android:name="com.htc.android.stop_IPT" />
+                <action android:name="com.htc.android.startIS.Fail" />
+                <action android:name="com.htc.is.enabled" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWEROFF" />
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+                <action android:name="com.htc.intent.action.USB_CONNECT2PC" />
+                <action android:name="com.htc.android.smartPCSC.done" />
+                <action android:name="com.htc.ats.usbui.DISABLE" />
+            </intent-filter>
+        </receiver>
+        <activity android:theme="@android:style/Theme.Dialog" android:name="PSActivity" android:excludeFromRecents="true" android:launchMode="singleTop" android:screenOrientation="unspecified">
+            <intent-filter>
+                <action android:name="PSActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="com.android.htcsettings/PSActivity" />
+            </intent-filter>
+        </activity>
+        <service android:name=".PSService">
+            <intent-filter>
+                <action android:name="com.htc.android.start_IPT" />
+                <action android:name="com.htc.android.stop_IPT" />
+                <action android:name="com.htc.android.startIS.Fail" />
+                <action android:name="com.htc.is.enabled" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWEROFF" />
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+                <action android:name="com.htc.intent.action.USB_CONNECT2PC" />
+                <action android:name="com.htc.android.smartPCSC.done" />
+                <action android:name="com.htc.ats.usbui.DISABLE" />
+            </intent-filter>
+        </service>
+        <activity android:label="@string/bluetooth_settings_title" android:icon="@drawable/ic_settings_bluetooth" android:name="Settings$BluetoothSettingsActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/bluetooth_settings_title" android:name=".bluetooth.BluetoothSettings" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$BluetoothSettingsActivity">
+        </activity-alias>
+        <activity android:theme="@style/Theme.NoPreview" android:label="@string/device_picker" android:name=".bluetooth.DevicePickerActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/bluetooth_advanced_settings" android:name=".bluetooth.BluetoothAdvancedSettings" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation" android:targetActivity="Settings">
+        </activity-alias>
+        <activity android:label="@string/tether_settings_title" android:icon="@drawable/icon_launcher_wifi_hotspot" android:name="Settings$TetherSettingsActivity" android:clearTaskOnLaunch="true" android:parentActivityName="Settings$WirelessSettingsActivity">
+        </activity>
+        <activity-alias android:label="@string/tether_settings_title" android:name=".TetherSettings" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$TetherSettingsActivity">
+        </activity-alias>
+        <activity android:name="Settings$WifiP2pSettingsActivity" android:clearTaskOnLaunch="true" android:parentActivityName="Settings$WifiSettingsActivity">
+        </activity>
+        <activity android:label="@string/vpn_settings_title" android:icon="@drawable/ic_settings_security" android:name="Settings$VpnSettingsActivity" android:clearTaskOnLaunch="true" android:parentActivityName="Settings$WirelessSettingsActivity">
+        </activity>
+        <activity android:label="@string/date_and_time" android:name="Settings$DateTimeSettingsActivity" android:parentActivityName="Settings">
+        </activity>
+        <receiver android:name=".FrisbeeDoneReceiver">
+        </receiver>
+        <activity android:theme="@android:style/Theme.Holo.NoActionBar" android:label="@string/date_and_time" android:name="DateTimeSettingsSetupWizard" android:screenOrientation="behind">
+        </activity>
+        <activity android:name=".ZonePickerEx" android:exported="true" />
+        <activity android:label="@string/language_picker_title" android:name="Settings$LocalePickerActivity" android:clearTaskOnLaunch="true" android:parentActivityName="Settings$InputMethodAndLanguageSettingsActivity">
+        </activity>
+        <activity android:label="@string/htc_language_keyboard_settings_title" android:name="Settings$InputMethodAndLanguageSettingsActivity" android:clearTaskOnLaunch="true" android:parentActivityName="Settings">
+        </activity>
+        <activity android:label="@string/keyboard_layout_picker_title" android:name="Settings$KeyboardLayoutPickerActivity" android:clearTaskOnLaunch="true">
+        </activity>
+        <activity-alias android:label="@string/htc_language_keyboard_settings_title" android:name="LanguageSettings" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$InputMethodAndLanguageSettingsActivity">
+        </activity-alias>
+        <activity android:label="@string/spellcheckers_settings_title" android:name="Settings$SpellCheckersSettingsActivity" android:clearTaskOnLaunch="true" android:parentActivityName="Settings$InputMethodAndLanguageSettingsActivity">
+        </activity>
+        <activity android:label="" android:name=".inputmethod.InputMethodAndSubtypeEnablerActivity" android:clearTaskOnLaunch="true" android:configChanges="orientation|screenSize">
+        </activity>
+        <receiver android:name=".inputmethod.InputMethodDialogReceiver" android:enabled="true">
+        </receiver>
+        <receiver android:name=".inputmethod.UserDictionaryReceiver">
+        </receiver>
+        <activity android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" android:label="@string/user_dict_settings_titlebar" android:name=".inputmethod.UserDictionaryAddWordActivity" android:excludeFromRecents="true" android:windowSoftInputMode="stateVisible" android:noHistory="true">
+        </activity>
+        <activity android:label="@string/sound_settings_title" android:icon="@drawable/ic_settings_sound" android:name="Settings$SoundSettingsActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/sound_settings" android:name="SoundSettings" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$SoundSettingsActivity">
+        </activity-alias>
+        <activity android:label="@string/display_settings_title" android:icon="@drawable/ic_settings_display" android:name="Settings$DisplaySettingsActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/display_settings" android:name="DisplaySettings" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$DisplaySettingsActivity">
+        </activity-alias>
+        <activity android:label="@string/dock_settings_title" android:name="Settings$DockSettingsActivity" android:enabled="@bool/has_dock_settings" android:clearTaskOnLaunch="true" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/dock_settings_title" android:name="DockSettings" android:enabled="@bool/has_dock_settings" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$DockSettingsActivity">
+        </activity-alias>
+        <activity android:theme="@android:style/Theme.Holo.DialogWhenLarge" android:label="@string/device_info_settings" android:name="Settings$DeviceInfoSettingsActivity" android:parentActivityName="Settings">
+        </activity>
+        <activity android:theme="@android:style/Theme.Holo.Panel" android:label="@string/settings_license_activity_title" android:name="SettingsLicenseActivity" android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:theme="@style/DummyStyle" android:label="@string/settings_safetylegal_activity_title" android:name="SettingsSafetyLegalActivity">
+        </activity>
+        <activity android:label="@string/applications_settings" android:icon="@drawable/ic_settings_applications" android:name="Settings$ManageApplicationsActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:uiOptions="none" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/applications_settings" android:name=".applications.ManageApplications" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$ManageApplicationsActivity">
+        </activity-alias>
+        <activity-alias android:label="@string/manageapplications_settings_title" android:name=".ManageApplications" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$ManageApplicationsActivity" />
+        <activity-alias android:label="@string/runningservices_settings_title" android:name=".RunningServices" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$ManageApplicationsActivity">
+        </activity-alias>
+        <activity-alias android:label="@string/storageuse_settings_title" android:name=".applications.StorageUse" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$ManageApplicationsActivity">
+        </activity-alias>
+        <activity android:label="@string/application_info_label" android:name=".applications.InstalledAppDetailsTop" android:exported="true" android:configChanges="orientation|screenSize" android:parentActivityName="Settings$ManageApplicationsActivity" />
+        <activity-alias android:label="@string/application_info_label" android:name=".applications.InstalledAppDetails" android:exported="true" android:configChanges="orientation|screenSize" android:targetActivity=".applications.InstalledAppDetailsTop">
+        </activity-alias>
+        <activity android:label="@string/runningservices_settings_title" android:name="Settings$RunningServicesActivity" android:parentActivityName="Settings">
+        </activity>
+        <activity android:label="@string/storageuse_settings_title" android:name="Settings$StorageUseActivity" android:parentActivityName="Settings">
+        </activity>
+        <activity android:label="@string/htc_location_title" android:icon="@drawable/ic_settings_location" android:name="Settings$LocationSettingsActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/htc_location_title" android:name=".framework.activity.location.HtcLocationSettingsProxy" android:exported="true" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:targetActivity="Settings$LocationSettingsActivity">
+        </activity-alias>
+        <activity android:label="@string/security_settings_title" android:name="Settings$SecuritySettingsActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/security_settings_title" android:name="SecuritySettings" android:exported="true" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:targetActivity="Settings$SecuritySettingsActivity">
+        </activity-alias>
+        <activity android:label="@string/privacy_settings_title" android:name="Settings$PrivacySettingsActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings">
+        </activity>
+        <activity android:label="@string/htc_select_previous_device_category_title" android:name="Settings$HtcTransferMyStuffSettingsActivity" android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity android:name="Settings$SetFullBackupPasswordActivity" android:clearTaskOnLaunch="true">
+        </activity>
+        <activity-alias android:label="@string/settings_label_launcher" android:name="SetFullBackupPassword" android:exported="false" android:clearTaskOnLaunch="true" android:targetActivity="Settings$SetFullBackupPasswordActivity" />
+        <activity android:theme="@style/Transparent" android:name="CredentialStorage" android:launchMode="singleTop" android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity android:label="@string/manage_device_admin" android:name="Settings$DeviceAdminSettingsActivity" android:clearTaskOnLaunch="true" android:parentActivityName="Settings$SecuritySettingsActivity">
+        </activity>
+        <activity android:label="@string/security" android:name="Settings$ChooseLockGenericActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation"> >
+        </activity>
+        <activity android:theme="@style/ThemeDialog" android:name="com.android.htcsettings.SecurityDialog" android:exported="false" android:taskAffinity=":SecurityDialog" android:excludeFromRecents="true" android:launchMode="singleTask" android:screenOrientation="behind" android:configChanges="orientation|screenSize" />
+        <activity-alias android:label="@string/device_admin_settings_title" android:name="DeviceAdminSettings" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$DeviceAdminSettingsActivity">
+        </activity-alias>
+        <activity android:theme="@android:style/Theme.Holo.DialogWhenLarge" android:label="@string/device_admin_add_title" android:name="DeviceAdminAdd" android:clearTaskOnLaunch="true">
+        </activity>
+        <activity android:theme="@style/Theme.Holo.DialogWhenLarge" android:label="@string/sim_lock_settings" android:name="IccLockSettings" android:process="com.android.phone" android:configChanges="keyboardHidden|orientation|screenSize" android:hardwareAccelerated="false" android:parentActivityName="Settings$SecuritySettingsActivity">
+        </activity>
+        <activity android:theme="@style/Theme.Holo.DialogWhenLarge" android:label="@string/sim_lock_settings" android:name="IccLockSettingsDualMode" android:process="com.android.phone" android:configChanges="keyboardHidden|orientation|screenSize" android:hardwareAccelerated="false">
+        </activity>
+        <activity android:label="@string/accessibility_settings" android:icon="@drawable/ic_settings_accessibility" android:name="Settings$AccessibilitySettingsActivity" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings">
+        </activity>
+        <activity android:label="@string/tts_settings" android:name="Settings$TextToSpeechSettingsActivity" android:parentActivityName="Settings$InputMethodAndLanguageSettingsActivity">
+        </activity>
+        <activity android:label="@string/display_resolution_title" android:name=".framework.app.DisplayResolutionDialog" android:exported="true" android:launchMode="singleTop">
+        </activity>
+        <provider android:name=".HtcCdmaSettingsProvider" android:multiprocess="false" android:authorities="com.android.htcsettings.provider.cdmasettings" android:syncable="false" />
+        <activity android:label="@string/gpsone_location_setting" android:name="HtcCdmaGPSLocationSetting" android:exported="false" android:screenOrientation="unspecified">
+        </activity>
+        <activity android:label="@string/gpsone_location_setting" android:name="HtcCdmaGPSLocationSettingV2" android:screenOrientation="unspecified">
+        </activity>
+        <receiver android:name="HtcCdmaFeatureReceiver">
+        </receiver>
+        <activity android:theme="@style/Theme.Transparent" android:name=".HtcCdmaDisclaimerReminder" android:excludeFromRecents="true" android:configChanges="orientation">
+        </activity>
+        <activity android:theme="@android:style/Theme.Holo.DialogWhenLarge" android:label="@string/device_status_activity_title" android:name=".deviceinfo.Status" android:process="com.android.phone" android:hardwareAccelerated="false" android:parentActivityName="Settings$DeviceInfoSettingsActivity">
+        </activity>
+        <activity android:label="@string/storage_settings_title" android:name="Settings$StorageSettingsActivity" android:uiOptions="none" android:parentActivityName="Settings">
+        </activity>
+        <activity android:name="Settings$HtcEncryptionPageActivity">
+        </activity>
+        <activity android:theme="@android:style/Theme.Holo.DialogWhenLarge" android:name=".deviceinfo.MiscFilesHandler" />
+        <activity android:label="@string/apn_edit" android:name="ApnEditor" android:exported="false">
+        </activity>
+        <activity android:label="@string/apn_edit" android:name="CdmaApnEditor" android:exported="false">
+        </activity>
+        <activity android:label="@string/media_format_title" android:name="MediaFormat">
+        </activity>
+        <activity android:label="@string/quick_launch_title" android:name=".quicklaunch.QuickLaunchSettings">
+        </activity>
+        <activity android:label="@string/quick_launch_title" android:name=".quicklaunch.BookmarkPicker">
+        </activity>
+        <activity android:label="@string/development_settings_title" android:name="Settings$DevelopmentSettingsActivity" android:clearTaskOnLaunch="true" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/development_settings_title" android:name="DevelopmentSettings" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$DevelopmentSettingsActivity">
+        </activity-alias>
+        <activity android:label="@string/select_application" android:name=".AppPicker" />
+        <activity android:label="@string/storage_title_usb" android:name="Settings$UsbSettingsActivity" android:clearTaskOnLaunch="true" android:parentActivityName="Settings$StorageSettingsActivity">
+        </activity>
+        <activity-alias android:label="@string/storage_title_usb" android:name="UsbSettings" android:exported="true" android:clearTaskOnLaunch="true" android:targetActivity="Settings$DevelopmentSettingsActivity">
+        </activity-alias>
+        <activity android:theme="@android:style/Theme.Holo.Dialog.Alert" android:label="bluetooth_authorize_dialog" android:name=".bluetooth.BluetoothAuthorizeDialog" android:excludeFromRecents="true">
+        </activity>
+        <receiver android:name=".bluetooth.BluetoothAuthorizeRequest">
+        </receiver>
+        <activity android:theme="@android:style/Theme.Holo.Dialog.Alert" android:label="@string/bluetooth_pairing_request" android:name=".bluetooth.BluetoothPairingDialog" android:excludeFromRecents="true">
+        </activity>
+        <receiver android:name=".bluetooth.DockEventReceiver">
+        </receiver>
+        <service android:name=".bluetooth.DockService" />
+        <activity android:theme="@style/Transparent" android:label="@string/bluetooth_permission_request" android:name=".bluetooth.RequestPermissionActivity" android:permission="android.permission.BLUETOOTH" android:excludeFromRecents="true">
+        </activity>
+        <activity android:theme="@style/Transparent" android:label="@string/bluetooth_pairing_request" android:name=".bluetooth.RequestPermissionHelperActivity" android:permission="android.permission.BLUETOOTH" android:excludeFromRecents="true" />
+        <receiver android:name=".bluetooth.BluetoothPairingRequest">
+        </receiver>
+        <receiver android:name=".bluetooth.BluetoothPermissionRequest" android:permission="android.permission.BLUETOOTH_ADMIN">
+        </receiver>
+        <activity android:theme="@android:style/Theme.Holo.Dialog.Alert" android:label="@string/bluetooth_connection_permission_request" android:name=".bluetooth.BluetoothPermissionActivity" android:permission="android.permission.BLUETOOTH_ADMIN" android:excludeFromRecents="true">
+        </activity>
+        <activity android:theme="@style/DummyStyle" android:label="@string/activity_picker_label" android:name="ActivityPicker" android:finishOnCloseSystemDialogs="true">
+        </activity>
+        <activity android:label="@string/android_beam_settings_title" android:name="Settings$AndroidBeamSettingsActivity" android:enabled="@bool/has_nfc_support" android:clearTaskOnLaunch="true" android:parentActivityName="Settings$WirelessSettingsActivity">
+        </activity>
+        <activity android:theme="@android:style/Theme.Translucent" android:name=".nfc.FelicaLockActivity" android:excludeFromRecents="true" android:configChanges="keyboardHidden|orientation" />
+        <service android:name=".nfc.FelicaCommandHandleService" />
+        <activity android:label="@string/debug_intent_sender_label" android:name="DebugIntentSender">
+        </activity>
+        <activity android:label="@string/battery_info_label" android:name="BatteryInfo" android:parentActivityName="Settings">
+        </activity>
+        <activity android:label="@string/display_label" android:name="Display" android:configChanges="fontScale" android:parentActivityName="Settings">
+        </activity>
+        <activity android:label="@string/phone_info_label" android:name="RadioInfo" android:process="com.android.phone" android:configChanges="keyboardHidden|orientation|screenSize" android:hardwareAccelerated="false">
+        </activity>
+        <activity-alias android:label="@string/proxy_settings_label" android:name="ProxySelector" android:targetActivity="Settings">
+        </activity-alias>
+        <activity android:theme="@android:style/Theme.Dialog" android:name="BandMode" android:process="com.android.phone" android:configChanges="keyboardHidden|orientation|screenSize" android:hardwareAccelerated="false">
+        </activity>
+        <activity android:label="@string/testing" android:name="TestingSettings">
+        </activity>
+        <receiver android:name="TestingSettingsBroadcastReceiver">
+        </receiver>
+        <activity android:theme="@style/DummyStyle" android:label="@string/widget_picker_title" android:name="AppWidgetPickActivity" android:finishOnCloseSystemDialogs="true">
+        </activity>
+        <activity android:theme="@style/DummyStyle" android:name="AllowBindAppWidgetActivity" android:excludeFromRecents="true" android:finishOnCloseSystemDialogs="true">
+        </activity>
+        <activity android:label="@string/usage_stats_label" android:name="UsageStats" android:parentActivityName="Settings">
+        </activity>
+        <activity android:label="@string/htc_sync_settings" android:icon="@drawable/ic_settings_sync" android:name="Settings$ManageAccountsActivity" android:parentActivityName="Settings">
+        </activity>
+        <activity-alias android:label="@string/htc_sync_settings" android:name=".accounts.ManageAccounts" android:exported="true" android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:targetActivity="Settings$ManageAccountsActivity">
+        </activity-alias>
+        <activity android:label="@string/header_account_settings" android:name="Settings$AccountSyncSettingsActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings$ManageAccountsActivity">
+        </activity>
+        <activity android:label="@string/account_sync_settings_title" android:name="Settings$ManageAccountsSettingsActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings$ManageAccountsActivity">
+        </activity>
+        <activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:label="@string/header_add_an_account" android:name="com.android.htcsettings.accounts.AddAccountSettings" android:configChanges="keyboardHidden|orientation|screenSize" android:parentActivityName="Settings$ManageAccountsActivity">
+        </activity>
+        <activity android:theme="@android:style/Theme.Holo.DialogWhenLarge" android:label="@string/header_add_an_account" android:name="com.android.htcsettings.accounts.ChooseAccountActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <receiver android:name="MessageReceiver">
+        </receiver>
+        <activity android:name=".CryptKeeper" android:excludeFromRecents="true" android:launchMode="singleTop" android:configChanges="keyboard|keyboardHidden|uiMode" android:windowSoftInputMode="adjustResize" android:immersive="true">
+        </activity>
+        <activity android:theme="@style/CryptKeeperBlankTheme" android:name=".CryptKeeper$FadeToBlack" android:launchMode="singleTop" android:immersive="true" />
+        <activity android:theme="@style/CryptKeeperBlankTheme" android:name=".CryptKeeperConfirm$Blank" android:launchMode="singleTop" android:immersive="true" />
+        <activity android:label="@string/crypt_keeper_encrypt_title" android:name="Settings$CryptKeeperSettingsActivity">
+        </activity>
+        <activity android:label="@string/htc_data_usage_summary_title" android:icon="@drawable/ic_settings_data_usage" android:name="Settings$DataUsageSummaryActivity" android:uiOptions="none" android:parentActivityName="Settings">
+        </activity>
+        <receiver android:label="@string/gadget_title" android:name=".widget.SettingsAppWidgetProvider" android:permission="android.permission.WRITE_SETTINGS" android:enabled="@bool/has_powercontrol_widget" android:exported="true" android:process=":remote">
+        </receiver>
+        <receiver android:name=".widget.SettingsAppWidgetReceiver" android:enabled="false" android:exported="false" android:process=":remote">
+        </receiver>
+        <activity android:theme="@android:style/Theme.NoTitleBar" android:label="@string/system_updates" android:name="DeviceManagerPreference" android:sharedUserId="android.uid.phone" android:process="com.android.phone" android:hardwareAccelerated="false">
+        </activity>
+        <activity android:label="@string/about_settings" android:name="Settings$HtcAboutPhoneActivity">
+        </activity>
+        <activity android:label="@string/about_settings" android:name="Settings$HtcAboutPhoneHardwareInfoActivity">
+        </activity>
+        <activity android:label="@string/about_settings" android:name="Settings$HtcAboutPhoneIdentityActivity">
+        </activity>
+        <activity android:label="@string/about_settings" android:name="Settings$HtcAboutPhoneSoftwareInfoActivity">
+        </activity>
+        <activity android:label="@string/storage_settings_title" android:name="Settings$HtcAboutPhoneMasterClearActivity">
+        </activity>
+        <activity android:theme="@android:style/Theme.NoTitleBar" android:label="@string/system_updates" android:name=".framework.activity.aboutphone.HtcAboutPhoneSoftwareUpdate" android:sharedUserId="android.uid.phone" android:process="com.android.phone" android:hardwareAccelerated="false">
+        </activity>
+        <activity android:label="@string/htc_telec_electric_title" android:name=".framework.activity.aboutphone.legal.HtcTelecElectricLicenseActivity">
+        </activity>
+        <activity android:theme="@android:style/Theme.Dialog.Alert" android:label="@string/settings_copyright_activity_title" android:name=".framework.activity.aboutphone.legal.HtcCopyrightAlertActivity">
+        </activity>
+        <activity android:theme="@android:style/Theme.Holo.Panel" android:label="@string/settings_copyright_access_title" android:name=".framework.activity.aboutphone.legal.AccessLegalAlertActivity" android:exported="false">
+        </activity>
+        <activity android:theme="@android:style/Theme.Dialog.Alert" android:label="@string/settings_customer_copyright_activity_title" android:name=".framework.activity.aboutphone.legal.HtcCustomerLegalAlertActivity">
+        </activity>
+        <activity android:theme="@android:style/Theme.Dialog.Alert" android:label="@string/settings_customer_copyright_activity_title" android:name=".framework.activity.aboutphone.legal.HtcVirginMobileLegalActivity" />
+        <activity android:theme="@android:style/Theme.Dialog.Alert" android:label="@string/settings_customer_copyright_activity_title" android:name=".framework.activity.aboutphone.legal.HtcBoostMobileLegalActivity" />
+        <activity android:theme="@android:style/Theme.Dialog.Alert" android:label="@string/htc_regulatory_title" android:name=".framework.activity.aboutphone.legal.HtcRegulatoryActivity" />
+        <activity android:theme="@style/Theme.Others" android:label="@string/gsensor_label" android:name=".GSensorCalibration" android:screenOrientation="nosensor">
+        </activity>
+        <receiver android:name=".vpn2.VpnConfigReceiver" android:enabled="true" android:exported="true">
+        </receiver>
+        <activity android:theme="@style/DummyStyle" android:name=".wifi.WifiOffloadSettings" android:excludeFromRecents="true" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:theme="@style/NoTitleBar" android:name=".wifi.WifiOffloadAutoOnSettings" android:excludeFromRecents="true" android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity android:label="@string/testing_phone_info" android:name=".framework.activity.aboutphone.PhoneInformation_CT" android:process="com.android.phone" android:screenOrientation="unspecified" android:hardwareAccelerated="false">
+        </activity>
+        <meta-data android:name="device_name" android:value="EndeavorU" />
+        <meta-data android:name="project_name" android:value="Asia" />
+        <meta-data android:name="language_name" android:value="WWE" />
+        <meta-data android:name="sense_version" android:value="4.5" />
+        <meta-data android:name="build_path" android:value="/home/aa/Project/EndeavorU_Asia_WWE_JB_CRC_Stable_296434/packages/apps/Settings" />
+        <activity android:name="ConfirmLockPattern" android:screenOrientation="unspecified" />
+        <activity android:theme="@style/lockscreen_overlaylayout" android:name="ConfirmLockPassword" android:screenOrientation="unspecified" android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity android:label="@string/lockpassword_choose_lock_generic_header" android:name="ChooseLockGeneric" android:excludeFromRecents="true" android:screenOrientation="unspecified">
+        </activity>
+        <activity android:name="HtcChooseLockGeneric" android:excludeFromRecents="true" android:screenOrientation="unspecified">
+        </activity>
+        <activity android:theme="@style/lockscreen_overlaylayout" android:label="@string/lockpattern_change_lock_pattern_label" android:name="ChooseLockPattern" android:exported="false" android:screenOrientation="unspecified" />
+        <activity android:theme="@style/lockscreen_overlaylayout" android:label="@string/lockpattern_change_lock_pin_label" android:name="ChooseLockPassword" android:exported="false" android:screenOrientation="unspecified" android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity android:theme="@style/lockscreen_overlaylayout" android:label="@string/lockpattern_change_lock_pattern_label" android:name="ChooseLockPatternTutorial" android:screenOrientation="unspecified" />
+        <activity android:theme="@android:style/Theme.NoTitleBar" android:label="@string/lockpattern_change_lock_pattern_label" android:name="ChooseLockPatternExample" android:screenOrientation="unspecified" />
+        <activity android:label="@string/bluetooth_map_extra_settings" android:icon="@drawable/ic_settings_bluetooth" android:name=".bluetooth.BluetoothMapExtraSettings" android:excludeFromRecents="true" android:screenOrientation="unspecified" android:configChanges="keyboardHidden|orientation">
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:htc="http://schemas.android.com/apk/res/com.htc">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/M2" android:paddingRight="@dimen/M2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <TextView android:gravity="center_horizontal" android:id="@id/loginText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/login_text" style="@com.htc:style/darklist_secondary_s" />
+        <com.htc.widget.HtcRimButton android:gravity="center" android:id="@id/loginBtn" android:paddingLeft="@dimen/M2" android:paddingRight="@dimen/M2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/M2" htc:backgroundMode="dark" style="@com.htc:style/b_button_primary_m" />
+    </LinearLayout>
+</RelativeLayout>

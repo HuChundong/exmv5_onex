@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cmd_bar_btn_counter_sd_leftmargin">52.0px</dimen>
+    <dimen name="cmd_bar_btn_counter_sd_topmargin">40.0px</dimen>
+    <dimen name="cmd_bar_btn_counter_dd_leftmargin">44.0px</dimen>
+    <dimen name="cmd_bar_btn_counter_dd_topmargin">44.0px</dimen>
+    <dimen name="scrollingcache_footer_bottom_offset">31.0px</dimen>
+    <dimen name="description_height">46.0px</dimen>
+    <dimen name="description_maxheight">82.0px</dimen>
+    <dimen name="height_of_tab_plus">90.0px</dimen>
+    <dimen name="height_of_separator_without_text_label">2.0px</dimen>
+    <dimen name="detailsview_htc_list_item_quick_contacts_size">66.0px</dimen>
+    <dimen name="detailsview_htc_list_item_quick_contacts_width">72.0px</dimen>
+    <dimen name="detail_dialog_item_height">74.0px</dimen>
+    <dimen name="detail_dialog_image_title_container_padding_left">14.0px</dimen>
+    <dimen name="detail_dialog_image_title_container_padding_right">12.0px</dimen>
+    <dimen name="detail_dialog_thumbnail_image_frame_width">60.0px</dimen>
+    <dimen name="detail_dialog_thumbnail_image_frame_height">60.0px</dimen>
+    <dimen name="detail_dialog_thumbnail_image_width">48.0px</dimen>
+    <dimen name="detail_dialog_thumbnail_image_height">48.0px</dimen>
+    <dimen name="detail_dialog_image_title_text_margin_left">14.0px</dimen>
+    <dimen name="resolve_item_min_height">96.0px</dimen>
+    <dimen name="button_width">105.0px</dimen>
+    <dimen name="button_height">46.0px</dimen>
+    <dimen name="button_width_even">104.0px</dimen>
+    <dimen name="message_panel_height">150.0px</dimen>
+    <dimen name="tweet_panel_height">44.0px</dimen>
+    <dimen name="list_item_height">50.0px</dimen>
+    <dimen name="tweet_font_size">17.0px</dimen>
+    <dimen name="qualifier_top_border">21.0px</dimen>
+    <dimen name="qualifier_left_border">4.0px</dimen>
+    <dimen name="qualifier_right_border">8.0px</dimen>
+    <dimen name="menu_text_size">18.0px</dimen>
+    <dimen name="title_bar_droplist_width">406.0px</dimen>
+</resources>

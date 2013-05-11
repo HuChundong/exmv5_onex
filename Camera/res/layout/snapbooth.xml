@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:id="@id/snapbooth_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res/com.android.camera">
+    <SurfaceView android:id="@id/snapbooth_preview" android:layout_width="@dimen/snapbooth_viewfinder_width" android:layout_height="@dimen/snapbooth_viewfinder_height" />
+    <View android:id="@id/snapbooth_preview_cover" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/snapbooth_background" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/snapbooth_preview_filter" android:layout="@layout/snapbooth_preview_filter_layout" android:inflatedId="@id/snapbooth_preview_filter_stub" android:layout_width="@dimen/snapbooth_viewfinder_width" android:layout_height="@dimen/snapbooth_viewfinder_height" android:layout_marginLeft="0.0px" android:layout_marginTop="0.0px" />
+    <ViewStub android:id="@id/snapbooth_main_view" android:layout="@layout/snapbooth_main_layout" android:inflatedId="@id/snapbooth_main_view_stub" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <ViewStub android:id="@id/snapbooth_review_view" android:layout="@layout/snapbooth_review_layout" android:inflatedId="@id/snapbooth_review_view_stub" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" />
+    <ViewStub android:id="@id/snapbooth_second_view" android:layout="@layout/snapbooth_second_layout" android:inflatedId="@id/snapbooth_second_view_stub" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <ViewStub android:id="@id/snapbooth_header_view" android:layout="@layout/snapbooth_header_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.android.camera.rotate.RotateRelativeLayout android:id="@id/snapbooth_screen_save" android:background="#ff000000" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="22.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/snapbooth_screen_save_text" android:paddingLeft="30.0dip" android:paddingRight="25.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/screensave_msg_snapbooth" android:layout_centerInParent="true" />
+    </com.android.camera.rotate.RotateRelativeLayout>
+    <View android:id="@id/snapbooth_screen_save_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/snapbooth_activity_cover" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

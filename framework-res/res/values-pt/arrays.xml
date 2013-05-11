@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emailAddressTypes">
+        <item>Residencial</item>
+        <item>Comercial</item>
+        <item>Outro</item>
+        <item>Personalizado</item>
+    </string-array>
+    <string-array name="imProtocols">
+        <item>AIM</item>
+        <item>Windows Live</item>
+        <item>Yahoo</item>
+        <item>Skype</item>
+        <item>QQ</item>
+        <item>Google Talk</item>
+        <item>ICQ</item>
+        <item>Jabber</item>
+    </string-array>
+    <string-array name="organizationTypes">
+        <item>Comercial</item>
+        <item>Outro</item>
+        <item>Personalizado</item>
+    </string-array>
+    <string-array name="phoneTypes">
+        <item>Residencial</item>
+        <item>Celular</item>
+        <item>Comercial</item>
+        <item>Fax comercial</item>
+        <item>Fax residencial</item>
+        <item>Pager</item>
+        <item>Outro</item>
+        <item>Personalizado</item>
+    </string-array>
+    <string-array name="postalAddressTypes">
+        <item>Residencial</item>
+        <item>Comercial</item>
+        <item>Outro</item>
+        <item>Personalizado</item>
+    </string-array>
+    <string-array name="imAddressTypes">
+        <item>Residencial</item>
+        <item>Comercial</item>
+        <item>Outro</item>
+        <item>Personalizado</item>
+    </string-array>
+    <array name="carrier_properties" />
+</resources>

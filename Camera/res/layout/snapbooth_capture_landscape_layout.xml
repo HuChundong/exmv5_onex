@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/shutter_bar" android:layout_width="@dimen/snapbooth_L_capture_layout_width" android:layout_height="@dimen/snapbooth_L_capture_layout_height" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/shutter_background" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/snapbooth_shutter_bar_l" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <Button android:id="@id/btn_shutter" android:background="@drawable/snapbooth_shutter_btn_rest" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/snapbooth_shutter_btn_top_margin_landscape" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+</RelativeLayout>

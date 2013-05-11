@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/snapbooth_effect_landscape_view" android:layout="@layout/snapbooth_effect_landscape_layout" android:inflatedId="@id/snapbooth_effect_landscape_view_stub" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/snapbooth_capture_landscape_view" android:layout="@layout/snapbooth_capture_landscape_layout" android:inflatedId="@id/snapbooth_capture_landscape_view_stub" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentTop="true" />
+    <ViewStub android:id="@id/snapbooth_effect_portrait_view" android:layout="@layout/snapbooth_effect_portrait_layout" android:inflatedId="@id/snapbooth_effect_portrait_view_stub" android:layout_width="@dimen/snapbooth_effect_panel_height_portrait" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+    <ViewStub android:id="@id/snapbooth_capture_portrait_view" android:layout="@layout/snapbooth_capture_portrait_layout" android:inflatedId="@id/snapbooth_capture_portrait_view_stub" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+</RelativeLayout>

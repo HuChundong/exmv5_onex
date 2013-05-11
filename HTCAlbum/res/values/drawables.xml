@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="gallery_btn_left">@drawable/zero_dummy_asset</drawable>
+    <drawable name="gallery_icon_burst_shot">@drawable/zero_dummy_asset</drawable>
+    <drawable name="gallery_panel">@drawable/zero_dummy_asset</drawable>
+    <drawable name="icon_btn_best_shot_dark">@drawable/zero_dummy_asset</drawable>
+    <drawable name="icon_btn_expand_dark">@drawable/zero_dummy_asset</drawable>
+    <drawable name="icon_indicator_burst_shot_l">@drawable/zero_dummy_asset</drawable>
+    <drawable name="zero_dummy_asset">@android:drawable/ic_delete</drawable>
+    <drawable name="dummy_gallery_frame_selected">@drawable/zero_dummy_asset</drawable>
+    <drawable name="icon_indicator_pen_l">@drawable/zero_dummy_asset</drawable>
+    <drawable name="automotive_common_b_scroller_base">@drawable/zero_dummy_asset</drawable>
+    <drawable name="automotive_common_b_scroller_tab">@drawable/zero_dummy_asset</drawable>
+    <drawable name="icon_indicator_best_shot_l">@drawable/zero_dummy_asset</drawable>
+</resources>

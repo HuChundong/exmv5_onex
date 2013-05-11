@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.camera.rotate.RotateLinearLayout android:gravity="center" android:id="@id/effect_item_view" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="@dimen/effect_item_width" android:layout_height="@dimen/effect_item_height">
+        <RelativeLayout android:layout_width="@dimen/effect_preset_cover_width" android:layout_height="@dimen/effect_preset_cover_width" android:layout_marginTop="@dimen/effect_item_padding_top" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/icon_cover" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/effect_indicator_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/camera_indicator_camera_only" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <com.android.camera.widget.ColorMultiplyTextView android:ellipsize="end" android:gravity="center" android:id="@id/name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/effect_item_text_margin_bottom" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:marqueeRepeatLimit="marquee_forever" style="@style/text_style_effect_item_name" />
+    </RelativeLayout>
+</com.android.camera.rotate.RotateLinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*********************************************************************
+ *  Purpose: Fusion property controls
+ *  Copyright (C) 2011, HTC Corp.	
+ *********************************************************************/
+-->
+
+<EnableDepthBuffer>true</EnableDepthBuffer>
+<FragmentShaderPrecisionQualifier>high</FragmentShaderPrecisionQualifier>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/viewfinder_cover" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/review_image_container" android:visibility="invisible" android:layout_width="0.0px" android:layout_height="0.0px" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/snapbooth_review_image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/snapbooth_review_buttons_view" android:layout="@layout/snapbooth_review_buttons_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.android.camera.rotate.RotateRelativeLayout android:id="@id/review_screen_buttons_panel" android:visibility="invisible" android:layout_width="0.0px" android:layout_height="0.0px">
+        <Button android:textSize="20.0px" android:textColor="#ffffffff" android:id="@id/review_screen_button_0" android:background="@drawable/snapbooth_review_btn" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/snapbooth_review_screen_btn_share" android:shadowColor="#ff000000" android:shadowDx="-1.0" android:shadowDy="-1.0" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <Button android:textSize="20.0px" android:textColor="#ffffffff" android:id="@id/review_screen_button_1" android:background="@drawable/snapbooth_review_btn" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/snapbooth_review_screen_btn_delete" android:shadowColor="#ff000000" android:shadowDx="-1.0" android:shadowDy="-1.0" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </com.android.camera.rotate.RotateRelativeLayout>
+    <com.android.camera.rotate.RotateRelativeLayout android:id="@id/service_review_buttons_panel" android:visibility="invisible" android:layout_width="0.0px" android:layout_height="0.0px">
+        <Button android:textSize="20.0px" android:textColor="#ffffffff" android:id="@id/review_screen_button_0" android:background="@drawable/snapbooth_review_btn" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@com.htc:string/done" android:shadowColor="#ff000000" android:shadowDx="-1.0" android:shadowDy="-1.0" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <Button android:textSize="20.0px" android:textColor="#ffffffff" android:id="@id/review_screen_button_1" android:background="@drawable/snapbooth_review_btn" android:layout_width="0.0px" android:layout_height="wrap_content" android:text="@string/snapbooth_service_review_btn_redo" android:shadowColor="#ff000000" android:shadowDx="-1.0" android:shadowDy="-1.0" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </com.android.camera.rotate.RotateRelativeLayout>
+</RelativeLayout>

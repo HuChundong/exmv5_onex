@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:paddingLeft="@dimen/M2" android:paddingTop="@dimen/M5" android:paddingRight="@dimen/M2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/dlg_message" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" style="@com.htc:style/list_primary_m" />
+    <RelativeLayout android:orientation="horizontal" android:paddingTop="@dimen/M2" android:paddingBottom="@dimen/M2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dlg_message">
+        <com.htc.widget.HtcCheckBox android:id="@id/dlg_chkbox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:id="@id/dlg_chkbox_text" android:paddingLeft="@dimen/M2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/dlg_chkbox" style="@com.htc:style/list_body_primary_l" />
+    </RelativeLayout>
+</RelativeLayout>

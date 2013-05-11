@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="video_display_option_list">
+        <item>Voll</item>
+        <item>@com.htc:string/st_best_fit</item>
+        <item>Strecken</item>
+    </array>
+    <string-array name="video_display_option_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

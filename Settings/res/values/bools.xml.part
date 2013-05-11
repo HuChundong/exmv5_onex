@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="has_led">true</bool>
+    <bool name="has_button_light">true</bool>
+    <bool name="stat_internal_sdcard_info">true</bool>
+	<bool name="emulated_available_internal_memroy">false</bool>
+</resources>

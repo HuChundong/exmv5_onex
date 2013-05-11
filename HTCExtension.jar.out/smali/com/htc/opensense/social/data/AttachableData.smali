@@ -1,0 +1,19 @@
+.class public interface abstract Lcom/htc/opensense/social/data/AttachableData;
+.super Ljava/lang/Object;
+.source "AttachableData.java"
+
+
+# static fields
+.field public static final NO_WRITE_DATA:I = 0x0
+
+.field public static final WRITE_DATA:I = 0x1
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
+
+
+# virtual methods
+.method public abstract getIndicator()Ljava/lang/String;
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end method

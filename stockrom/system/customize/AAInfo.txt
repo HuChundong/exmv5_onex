@@ -1,0 +1,6 @@
+TaskID : 296434
+Project : ENDEAVOR_U_JB_45_S
+SKU : hTC Asia WWE[707]
+ROM Ver : 3.14.707.24
+Customization Id : 454595
+RCMS Id : 727

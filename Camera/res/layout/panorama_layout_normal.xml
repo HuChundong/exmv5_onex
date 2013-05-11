@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.camera.widget.PanoramaTrackingView android:id="@id/panorama_tracking_box" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <com.android.camera.rotate.RotateRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:id="@id/panorama_frame_index_indicator_container" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/panorama_frame_index_indicators_container_margin_bottom" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <com.android.camera.widget.ColorMultiplyImageView android:id="@id/panorama_frame_index_indicator_0" android:background="@drawable/camera_panorama_target_outer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" />
+            <View android:layout_width="@com.htc:dimen/margin_m" android:layout_height="1.0px" />
+            <com.android.camera.widget.ColorMultiplyImageView android:id="@id/panorama_frame_index_indicator_1" android:background="@drawable/camera_panorama_target_outer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" />
+            <View android:layout_width="@com.htc:dimen/margin_m" android:layout_height="1.0px" />
+            <com.android.camera.widget.ColorMultiplyImageView android:id="@id/panorama_frame_index_indicator_2" android:background="@drawable/camera_panorama_target_outer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" />
+            <View android:layout_width="@com.htc:dimen/margin_m" android:layout_height="1.0px" />
+            <com.android.camera.widget.ColorMultiplyImageView android:id="@id/panorama_frame_index_indicator_3" android:background="@drawable/camera_panorama_target_outer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" />
+            <View android:layout_width="@com.htc:dimen/margin_m" android:layout_height="1.0px" />
+            <com.android.camera.widget.ColorMultiplyImageView android:id="@id/panorama_frame_index_indicator_4" android:background="@drawable/camera_panorama_target_outer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" />
+        </LinearLayout>
+    </com.android.camera.rotate.RotateRelativeLayout>
+    <com.android.camera.rotate.RotateRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/panorama_arrows_container" android:layout_width="@dimen/panorama_arrows_container_width" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/panorama_left_arrow" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/panorama_left_arrow" android:layout_alignParentLeft="true" />
+            <ImageView android:id="@id/panorama_right_arrow" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/panorama_right_arrow" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </com.android.camera.rotate.RotateRelativeLayout>
+    <com.android.camera.rotate.RotateRelativeLayout android:id="@id/panorama_sweep_indicator_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/panorama_spinner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/camera_spinner" android:layout_centerInParent="true" />
+        <com.android.camera.widget.PanoramaIndicatorView android:id="@id/panorama_sweep_indicator" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.android.camera.rotate.RotateRelativeLayout>
+    <RelativeLayout android:id="@id/panorama_shutter_bar" android:background="@drawable/camera_review_menu_bar_bg" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/capture_bar_margin_bottom" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/panorama_cancel_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/camera_stop_btn_rest" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <com.android.camera.rotate.RotateRelativeLayout android:id="@id/panorama_review_image_container" android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/panorama_review_image" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+    </com.android.camera.rotate.RotateRelativeLayout>
+</RelativeLayout>

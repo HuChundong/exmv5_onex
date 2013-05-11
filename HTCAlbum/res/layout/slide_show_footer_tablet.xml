@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/footer" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.9"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:htc="http://schemas.android.com/apk/res/com.htc">
+    <com.htc.widget.HtcRimButton android:gravity="center" android:id="@id/dark_button1" android:layout_width="wrap_content" android:layout_height="wrap_content" htc:backgroundMode="dark" />
+    <View android:gravity="center" android:id="@id/dark_div1" android:layout_width="@dimen/M2x2" android:layout_height="wrap_content" />
+    <com.htc.widget.HtcRimButton android:gravity="center" android:id="@id/dark_button2" android:layout_width="wrap_content" android:layout_height="wrap_content" htc:backgroundMode="dark" />
+    <View android:gravity="center" android:id="@id/dark_div2" android:layout_width="@dimen/M2x2" android:layout_height="wrap_content" />
+    <com.htc.widget.HtcRimButton android:gravity="center" android:id="@id/dark_button3" android:layout_width="wrap_content" android:layout_height="wrap_content" htc:backgroundMode="dark" />
+</LinearLayout>

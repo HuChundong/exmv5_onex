@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.htc.widget.HtcIconButton android:id="@id/thumbnail_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/thumbnail_button_margin_left" android:layout_marginBottom="@dimen/thumbnail_button_margin_bottom" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

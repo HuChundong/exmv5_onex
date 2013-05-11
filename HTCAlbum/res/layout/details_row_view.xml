@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/details_item_info_row" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/detail_dialog_item_height">
+        <TextView android:id="@id/details_item_info_row_name" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@id/details_item_info_row_value" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView android:id="@id/details_item_info_row_divider" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

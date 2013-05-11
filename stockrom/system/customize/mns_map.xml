@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<map>
+  <profiles>
+    <item name="51008">51008.xml</item>
+    <item name="51089">51008.xml</item>
+    <item name="51001">51001.xml</item>
+    <item name="51021">51001.xml</item>
+    <item name="51010">51010.xml</item>
+    <item name="51011">51011.xml</item>
+    <item name="50219">50219.xml</item>
+    <item name="50216">50216.xml</item>
+    <item name="50212">50212.xml</item>
+    <item name="50218">50218.xml</item>
+    <item name="51502">51502.xml</item>
+    <item name="51503">51503.xml</item>
+    <item name="52503">52503.xml</item>
+    <item name="52501">52501.xml</item>
+    <item name="52505">52505.xml</item>
+    <item name="52001">52001.xml</item>
+    <item name="52018">52018.xml</item>
+    <item name="52099">52099.xml</item>
+    <item name="52000">52099.xml</item>
+    <item name="45201">45201.xml</item>
+    <item name="45204">45204.xml</item>
+    <item name="45202">45202.xml</item>
+    <item name="525">default.xml</item>
+    <item name="520">default.xml</item>
+    <item name="510">default.xml</item>
+    <item name="452">default.xml</item>
+    <item name="502">default.xml</item>
+  </profiles>
+</map>

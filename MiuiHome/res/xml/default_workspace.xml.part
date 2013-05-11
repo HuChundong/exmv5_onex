@@ -1,0 +1,3 @@
+com.android.camera/com.android.camera.Camera=com.android.camera/com.android.camera.CameraEntry
+com.miui.fmradio/com.miui.fmradio.FMRadioMain=com.htc.fm/com.htc.fm.activity.FMRadioMain
+com.miui.gallery/com.miui.gallery.app.Gallery=com.htc.album/com.htc.album.AlbumMain.ActivityMainDropList

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.camera.rotate.RotateRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:id="@id/review_screen_buttons_panel" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <RelativeLayout android:id="@id/review_screen_button_0_container" android:layout_width="@dimen/snapbooth_review_button_width" android:layout_height="@dimen/snapbooth_review_button_height">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_icon_menu_share" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/snapbooth_review_screen_btn_share" style="@com.htc:style/title_secondary_xs" />
+            </LinearLayout>
+            <View android:id="@id/review_screen_button_0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+        <ImageView android:layout_width="1.0px" android:layout_height="@dimen/snapbooth_review_button_divider_height" android:src="@drawable/common_review_divider" android:scaleType="fitXY" />
+        <RelativeLayout android:id="@id/review_screen_button_1_container" android:layout_width="@dimen/snapbooth_review_button_width" android:layout_height="@dimen/snapbooth_review_button_height">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_icon_menu_delete" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/snapbooth_review_screen_btn_delete" style="@com.htc:style/title_secondary_xs" />
+            </LinearLayout>
+            <View android:id="@id/review_screen_button_1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/service_review_buttons_panel" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <RelativeLayout android:id="@id/review_screen_button_0_container" android:layout_width="@dimen/snapbooth_review_button_width" android:layout_height="@dimen/snapbooth_review_button_height">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_menu_accept" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@com.htc:string/done" style="@com.htc:style/title_secondary_xs" />
+            </LinearLayout>
+            <View android:id="@id/review_screen_button_0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+        <ImageView android:layout_width="1.0px" android:layout_height="@dimen/snapbooth_review_button_divider_height" android:src="@drawable/common_review_divider" android:scaleType="fitXY" />
+        <RelativeLayout android:id="@id/review_screen_button_1_container" android:layout_width="@dimen/snapbooth_review_button_width" android:layout_height="@dimen/snapbooth_review_button_height">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_menu_back_to_camera" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/snapbooth_service_review_btn_redo" style="@com.htc:style/title_secondary_xs" />
+            </LinearLayout>
+            <View android:id="@id/review_screen_button_1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.android.camera.rotate.RotateRelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:visible="true" android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="20" android:drawable="@drawable/camera_autofocus_focusing_00" />
+    <item android:duration="20" android:drawable="@drawable/camera_autofocus_focusing_01" />
+    <item android:duration="20" android:drawable="@drawable/camera_autofocus_focusing_02" />
+    <item android:duration="20" android:drawable="@drawable/camera_autofocus_focusing_03" />
+    <item android:duration="20" android:drawable="@drawable/camera_autofocus_focusing_04" />
+    <item android:duration="20" android:drawable="@drawable/camera_autofocus_focusing_05" />
+    <item android:duration="20" android:drawable="@drawable/camera_autofocus_focusing_06" />
+    <item android:duration="20" android:drawable="@drawable/camera_autofocus_focusing_07" />
+    <item android:duration="20" android:drawable="@drawable/camera_autofocus_focusing_08" />
+</animation-list>

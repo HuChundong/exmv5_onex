@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/main_bar_view" android:layout="@layout/main_bar_layout" android:inflatedId="@id/main_bar_stub" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/main_bar_lite_view" android:layout="@layout/main_bar_layout_lite" android:inflatedId="@id/main_bar_lite_stub" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/fps_view" android:layout="@layout/fps_layout" android:inflatedId="@id/fps_view_stub" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

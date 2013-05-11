@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/text_1" android:paddingLeft="@dimen/M5" android:paddingRight="@dimen/M5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentTop="true" style="@com.htc:style/darklist_primary_xxs" />
+    <TextView android:id="@id/text_2" android:paddingLeft="@dimen/M5" android:paddingRight="@dimen/M5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" style="@com.htc:style/darklist_primary_xxs" />
+    <TextView android:id="@id/text_3" android:paddingLeft="@dimen/M5" android:paddingRight="@dimen/M5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/M6" android:singleLine="true" android:layout_alignParentBottom="true" style="@com.htc:style/b_separator_secondary_m" />
+</RelativeLayout>

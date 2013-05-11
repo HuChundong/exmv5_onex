@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:htc="http://schemas.android.com/apk/res/com.htc">
+    <com.htc.widget.HtcListView android:id="@android:id/list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <RelativeLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/write_comment_btn_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/M2" android:layout_marginRight="@dimen/M2">
+            <com.htc.widget.HtcAutoCompleteTextView android:id="@id/write_comment_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@com.htc:style/input_default_m" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/child_view" android:layout_width="fill_parent" android:layout_height="@dimen/slider_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="left" android:orientation="horizontal" android:id="@id/title_bar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/icon_title_left_margin" android:layout_marginTop="@com.htc:dimen/margin_s">
+            <ImageView android:id="@id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@com.htc:dimen/margin_m" style="@style/image_adj_text_style" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/button_degree_top_margin">
+            <com.htc.widget.HtcAddButton android:id="@id/button_minus" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/button_bottom_margin" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/degree_left_margin">
+                <ImageView android:id="@id/degree" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/index_column" android:descendantFocusability="blocksDescendants" android:layout_width="@dimen/image_property_degree_width" android:layout_height="fill_parent" />
+            </LinearLayout>
+            <com.htc.widget.HtcAddButton android:id="@id/button_plus" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/degree_left_margin" android:layout_marginBottom="@dimen/button_bottom_margin" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

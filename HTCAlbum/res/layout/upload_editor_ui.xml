@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:htc="http://schemas.android.com/apk/res/com.htc">
+    <ImageView android:id="@id/editorIndicator" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/M2" android:layout_marginTop="@dimen/M2" />
+    <RelativeLayout android:id="@id/referenceMainView" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/referenceLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <com.htc.widget.HtcEditText android:gravity="center" android:id="@id/editorTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_above="@id/referenceLayout" android:layout_centerHorizontal="true" android:inputType="textCapSentences" style="@com.htc:style/list_primary_m" />
+        <RelativeLayout android:gravity="bottom" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/editorTitle">
+            <TextView android:gravity="center" android:id="@id/editorPhotoIndex" android:layout_width="fill_parent" android:layout_height="fill_parent" android:singleLine="true" android:layout_centerHorizontal="true" style="@com.htc:style/title_primary_m" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/editorTitle" android:layout_centerHorizontal="true">
+            <com.htc.widget.HtcEditText android:id="@id/editorDescription" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="textCapSentences|textMultiLine" style="@com.htc:style/list_primary_m" />
+        </RelativeLayout>
+        <com.htc.widget.HtcRimButton android:id="@id/editorTagBtn" android:paddingLeft="@dimen/M2" android:paddingRight="@dimen/M2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/referenceLayout" android:layout_centerHorizontal="true" htc:backgroundMode="dark" style="@com.htc:style/darklist_secondary" />
+    </RelativeLayout>
+</RelativeLayout>

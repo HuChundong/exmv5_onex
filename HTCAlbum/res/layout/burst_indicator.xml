@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/burst_indicator_textview" android:paddingTop="@dimen/M4" android:paddingRight="@dimen/M2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="#ff000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:alpha="0.9"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
+</RelativeLayout>

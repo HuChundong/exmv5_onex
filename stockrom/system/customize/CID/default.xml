@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<customization_form>
+  <category name="system">
+    <module name="locale">
+      <function>
+        <set name="single">
+          <item name="total_list">en_AU;en_ID;en_MY;en_NZ;en_PH;en_PK;en_SG;en_TH;en_US;en_VN;in_ID;th_TH;vi_VN;zh_CN;</item>
+          <item type="boolean" name="en_AU">yes</item>
+          <item type="boolean" name="en_ID">yes</item>
+          <item type="boolean" name="en_MY">yes</item>
+          <item type="boolean" name="en_NZ">yes</item>
+          <item type="boolean" name="en_PH">yes</item>
+          <item type="boolean" name="en_PK">yes</item>
+          <item type="boolean" name="en_SG">yes</item>
+          <item type="boolean" name="en_TH">yes</item>
+          <item type="boolean" name="en_US">yes</item>
+          <item type="boolean" name="en_VN">yes</item>
+          <item type="boolean" name="in_ID">yes</item>
+          <item type="boolean" name="th_TH">yes</item>
+          <item type="boolean" name="vi_VN">yes</item>
+          <item type="boolean" name="zh_CN">yes</item>
+        </set>
+      </function>
+    </module>
+    <module name="Settings">
+      <function name="screen_timeout">
+        <set name="plenty">
+          <item name="value1">15000</item>
+          <item name="value2">30000</item>
+          <item name="value3">45000</item>
+          <item name="value4">60000</item>
+          <item name="value5">120000</item>
+          <item name="value6">600000</item>
+          <item name="value7">-1</item>
+        </set>
+      </function>
+    </module>
+    <module name="InputMethod">
+      <function name="IME_language_set">
+        <set name="single">
+          <item type="boolean" name="English">yes</item>
+          <item type="boolean" name="German">yes</item>
+          <item type="boolean" name="France">yes</item>
+          <item type="boolean" name="Italian">yes</item>
+          <item type="boolean" name="Spanish">yes</item>
+          <item type="boolean" name="Russian">yes</item>
+          <item type="boolean" name="Czech">yes</item>
+          <item type="boolean" name="Danish">yes</item>
+          <item type="boolean" name="Swedish">yes</item>
+          <item type="boolean" name="Norwegian">yes</item>
+          <item type="boolean" name="Dutch">yes</item>
+          <item type="boolean" name="Polish">yes</item>
+          <item type="boolean" name="Portugal">yes</item>
+          <item type="boolean" name="Greek">yes</item>
+          <item type="boolean" name="Turkish">yes</item>
+          <item type="boolean" name="Finnish">yes</item>
+          <item type="boolean" name="Hungarian">yes</item>
+          <item type="boolean" name="Romanian">yes</item>
+          <item type="boolean" name="Slovak">yes</item>
+          <item type="boolean" name="Croatian">yes</item>
+          <item type="boolean" name="Slovenian">yes</item>
+          <item type="boolean" name="Serbian">yes</item>
+          <item type="boolean" name="Bulgarian">yes</item>
+          <item type="boolean" name="Estonian">yes</item>
+          <item type="boolean" name="Latvian">yes</item>
+          <item type="boolean" name="Lithuanian">yes</item>
+          <item type="boolean" name="Indonesian">yes</item>
+          <item type="boolean" name="Malay">yes</item>
+        </set>
+      </function>
+      <function name="IME_sip_set">
+        <set name="single">
+          <item name="total_list">Handwriting;ZuhYin;CangJie;PinYin;Stroke;</item>
+          <item type="boolean" name="Handwriting">yes</item>
+          <item type="boolean" name="ZuhYin">yes</item>
+          <item type="boolean" name="CangJie">yes</item>
+          <item type="boolean" name="PinYin">yes</item>
+          <item type="boolean" name="Stroke">yes</item>
+        </set>
+      </function>
+    </module>
+    <module name="deviceData">
+      <function>
+        <set name="single">
+          <item name="device_name">HTC One X</item>
+        </set>
+      </function>
+    </module>
+    <module name="deviceData1">
+      <function>
+        <set name="single">
+          <item name="sw_number">NA</item>
+        </set>
+      </function>
+    </module>
+  </category>
+  <category name="application">
+    <module name="Crash_Report">
+      <function name="setting">
+        <set name="single">
+          <item name="turn_off_report" type="boolean">no</item>
+          <item name="turn_off_application_log" type="boolean">yes</item>
+        </set>
+      </function>
+    </module>
+    <module name="Laputa">
+      <function name="footprint_preset">
+        <set name="plenty" max="13">
+          <item name="name">Merlion Park</item>
+          <item name="create_date">1239629156966</item>
+          <item name="category">favorite</item>
+          <item name="latitude">1286666</item>
+          <item name="longitude">103854400</item>
+          <item name="addr">Merlion Park, Singapore</item>
+          <item name="pic_filename">/system/customize/resource/Singapore_Footprints_Merlion.JPG</item>
+        </set>
+        <set name="plenty" max="13">
+          <item name="name">Wat Phrasrirattana Sasadaram</item>
+          <item name="create_date">1239629156965</item>
+          <item name="category">favorite</item>
+          <item name="latitude">13751388</item>
+          <item name="longitude">100492800</item>
+          <item name="addr">Wat Phrasrirattana Sasadaram, Bangkok, Thailand</item>
+          <item name="pic_filename">/system/customize/resource/Thailand_Footprints_Wat.jpg</item>
+        </set>
+        <set name="plenty" max="13">
+          <item name="name">Petronas Twin Towers</item>
+          <item name="create_date">1239629156964</item>
+          <item name="category">favorite</item>
+          <item name="latitude">3157850</item>
+          <item name="longitude">101711600</item>
+          <item name="addr">1 Jalan Ampang, Kuala Lumpur City Centre, Kuala Lumpur, WP Kuala Lumpur, Malaysia</item>
+          <item name="pic_filename">/system/customize/resource/Malaysia_Footprints_Petronas.jpg</item>
+        </set>
+        <set name="plenty" max="13">
+          <item name="name">Ben Thanh market</item>
+          <item name="create_date">1239629156963</item>
+          <item name="category">favorite</item>
+          <item name="latitude">10772119</item>
+          <item name="longitude">106698200</item>
+          <item name="addr">Le Loi str. Dist.1 HCMC, VietNam</item>
+          <item name="pic_filename">/system/customize/resource/Vietnam_Footprints_Cho.jpg</item>
+        </set>
+        <set name="plenty" max="13">
+          <item name="name">Monumen Nasional</item>
+          <item name="create_date">1239629156962</item>
+          <item name="category">favorite</item>
+          <item name="latitude">-6175277</item>
+          <item name="longitude">106826944</item>
+          <item name="addr">Jl. Pelataran Merdeka, Jakarta Pusat - 10110</item>
+          <item name="phone">62213823041</item>
+          <item name="pic_filename">/system/customize/resource/Indonesia_Footprints_Monas.JPG</item>
+        </set>
+        <set name="plenty" max="13">
+          <item name="name">Mayon Volcano</item>
+          <item name="create_date">1239629156961</item>
+          <item name="category">favorite</item>
+          <item name="latitude">13256666</item>
+          <item name="longitude">123685000</item>
+          <item name="site">http://www.mayonecotourism.ph/index.htm</item>
+          <item name="pic_filename">/system/customize/resource/Philippines_Footprints_Mayon.jpg</item>
+        </set>
+      </function>
+    </module>
+  </category>
+  <BootConfiguration>
+    <BootAnimation animation="/system/customize/resource/hTC_bootup_one.zip" audio="/system/customize/resource/htc_boot.mp3" />
+  </BootConfiguration>
+  <ShutdownConfiguration>
+    <ShutdownAnimation image_png="/system/customize/resource/hTC_downanimation.zip" image="" fps="10" />
+  </ShutdownConfiguration>
+  <category name="SettingsProvider">
+    <module name="res">
+      <function name="values">
+        <set name="single">
+          <item name="def_screen_off_timeout">60000</item>
+          <item name="def_2g_on">3</item>
+        </set>
+      </function>
+    </module>
+  </category>
+  <category name="AutomotiveHome">
+    <module name="setting">
+      <function>
+        <set name="single">
+          <item name="default_Location">HTC Locations</item>
+        </set>
+      </function>
+    </module>
+  </category>
+  <category name="Settings">
+    <module name="properties">
+      <function>
+        <set name="single">
+          <!--regulation.png-->
+          <item name="support_regulatory">true</item>
+        </set>
+      </function>
+    </module>
+  </category>
+  <category name="framework">
+    <module name="ShareVia">
+      <function name="settings">
+        <set name="single">
+          <item name="1">com.htc.notes</item>
+          <item name="2">com.htc.cloudstorage.skydrive</item>
+          <item name="3">com.dropbox.android</item>
+          <item name="4">com.htc.android.mail</item>
+          <item name="5">com.android.mms</item>
+          <item name="6">com.facebook.katana</item>
+        </set>
+      </function>
+    </module>
+  </category>
+</customization_form>

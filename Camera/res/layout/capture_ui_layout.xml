@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/review_animation_view" android:layout="@layout/review_animation_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/grid_view" android:layout="@layout/grid_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/focus_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/effect_control_view" android:layout="@layout/effect_control_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/zoom_bar_layout" />
+    <RelativeLayout android:id="@id/panorama_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/smartshot_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/burst_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/bubble_toast_view" android:layout="@layout/bubble_toast_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/main_bar_layout_2" />
+    <include layout="@layout/thumbnail_layout" />
+    <include layout="@layout/indicators_layout" />
+    <ViewStub android:id="@id/self_timer_view" android:layout="@layout/self_timer_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/recording_timer_view" android:layout="@layout/recording_timer_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/effect_panel_layout" />
+    <ViewStub android:id="@id/handshake_view" android:layout="@layout/handshake_layout" android:inflatedId="@id/handshake_stub" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/power_warning_view" android:layout="@layout/power_warning_layout" android:inflatedId="@id/power_warning_stub" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/action_screen_container" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.android.camera.rotate.RotateRelativeLayout android:id="@id/processing_dialog_container" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ViewStub android:id="@id/processing_dialog" android:layout="@layout/progress_dialog_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </com.android.camera.rotate.RotateRelativeLayout>
+</RelativeLayout>

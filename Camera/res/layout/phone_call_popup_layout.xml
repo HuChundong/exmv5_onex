@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/phone_call_popup" android:paddingLeft="@dimen/listitem_padding_m2" android:paddingTop="@dimen/listitem_padding_m5" android:paddingBottom="@dimen/listitem_padding_m5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@com.htc:drawable/common_photo_frame" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/phone_call_contact_icon" android:layout_width="@dimen/listitem_icon_xy_size" android:layout_height="@dimen/listitem_icon_xy_size" />
+        <ImageView android:background="@drawable/common_photo_frame_mask" android:layout_width="@dimen/listitem_icon_xy_size" android:layout_height="@dimen/listitem_icon_xy_size" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/listitem_padding_m2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/listitem_text1_size" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/phone_call_popup_contact" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/listitem_text2_size" android:textColor="#ff404042" android:id="@id/phone_call_popup_number" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="@dimen/snapbooth_viewfinder_width" android:layout_height="@dimen/snapbooth_viewfinder_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/preview_filter_color" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <View android:id="@id/visible_area" android:layout_width="@dimen/snapbooth_viewfinder_height" android:layout_height="@dimen/snapbooth_viewfinder_height" android:layout_weight="0.0" />
+    <View android:background="@color/preview_filter_color" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+</LinearLayout>

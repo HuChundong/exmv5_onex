@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/camera_layout" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res/com.android.camera">
+    <RelativeLayout android:id="@id/view_finder" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <SurfaceView android:id="@id/camera_preview" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <SurfaceView android:id="@id/preview_animation_view" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:id="@id/preview_filter_view" android:layout="@layout/preview_filter_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <RelativeLayout android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/camera_mode_screen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/capture_ui_container" android:layout="@layout/capture_ui_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/capture_bar_layout" />
+    <RelativeLayout android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/initial_camera_mode_screen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/screen_save" android:layout="@layout/screen_save_layout" android:inflatedId="@id/screen_save_stub" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

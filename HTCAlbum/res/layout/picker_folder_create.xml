@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@com.htc:drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@com.htc:dimen/htc_list_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:htc="http://schemas.android.com/apk/res/com.htc">
+    <com.htc.widget.HtcListItem android:id="@id/folder_name_listitem" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.htc.widget.HtcAutoCompleteTextView android:ellipsize="end" android:id="@id/folder_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="@com.htc:style/list_primary_m" />
+    </com.htc.widget.HtcListItem>
+    <com.htc.widget.HtcListItem android:id="@id/storage_button_listitem" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.htc.widget.HtcListItemLabeledLayout android:text="@com.htc:string/nn_storage">
+            <com.htc.widget.HtcRimButton android:gravity="center" android:id="@id/storage_button" android:layout_width="fill_parent" android:layout_height="wrap_content" htc:backgroundMode="light" style="@com.htc:style/list_primary_m" />
+        </com.htc.widget.HtcListItemLabeledLayout>
+    </com.htc.widget.HtcListItem>
+</LinearLayout>

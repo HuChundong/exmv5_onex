@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.camera.rotate.RotateRelativeLayout android:id="@id/bubble_toast_container" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/bubble_toast" android:background="@drawable/camera_bubble_base" android:paddingLeft="@dimen/bubble_toast_padding_left" android:paddingTop="@dimen/bubble_toast_padding_top" android:paddingRight="@dimen/bubble_toast_padding_right" android:paddingBottom="@dimen/bubble_toast_padding_bottom" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</com.android.camera.rotate.RotateRelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.camera.rotate.RotateRelativeLayout android:id="@id/layout_gallery_btn" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/snapbooth_gallery_button_top_margin_portrait" android:layout_marginBottom="@dimen/snapbooth_gallery_button_left_margin_portrait">
+        <ImageView android:id="@id/icon_gallery_background" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/snapbooth_gallery_p_btn" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/icon_gallery_thumbnail" android:layout_width="@dimen/snapbooth_gallery_thumb_width" android:layout_height="@dimen/snapbooth_gallery_thumb_height" android:layout_marginLeft="@dimen/snapbooth_gallery_thumb_left_margin_portrait" android:layout_marginTop="@dimen/snapbooth_gallery_thumb_top_margin_portrait" android:scaleType="fitXY" />
+        <ImageView android:id="@id/icon_gallery_animation_thumbnail" android:visibility="invisible" android:layout_width="@dimen/snapbooth_gallery_thumb_width" android:layout_height="@dimen/snapbooth_gallery_thumb_height" android:layout_marginLeft="@dimen/snapbooth_gallery_thumb_left_margin_portrait" android:layout_marginTop="@dimen/snapbooth_gallery_thumb_top_margin_portrait" android:scaleType="fitXY" />
+        <ImageButton android:id="@id/btn_gallery" android:layout_width="@dimen/snapbooth_L_gallery_btn_cover_width" android:layout_height="@dimen/snapbooth_L_gallery_btn_cover_height" android:layout_centerInParent="true" />
+    </com.android.camera.rotate.RotateRelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/image_property_item_height" android:divider="@com.htc:drawable/common_b_div" android:showDividers="middle" android:dividerPadding="16.0px"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.htc.widget.HtcIconButton android:textSize="14.0sp" android:id="@id/button_slow_motion" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/settings_mode_slow_motion" android:drawableTop="@drawable/icon_btn_slow_motion_dark" android:layout_weight="1.0" android:layout_centerInParent="true" />
+    <com.htc.widget.HtcIconButton android:textSize="14.0sp" android:id="@id/button_normal_video" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/settings_capture_mode_normal" android:layout_weight="1.0" android:layout_centerInParent="true" />
+    <com.htc.widget.HtcIconButton android:textSize="14.0sp" android:id="@id/button_hd_fps60_video" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/settings_capture_mode_hd60fps" android:layout_weight="1.0" android:layout_centerInParent="true" />
+</LinearLayout>

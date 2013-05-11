@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/capture_bar_container" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/capture_bar" android:layout_width="fill_parent" android:layout_height="@dimen/capture_bar_height" android:layout_marginBottom="@dimen/capture_bar_margin_bottom" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/capture_bar_background" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/camera_preview_bar" android:layout_centerInParent="true" />
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/capture_button_video_container" android:layout_width="@dimen/capture_bar_button_container_width_video" android:layout_height="fill_parent">
+                <ImageView android:id="@id/capture_button_video" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
+                <ImageView android:id="@id/capture_bar_slow_motion_icon" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
+                <RelativeLayout android:id="@id/capture_bar_slow_motion_indicator_container" android:visibility="invisible" android:layout_width="@dimen/capture_bar_indicator_container_size" android:layout_height="@dimen/capture_bar_indicator_container_size" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+                    <ImageView android:id="@id/capture_bar_slow_motion_indicator" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/camera_indicator_icon_slow_motion" android:scaleType="center" />
+                </RelativeLayout>
+                <com.android.camera.rotate.RotateRelativeLayout android:id="@id/capture_bar_recording_timer_container" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                        <TextView android:textSize="@dimen/capture_bar_recording_text_size_portrait" android:gravity="bottom" android:id="@id/capture_bar_recording_text_portrait" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/capture_bar_recording_text_margin_portrait" android:text="@string/capture_bar_recording" style="@style/capture_bar_recording_text" />
+                        <TextView android:textSize="@dimen/capture_bar_recording_text_size_landscape" android:gravity="bottom" android:id="@id/capture_bar_recording_text_landscape" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/capture_bar_recording_text_margin_landscape" android:text="@string/capture_bar_recording" style="@style/capture_bar_recording_text" />
+                        <View android:id="@id/capture_bar_recording_timer_empty_area" android:layout_width="fill_parent" android:layout_height="@dimen/capture_bar_recording_timer_empty_area_size_portrait" />
+                        <TextView android:textSize="@dimen/capture_bar_recording_timer_text_size_portrait" android:gravity="top" android:id="@id/capture_bar_recording_timer_portrait" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/capture_bar_recording_timer_text_margin_portrait" style="@style/capture_bar_recording_timer_text" />
+                        <TextView android:textSize="@dimen/capture_bar_recording_timer_text_size_landscape" android:gravity="top" android:id="@id/capture_bar_recording_timer_landscape" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/capture_bar_recording_timer_text_margin_landscape" style="@style/capture_bar_recording_timer_text" />
+                    </LinearLayout>
+                </com.android.camera.rotate.RotateRelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/capture_button_photo_container" android:layout_width="@dimen/capture_bar_button_container_width_photo" android:layout_height="fill_parent">
+                <ImageView android:id="@id/capture_button_photo" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
+                <RelativeLayout android:id="@id/capture_bar_self_timer_indicator_container" android:visibility="invisible" android:layout_width="@dimen/capture_bar_indicator_container_size" android:layout_height="@dimen/capture_bar_indicator_container_size" android:layout_marginRight="@dimen/capture_bar_self_timer_indicator_margin_right" android:layout_marginBottom="@dimen/capture_bar_self_timer_indicator_margin_bottom" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+                    <ImageView android:id="@id/capture_bar_self_timer_indicator" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/camera_indicator_icon_self_timmer_2" android:scaleType="center" />
+                </RelativeLayout>
+                <com.android.camera.rotate.RotateRelativeLayout android:id="@id/capture_bar_self_timer_container" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <ImageView android:id="@id/capture_bar_self_timer_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+                    <TextView android:textSize="@dimen/capture_bar_self_timer_text_size_portrait" android:id="@id/capture_bar_self_timer_portrait" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/capture_bar_self_timer_icon" android:layout_centerHorizontal="true" style="@style/capture_bar_self_timer_text" />
+                    <TextView android:textSize="@dimen/capture_bar_self_timer_text_size_landscape" android:id="@id/capture_bar_self_timer_landscape" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/capture_bar_self_timer_icon" android:layout_centerHorizontal="true" style="@style/capture_bar_self_timer_text" />
+                </com.android.camera.rotate.RotateRelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

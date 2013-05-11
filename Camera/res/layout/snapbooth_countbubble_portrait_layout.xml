@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/countbubble_layer" android:layout_width="@dimen/snapbooth_L_countbubble_layer_height" android:layout_height="@dimen/snapbooth_L_countbubble_layer_width">
+        <com.android.camera.rotate.RotateRelativeLayout android:id="@id/countbubble_4" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/countbubble_background" android:background="@drawable/snapbooth_count_bubble_off" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/countbubble_icon" android:background="@drawable/snapbooth_count_bubble_on" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+        </com.android.camera.rotate.RotateRelativeLayout>
+        <View android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <com.android.camera.rotate.RotateRelativeLayout android:id="@id/countbubble_3" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/countbubble_background" android:background="@drawable/snapbooth_count_bubble_off" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/countbubble_icon" android:background="@drawable/snapbooth_count_bubble_on" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+        </com.android.camera.rotate.RotateRelativeLayout>
+        <View android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <com.android.camera.rotate.RotateRelativeLayout android:id="@id/countbubble_2" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/countbubble_background" android:background="@drawable/snapbooth_count_bubble_off" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/countbubble_icon" android:background="@drawable/snapbooth_count_bubble_on" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+        </com.android.camera.rotate.RotateRelativeLayout>
+        <View android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <com.android.camera.rotate.RotateRelativeLayout android:id="@id/countbubble_1" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/countbubble_background" android:background="@drawable/snapbooth_count_bubble_off" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/countbubble_icon" android:background="@drawable/snapbooth_count_bubble_on" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+        </com.android.camera.rotate.RotateRelativeLayout>
+    </LinearLayout>
+</LinearLayout>

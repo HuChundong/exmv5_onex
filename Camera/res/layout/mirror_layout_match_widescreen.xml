@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SurfaceView android:id="@id/preview_surface" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/mirror_bottom_bar" android:layout_width="fill_parent" android:layout_height="@dimen/mirror_bottom_bar_height" android:layout_marginBottom="@com.htc:dimen/margin_m" android:layout_alignParentBottom="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/mirror_button_background" android:layout_centerInParent="true" />
+        <RelativeLayout android:id="@id/mirror_button_container" android:layout_width="@dimen/mirror_brightness_button_width" android:layout_height="fill_parent" android:layout_centerInParent="true">
+            <ImageView android:id="@id/mirror_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <TextView android:textSize="22.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/error_text" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="30.0dip" android:layout_centerInParent="true" />
+</RelativeLayout>

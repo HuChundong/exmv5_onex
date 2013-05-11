@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:id="@id/page_item" android:paddingTop="@dimen/M1" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.htc.opensense2.widget.LandingPageImageView android:id="@id/image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" android:layout_alignParentTop="true" />
+    <TextView android:gravity="center" android:id="@id/text" android:paddingTop="@dimen/M5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/image" style="@com.htc:style/darklist_primary_xs" />
+</RelativeLayout>

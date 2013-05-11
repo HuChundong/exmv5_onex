@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/menu_view_folder" android:orderInCategory="0" android:title="@com.htc:string/va_view" />
+    <item android:id="@id/menu_delete" android:orderInCategory="1" android:title="@com.htc:string/menu_delete" />
+    <item android:id="@id/menu_rename" android:orderInCategory="2" android:title="@com.htc:string/va_rename" />
+</menu>

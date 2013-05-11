@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@com.htc:drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="@com.htc:dimen/htc_list_item_height" android:minHeight="@com.htc:dimen/htc_list_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.htc.widget.HtcListItemTileImage android:id="@id/detailsview_image" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.htc.widget.HtcAutoCompleteTextView android:ellipsize="end" android:id="@id/details_image_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/M2" android:singleLine="true" style="@com.htc:style/list_primary_m" />
+</LinearLayout>
