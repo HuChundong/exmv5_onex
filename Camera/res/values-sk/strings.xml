@@ -41,7 +41,7 @@
     <string name="mem_low_cloase_camera">Ukončite nepotrebnú aplikáciu a skúste spustiť fotoaparát znova.</string>
     <string name="camera_hw_open_fail">Spustenie hardvéru fotoaparátu neúspešné. Skúste to znova.</string>
     <string name="not_recording_when_streaming_tv">Nahrávanie videa nefunguje, keď sa prenáša do TV</string>
-    <string name="forbidden_camera">Prístup k fotoaparátu je zakázaný administrátorom zariadenia. Pre pomoc sa obráťte na IT tím.</string>
+    <string name="forbidden_camera">Prístup k fotoaparátu je zakázaný administrátorom zariadenia. Pre pomoc sa prosím obráťte na IT tím.</string>
     <string name="not_launch_camera_while_phonecall_and_lowpower">Nemôžete použiť fotoaparát, pretože prebieha telefonický hovor a batéria je slabá.</string>
     <string name="close_camera_while_phonecall_and_lowpower">Fotoaparát je zatvorený, pretože prebieha telefonický hovor a batéria je slabá</string>
     <string name="unable_launch_camera">Fotoaparát nie je možné spustiť.</string>

@@ -76,7 +76,7 @@
     <string name="resolution_Tablet_16_10">解析度 - 16:10</string>
     <string name="resolution_3_2">解析度 - 3:2</string>
     <string name="resolution_4_3">解析度 - 4:3</string>
-    <string name="wb_incandescent">鎢絲燈</string>
+    <string name="wb_incandescent">白熾燈</string>
     <string name="wb_fluorescent">螢光燈</string>
     <string name="wb_daylight">日光</string>
     <string name="wb_cloudy">陰天</string>

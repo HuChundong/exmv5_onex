@@ -90,6 +90,12 @@
     #calls: Lcom/android/camera/component/MainBar;->updateFlashIcon()V
     invoke-static {v0}, Lcom/android/camera/component/MainBar;->access$1200(Lcom/android/camera/component/MainBar;)V
 
+    #calls: Lcom/android/camera/component/MainBar;->updateIsoIcon()V
+    invoke-static {v0}, Lcom/android/camera/component/MainBar;->access$updateIsoIcon(Lcom/android/camera/component/MainBar;)V
+
+    #calls: Lcom/android/camera/component/MainBar;->updateWbIcon()V
+    invoke-static {v0}, Lcom/android/camera/component/MainBar;->access$updateWbIcon(Lcom/android/camera/component/MainBar;)V
+
     :pswitch_1
     iget-object v0, p0, Lcom/android/camera/component/MainBar$15;->this$0:Lcom/android/camera/component/MainBar;
 
@@ -125,6 +131,12 @@
 
     #calls: Lcom/android/camera/component/MainBar;->updateFlashIcon()V
     invoke-static {v0}, Lcom/android/camera/component/MainBar;->access$1200(Lcom/android/camera/component/MainBar;)V
+
+    #calls: Lcom/android/camera/component/MainBar;->updateIsoIcon()V
+    invoke-static {v0}, Lcom/android/camera/component/MainBar;->access$updateIsoIcon(Lcom/android/camera/component/MainBar;)V
+
+    #calls: Lcom/android/camera/component/MainBar;->updateWbIcon()V
+    invoke-static {v0}, Lcom/android/camera/component/MainBar;->access$updateWbIcon(Lcom/android/camera/component/MainBar;)V
 
     goto :goto_0
 

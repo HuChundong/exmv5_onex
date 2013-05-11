@@ -424,6 +424,8 @@
 
 .field private mIsParamsPrepared:Z
 
+.field private volatile mIsRunning:Z
+
 .field private mIsShutterCallbackReceived:Z
 
 .field private mJPEGQualityKey:Ljava/lang/String;
@@ -440,7 +442,7 @@
 
 .field private mLastMediaInfo:Lcom/android/camera/MediaInfo;
 
-.field private mLocation:Landroid/location/Location;
+.field public mLocation:Landroid/location/Location;
 
 .field private mLocationManager:Lcom/android/camera/location/ILocationManager;
 
@@ -480,7 +482,9 @@
 
 .field private mRecordingVideoFileFormat:Lcom/android/camera/io/FileFormat;
 
-.field private mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
+.field private mRecordingVideoFilePath:Lcom/android/camera/io/Path;
+
+.field private mRequestedFilePath:Lcom/android/camera/io/Path;
 
 .field private mResolutionManager:Lcom/android/camera/ICaptureResolutionManager;
 
@@ -897,6 +901,8 @@
     invoke-direct/range {v0 .. v0}, Ljava/lang/Object;-><init>()V
 
     iput-object v0, p0, Lcom/android/camera/CameraThread;->mPropertyOwnerKey:Ljava/lang/Object;
+
+    iput-boolean v3, p0, Lcom/android/camera/CameraThread;->mIsRunning:Z
 
     iput-boolean v3, p0, Lcom/android/camera/CameraThread;->mIsFirstTimeToStartPreview:Z
 
@@ -1697,6 +1703,27 @@
     goto :goto_0
 
     :cond_2
+    iget-object v0, p0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    if-eqz v0, :cond_3
+
+    iget-object v0, p0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->isStorageSlotLocked()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    const-string v0, "CameraThread"
+
+    const-string v1, "changeStorageSlotInternal() - Storage slot settings is locked"
+
+    invoke-static {v0, v1}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto :goto_0
+
+    :cond_3
     const-string v0, "CameraThread"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -2308,7 +2335,7 @@
 
     if-eqz v0, :cond_7
 
-    const v7, 0x7f0a01e1
+    const v7, 0x7f0a01e7
 
     :goto_2
     iget-object v0, p0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
@@ -2418,7 +2445,7 @@
     goto/16 :goto_1
 
     :cond_7
-    const v7, 0x7f0a01e2
+    const v7, 0x7f0a01e8
 
     goto :goto_2
 
@@ -2705,6 +2732,365 @@
     sget-object v3, Lcom/android/camera/io/StorageState;->Unknown:Lcom/android/camera/io/StorageState;
 
     goto :goto_0
+.end method
+
+.method private initializeStorageSlot()V
+    .locals 11
+
+    iget-object v0, p0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->isStorageSlotLocked()Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    :cond_0
+    :goto_0
+    return-void
+
+    :cond_1
+    iget-object v0, p0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getRequestedUri()Landroid/net/Uri;
+
+    move-result-object v1
+
+    if-eqz v1, :cond_0
+
+    const-string v0, "CameraThread"
+
+    const-string v2, "initializeStorageSlot() - Requested URI : "
+
+    invoke-static {v0, v2, v1}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    invoke-virtual {v1}, Landroid/net/Uri;->getScheme()Ljava/lang/String;
+
+    move-result-object v10
+
+    const-string v0, "content"
+
+    invoke-virtual {v0, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_7
+
+    const/4 v6, 0x0
+
+    :try_start_0
+    iget-object v0, p0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v0
+
+    const/4 v2, 0x1
+
+    new-array v2, v2, [Ljava/lang/String;
+
+    const/4 v3, 0x0
+
+    const-string v4, "_data"
+
+    aput-object v4, v2, v3
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x0
+
+    const/4 v5, 0x0
+
+    invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v6
+
+    invoke-interface {v6}, Landroid/database/Cursor;->moveToNext()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_5
+
+    const/4 v0, 0x0
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result-object v8
+
+    if-eqz v6, :cond_2
+
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    :cond_2
+    :goto_1
+    const-string v0, "CameraThread"
+
+    const-string v2, "initializeStorageSlot() - Requested file path : "
+
+    invoke-static {v0, v2, v8}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    invoke-static {}, Lcom/android/camera/io/StorageSlot;->getFirstInternalMemorySlot()Lcom/android/camera/io/StorageSlot;
+
+    move-result-object v9
+
+    if-eqz v9, :cond_3
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    iget-object v2, v9, Lcom/android/camera/io/StorageSlot;->directoryPath:Ljava/lang/String;
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v2, "/"
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v8, v0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_3
+
+    const/4 v9, 0x0
+
+    :cond_3
+    if-nez v9, :cond_4
+
+    sget-object v0, Lcom/android/camera/io/StorageSlot;->STORAGE_CARD:Lcom/android/camera/io/StorageSlot;
+
+    invoke-virtual {v0}, Lcom/android/camera/io/StorageSlot;->isSupported()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_4
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    sget-object v2, Lcom/android/camera/io/StorageSlot;->STORAGE_CARD:Lcom/android/camera/io/StorageSlot;
+
+    iget-object v2, v2, Lcom/android/camera/io/StorageSlot;->directoryPath:Ljava/lang/String;
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v2, "/"
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v8, v0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_4
+
+    sget-object v9, Lcom/android/camera/io/StorageSlot;->STORAGE_CARD:Lcom/android/camera/io/StorageSlot;
+
+    :cond_4
+    if-nez v9, :cond_9
+
+    const-string v0, "CameraThread"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "initializeStorageSlot() - Cannot find storage slot for \'"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    const-string v3, "\'"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto/16 :goto_0
+
+    :cond_5
+    :try_start_1
+    const-string v0, "CameraThread"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "initializeStorageSlot() - No file path related to \'"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    const-string v3, "\'"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_0
+
+    if-eqz v6, :cond_0
+
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    goto/16 :goto_0
+
+    :catch_0
+    move-exception v7
+
+    :try_start_2
+    const-string v0, "CameraThread"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "initializeStorageSlot() - Fail to query file path for \'"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    const-string v3, "\'"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v2, v7}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    if-eqz v6, :cond_0
+
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    goto/16 :goto_0
+
+    :catchall_0
+    move-exception v0
+
+    if-eqz v6, :cond_6
+
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    :cond_6
+    throw v0
+
+    :cond_7
+    const-string v0, "file"
+
+    invoke-virtual {v0, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_8
+
+    invoke-virtual {v1}, Landroid/net/Uri;->getPath()Ljava/lang/String;
+
+    move-result-object v8
+
+    goto/16 :goto_1
+
+    :cond_8
+    const-string v0, "CameraThread"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "initializeStorageSlot() - Unknown URI scheme : "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto/16 :goto_0
+
+    :cond_9
+    const-string v0, "CameraThread"
+
+    const-string v2, "initializeStorageSlot() - Storage slot is \'"
+
+    const-string v3, "\'"
+
+    invoke-static {v0, v2, v9, v3}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    iget-object v0, p0, Lcom/android/camera/CameraThread;->storageSlot:Lcom/android/camera/property/Property;
+
+    iget-object v2, p0, Lcom/android/camera/CameraThread;->mPropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-virtual {v0, v2, v9}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    new-instance v0, Lcom/android/camera/io/Path;
+
+    invoke-direct {v0, v8}, Lcom/android/camera/io/Path;-><init>(Ljava/lang/String;)V
+
+    iput-object v0, p0, Lcom/android/camera/CameraThread;->mRequestedFilePath:Lcom/android/camera/io/Path;
+
+    goto/16 :goto_0
 .end method
 
 .method private isAddTimeStamp()Z
@@ -3917,9 +4303,23 @@
     :goto_2
     move-object/from16 v0, p0
 
-    iget-object v11, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
 
-    const-string v12, "auto"
+    invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v4
+
+    iget-object v5, v4, Lcom/android/camera/CameraSettings;->Antibanding:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v5}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v12
+
+    check-cast v12, Ljava/lang/String;
+
+    move-object/from16 v0, p0
+
+    iget-object v11, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
     invoke-virtual {v11, v12}, Lcom/android/camera/CameraController;->setAntibanding(Ljava/lang/String;)V
 
@@ -4829,27 +5229,27 @@
 .end method
 
 .method private setupParamsBeforeStartingPreview(Lcom/android/camera/Handle;)V
-    .locals 21
+    .locals 22
 
-    const-string v16, "CameraThread"
+    const-string v17, "CameraThread"
 
-    const-string v17, "setupParamsBeforeStartingPreview - Start"
+    const-string v18, "setupParamsBeforeStartingPreview - Start"
 
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCameraDevice:Landroid/hardware/Camera;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    if-nez v16, :cond_0
+    if-nez v17, :cond_0
 
-    const-string v16, "CameraThread"
+    const-string v17, "CameraThread"
 
-    const-string v17, "setupParamsBeforeStartingPreview - No camera device"
+    const-string v18, "setupParamsBeforeStartingPreview - No camera device"
 
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
 
     :goto_0
     return-void
@@ -4859,9 +5259,9 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->cameraType:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
     move-result-object v4
 
@@ -4869,13 +5269,35 @@
 
     invoke-static {}, Lcom/android/camera/DisplayDevice;->isNvidiaPlatform()Z
 
-    move-result v16
+    move-result v17
 
-    if-eqz v16, :cond_8
+    if-eqz v17, :cond_8
 
-    sget-object v16, Lcom/android/camera/CameraType;->Main:Lcom/android/camera/CameraType;
+    move-object/from16 v0, p0
 
-    move-object/from16 v0, v16
+    iget-object v1, v0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v1}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v2
+
+    iget-object v1, v2, Lcom/android/camera/CameraSettings;->isZSLEnabled:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v1}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/lang/Boolean;
+
+    invoke-virtual {v2}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v17
+
+    if-eqz v17, :cond_8
+
+    sget-object v17, Lcom/android/camera/CameraType;->Main:Lcom/android/camera/CameraType;
+
+    move-object/from16 v0, v17
 
     if-ne v4, v0, :cond_8
 
@@ -4883,40 +5305,15 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mode:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    sget-object v17, Lcom/android/camera/CameraMode;->Photo:Lcom/android/camera/CameraMode;
+    sget-object v18, Lcom/android/camera/CameraMode;->Photo:Lcom/android/camera/CameraMode;
 
-    invoke-virtual/range {v16 .. v17}, Lcom/android/camera/property/Property;->isValueEquals(Ljava/lang/Object;)Z
+    invoke-virtual/range {v17 .. v18}, Lcom/android/camera/property/Property;->isValueEquals(Ljava/lang/Object;)Z
 
-    move-result v16
+    move-result v17
 
-    if-eqz v16, :cond_8
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
-
-    move-object/from16 v16, v0
-
-    const-string v17, "capture-mode"
-
-    const-string v18, "zsl"
-
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
-
-    :goto_1
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
-
-    move-object/from16 v16, v0
-
-    const-string v17, "time-cons-post-processing"
-
-    const-string v18, "enable"
-
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
+    if-eqz v17, :cond_8
 
     move-object/from16 v0, p0
 
@@ -4924,27 +5321,52 @@
 
     move-object/from16 v17, v0
 
+    const-string v18, "capture-mode"
+
+    const-string v19, "zsl"
+
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
+
+    :goto_1
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
+
+    move-object/from16 v17, v0
+
+    const-string v18, "time-cons-post-processing"
+
+    const-string v19, "enable"
+
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
+
+    move-object/from16 v18, v0
+
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->flashMode:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    move-result-object v16
+    move-result-object v17
 
-    check-cast v16, Lcom/android/camera/FlashMode;
-
-    move-object/from16 v0, v16
-
-    iget-object v0, v0, Lcom/android/camera/FlashMode;->value:Ljava/lang/String;
-
-    move-object/from16 v16, v0
+    check-cast v17, Lcom/android/camera/FlashMode;
 
     move-object/from16 v0, v17
 
-    move-object/from16 v1, v16
+    iget-object v0, v0, Lcom/android/camera/FlashMode;->value:Ljava/lang/String;
+
+    move-object/from16 v17, v0
+
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v17
 
     invoke-virtual {v0, v1}, Lcom/android/camera/CameraController;->setFlashMode(Ljava/lang/String;)V
 
@@ -4952,17 +5374,17 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mode:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    move-result-object v16
+    move-result-object v17
 
-    sget-object v17, Lcom/android/camera/CameraMode;->Video:Lcom/android/camera/CameraMode;
+    sget-object v18, Lcom/android/camera/CameraMode;->Video:Lcom/android/camera/CameraMode;
 
-    move-object/from16 v0, v16
+    move-object/from16 v0, v17
 
-    move-object/from16 v1, v17
+    move-object/from16 v1, v18
 
     if-ne v0, v1, :cond_c
 
@@ -4976,42 +5398,42 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const-string v17, "cam-mode"
+    const-string v18, "cam-mode"
 
-    const/16 v18, 0x1
+    const/16 v19, 0x1
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;I)V
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;I)V
 
     :goto_2
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const/16 v17, 0x1
+    const/16 v18, 0x1
 
-    invoke-virtual/range {v16 .. v17}, Lcom/android/camera/CameraController;->setRecordingHint(Z)V
+    invoke-virtual/range {v17 .. v18}, Lcom/android/camera/CameraController;->setRecordingHint(Z)V
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/CameraController;->isVideoStabilizationSupported()Z
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/CameraController;->isVideoStabilizationSupported()Z
 
-    move-result v16
+    move-result v17
 
-    if-eqz v16, :cond_1
+    if-eqz v17, :cond_1
 
     if-nez v6, :cond_b
 
-    sget-object v16, Lcom/android/camera/CameraType;->Main:Lcom/android/camera/CameraType;
+    sget-object v17, Lcom/android/camera/CameraType;->Main:Lcom/android/camera/CameraType;
 
-    move-object/from16 v0, v16
+    move-object/from16 v0, v17
 
     if-ne v4, v0, :cond_b
 
@@ -5019,120 +5441,124 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mSettings:Lcom/android/camera/CameraSettings;
 
-    move-object/from16 v16, v0
-
-    move-object/from16 v0, v16
-
-    iget-object v0, v0, Lcom/android/camera/CameraSettings;->isVideoStabilizationEnabled:Lcom/android/camera/property/Property;
-
-    move-object/from16 v16, v0
-
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
-
-    move-result-object v16
-
-    check-cast v16, Ljava/lang/Boolean;
-
-    invoke-virtual/range {v16 .. v16}, Ljava/lang/Boolean;->booleanValue()Z
-
-    move-result v16
-
-    if-eqz v16, :cond_b
-
-    const/4 v15, 0x1
-
-    :goto_3
-    const-string v16, "CameraThread"
-
-    new-instance v17, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v17 .. v17}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v18, "videoStabilization"
-
-    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v17
+    move-object/from16 v17, v0
 
     move-object/from16 v0, v17
 
-    invoke-virtual {v0, v15}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    iget-object v0, v0, Lcom/android/camera/CameraSettings;->isVideoStabilizationEnabled:Lcom/android/camera/property/Property;
+
+    move-object/from16 v17, v0
+
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
     move-result-object v17
 
-    invoke-virtual/range {v17 .. v17}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    check-cast v17, Ljava/lang/Boolean;
 
-    move-result-object v17
+    invoke-virtual/range {v17 .. v17}, Ljava/lang/Boolean;->booleanValue()Z
 
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+    move-result v17
+
+    if-eqz v17, :cond_b
+
+    const/16 v16, 0x1
+
+    :goto_3
+    const-string v17, "CameraThread"
+
+    new-instance v18, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v18 .. v18}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v19, "videoStabilization"
+
+    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v18
+
+    move-object/from16 v0, v18
+
+    move/from16 v1, v16
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v18
+
+    invoke-virtual/range {v18 .. v18}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v18
+
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    move-object/from16 v0, v16
+    move-object/from16 v0, v17
 
-    invoke-virtual {v0, v15}, Lcom/android/camera/CameraController;->setVideoStabilization(Z)V
+    move/from16 v1, v16
+
+    invoke-virtual {v0, v1}, Lcom/android/camera/CameraController;->setVideoStabilization(Z)V
 
     :cond_1
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const-string v17, "cache-first-frame"
+    const-string v18, "cache-first-frame"
 
-    const/16 v18, 0x0
+    const/16 v19, 0x0
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;I)V
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;I)V
 
     :goto_4
     invoke-static {}, Lcom/android/camera/DisplayDevice;->canChangeFrameRate()Z
 
-    move-result v16
+    move-result v17
 
-    if-eqz v16, :cond_2
+    if-eqz v17, :cond_2
 
     invoke-direct/range {p0 .. p0}, Lcom/android/camera/CameraThread;->isMMSRecording()Z
 
-    move-result v16
+    move-result v17
 
-    if-eqz v16, :cond_e
+    if-eqz v17, :cond_e
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
-
-    const/16 v17, 0x3a98
+    move-object/from16 v17, v0
 
     const/16 v18, 0x3a98
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setPreviewFpsRange(II)V
+    const/16 v19, 0x3a98
+
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setPreviewFpsRange(II)V
 
     :cond_2
     :goto_5
     invoke-virtual {v4}, Lcom/android/camera/CameraType;->isFrontCamera()Z
 
-    move-result v16
+    move-result v17
 
-    if-eqz v16, :cond_3
+    if-eqz v17, :cond_3
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const-string v17, "front-camera-mode"
+    const-string v18, "front-camera-mode"
 
-    const-string v18, "mirror"
+    const-string v19, "mirror"
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_3
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/CameraThread;->isSlowMotionMode()Z
@@ -5143,19 +5569,19 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mResolutionManager:Lcom/android/camera/ICaptureResolutionManager;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    move-object/from16 v0, v16
+    move-object/from16 v0, v17
 
     iget-object v0, v0, Lcom/android/camera/ICaptureResolutionManager;->photoPreviewSize:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    move-result-object v9
+    move-result-object v10
 
-    check-cast v9, Lcom/android/camera/imaging/Size;
+    check-cast v10, Lcom/android/camera/imaging/Size;
 
     if-eqz v7, :cond_f
 
@@ -5163,64 +5589,64 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mResolutionManager:Lcom/android/camera/ICaptureResolutionManager;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    move-object/from16 v0, v16
+    move-object/from16 v0, v17
 
     iget-object v0, v0, Lcom/android/camera/ICaptureResolutionManager;->slowMotionVideoPreviewSize:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    move-result-object v16
+    move-result-object v17
 
-    check-cast v16, Lcom/android/camera/imaging/Size;
+    check-cast v17, Lcom/android/camera/imaging/Size;
 
-    move-object/from16 v14, v16
+    move-object/from16 v15, v17
 
     :goto_6
-    if-eqz v14, :cond_5
+    if-eqz v15, :cond_5
 
-    new-instance v16, Ljava/lang/StringBuilder;
+    new-instance v17, Ljava/lang/StringBuilder;
 
-    invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct/range {v17 .. v17}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget v0, v14, Lcom/android/camera/imaging/Size;->width:I
+    iget v0, v15, Lcom/android/camera/imaging/Size;->width:I
+
+    move/from16 v18, v0
+
+    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v17
+
+    const-string v18, "x"
+
+    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v17
+
+    iget v0, v15, Lcom/android/camera/imaging/Size;->height:I
+
+    move/from16 v18, v0
+
+    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v17
+
+    invoke-virtual/range {v17 .. v17}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v14
+
+    iget v0, v15, Lcom/android/camera/imaging/Size;->width:I
 
     move/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const/16 v18, 0x780
 
-    move-result-object v16
+    move/from16 v0, v17
 
-    const-string v17, "x"
-
-    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v16
-
-    iget v0, v14, Lcom/android/camera/imaging/Size;->height:I
-
-    move/from16 v17, v0
-
-    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v16
-
-    invoke-virtual/range {v16 .. v16}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v13
-
-    iget v0, v14, Lcom/android/camera/imaging/Size;->width:I
-
-    move/from16 v16, v0
-
-    const/16 v17, 0x780
-
-    move/from16 v0, v16
-
-    move/from16 v1, v17
+    move/from16 v1, v18
 
     if-ne v0, v1, :cond_4
 
@@ -5228,264 +5654,264 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->captureRotation:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    move-result-object v16
+    move-result-object v17
 
-    check-cast v16, Lcom/android/camera/rotate/UIRotation;
+    check-cast v17, Lcom/android/camera/rotate/UIRotation;
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/rotate/UIRotation;->isLandscape()Z
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/rotate/UIRotation;->isLandscape()Z
 
-    move-result v16
+    move-result v17
 
-    if-eqz v16, :cond_4
+    if-eqz v17, :cond_4
 
-    new-instance v16, Ljava/lang/StringBuilder;
+    new-instance v17, Ljava/lang/StringBuilder;
 
-    invoke-direct/range {v16 .. v16}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct/range {v17 .. v17}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget v0, v14, Lcom/android/camera/imaging/Size;->width:I
+    iget v0, v15, Lcom/android/camera/imaging/Size;->width:I
 
-    move/from16 v17, v0
+    move/from16 v18, v0
 
-    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v16
+    move-result-object v17
 
-    const-string v17, "x"
+    const-string v18, "x"
 
-    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v16
+    move-result-object v17
 
-    const/16 v17, 0x438
+    const/16 v18, 0x438
 
-    invoke-virtual/range {v16 .. v17}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v16
+    move-result-object v17
 
-    invoke-virtual/range {v16 .. v16}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual/range {v17 .. v17}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v13
+    move-result-object v14
 
     :cond_4
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const-string v17, "video-size"
-
-    move-object/from16 v0, v16
-
-    move-object/from16 v1, v17
-
-    invoke-virtual {v0, v1, v13}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
-
-    const-string v16, "CameraThread"
-
-    new-instance v17, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v17 .. v17}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v18, "setCameraParameter(\'video-size\',\'"
-
-    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v17
+    const-string v18, "video-size"
 
     move-object/from16 v0, v17
 
-    invoke-virtual {v0, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-object/from16 v1, v18
 
-    move-result-object v17
+    invoke-virtual {v0, v1, v14}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
 
-    const-string v18, "\')"
+    const-string v17, "CameraThread"
 
-    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    new-instance v18, Ljava/lang/StringBuilder;
 
-    move-result-object v17
+    invoke-direct/range {v18 .. v18}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual/range {v17 .. v17}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const-string v19, "setCameraParameter(\'video-size\',\'"
 
-    move-result-object v17
-
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
-
-    :cond_5
-    sget-object v17, Lcom/android/camera/CameraThread$28;->$SwitchMap$com$android$camera$CameraMode:[I
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/camera/CameraThread;->mode:Lcom/android/camera/property/Property;
-
-    move-object/from16 v16, v0
-
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
-
-    move-result-object v16
-
-    check-cast v16, Lcom/android/camera/CameraMode;
-
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/CameraMode;->ordinal()I
-
-    move-result v16
-
-    aget v16, v17, v16
-
-    packed-switch v16, :pswitch_data_0
-
-    const-string v16, "CameraThread"
-
-    new-instance v17, Ljava/lang/StringBuilder;
-
-    invoke-direct/range {v17 .. v17}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v18, "setupParamsBeforeStartingPreview() - Unknown camera mode : "
-
-    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v17
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/camera/CameraThread;->mode:Lcom/android/camera/property/Property;
-
-    move-object/from16 v18, v0
-
-    invoke-virtual/range {v18 .. v18}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v18
 
-    invoke-virtual/range {v17 .. v18}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v18
+
+    const-string v19, "\')"
+
+    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v18
+
+    invoke-virtual/range {v18 .. v18}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v18
+
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+
+    :cond_5
+    sget-object v18, Lcom/android/camera/CameraThread$28;->$SwitchMap$com$android$camera$CameraMode:[I
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/camera/CameraThread;->mode:Lcom/android/camera/property/Property;
+
+    move-object/from16 v17, v0
+
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
     move-result-object v17
 
-    invoke-virtual/range {v17 .. v17}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    check-cast v17, Lcom/android/camera/CameraMode;
 
-    move-result-object v17
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/CameraMode;->ordinal()I
 
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+    move-result v17
 
-    new-instance v11, Lcom/android/camera/imaging/Size;
+    aget v17, v18, v17
 
-    invoke-direct {v11}, Lcom/android/camera/imaging/Size;-><init>()V
+    packed-switch v17, :pswitch_data_0
+
+    const-string v17, "CameraThread"
+
+    new-instance v18, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v18 .. v18}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v19, "setupParamsBeforeStartingPreview() - Unknown camera mode : "
+
+    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v18
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/camera/CameraThread;->mode:Lcom/android/camera/property/Property;
+
+    move-object/from16 v19, v0
+
+    invoke-virtual/range {v19 .. v19}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v19
+
+    invoke-virtual/range {v18 .. v19}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v18
+
+    invoke-virtual/range {v18 .. v18}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v18
+
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+
+    new-instance v12, Lcom/android/camera/imaging/Size;
+
+    invoke-direct {v12}, Lcom/android/camera/imaging/Size;-><init>()V
 
     :goto_7
-    iget v0, v11, Lcom/android/camera/imaging/Size;->width:I
+    iget v0, v12, Lcom/android/camera/imaging/Size;->width:I
 
-    move/from16 v16, v0
+    move/from16 v17, v0
 
-    and-int/lit8 v16, v16, 0xf
+    and-int/lit8 v17, v17, 0xf
 
-    rsub-int/lit8 v12, v16, 0x10
+    rsub-int/lit8 v13, v17, 0x10
 
-    const/16 v16, 0x10
+    const/16 v17, 0x10
 
-    move/from16 v0, v16
+    move/from16 v0, v17
 
-    if-ge v12, v0, :cond_6
+    if-ge v13, v0, :cond_6
 
-    iget v0, v11, Lcom/android/camera/imaging/Size;->width:I
+    iget v0, v12, Lcom/android/camera/imaging/Size;->width:I
 
-    move/from16 v16, v0
+    move/from16 v17, v0
 
-    add-int v16, v16, v12
+    add-int v17, v17, v13
 
-    move/from16 v0, v16
+    move/from16 v0, v17
 
-    iput v0, v11, Lcom/android/camera/imaging/Size;->width:I
+    iput v0, v12, Lcom/android/camera/imaging/Size;->width:I
 
     :cond_6
-    iget v0, v11, Lcom/android/camera/imaging/Size;->height:I
+    iget v0, v12, Lcom/android/camera/imaging/Size;->height:I
 
-    move/from16 v16, v0
+    move/from16 v17, v0
 
-    and-int/lit8 v16, v16, 0xf
+    and-int/lit8 v17, v17, 0xf
 
-    rsub-int/lit8 v12, v16, 0x10
+    rsub-int/lit8 v13, v17, 0x10
 
-    const/16 v16, 0x10
+    const/16 v17, 0x10
 
-    move/from16 v0, v16
+    move/from16 v0, v17
 
-    if-ge v12, v0, :cond_7
+    if-ge v13, v0, :cond_7
 
-    iget v0, v11, Lcom/android/camera/imaging/Size;->height:I
+    iget v0, v12, Lcom/android/camera/imaging/Size;->height:I
 
-    move/from16 v16, v0
+    move/from16 v17, v0
 
-    add-int v16, v16, v12
+    add-int v17, v17, v13
 
-    move/from16 v0, v16
+    move/from16 v0, v17
 
-    iput v0, v11, Lcom/android/camera/imaging/Size;->height:I
+    iput v0, v12, Lcom/android/camera/imaging/Size;->height:I
 
     :cond_7
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->previewSize:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mPropertyOwnerKey:Ljava/lang/Object;
 
-    move-object/from16 v17, v0
+    move-object/from16 v18, v0
 
-    move-object/from16 v0, v16
+    move-object/from16 v0, v17
 
-    move-object/from16 v1, v17
+    move-object/from16 v1, v18
 
-    invoke-virtual {v0, v1, v11}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1, v12}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const-string v17, "taking-picture-zoom"
+    const-string v18, "taking-picture-zoom"
 
-    invoke-virtual/range {v16 .. v17}, Lcom/android/camera/CameraController;->getSettingsInfo(Ljava/lang/String;)Lcom/android/camera/CameraController$SettingInfo;
+    invoke-virtual/range {v17 .. v18}, Lcom/android/camera/CameraController;->getSettingsInfo(Ljava/lang/String;)Lcom/android/camera/CameraController$SettingInfo;
 
     move-result-object v5
 
     invoke-virtual {v4}, Lcom/android/camera/CameraType;->isMainCamera()Z
 
-    move-result v16
+    move-result v17
 
-    if-eqz v16, :cond_15
+    if-eqz v17, :cond_18
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v17, v0
+    move-object/from16 v18, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->zoomValue:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    move-result-object v16
+    move-result-object v17
 
-    check-cast v16, Ljava/lang/Integer;
+    check-cast v17, Ljava/lang/Integer;
 
-    invoke-virtual/range {v16 .. v16}, Ljava/lang/Integer;->intValue()I
+    invoke-virtual/range {v17 .. v17}, Ljava/lang/Integer;->intValue()I
 
-    move-result v16
+    move-result v17
 
-    move-object/from16 v0, v17
+    move-object/from16 v0, v18
 
-    move/from16 v1, v16
+    move/from16 v1, v17
 
     invoke-virtual {v0, v1}, Lcom/android/camera/CameraController;->setZoom(I)V
 
@@ -5494,59 +5920,59 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->preparingParamsBeforePreviewStartEvent:Lcom/android/camera/event/Event;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    new-instance v17, Lcom/android/camera/CameraParamsSetupEventArgs;
+    new-instance v18, Lcom/android/camera/CameraParamsSetupEventArgs;
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCameraDevice:Landroid/hardware/Camera;
 
-    move-object/from16 v18, v0
+    move-object/from16 v19, v0
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v19, v0
+    move-object/from16 v20, v0
 
-    move-object/from16 v0, v17
+    move-object/from16 v0, v18
 
     move-object/from16 v1, p1
 
-    move-object/from16 v2, v18
+    move-object/from16 v2, v19
 
-    move-object/from16 v3, v19
+    move-object/from16 v3, v20
 
     invoke-direct {v0, v1, v2, v3}, Lcom/android/camera/CameraParamsSetupEventArgs;-><init>(Lcom/android/camera/Handle;Landroid/hardware/Camera;Lcom/android/camera/CameraController;)V
 
-    move-object/from16 v0, v16
+    move-object/from16 v0, v17
 
     move-object/from16 v1, p0
 
-    move-object/from16 v2, v17
+    move-object/from16 v2, v18
 
     invoke-virtual {v0, v1, v2}, Lcom/android/camera/event/Event;->raise(Ljava/lang/Object;Lcom/android/camera/event/EventArgs;)V
 
-    const-string v16, "CameraThread"
+    const-string v17, "CameraThread"
 
-    const-string v17, "setupParamsBeforeStartingPreview - Set parameters"
+    const-string v18, "setupParamsBeforeStartingPreview - Set parameters"
 
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/CameraController;->doSetCameraParameters()V
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/CameraController;->doSetCameraParameters()V
 
-    const-string v16, "CameraThread"
+    const-string v17, "CameraThread"
 
-    const-string v17, "setupParamsBeforeStartingPreview - End"
+    const-string v18, "setupParamsBeforeStartingPreview - End"
 
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
     goto/16 :goto_0
 
@@ -5555,13 +5981,13 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const-string v17, "capture-mode"
+    const-string v18, "capture-mode"
 
-    const-string v18, "normal"
+    const-string v19, "normal"
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
 
     goto/16 :goto_1
 
@@ -5570,21 +5996,21 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mSettings:Lcom/android/camera/CameraSettings;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    move-object/from16 v0, v16
+    move-object/from16 v0, v17
 
     iget-object v0, v0, Lcom/android/camera/CameraSettings;->recordWithAudio:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    move-result-object v16
+    move-result-object v17
 
-    check-cast v16, Ljava/lang/Boolean;
+    check-cast v17, Ljava/lang/Boolean;
 
-    invoke-virtual/range {v16 .. v16}, Ljava/lang/Boolean;->booleanValue()Z
+    invoke-virtual/range {v17 .. v17}, Ljava/lang/Boolean;->booleanValue()Z
 
     move-result v8
 
@@ -5597,18 +6023,18 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const-string v17, "cam-mode"
+    const-string v18, "cam-mode"
 
-    const/16 v18, 0x2
+    const/16 v19, 0x2
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;I)V
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;I)V
 
     goto/16 :goto_2
 
     :cond_b
-    const/4 v15, 0x0
+    const/16 v16, 0x0
 
     goto/16 :goto_3
 
@@ -5617,23 +6043,13 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const-string v17, "cam-mode"
+    const-string v18, "cam-mode"
 
-    const/16 v18, 0x0
+    const/16 v19, 0x0
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;I)V
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
-
-    move-object/from16 v16, v0
-
-    const/16 v17, 0x0
-
-    invoke-virtual/range {v16 .. v17}, Lcom/android/camera/CameraController;->setRecordingHint(Z)V
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;I)V
 
     move-object/from16 v0, p0
 
@@ -5641,31 +6057,41 @@
 
     move-object/from16 v17, v0
 
-    const-string v18, "cache-first-frame"
+    const/16 v18, 0x0
+
+    invoke-virtual/range {v17 .. v18}, Lcom/android/camera/CameraController;->setRecordingHint(Z)V
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
+
+    move-object/from16 v18, v0
+
+    const-string v19, "cache-first-frame"
 
     move-object/from16 v0, p0
 
     iget-boolean v0, v0, Lcom/android/camera/CameraThread;->mIsFirstFrameCached:Z
 
-    move/from16 v16, v0
+    move/from16 v17, v0
 
-    if-eqz v16, :cond_d
+    if-eqz v17, :cond_d
 
-    const/16 v16, 0x1
+    const/16 v17, 0x1
 
     :goto_9
-    move-object/from16 v0, v17
+    move-object/from16 v0, v18
 
-    move-object/from16 v1, v18
+    move-object/from16 v1, v19
 
-    move/from16 v2, v16
+    move/from16 v2, v17
 
     invoke-virtual {v0, v1, v2}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;I)V
 
     goto/16 :goto_4
 
     :cond_d
-    const/16 v16, 0x0
+    const/16 v17, 0x0
 
     goto :goto_9
 
@@ -5674,13 +6100,13 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const/16 v17, 0x1
+    const/16 v18, 0x1
 
-    const v18, 0x30d40
+    const v19, 0x30d40
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setPreviewFpsRange(II)V
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setPreviewFpsRange(II)V
 
     goto/16 :goto_5
 
@@ -5689,312 +6115,378 @@
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mResolutionManager:Lcom/android/camera/ICaptureResolutionManager;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    move-object/from16 v0, v16
+    move-object/from16 v0, v17
 
     iget-object v0, v0, Lcom/android/camera/ICaptureResolutionManager;->videoPreviewSize:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    move-result-object v16
+    move-result-object v17
 
-    check-cast v16, Lcom/android/camera/imaging/Size;
+    check-cast v17, Lcom/android/camera/imaging/Size;
 
-    move-object/from16 v14, v16
+    move-object/from16 v15, v17
 
     goto/16 :goto_6
 
     :pswitch_0
-    if-eqz v9, :cond_11
+    if-eqz v10, :cond_11
 
-    const-string v16, "CameraThread"
+    const-string v17, "CameraThread"
 
-    const-string v17, "setupParamsBeforeStartingPreview() - Preview size (photo) is "
+    const-string v18, "setupParamsBeforeStartingPreview() - Preview size (photo) is "
 
-    iget v0, v9, Lcom/android/camera/imaging/Size;->width:I
+    iget v0, v10, Lcom/android/camera/imaging/Size;->width:I
 
-    move/from16 v18, v0
+    move/from16 v19, v0
 
-    invoke-static/range {v18 .. v18}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static/range {v19 .. v19}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v18
+    move-result-object v19
 
-    const-string v19, " x "
+    const-string v20, " x "
 
-    iget v0, v9, Lcom/android/camera/imaging/Size;->height:I
+    iget v0, v10, Lcom/android/camera/imaging/Size;->height:I
 
-    move/from16 v20, v0
+    move/from16 v21, v0
 
-    invoke-static/range {v20 .. v20}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static/range {v21 .. v21}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v20
+    move-result-object v21
 
-    invoke-static/range {v16 .. v20}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    invoke-static/range {v17 .. v21}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    iget v0, v9, Lcom/android/camera/imaging/Size;->width:I
-
-    move/from16 v17, v0
-
-    iget v0, v9, Lcom/android/camera/imaging/Size;->height:I
+    iget v0, v10, Lcom/android/camera/imaging/Size;->width:I
 
     move/from16 v18, v0
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setPreviewSizeParameter(II)V
+    iget v0, v10, Lcom/android/camera/imaging/Size;->height:I
+
+    move/from16 v19, v0
+
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setPreviewSizeParameter(II)V
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mResolutionManager:Lcom/android/camera/ICaptureResolutionManager;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    move-object/from16 v0, v16
+    move-object/from16 v0, v17
 
     iget-object v0, v0, Lcom/android/camera/ICaptureResolutionManager;->photoResolution:Lcom/android/camera/property/Property;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    move-result-object v10
+    move-result-object v11
 
-    check-cast v10, Lcom/android/camera/Resolution;
+    check-cast v11, Lcom/android/camera/Resolution;
 
-    if-eqz v10, :cond_10
+    if-eqz v11, :cond_10
 
-    const-string v16, "CameraThread"
+    const-string v17, "CameraThread"
 
-    const-string v17, "setupParamsBeforeStartingPreview() - Photo resolution is "
+    const-string v18, "setupParamsBeforeStartingPreview() - Photo resolution is "
 
-    invoke-virtual {v10}, Lcom/android/camera/Resolution;->getWidth()I
+    invoke-virtual {v11}, Lcom/android/camera/Resolution;->getWidth()I
 
-    move-result v18
+    move-result v19
 
-    invoke-static/range {v18 .. v18}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static/range {v19 .. v19}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v18
+    move-result-object v19
 
-    const-string v19, " x "
+    const-string v20, " x "
 
-    invoke-virtual {v10}, Lcom/android/camera/Resolution;->getHeight()I
+    invoke-virtual {v11}, Lcom/android/camera/Resolution;->getHeight()I
 
-    move-result v20
+    move-result v21
 
-    invoke-static/range {v20 .. v20}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static/range {v21 .. v21}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v20
+    move-result-object v21
 
-    invoke-static/range {v16 .. v20}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    invoke-static/range {v17 .. v21}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual {v10}, Lcom/android/camera/Resolution;->getWidth()I
-
-    move-result v17
-
-    invoke-virtual {v10}, Lcom/android/camera/Resolution;->getHeight()I
+    invoke-virtual {v11}, Lcom/android/camera/Resolution;->getWidth()I
 
     move-result v18
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setPictureSizeParameter(II)V
+    invoke-virtual {v11}, Lcom/android/camera/Resolution;->getHeight()I
+
+    move-result v19
+
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setPictureSizeParameter(II)V
 
     :goto_a
-    move-object v11, v9
+    move-object v12, v10
 
     goto/16 :goto_7
 
     :cond_10
-    const-string v16, "CameraThread"
+    const-string v17, "CameraThread"
 
-    const-string v17, "setupParamsBeforeStartingPreview() - No photo resolution"
+    const-string v18, "setupParamsBeforeStartingPreview() - No photo resolution"
 
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_a
 
     :cond_11
-    const-string v16, "CameraThread"
+    const-string v17, "CameraThread"
 
-    const-string v17, "setupParamsBeforeStartingPreview() - No photo preview size"
+    const-string v18, "setupParamsBeforeStartingPreview() - No photo preview size"
 
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_a
 
     :pswitch_1
-    if-eqz v14, :cond_14
+    if-eqz v15, :cond_17
 
-    const-string v16, "CameraThread"
-
-    const-string v17, "setupParamsBeforeStartingPreview() - Preview size (video) is "
-
-    iget v0, v14, Lcom/android/camera/imaging/Size;->width:I
-
-    move/from16 v18, v0
-
-    invoke-static/range {v18 .. v18}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v18
-
-    const-string v19, " x "
-
-    iget v0, v14, Lcom/android/camera/imaging/Size;->height:I
-
-    move/from16 v20, v0
-
-    invoke-static/range {v20 .. v20}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v20
-
-    invoke-static/range {v16 .. v20}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
-
-    iget v0, v14, Lcom/android/camera/imaging/Size;->width:I
-
-    move/from16 v16, v0
-
-    const/16 v17, 0x780
-
-    move/from16 v0, v16
-
-    move/from16 v1, v17
-
-    if-ne v0, v1, :cond_12
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/camera/CameraThread;->captureRotation:Lcom/android/camera/property/Property;
-
-    move-object/from16 v16, v0
-
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
-
-    move-result-object v16
-
-    check-cast v16, Lcom/android/camera/rotate/UIRotation;
-
-    invoke-virtual/range {v16 .. v16}, Lcom/android/camera/rotate/UIRotation;->isLandscape()Z
-
-    move-result v16
-
-    if-eqz v16, :cond_12
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
-
-    move-object/from16 v16, v0
-
-    iget v0, v14, Lcom/android/camera/imaging/Size;->width:I
-
-    move/from16 v17, v0
-
-    const/16 v18, 0x438
-
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setPreviewSizeParameter(II)V
-
-    :goto_b
     if-eqz v7, :cond_13
 
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const-string v17, "video-mode"
+    const-string v18, "video-mode"
 
-    const-string v18, "1"
+    const-string v19, "1"
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
 
-    const-string v16, "CameraThread"
+    const-string v17, "CameraThread"
 
-    const-string v17, "setupParamsBeforeStartingPreview() - Enable slow motion mode"
+    const-string v18, "setupParamsBeforeStartingPreview() - Enable slow motion mode"
 
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->W(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->W(Ljava/lang/String;Ljava/lang/String;)V
 
-    :goto_c
-    move-object v11, v14
+    :goto_b
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->isQCT8x30()Z
 
-    goto/16 :goto_7
+    move-result v17
+
+    if-nez v17, :cond_12
+
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->isVilC2()Z
+
+    move-result v17
+
+    if-eqz v17, :cond_15
 
     :cond_12
+    iget v0, v15, Lcom/android/camera/imaging/Size;->width:I
+
+    move/from16 v17, v0
+
+    sget v18, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
+
+    move/from16 v0, v17
+
+    move/from16 v1, v18
+
+    if-lt v0, v1, :cond_14
+
+    sget v17, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
+
+    and-int/lit8 v17, v17, 0xf
+
+    rsub-int/lit8 v9, v17, 0x10
+
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    iget v0, v14, Lcom/android/camera/imaging/Size;->width:I
+    sget v18, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
 
-    move/from16 v17, v0
+    sget v19, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
 
-    iget v0, v14, Lcom/android/camera/imaging/Size;->height:I
+    add-int v19, v19, v9
 
-    move/from16 v18, v0
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setPreviewSizeParameter(II)V
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setPreviewSizeParameter(II)V
+    :goto_c
+    const-string v17, "CameraThread"
 
-    goto :goto_b
+    const-string v18, "setupParamsBeforeStartingPreview() - Preview size (video) is "
+
+    iget v0, v15, Lcom/android/camera/imaging/Size;->width:I
+
+    move/from16 v19, v0
+
+    invoke-static/range {v19 .. v19}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v19
+
+    const-string v20, " x "
+
+    iget v0, v15, Lcom/android/camera/imaging/Size;->height:I
+
+    move/from16 v21, v0
+
+    invoke-static/range {v21 .. v21}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v21
+
+    invoke-static/range {v17 .. v21}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    :goto_d
+    move-object v12, v15
+
+    goto/16 :goto_7
 
     :cond_13
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    const-string v17, "video-mode"
+    const-string v18, "video-mode"
 
-    const-string v18, "0"
+    const-string v19, "0"
 
-    invoke-virtual/range {v16 .. v18}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
 
-    const-string v16, "CameraThread"
+    const-string v17, "CameraThread"
 
-    const-string v17, "setupParamsBeforeStartingPreview() - Disable slow motion mode"
+    const-string v18, "setupParamsBeforeStartingPreview() - Disable slow motion mode"
 
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->W(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->W(Ljava/lang/String;Ljava/lang/String;)V
 
-    goto :goto_c
+    goto :goto_b
 
     :cond_14
-    const-string v16, "CameraThread"
-
-    const-string v17, "setupParamsBeforeStartingPreview() - No video preview size"
-
-    invoke-static/range {v16 .. v17}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
-
-    goto :goto_c
-
-    :cond_15
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
-    move-object/from16 v16, v0
+    move-object/from16 v17, v0
 
-    invoke-virtual {v5}, Lcom/android/camera/CameraController$SettingInfo;->getMin()I
+    iget v0, v15, Lcom/android/camera/imaging/Size;->width:I
+
+    move/from16 v18, v0
+
+    iget v0, v15, Lcom/android/camera/imaging/Size;->height:I
+
+    move/from16 v19, v0
+
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setPreviewSizeParameter(II)V
+
+    goto :goto_c
+
+    :cond_15
+    iget v0, v15, Lcom/android/camera/imaging/Size;->width:I
+
+    move/from16 v17, v0
+
+    const/16 v18, 0x780
+
+    move/from16 v0, v17
+
+    move/from16 v1, v18
+
+    if-ne v0, v1, :cond_16
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/camera/CameraThread;->captureRotation:Lcom/android/camera/property/Property;
+
+    move-object/from16 v17, v0
+
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v17
+
+    check-cast v17, Lcom/android/camera/rotate/UIRotation;
+
+    invoke-virtual/range {v17 .. v17}, Lcom/android/camera/rotate/UIRotation;->isLandscape()Z
 
     move-result v17
 
-    invoke-virtual/range {v16 .. v17}, Lcom/android/camera/CameraController;->setZoom(I)V
+    if-eqz v17, :cond_16
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
+
+    move-object/from16 v17, v0
+
+    iget v0, v15, Lcom/android/camera/imaging/Size;->width:I
+
+    move/from16 v18, v0
+
+    const/16 v19, 0x438
+
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setPreviewSizeParameter(II)V
+
+    goto :goto_c
+
+    :cond_16
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
+
+    move-object/from16 v17, v0
+
+    iget v0, v15, Lcom/android/camera/imaging/Size;->width:I
+
+    move/from16 v18, v0
+
+    iget v0, v15, Lcom/android/camera/imaging/Size;->height:I
+
+    move/from16 v19, v0
+
+    invoke-virtual/range {v17 .. v19}, Lcom/android/camera/CameraController;->setPreviewSizeParameter(II)V
+
+    goto/16 :goto_c
+
+    :cond_17
+    const-string v17, "CameraThread"
+
+    const-string v18, "setupParamsBeforeStartingPreview() - No video preview size"
+
+    invoke-static/range {v17 .. v18}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto :goto_d
+
+    :cond_18
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
+
+    move-object/from16 v17, v0
+
+    invoke-virtual {v5}, Lcom/android/camera/CameraController$SettingInfo;->getMin()I
+
+    move-result v18
+
+    invoke-virtual/range {v17 .. v18}, Lcom/android/camera/CameraController;->setZoom(I)V
 
     goto/16 :goto_8
-
-    nop
 
     :pswitch_data_0
     .packed-switch 0x1
@@ -7061,7 +7553,7 @@
 .end method
 
 .method private startVideoRecordingInternal(Lcom/android/camera/CaptureHandle;Z)V
-    .locals 34
+    .locals 35
 
     const-string v2, "CameraThread"
 
@@ -7368,7 +7860,7 @@
 
     invoke-static {v2, v4, v5}, Landroid/os/Message;->obtain(Landroid/os/Handler;ILjava/lang/Object;)Landroid/os/Message;
 
-    move-result-object v29
+    move-result-object v30
 
     move-object/from16 v0, p0
 
@@ -7376,7 +7868,7 @@
 
     const-wide/16 v4, 0x12c
 
-    move-object/from16 v0, v29
+    move-object/from16 v0, v30
 
     invoke-virtual {v2, v0, v4, v5}, Lcom/android/camera/CameraThread$MainHandler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
@@ -7512,7 +8004,7 @@
 
     iget v0, v2, Lcom/android/camera/rotate/UIRotation;->deviceOrientation:I
 
-    move/from16 v30, v0
+    move/from16 v31, v0
 
     move-object/from16 v0, p0
 
@@ -7526,7 +8018,7 @@
 
     iget v0, v2, Lcom/android/camera/CameraType;->orientation:I
 
-    move/from16 v32, v0
+    move/from16 v33, v0
 
     move-object/from16 v0, p0
 
@@ -7544,7 +8036,7 @@
 
     if-eqz v2, :cond_f
 
-    add-int v30, v30, v32
+    add-int v31, v31, v33
 
     :goto_1
     move-object/from16 v0, p0
@@ -7569,14 +8061,14 @@
 
     invoke-static {v2, v4}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
-    const/16 v30, 0x0
+    const/16 v31, 0x0
 
     :cond_c
-    move/from16 v0, v30
+    move/from16 v0, v31
 
     rem-int/lit16 v0, v0, 0x168
 
-    move/from16 v30, v0
+    move/from16 v31, v0
 
     const-string v2, "CameraThread"
 
@@ -7590,7 +8082,7 @@
 
     move-result-object v4
 
-    move/from16 v0, v30
+    move/from16 v0, v31
 
     invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -7625,7 +8117,7 @@
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
 
-    move/from16 v0, v30
+    move/from16 v0, v31
 
     invoke-virtual {v2, v0}, Landroid/media/MediaRecorder;->setOrientationHint(I)V
 
@@ -7699,7 +8191,7 @@
     throw v2
 
     :cond_f
-    sub-int v30, v32, v30
+    sub-int v31, v33, v31
 
     goto/16 :goto_1
 
@@ -7713,14 +8205,14 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    move-result-object v21
+    move-result-object v22
 
     :try_start_2
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
 
-    invoke-interface/range {v21 .. v21}, Landroid/view/SurfaceHolder;->getSurface()Landroid/view/Surface;
+    invoke-interface/range {v22 .. v22}, Landroid/view/SurfaceHolder;->getSurface()Landroid/view/Surface;
 
     move-result-object v5
 
@@ -7736,13 +8228,13 @@
 
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/CameraThread;->isSlowMotionMode()Z
 
-    move-result v23
+    move-result v24
 
     invoke-static {}, Lcom/android/camera/DisplayDevice;->supportStereoRecord()Z
 
     move-result v2
 
-    if-eqz v2, :cond_15
+    if-eqz v2, :cond_18
 
     move-object/from16 v0, p0
 
@@ -7760,12 +8252,12 @@
 
     move-result v2
 
-    if-eqz v2, :cond_15
+    if-eqz v2, :cond_18
 
-    const/16 v24, 0x1
+    const/16 v25, 0x1
 
     :goto_2
-    if-nez v23, :cond_16
+    if-nez v24, :cond_19
 
     move-object/from16 v0, p0
 
@@ -7781,10 +8273,10 @@
 
     invoke-virtual {v2}, Ljava/lang/Boolean;->booleanValue()Z
 
-    move-result v25
+    move-result v26
 
     :goto_3
-    if-eqz v25, :cond_12
+    if-eqz v26, :cond_12
 
     invoke-static {}, Lcom/android/camera/DisplayDevice;->supportStereoRecord()Z
 
@@ -7792,7 +8284,7 @@
 
     if-eqz v2, :cond_11
 
-    if-eqz v24, :cond_17
+    if-eqz v25, :cond_1a
 
     const/4 v4, 0x1
 
@@ -7837,17 +8329,35 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setVideoSource(I)V
 
-    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportOnlyMP4VideoFormat()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_18
-
     invoke-direct/range {p0 .. p0}, Lcom/android/camera/CameraThread;->isMMSRecording()Z
 
     move-result v2
 
-    if-nez v2, :cond_18
+    if-nez v2, :cond_1b
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v4
+
+    iget-object v5, v4, Lcom/android/camera/CameraSettings;->VideoFileFormat:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v5}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/String;
+
+    const-string v2, "mp4"
+
+    invoke-virtual {v2, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1b
 
     move-object/from16 v0, p0
 
@@ -7872,7 +8382,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_19
+    if-eqz v2, :cond_1c
 
     sget-object v2, Lcom/android/camera/io/FileFormat;->Mpeg4For3D:Lcom/android/camera/io/FileFormat;
 
@@ -7881,6 +8391,82 @@
     iput-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFileFormat:Lcom/android/camera/io/FileFormat;
 
     :goto_6
+    const/16 v21, 0x0
+
+    const/4 v2, 0x0
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRequestedFilePath:Lcom/android/camera/io/Path;
+
+    if-eqz v2, :cond_13
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRequestedFilePath:Lcom/android/camera/io/Path;
+
+    iget-object v2, v2, Lcom/android/camera/io/Path;->directoryPath:Ljava/lang/String;
+
+    invoke-static {v2}, Lcom/android/camera/io/FileUtility;->createDirectories(Ljava/lang/String;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1f
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRequestedFilePath:Lcom/android/camera/io/Path;
+
+    iget-object v2, v2, Lcom/android/camera/io/Path;->fileName:Ljava/lang/String;
+
+    invoke-static {v2}, Lcom/android/camera/io/Path;->getExtension(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+
+    move-result-object v20
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFileFormat:Lcom/android/camera/io/FileFormat;
+
+    iget-object v2, v2, Lcom/android/camera/io/FileFormat;->fileNameExtension:Ljava/lang/String;
+
+    move-object/from16 v0, v20
+
+    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1e
+
+    const-string v2, "CameraThread"
+
+    const-string v4, "startVideoRecordingInternal() - Use requested file path"
+
+    invoke-static {v2, v4}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRequestedFilePath:Lcom/android/camera/io/Path;
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
+
+    :cond_13
+    :goto_7
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
+
+    if-nez v2, :cond_15
+
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->storageSlot:Lcom/android/camera/property/Property;
@@ -7921,7 +8507,7 @@
 
     move-result v2
 
-    if-nez v2, :cond_13
+    if-nez v2, :cond_14
 
     const-string v2, "CameraThread"
 
@@ -7943,7 +8529,7 @@
 
     invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->finish()V
 
-    :cond_13
+    :cond_14
     new-instance v16, Lcom/android/camera/io/FileCounter;
 
     iget-object v2, v6, Lcom/android/camera/Reference;->target:Ljava/lang/Object;
@@ -7958,7 +8544,7 @@
 
     invoke-direct {v0, v2}, Lcom/android/camera/io/FileCounter;-><init>(I)V
 
-    new-instance v20, Lcom/android/camera/io/FileCounter;
+    new-instance v21, Lcom/android/camera/io/FileCounter;
 
     iget-object v2, v7, Lcom/android/camera/Reference;->target:Ljava/lang/Object;
 
@@ -7968,7 +8554,7 @@
 
     move-result v2
 
-    move-object/from16 v0, v20
+    move-object/from16 v0, v21
 
     invoke-direct {v0, v2}, Lcom/android/camera/io/FileCounter;-><init>(I)V
 
@@ -7992,7 +8578,7 @@
 
     iget-object v8, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFileFormat:Lcom/android/camera/io/FileFormat;
 
-    move-object/from16 v0, v20
+    move-object/from16 v0, v21
 
     invoke-static {v5, v0, v8}, Lcom/android/camera/io/DCFUtility;->getFileName(Lcom/android/camera/io/DCFInfo;Lcom/android/camera/io/FileCounter;Lcom/android/camera/io/FileFormat;)Ljava/lang/String;
 
@@ -8000,67 +8586,24 @@
 
     move-object/from16 v0, v16
 
-    move-object/from16 v1, v20
+    move-object/from16 v1, v21
 
     invoke-direct {v2, v4, v5, v0, v1}, Lcom/android/camera/io/DCFPath;-><init>(Ljava/lang/String;Ljava/lang/String;Lcom/android/camera/io/FileCounter;Lcom/android/camera/io/FileCounter;)V
 
     move-object/from16 v0, p0
 
-    iput-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
+    iput-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
 
-    const-string v2, "CameraThread"
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v5, "startVideoRecordingInternal() - Save video: directory name = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    move-object/from16 v0, p0
-
-    iget-object v5, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
-
-    iget-object v5, v5, Lcom/android/camera/io/Path;->directoryPath:Ljava/lang/String;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    const-string v5, ",  file name = "
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    move-object/from16 v0, p0
-
-    iget-object v5, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
-
-    iget-object v5, v5, Lcom/android/camera/io/Path;->fileName:Ljava/lang/String;
-
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v2, v4}, Lcom/android/camera/LOG;->W(Ljava/lang/String;Ljava/lang/String;)V
-
+    :cond_15
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
 
     move-object/from16 v0, p0
 
-    iget-object v4, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
+    iget-object v4, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
 
-    invoke-virtual {v4}, Lcom/android/camera/io/DCFPath;->getFullPath()Ljava/lang/String;
+    invoke-virtual {v4}, Lcom/android/camera/io/Path;->getFullPath()Ljava/lang/String;
 
     move-result-object v4
 
@@ -8083,6 +8626,45 @@
 
     move-result v15
 
+    invoke-virtual/range {p0 .. p0}, Lcom/android/camera/CameraThread;->isSlowMotionMode()Z
+
+    move-result v5
+
+    if-nez v5, :cond_16
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v4
+
+    iget-object v5, v4, Lcom/android/camera/CameraSettings;->ForceVideoQuality:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v5}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/String;
+
+    const-string v2, "auto"
+
+    invoke-virtual {v2, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-nez v5, :cond_16
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(Ljava/lang/String;)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/Integer;->intValue()I
+
+    move-result v15
+
+    :cond_16
     const-string v2, "CameraThread"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -8113,7 +8695,7 @@
     :try_end_4
     .catch Ljava/lang/Throwable; {:try_start_4 .. :try_end_4} :catch_1
 
-    :goto_7
+    :goto_8
     :try_start_5
     move-object/from16 v0, p0
 
@@ -8123,9 +8705,9 @@
 
     invoke-virtual {v2}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    move-result-object v26
+    move-result-object v27
 
-    check-cast v26, Lcom/android/camera/Duration;
+    check-cast v27, Lcom/android/camera/Duration;
 
     const-string v2, "CameraThread"
 
@@ -8139,7 +8721,7 @@
 
     move-result-object v4
 
-    move-object/from16 v0, v26
+    move-object/from16 v0, v27
 
     invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
@@ -8151,17 +8733,17 @@
 
     invoke-static {v2, v4}, Lcom/android/camera/LOG;->W(Ljava/lang/String;Ljava/lang/String;)V
 
-    invoke-virtual/range {v26 .. v26}, Lcom/android/camera/Duration;->isInfinite()Z
+    invoke-virtual/range {v27 .. v27}, Lcom/android/camera/Duration;->isInfinite()Z
 
     move-result v2
 
-    if-nez v2, :cond_14
+    if-nez v2, :cond_17
 
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
 
-    invoke-virtual/range {v26 .. v26}, Lcom/android/camera/Duration;->getMilliseconds()J
+    invoke-virtual/range {v27 .. v27}, Lcom/android/camera/Duration;->getMilliseconds()J
 
     move-result-wide v4
 
@@ -8171,8 +8753,8 @@
     :try_end_5
     .catch Ljava/lang/Throwable; {:try_start_5 .. :try_end_5} :catch_2
 
-    :cond_14
-    :goto_8
+    :cond_17
+    :goto_9
     :try_start_6
     move-object/from16 v0, p0
 
@@ -8188,7 +8770,7 @@
 
     invoke-virtual {v2}, Ljava/lang/Long;->longValue()J
 
-    move-result-wide v27
+    move-result-wide v28
 
     const-string v2, "CameraThread"
 
@@ -8202,7 +8784,7 @@
 
     move-result-object v4
 
-    move-wide/from16 v0, v27
+    move-wide/from16 v0, v28
 
     invoke-virtual {v4, v0, v1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -8218,35 +8800,35 @@
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
 
-    move-wide/from16 v0, v27
+    move-wide/from16 v0, v28
 
     invoke-virtual {v2, v0, v1}, Landroid/media/MediaRecorder;->setMaxFileSize(J)V
     :try_end_6
     .catch Ljava/lang/Throwable; {:try_start_6 .. :try_end_6} :catch_3
 
-    :goto_9
-    const/16 v22, 0x0
+    :goto_a
+    const/16 v23, 0x0
 
     invoke-direct/range {p0 .. p0}, Lcom/android/camera/CameraThread;->isMMSRecording()Z
 
     move-result v2
 
-    if-eqz v2, :cond_1b
+    if-eqz v2, :cond_20
 
     sget-object v2, Lcom/android/camera/DisplayDevice;->CUSTOM_MMS:Lcom/android/camera/DisplayDevice$CustomMMS;
 
     sget-object v4, Lcom/android/camera/DisplayDevice$CustomMMS;->Verizon:Lcom/android/camera/DisplayDevice$CustomMMS;
 
-    if-ne v2, v4, :cond_1b
+    if-ne v2, v4, :cond_20
 
-    const/16 v22, 0xf
+    const/16 v23, 0xf
 
-    :goto_a
+    :goto_b
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
 
-    move/from16 v0, v22
+    move/from16 v0, v23
 
     invoke-virtual {v2, v0}, Landroid/media/MediaRecorder;->setVideoFrameRate(I)V
 
@@ -8262,7 +8844,7 @@
 
     move-result-object v4
 
-    move/from16 v0, v22
+    move/from16 v0, v23
 
     invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -8274,7 +8856,7 @@
 
     invoke-static {v2, v4}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
-    if-eqz v23, :cond_1d
+    if-eqz v24, :cond_23
 
     move-object/from16 v0, p0
 
@@ -8288,10 +8870,10 @@
 
     check-cast v2, Lcom/android/camera/Resolution;
 
-    move-object/from16 v31, v2
+    move-object/from16 v32, v2
 
-    :goto_b
-    if-nez v31, :cond_1e
+    :goto_c
+    if-nez v32, :cond_24
 
     const-string v2, "CameraThread"
 
@@ -8381,17 +8963,17 @@
 
     goto/16 :goto_0
 
-    :cond_15
-    const/16 v24, 0x0
+    :cond_18
+    const/16 v25, 0x0
 
     goto/16 :goto_2
 
-    :cond_16
-    const/16 v25, 0x0
+    :cond_19
+    const/16 v26, 0x0
 
     goto/16 :goto_3
 
-    :cond_17
+    :cond_1a
     const/4 v4, 0x0
 
     move-object/from16 v0, p0
@@ -8418,7 +9000,7 @@
 
     goto/16 :goto_4
 
-    :cond_18
+    :cond_1b
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
@@ -8429,18 +9011,36 @@
 
     goto/16 :goto_5
 
-    :cond_19
-    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportOnlyMP4VideoFormat()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_1a
-
+    :cond_1c
     invoke-direct/range {p0 .. p0}, Lcom/android/camera/CameraThread;->isMMSRecording()Z
 
     move-result v2
 
-    if-nez v2, :cond_1a
+    if-nez v2, :cond_1d
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v4
+
+    iget-object v5, v4, Lcom/android/camera/CameraSettings;->VideoFileFormat:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v5}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/String;
+
+    const-string v2, "mp4"
+
+    invoke-virtual {v2, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1d
 
     sget-object v2, Lcom/android/camera/io/FileFormat;->Mpeg4:Lcom/android/camera/io/FileFormat;
 
@@ -8450,7 +9050,7 @@
 
     goto/16 :goto_6
 
-    :cond_1a
+    :cond_1d
     sget-object v2, Lcom/android/camera/io/FileFormat;->ThreeGPP:Lcom/android/camera/io/FileFormat;
 
     move-object/from16 v0, p0
@@ -8458,6 +9058,84 @@
     iput-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFileFormat:Lcom/android/camera/io/FileFormat;
 
     goto/16 :goto_6
+
+    :cond_1e
+    const-string v2, "CameraThread"
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "startVideoRecordingInternal() - Format mismatch, requested file name extension is \'"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    move-object/from16 v0, v20
+
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const-string v5, "\', but actual format is "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFileFormat:Lcom/android/camera/io/FileFormat;
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v2, v4}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto/16 :goto_7
+
+    :cond_1f
+    const-string v2, "CameraThread"
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "startVideoRecordingInternal() - Fail to create directory \'"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    move-object/from16 v0, p0
+
+    iget-object v5, v0, Lcom/android/camera/CameraThread;->mRequestedFilePath:Lcom/android/camera/io/Path;
+
+    iget-object v5, v5, Lcom/android/camera/io/Path;->directoryPath:Ljava/lang/String;
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const-string v5, "\'"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v2, v4}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto/16 :goto_7
 
     :catch_1
     move-exception v19
@@ -8470,7 +9148,7 @@
 
     invoke-static {v2, v4, v0}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    goto/16 :goto_7
+    goto/16 :goto_8
 
     :catch_2
     move-exception v19
@@ -8483,7 +9161,7 @@
 
     invoke-static {v2, v4, v0}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    goto/16 :goto_8
+    goto/16 :goto_9
 
     :catch_3
     move-exception v19
@@ -8496,21 +9174,54 @@
 
     invoke-static {v2, v4, v0}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    goto/16 :goto_9
-
-    :cond_1b
-    if-eqz v23, :cond_1c
-
-    const/16 v22, 0x78
-
     goto/16 :goto_a
 
-    :cond_1c
-    const/16 v22, 0x1e
+    :cond_20
+    if-eqz v24, :cond_21
 
-    goto/16 :goto_a
+    const/16 v23, 0x78
 
-    :cond_1d
+    goto/16 :goto_b
+
+    :cond_21
+    const/16 v23, 0x1e
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v4
+
+    iget-object v5, v4, Lcom/android/camera/CameraSettings;->ForceFrameRate:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v5}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/String;
+
+    const-string v2, "auto"
+
+    invoke-virtual {v2, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-nez v5, :cond_22
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(Ljava/lang/String;)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/Integer;->intValue()I
+
+    move-result v22
+
+    :cond_22
+    goto/16 :goto_b
+
+    :cond_23
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mResolutionManager:Lcom/android/camera/ICaptureResolutionManager;
@@ -8523,11 +9234,11 @@
 
     check-cast v2, Lcom/android/camera/Resolution;
 
-    move-object/from16 v31, v2
+    move-object/from16 v32, v2
 
-    goto/16 :goto_b
+    goto/16 :goto_c
 
-    :cond_1e
+    :cond_24
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->captureRotation:Lcom/android/camera/property/Property;
@@ -8542,13 +9253,13 @@
 
     move-result v2
 
-    if-eqz v2, :cond_21
+    if-eqz v2, :cond_27
 
-    invoke-virtual/range {v31 .. v31}, Lcom/android/camera/Resolution;->isFullHDVideo()Z
+    invoke-virtual/range {v32 .. v32}, Lcom/android/camera/Resolution;->isFullHDVideo()Z
 
     move-result v2
 
-    if-eqz v2, :cond_21
+    if-eqz v2, :cond_27
 
     const-string v2, "CameraThread"
 
@@ -8566,7 +9277,7 @@
 
     invoke-virtual {v2, v4, v5}, Landroid/media/MediaRecorder;->setVideoSize(II)V
 
-    :goto_c
+    :goto_d
     const-string v2, "CameraThread"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -8579,7 +9290,7 @@
 
     move-result-object v4
 
-    invoke-virtual/range {v31 .. v31}, Lcom/android/camera/Resolution;->getWidth()I
+    invoke-virtual/range {v32 .. v32}, Lcom/android/camera/Resolution;->getWidth()I
 
     move-result v5
 
@@ -8599,7 +9310,7 @@
 
     move-result-object v4
 
-    invoke-virtual/range {v31 .. v31}, Lcom/android/camera/Resolution;->getHeight()I
+    invoke-virtual/range {v32 .. v32}, Lcom/android/camera/Resolution;->getHeight()I
 
     move-result v5
 
@@ -8613,11 +9324,11 @@
 
     invoke-static {v2, v4}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
-    if-nez v23, :cond_22
+    if-nez v24, :cond_28
 
     move-object/from16 v0, p0
 
-    move-object/from16 v1, v31
+    move-object/from16 v1, v32
 
     invoke-direct {v0, v1}, Lcom/android/camera/CameraThread;->getVideoEncoder(Lcom/android/camera/Resolution;)I
 
@@ -8641,14 +9352,14 @@
 
     invoke-virtual {v2, v0}, Landroid/media/MediaRecorder;->setVideoEncoder(I)V
 
-    :goto_d
-    if-eqz v25, :cond_20
+    :goto_e
+    if-eqz v26, :cond_26
 
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/CameraThread;->IsEqualOrAbove720p()Z
 
     move-result v2
 
-    if-eqz v2, :cond_25
+    if-eqz v2, :cond_2c
 
     invoke-static {}, Lcom/android/camera/DisplayDevice;->support128kBitrate()Z
 
@@ -8656,7 +9367,7 @@
 
     const/4 v4, 0x1
 
-    if-eq v2, v4, :cond_23
+    if-eq v2, v4, :cond_29
 
     move-object/from16 v0, p0
 
@@ -8674,15 +9385,15 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioSamplingRate(I)V
 
-    :cond_1f
-    :goto_e
+    :cond_25
+    :goto_f
     invoke-direct/range {p0 .. p0}, Lcom/android/camera/CameraThread;->NeedToApplyAMR_NB()Z
 
     move-result v2
 
     const/4 v4, 0x1
 
-    if-ne v2, v4, :cond_29
+    if-ne v2, v4, :cond_30
 
     const-string v2, "CameraThread"
 
@@ -8698,8 +9409,8 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioEncoder(I)V
 
-    :cond_20
-    :goto_f
+    :cond_26
+    :goto_10
     :try_start_8
     move-object/from16 v0, p0
 
@@ -8759,7 +9470,7 @@
 
     move-result v2
 
-    if-nez v2, :cond_2b
+    if-nez v2, :cond_32
 
     const-string v2, "CameraThread"
 
@@ -8828,9 +9539,9 @@
 
     move-object/from16 v0, p0
 
-    iget-object v5, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
+    iget-object v5, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
 
-    invoke-virtual {v5}, Lcom/android/camera/io/DCFPath;->getFullPath()Ljava/lang/String;
+    invoke-virtual {v5}, Lcom/android/camera/io/Path;->getFullPath()Ljava/lang/String;
 
     move-result-object v5
 
@@ -8874,24 +9585,24 @@
 
     goto/16 :goto_0
 
-    :cond_21
+    :cond_27
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
 
-    invoke-virtual/range {v31 .. v31}, Lcom/android/camera/Resolution;->getWidth()I
+    invoke-virtual/range {v32 .. v32}, Lcom/android/camera/Resolution;->getWidth()I
 
     move-result v4
 
-    invoke-virtual/range {v31 .. v31}, Lcom/android/camera/Resolution;->getHeight()I
+    invoke-virtual/range {v32 .. v32}, Lcom/android/camera/Resolution;->getHeight()I
 
     move-result v5
 
     invoke-virtual {v2, v4, v5}, Landroid/media/MediaRecorder;->setVideoSize(II)V
 
-    goto/16 :goto_c
+    goto/16 :goto_d
 
-    :cond_22
+    :cond_28
     const-string v2, "CameraThread"
 
     const-string v4, "startVideoRecordingInternal() - Video encoder : "
@@ -8912,14 +9623,50 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setVideoEncoder(I)V
 
-    goto/16 :goto_d
+    goto/16 :goto_e
 
-    :cond_23
+    :cond_29
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v4
+
+    iget-object v5, v4, Lcom/android/camera/CameraSettings;->ForceAudioQuality:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v5}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/String;
+
+    const-string v2, "auto"
+
+    invoke-virtual {v2, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-nez v5, :cond_2a
+
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(Ljava/lang/String;)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/Integer;->intValue()I
+
+    move-result v4
+
+    goto :goto_11
+
+    :cond_2a
+    const v4, 0x1f400
+
+    :goto_11
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
-
-    const v4, 0x1f400
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioEncodingBitRate(I)V
 
@@ -8927,7 +9674,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_24
+    if-eqz v2, :cond_2b
 
     move-object/from16 v0, p0
 
@@ -8937,7 +9684,7 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioSamplingRate(I)V
 
-    :goto_10
+    :goto_12
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
@@ -8946,9 +9693,9 @@
 
     invoke-virtual {v2, v4}, Lcom/android/camera/HTCCamera;->setBackgroundDataSetting(Z)V
 
-    goto/16 :goto_e
+    goto/16 :goto_f
 
-    :cond_24
+    :cond_2b
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
@@ -8957,36 +9704,36 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioSamplingRate(I)V
 
-    goto :goto_10
+    goto :goto_12
 
-    :cond_25
+    :cond_2c
     invoke-direct/range {p0 .. p0}, Lcom/android/camera/CameraThread;->NeedToApplyAMR_NB()Z
 
     move-result v2
 
-    if-nez v2, :cond_1f
+    if-nez v2, :cond_25
 
     sget-object v2, Lcom/android/camera/Resolution;->Video_QHD:Lcom/android/camera/Resolution;
 
-    move-object/from16 v0, v31
+    move-object/from16 v0, v32
 
     invoke-virtual {v0, v2}, Lcom/android/camera/Resolution;->equals(Ljava/lang/Object;)Z
 
     move-result v2
 
-    if-nez v2, :cond_26
+    if-nez v2, :cond_2d
 
     sget-object v2, Lcom/android/camera/Resolution;->Video_WVGA:Lcom/android/camera/Resolution;
 
-    move-object/from16 v0, v31
+    move-object/from16 v0, v32
 
     invoke-virtual {v0, v2}, Lcom/android/camera/Resolution;->equals(Ljava/lang/Object;)Z
 
     move-result v2
 
-    if-eqz v2, :cond_27
+    if-eqz v2, :cond_2e
 
-    :cond_26
+    :cond_2d
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
@@ -8995,12 +9742,12 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioEncodingBitRate(I)V
 
-    :goto_11
+    :goto_13
     invoke-static {}, Lcom/android/camera/DisplayDevice;->needForce48KAudioSamplingRate()Z
 
     move-result v2
 
-    if-eqz v2, :cond_28
+    if-eqz v2, :cond_2f
 
     move-object/from16 v0, p0
 
@@ -9010,9 +9757,9 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioSamplingRate(I)V
 
-    goto/16 :goto_e
+    goto/16 :goto_f
 
-    :cond_27
+    :cond_2e
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
@@ -9021,9 +9768,9 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioEncodingBitRate(I)V
 
-    goto :goto_11
+    goto :goto_13
 
-    :cond_28
+    :cond_2f
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
@@ -9032,16 +9779,16 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioSamplingRate(I)V
 
-    goto/16 :goto_e
+    goto/16 :goto_f
 
-    :cond_29
+    :cond_30
     const-string v2, "CameraThread"
 
     const-string v4, "AAC"
 
     invoke-static {v2, v4}, Lcom/android/camera/LOG;->I(Ljava/lang/String;Ljava/lang/String;)V
 
-    if-eqz v24, :cond_2a
+    if-eqz v25, :cond_31
 
     move-object/from16 v0, p0
 
@@ -9051,7 +9798,7 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioChannels(I)V
 
-    :goto_12
+    :goto_14
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
@@ -9060,9 +9807,9 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioEncoder(I)V
 
-    goto/16 :goto_f
+    goto/16 :goto_10
 
-    :cond_2a
+    :cond_31
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecorder:Landroid/media/MediaRecorder;
@@ -9071,7 +9818,7 @@
 
     invoke-virtual {v2, v4}, Landroid/media/MediaRecorder;->setAudioChannels(I)V
 
-    goto :goto_12
+    goto :goto_14
 
     :catch_5
     move-exception v19
@@ -9090,9 +9837,9 @@
 
     move-object/from16 v0, p0
 
-    iget-object v5, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
+    iget-object v5, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
 
-    invoke-virtual {v5}, Lcom/android/camera/io/DCFPath;->getFullPath()Ljava/lang/String;
+    invoke-virtual {v5}, Lcom/android/camera/io/Path;->getFullPath()Ljava/lang/String;
 
     move-result-object v5
 
@@ -9142,13 +9889,13 @@
 
     goto/16 :goto_0
 
-    :cond_2b
+    :cond_32
     :try_start_c
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mTimeoutController:Lcom/android/camera/debug/IOperationTimeoutController;
 
-    if-eqz v2, :cond_2d
+    if-eqz v2, :cond_35
 
     move-object/from16 v0, p0
 
@@ -9174,9 +9921,9 @@
     :try_end_c
     .catchall {:try_start_c .. :try_end_c} :catchall_1
 
-    move-result-object v33
+    move-result-object v34
 
-    :goto_13
+    :goto_15
     :try_start_d
     const-string v2, "CameraThread"
 
@@ -9211,17 +9958,17 @@
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mTimeoutController:Lcom/android/camera/debug/IOperationTimeoutController;
 
-    if-eqz v2, :cond_2c
+    if-eqz v2, :cond_33
 
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mTimeoutController:Lcom/android/camera/debug/IOperationTimeoutController;
 
-    move-object/from16 v0, v33
+    move-object/from16 v0, v34
 
     invoke-virtual {v2, v0}, Lcom/android/camera/debug/IOperationTimeoutController;->stopTimer(Lcom/android/camera/Handle;)V
 
-    :cond_2c
+    :cond_33
     monitor-exit v4
     :try_end_e
     .catchall {:try_start_e .. :try_end_e} :catchall_1
@@ -9261,13 +10008,15 @@
     :try_end_f
     .catch Ljava/lang/Exception; {:try_start_f .. :try_end_f} :catch_4
 
+    if-eqz v21, :cond_34
+
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mSettings:Lcom/android/camera/CameraSettings;
 
     const-string v4, "counter_video"
 
-    move-object/from16 v0, v20
+    move-object/from16 v0, v21
 
     iget v5, v0, Lcom/android/camera/io/FileCounter;->mainCounter:I
 
@@ -9277,6 +10026,7 @@
 
     invoke-virtual {v2, v4, v5}, Lcom/android/camera/CameraSettings;->set(Ljava/lang/String;Ljava/lang/Object;)Z
 
+    :cond_34
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->isRecording:Lcom/android/camera/property/Property;
@@ -9308,7 +10058,7 @@
     :try_end_10
     .catch Ljava/lang/InterruptedException; {:try_start_10 .. :try_end_10} :catch_6
 
-    :goto_14
+    :goto_16
     const-string v2, "CameraThread"
 
     const-string v4, "startVideoRecordingInternal() - end"
@@ -9317,10 +10067,10 @@
 
     goto/16 :goto_0
 
-    :cond_2d
-    const/16 v33, 0x0
+    :cond_35
+    const/16 v34, 0x0
 
-    goto/16 :goto_13
+    goto/16 :goto_15
 
     :catchall_2
     move-exception v2
@@ -9330,17 +10080,17 @@
 
     iget-object v5, v0, Lcom/android/camera/CameraThread;->mTimeoutController:Lcom/android/camera/debug/IOperationTimeoutController;
 
-    if-eqz v5, :cond_2e
+    if-eqz v5, :cond_36
 
     move-object/from16 v0, p0
 
     iget-object v5, v0, Lcom/android/camera/CameraThread;->mTimeoutController:Lcom/android/camera/debug/IOperationTimeoutController;
 
-    move-object/from16 v0, v33
+    move-object/from16 v0, v34
 
     invoke-virtual {v5, v0}, Lcom/android/camera/debug/IOperationTimeoutController;->stopTimer(Lcom/android/camera/Handle;)V
 
-    :cond_2e
+    :cond_36
     throw v2
     :try_end_11
     .catchall {:try_start_11 .. :try_end_11} :catchall_1
@@ -9356,11 +10106,11 @@
 
     invoke-static {v2, v4, v0}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    goto :goto_14
+    goto :goto_16
 .end method
 
 .method private stopVideoRecordingInternal(Lcom/android/camera/CaptureHandle;ZZ)V
-    .locals 22
+    .locals 23
 
     if-nez p1, :cond_1
 
@@ -9454,7 +10204,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_11
+    if-eqz v2, :cond_12
 
     const-string v2, "CameraThread"
 
@@ -9688,7 +10438,7 @@
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mTimeoutController:Lcom/android/camera/debug/IOperationTimeoutController;
 
-    if-eqz v2, :cond_12
+    if-eqz v2, :cond_13
 
     move-object/from16 v0, p0
 
@@ -9712,7 +10462,7 @@
 
     invoke-virtual/range {v2 .. v8}, Lcom/android/camera/debug/IOperationTimeoutController;->startTimer(Ljava/lang/String;JLcom/android/camera/debug/IOperationTimeoutController$TimeoutCallback;Lcom/android/camera/IAsyncOperationExecutor;Ljava/lang/Object;)Lcom/android/camera/Handle;
 
-    move-result-object v21
+    move-result-object v22
 
     :goto_3
     :try_start_1
@@ -9735,7 +10485,7 @@
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mTimeoutController:Lcom/android/camera/debug/IOperationTimeoutController;
 
-    move-object/from16 v0, v21
+    move-object/from16 v0, v22
 
     invoke-virtual {v2, v0}, Lcom/android/camera/debug/IOperationTimeoutController;->stopTimer(Lcom/android/camera/Handle;)V
 
@@ -9778,14 +10528,14 @@
 
     invoke-direct/range {p0 .. p0}, Lcom/android/camera/CameraThread;->releaseMediaRecorder()V
 
-    if-eqz v16, :cond_b
+    if-eqz v16, :cond_c
 
     :try_start_4
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
 
-    invoke-virtual {v2}, Lcom/android/camera/io/DCFPath;->getFullPath()Ljava/lang/String;
+    invoke-virtual {v2}, Lcom/android/camera/io/Path;->getFullPath()Ljava/lang/String;
 
     move-result-object v2
 
@@ -9799,7 +10549,7 @@
     :try_end_4
     .catch Ljava/lang/Throwable; {:try_start_4 .. :try_end_4} :catch_3
 
-    move-result-object v20
+    move-result-object v21
 
     :goto_7
     move-object/from16 v0, p0
@@ -9812,9 +10562,9 @@
 
     move-object/from16 v0, p0
 
-    iget-object v5, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
+    iget-object v5, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
 
-    move-object/from16 v0, v20
+    move-object/from16 v0, v21
 
     invoke-direct {v3, v4, v5, v0}, Lcom/android/camera/imaging/ThumbnailEventArgs;-><init>(Landroid/net/Uri;Lcom/android/camera/io/Path;Landroid/graphics/Bitmap;)V
 
@@ -9822,22 +10572,22 @@
 
     invoke-virtual {v2, v0, v3}, Lcom/android/camera/event/Event;->raise(Ljava/lang/Object;Lcom/android/camera/event/EventArgs;)V
 
-    if-eqz v20, :cond_a
+    if-eqz v21, :cond_a
 
-    invoke-virtual/range {v20 .. v20}, Landroid/graphics/Bitmap;->recycle()V
+    invoke-virtual/range {v21 .. v21}, Landroid/graphics/Bitmap;->recycle()V
 
-    const/16 v20, 0x0
+    const/16 v21, 0x0
 
     :cond_a
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mMediaFileWriter:Lcom/android/camera/io/IMediaFileWriter;
 
-    if-eqz v2, :cond_14
+    if-eqz v2, :cond_15
 
-    new-instance v19, Lcom/android/camera/io/SaveVideoTask;
+    new-instance v20, Lcom/android/camera/io/SaveVideoTask;
 
-    move-object/from16 v0, v19
+    move-object/from16 v0, v20
 
     move-object/from16 v1, p0
 
@@ -9845,21 +10595,21 @@
 
     move-object/from16 v0, p1
 
-    move-object/from16 v1, v19
+    move-object/from16 v1, v20
 
     iput-object v0, v1, Lcom/android/camera/io/SaveVideoTask;->captureHandle:Lcom/android/camera/CaptureHandle;
 
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
 
-    move-object/from16 v0, v19
+    move-object/from16 v0, v20
 
-    iput-object v2, v0, Lcom/android/camera/io/SaveVideoTask;->filePath:Lcom/android/camera/io/DCFPath;
+    iput-object v2, v0, Lcom/android/camera/io/SaveVideoTask;->filePath:Lcom/android/camera/io/Path;
 
     sget-object v2, Lcom/android/camera/CameraThread;->mVideoDcfInfo:Lcom/android/camera/io/DCFInfo;
 
-    move-object/from16 v0, v19
+    move-object/from16 v0, v20
 
     iput-object v2, v0, Lcom/android/camera/io/SaveVideoTask;->dcfInfo:Lcom/android/camera/io/DCFInfo;
 
@@ -9867,7 +10617,7 @@
 
     iget-wide v2, v0, Lcom/android/camera/CameraThread;->mCaptureDuration:J
 
-    move-object/from16 v0, v19
+    move-object/from16 v0, v20
 
     iput-wide v2, v0, Lcom/android/camera/io/SaveVideoTask;->duration:J
 
@@ -9875,7 +10625,7 @@
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFileFormat:Lcom/android/camera/io/FileFormat;
 
-    move-object/from16 v0, v19
+    move-object/from16 v0, v20
 
     iput-object v2, v0, Lcom/android/camera/io/SaveVideoTask;->fileFormat:Lcom/android/camera/io/FileFormat;
 
@@ -9889,21 +10639,68 @@
 
     check-cast v2, Lcom/android/camera/io/StorageSlot;
 
-    move-object/from16 v0, v19
+    move-object/from16 v0, v20
 
     iput-object v2, v0, Lcom/android/camera/io/SaveVideoTask;->storageSlot:Lcom/android/camera/io/StorageSlot;
 
     move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/camera/CameraThread;->mMediaFileWriter:Lcom/android/camera/io/IMediaFileWriter;
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRequestedFilePath:Lcom/android/camera/io/Path;
+
+    if-eqz v2, :cond_b
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mRequestedFilePath:Lcom/android/camera/io/Path;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
+
+    invoke-virtual {v2, v3}, Lcom/android/camera/io/Path;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_b
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->getRequestedUri()Landroid/net/Uri;
+
+    move-result-object v19
+
+    const-string v2, "content"
+
+    invoke-virtual/range {v19 .. v19}, Landroid/net/Uri;->getScheme()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_b
 
     move-object/from16 v0, v19
+
+    move-object/from16 v1, v20
+
+    iput-object v0, v1, Lcom/android/camera/io/SaveVideoTask;->existentContentUri:Landroid/net/Uri;
+
+    :cond_b
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mMediaFileWriter:Lcom/android/camera/io/IMediaFileWriter;
+
+    move-object/from16 v0, v20
 
     invoke-virtual {v2, v0}, Lcom/android/camera/io/IMediaFileWriter;->saveMedia(Lcom/android/camera/io/SaveMediaTask;)Lcom/android/camera/Handle;
 
     move-result-object v2
 
-    if-nez v2, :cond_b
+    if-nez v2, :cond_c
 
     const-string v2, "CameraThread"
 
@@ -9911,7 +10708,7 @@
 
     invoke-static {v2, v3}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
 
-    :cond_b
+    :cond_c
     :goto_8
     move-object/from16 v0, p0
 
@@ -9931,7 +10728,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_15
+    if-eqz v2, :cond_16
 
     sget-object v2, Lcom/android/camera/RecordingState;->Ready:Lcom/android/camera/RecordingState;
 
@@ -9968,7 +10765,7 @@
 
     invoke-virtual {v2, v3, v4}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    if-eqz v16, :cond_c
+    if-eqz v16, :cond_d
 
     const-string v2, "CameraThread"
 
@@ -9982,12 +10779,12 @@
 
     invoke-virtual {v2}, Ljava/util/concurrent/Semaphore;->release()V
 
-    :cond_c
+    :cond_d
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mAudioManager:Lcom/android/camera/IAudioManager;
 
-    if-eqz v2, :cond_d
+    if-eqz v2, :cond_e
 
     move-object/from16 v0, p0
 
@@ -9997,7 +10794,7 @@
 
     invoke-interface {v2, v3}, Lcom/android/camera/IAudioManager;->setParameters(Ljava/lang/String;)V
 
-    :cond_d
+    :cond_e
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/camera/CameraThread;->isPreviewStarted:Lcom/android/camera/property/Property;
@@ -10006,7 +10803,7 @@
 
     iget-object v4, v0, Lcom/android/camera/CameraThread;->mPropertyOwnerKey:Ljava/lang/Object;
 
-    if-nez v16, :cond_16
+    if-nez v16, :cond_17
 
     const/4 v2, 0x1
 
@@ -10017,25 +10814,35 @@
 
     invoke-virtual {v3, v4, v2}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    if-eqz p2, :cond_f
+    if-eqz p2, :cond_10
 
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/CameraThread;->isShutterSoundNeeded()Z
 
     move-result v2
 
-    if-eqz v2, :cond_f
+    if-eqz v2, :cond_10
 
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mAudioManager:Lcom/android/camera/IAudioManager;
 
-    if-eqz v2, :cond_f
+    if-eqz v2, :cond_10
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->isAnswerPhoneCall()Z
+
+    move-result v2
+
+    if-nez v2, :cond_10
 
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingStopSoundHandle:Lcom/android/camera/Handle;
 
-    if-nez v2, :cond_e
+    if-nez v2, :cond_f
 
     move-object/from16 v0, p0
 
@@ -10051,7 +10858,7 @@
 
     iput-object v2, v0, Lcom/android/camera/CameraThread;->mRecordingStopSoundHandle:Lcom/android/camera/Handle;
 
-    :cond_e
+    :cond_f
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mAudioManager:Lcom/android/camera/IAudioManager;
@@ -10066,7 +10873,7 @@
 
     invoke-interface {v2, v3, v4, v5}, Lcom/android/camera/IAudioManager;->playInMemorySound(Lcom/android/camera/Handle;IZ)Lcom/android/camera/Handle;
 
-    :cond_f
+    :cond_10
     const/4 v15, 0x0
 
     const/4 v9, 0x0
@@ -10094,19 +10901,19 @@
 
     packed-switch v2, :pswitch_data_0
 
-    :cond_10
+    :cond_11
     :goto_b
     monitor-exit p0
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_1
 
-    if-eqz v15, :cond_18
+    if-eqz v15, :cond_19
 
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/CameraThread;->exit()V
 
     goto/16 :goto_0
 
-    :cond_11
+    :cond_12
     const-string v2, "CameraThread"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -10139,8 +10946,8 @@
 
     goto/16 :goto_0
 
-    :cond_12
-    const/16 v21, 0x0
+    :cond_13
+    const/16 v22, 0x0
 
     goto/16 :goto_3
 
@@ -10166,7 +10973,7 @@
 
     iget-object v2, v0, Lcom/android/camera/CameraThread;->mTimeoutController:Lcom/android/camera/debug/IOperationTimeoutController;
 
-    move-object/from16 v0, v21
+    move-object/from16 v0, v22
 
     invoke-virtual {v2, v0}, Lcom/android/camera/debug/IOperationTimeoutController;->stopTimer(Lcom/android/camera/Handle;)V
 
@@ -10179,17 +10986,17 @@
 
     iget-object v3, v0, Lcom/android/camera/CameraThread;->mTimeoutController:Lcom/android/camera/debug/IOperationTimeoutController;
 
-    if-eqz v3, :cond_13
+    if-eqz v3, :cond_14
 
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/camera/CameraThread;->mTimeoutController:Lcom/android/camera/debug/IOperationTimeoutController;
 
-    move-object/from16 v0, v21
+    move-object/from16 v0, v22
 
     invoke-virtual {v3, v0}, Lcom/android/camera/debug/IOperationTimeoutController;->stopTimer(Lcom/android/camera/Handle;)V
 
-    :cond_13
+    :cond_14
     throw v2
 
     :catch_1
@@ -10233,7 +11040,7 @@
     :catch_3
     move-exception v14
 
-    const/16 v20, 0x0
+    const/16 v21, 0x0
 
     const-string v2, "CameraThread"
 
@@ -10249,9 +11056,9 @@
 
     move-object/from16 v0, p0
 
-    iget-object v4, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
+    iget-object v4, v0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
 
-    invoke-virtual {v4}, Lcom/android/camera/io/DCFPath;->getFullPath()Ljava/lang/String;
+    invoke-virtual {v4}, Lcom/android/camera/io/Path;->getFullPath()Ljava/lang/String;
 
     move-result-object v4
 
@@ -10273,7 +11080,7 @@
 
     goto/16 :goto_7
 
-    :cond_14
+    :cond_15
     const-string v2, "CameraThread"
 
     const-string v3, "stopVideoRecordingInternal() - No IMediaFileWriter interface"
@@ -10282,12 +11089,12 @@
 
     goto/16 :goto_8
 
-    :cond_15
+    :cond_16
     sget-object v2, Lcom/android/camera/RecordingState;->Preparing:Lcom/android/camera/RecordingState;
 
     goto/16 :goto_9
 
-    :cond_16
+    :cond_17
     const/4 v2, 0x0
 
     goto/16 :goto_a
@@ -10298,7 +11105,7 @@
 
     iget-boolean v2, v0, Lcom/android/camera/CameraThread;->mPendingExit:Z
 
-    if-eqz v2, :cond_17
+    if-eqz v2, :cond_18
 
     const/4 v15, 0x1
 
@@ -10325,13 +11132,13 @@
 
     throw v2
 
-    :cond_17
+    :cond_18
     :try_start_8
     move-object/from16 v0, p0
 
     iget-boolean v2, v0, Lcom/android/camera/CameraThread;->mPendingCloseCamera:Z
 
-    if-eqz v2, :cond_10
+    if-eqz v2, :cond_11
 
     const/4 v9, 0x1
 
@@ -10345,7 +11152,7 @@
 
     goto/16 :goto_b
 
-    :cond_18
+    :cond_19
     if-eqz v9, :cond_0
 
     invoke-virtual/range {p0 .. p0}, Lcom/android/camera/CameraThread;->closeCamera()V
@@ -11046,6 +11853,63 @@
 
     move-result v2
 
+    iget-object v3, p0, Lcom/android/camera/CameraThread;->mode:Lcom/android/camera/property/Property;
+
+    sget-object v1, Lcom/android/camera/CameraMode;->Video:Lcom/android/camera/CameraMode;
+
+    invoke-virtual {v3, v1}, Lcom/android/camera/property/Property;->isValueEquals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_e
+
+    iget-object v3, p0, Lcom/android/camera/CameraThread;->recordingState:Lcom/android/camera/property/Property;
+
+    sget-object v1, Lcom/android/camera/RecordingState;->Started:Lcom/android/camera/RecordingState;
+
+    invoke-virtual {v3, v1}, Lcom/android/camera/property/Property;->isValueEquals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_e
+
+    iget-object v1, p0, Lcom/android/camera/CameraThread;->mSettings:Lcom/android/camera/CameraSettings;
+
+    iget-object v1, v1, Lcom/android/camera/CameraSettings;->forceImageQuality:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v1}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/Boolean;
+
+    invoke-virtual {v3}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_e
+
+    iget-object v1, p0, Lcom/android/camera/CameraThread;->mSettings:Lcom/android/camera/CameraSettings;
+
+    iget-object v1, v1, Lcom/android/camera/CameraSettings;->imageQuality:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v1}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/String;
+
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(Ljava/lang/String;)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/Integer;->intValue()I
+
+    move-result v2
+
+    :cond_e
+    iget-object v1, p0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
+
     invoke-virtual {v1, v2}, Lcom/android/camera/CameraController;->setJpegQuality(I)V
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->captureRotation:Lcom/android/camera/property/Property;
@@ -11070,7 +11934,7 @@
 
     move-result v1
 
-    if-nez v1, :cond_13
+    if-nez v1, :cond_14
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->cameraType:Lcom/android/camera/property/Property;
 
@@ -11084,7 +11948,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_12
+    if-eqz v1, :cond_13
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->cameraType:Lcom/android/camera/property/Property;
 
@@ -11131,7 +11995,7 @@
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mLocationManager:Lcom/android/camera/location/ILocationManager;
 
-    if-eqz v1, :cond_14
+    if-eqz v1, :cond_15
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mLocationManager:Lcom/android/camera/location/ILocationManager;
 
@@ -11156,7 +12020,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_15
+    if-eqz v1, :cond_16
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
@@ -11169,7 +12033,7 @@
     :goto_4
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mSettings:Lcom/android/camera/CameraSettings;
 
-    if-eqz v1, :cond_16
+    if-eqz v1, :cond_17
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mSettings:Lcom/android/camera/CameraSettings;
 
@@ -11185,13 +12049,27 @@
 
     move-result v1
 
-    if-eqz v1, :cond_16
+    if-eqz v1, :cond_17
 
-    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportRAWChip()Z
+    iget-object v3, p0, Lcom/android/camera/CameraThread;->mode:Lcom/android/camera/property/Property;
+
+    sget-object v1, Lcom/android/camera/CameraMode;->Video:Lcom/android/camera/CameraMode;
+
+    invoke-virtual {v3, v1}, Lcom/android/camera/property/Property;->isValueEquals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_17
+
+    iget-object v3, p0, Lcom/android/camera/CameraThread;->recordingState:Lcom/android/camera/property/Property;
+
+    sget-object v1, Lcom/android/camera/RecordingState;->Started:Lcom/android/camera/RecordingState;
+
+    invoke-virtual {v3, v1}, Lcom/android/camera/property/Property;->isValueEquals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-nez v1, :cond_16
+    if-nez v1, :cond_17
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
@@ -11244,7 +12122,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_17
+    if-eqz v1, :cond_18
 
     const-string v1, "on"
 
@@ -11255,7 +12133,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_e
+    if-eqz v1, :cond_f
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->cameraType:Lcom/android/camera/property/Property;
 
@@ -11269,7 +12147,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_18
+    if-eqz v1, :cond_19
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mSettings:Lcom/android/camera/CameraSettings;
 
@@ -11285,7 +12163,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_18
+    if-eqz v1, :cond_19
 
     const/4 v12, 0x1
 
@@ -11294,21 +12172,21 @@
 
     const-string v3, "save_mirror"
 
-    if-eqz v12, :cond_19
+    if-eqz v12, :cond_1a
 
     const-string v1, "true"
 
     :goto_8
     invoke-virtual {v2, v3, v1}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;Ljava/lang/String;)V
 
-    :cond_e
+    :cond_f
     iget-object v1, p0, Lcom/android/camera/CameraThread;->preparingParamsBeforeTakingPictureEvent:Lcom/android/camera/event/Event;
 
     invoke-virtual {v1}, Lcom/android/camera/event/Event;->hasHandlers()Z
 
     move-result v1
 
-    if-eqz v1, :cond_f
+    if-eqz v1, :cond_10
 
     new-instance v8, Lcom/android/camera/CameraParamsSetupEventArgs;
 
@@ -11324,7 +12202,7 @@
 
     invoke-virtual {v1, p0, v8}, Lcom/android/camera/event/Event;->raise(Ljava/lang/Object;Lcom/android/camera/event/EventArgs;)V
 
-    :cond_f
+    :cond_10
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
     invoke-virtual {v1}, Lcom/android/camera/CameraController;->doSetCameraParameters()V
@@ -11355,7 +12233,7 @@
     add-int/lit8 v10, v1, -0x1
 
     :goto_9
-    if-ltz v10, :cond_10
+    if-ltz v10, :cond_11
 
     invoke-interface {v7, v10}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
@@ -11377,7 +12255,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_1a
+    if-eqz v1, :cond_1b
 
     const-string v2, "CameraThread"
 
@@ -11397,8 +12275,8 @@
 
     const/4 v11, 0x1
 
-    :cond_10
-    if-nez v11, :cond_11
+    :cond_11
+    if-nez v11, :cond_12
 
     const-string v1, "CameraThread"
 
@@ -11412,7 +12290,7 @@
 
     invoke-direct {p0}, Lcom/android/camera/CameraThread;->takePicture()V
 
-    :cond_11
+    :cond_12
     iget-object v1, p0, Lcom/android/camera/CameraThread;->captureStartedEvent:Lcom/android/camera/event/Event;
 
     new-instance v2, Lcom/android/camera/CaptureEventArgs;
@@ -11434,7 +12312,7 @@
 
     goto/16 :goto_0
 
-    :cond_12
+    :cond_13
     iget-object v1, p0, Lcom/android/camera/CameraThread;->cameraType:Lcom/android/camera/property/Property;
 
     invoke-virtual {v1}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
@@ -11451,7 +12329,7 @@
 
     goto/16 :goto_2
 
-    :cond_13
+    :cond_14
     const-string v1, "CameraThread"
 
     const-string v2, "takePictureInternal() - Set rotation landscape while 3D photo mode"
@@ -11462,7 +12340,7 @@
 
     goto/16 :goto_2
 
-    :cond_14
+    :cond_15
     const/4 v1, 0x0
 
     iput-object v1, p0, Lcom/android/camera/CameraThread;->mLocation:Landroid/location/Location;
@@ -11475,7 +12353,7 @@
 
     goto/16 :goto_3
 
-    :cond_15
+    :cond_16
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
     const-string v2, "img-timestamp"
@@ -11486,7 +12364,7 @@
 
     goto/16 :goto_4
 
-    :cond_16
+    :cond_17
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mCamController:Lcom/android/camera/CameraController;
 
     const-string v2, "postproc-enable-imboost"
@@ -11505,22 +12383,22 @@
 
     goto/16 :goto_5
 
-    :cond_17
+    :cond_18
     const-string v1, "off"
 
     goto/16 :goto_6
 
-    :cond_18
+    :cond_19
     const/4 v12, 0x0
 
     goto/16 :goto_7
 
-    :cond_19
+    :cond_1a
     const-string v1, "false"
 
     goto/16 :goto_8
 
-    :cond_1a
+    :cond_1b
     add-int/lit8 v10, v10, -0x1
 
     goto/16 :goto_9
@@ -11594,6 +12472,28 @@
 .method private toggleStorageSlot()V
     .locals 4
 
+    iget-object v1, p0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    if-eqz v1, :cond_0
+
+    iget-object v1, p0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v1}, Lcom/android/camera/HTCCamera;->isStorageSlotLocked()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    const-string v1, "CameraThread"
+
+    const-string v2, "toggleStorageSlot() - Storage slot settings is locked"
+
+    invoke-static {v1, v2}, Lcom/android/camera/LOG;->W(Ljava/lang/String;Ljava/lang/String;)V
+
+    :goto_0
+    return-void
+
+    :cond_0
     iget-object v1, p0, Lcom/android/camera/CameraThread;->storageSlot:Lcom/android/camera/property/Property;
 
     invoke-virtual {v1}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
@@ -11606,7 +12506,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_1
+    if-eqz v1, :cond_2
 
     sget-object v1, Lcom/android/camera/io/StorageSlot;->STORAGE_CARD:Lcom/android/camera/io/StorageSlot;
 
@@ -11614,7 +12514,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_1
 
     const-string v1, "CameraThread"
 
@@ -11648,10 +12548,9 @@
 
     invoke-virtual {v1, v2, v3}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    :goto_0
-    return-void
+    goto :goto_0
 
-    :cond_0
+    :cond_1
     const-string v1, "CameraThread"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -11686,12 +12585,12 @@
 
     goto :goto_0
 
-    :cond_1
+    :cond_2
     invoke-static {}, Lcom/android/camera/io/StorageSlot;->getFirstInternalMemorySlot()Lcom/android/camera/io/StorageSlot;
 
     move-result-object v0
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_3
 
     const-string v1, "CameraThread"
 
@@ -11721,9 +12620,9 @@
 
     invoke-virtual {v1, v2, v0}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    :cond_2
+    :cond_3
     const-string v1, "CameraThread"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -11756,7 +12655,7 @@
 
     invoke-virtual {v1, v2, v3}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
 
-    goto :goto_0
+    goto/16 :goto_0
 .end method
 
 
@@ -13339,7 +14238,7 @@
 
     move-result-object v4
 
-    if-ne v4, p0, :cond_1
+    if-ne v4, p0, :cond_3
 
     const-string v4, "CameraThread"
 
@@ -13365,11 +14264,11 @@
 
     move-result v4
 
-    if-nez v4, :cond_0
+    if-nez v4, :cond_2
 
     const-string v4, "CameraThread"
 
-    const-string v5, "Use default method to delete latest media"
+    const-string v5, "deleteLatestMedia() - Use default method to delete latest media"
 
     invoke-static {v4, v5}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -13379,6 +14278,43 @@
 
     iget-object v0, v4, Lcom/android/camera/MediaInfo;->contentUri:Landroid/net/Uri;
 
+    if-nez v0, :cond_0
+
+    const-string v4, "CameraThread"
+
+    const-string v5, "deleteLatestMedia() - No latest content URI"
+
+    invoke-static {v4, v5}, Lcom/android/camera/LOG;->W(Ljava/lang/String;Ljava/lang/String;)V
+
+    :goto_0
+    return-void
+
+    :cond_0
+    iget-object v4, p0, Lcom/android/camera/CameraThread;->mRequestedFilePath:Lcom/android/camera/io/Path;
+
+    if-eqz v4, :cond_1
+
+    iget-object v4, p0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v4}, Lcom/android/camera/HTCCamera;->getRequestedUri()Landroid/net/Uri;
+
+    move-result-object v4
+
+    invoke-virtual {v0, v4}, Landroid/net/Uri;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_1
+
+    const-string v4, "CameraThread"
+
+    const-string v5, "deleteLatestMedia() - Latest content URI is requested from other AP, ingore deletion"
+
+    invoke-static {v4, v5}, Lcom/android/camera/LOG;->W(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto :goto_0
+
+    :cond_1
     new-instance v3, Lcom/android/camera/CameraThread$15;
 
     const-string v4, "Default media deletion thread"
@@ -13405,16 +14341,15 @@
 
     packed-switch v4, :pswitch_data_0
 
-    :cond_0
-    :goto_0
+    :cond_2
+    :goto_1
     const-string v4, "CameraThread"
 
     const-string v5, "deleteLatestMedia() - end sync"
 
     invoke-static {v4, v5}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
-    :goto_1
-    return-void
+    goto :goto_0
 
     :pswitch_0
     iget-object v4, p0, Lcom/android/camera/CameraThread;->mSettings:Lcom/android/camera/CameraSettings;
@@ -13423,7 +14358,7 @@
 
     invoke-static {v4, v5}, Lcom/android/camera/io/DCFUtility;->restoreFileCounter(Lcom/android/camera/Settings;Lcom/android/camera/io/DCFInfo;)V
 
-    goto :goto_0
+    goto :goto_1
 
     :pswitch_1
     iget-object v4, p0, Lcom/android/camera/CameraThread;->mSettings:Lcom/android/camera/CameraSettings;
@@ -13432,12 +14367,12 @@
 
     invoke-static {v4, v5}, Lcom/android/camera/io/DCFUtility;->restoreFileCounter(Lcom/android/camera/Settings;Lcom/android/camera/io/DCFInfo;)V
 
-    goto :goto_0
+    goto :goto_1
 
-    :cond_1
+    :cond_3
     iget-object v4, p0, Lcom/android/camera/CameraThread;->mCameraHandler:Lcom/android/camera/CameraThread$MainHandler;
 
-    if-eqz v4, :cond_2
+    if-eqz v4, :cond_4
 
     const-string v4, "CameraThread"
 
@@ -13457,16 +14392,16 @@
 
     invoke-static {v4, v5}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
-    goto :goto_1
+    goto :goto_0
 
-    :cond_2
+    :cond_4
     const-string v4, "CameraThread"
 
     const-string v5, "Cannot delete media because there is no handler"
 
     invoke-static {v4, v5}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
 
-    goto :goto_1
+    goto :goto_0
 
     nop
 
@@ -14262,7 +15197,7 @@
 .method public final getRecordingVideoFilePath()Lcom/android/camera/io/Path;
     .locals 1
 
-    iget-object v0, p0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/DCFPath;
+    iget-object v0, p0, Lcom/android/camera/CameraThread;->mRecordingVideoFilePath:Lcom/android/camera/io/Path;
 
     return-object v0
 .end method
@@ -14835,6 +15770,14 @@
     goto :goto_0
 .end method
 
+.method public final isRunning()Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/android/camera/CameraThread;->mIsRunning:Z
+
+    return v0
+.end method
+
 .method public final isShutterSoundNeeded()Z
     .locals 1
 
@@ -15218,17 +16161,14 @@
 .end method
 
 .method public run()V
-    .locals 8
+    .locals 6
 
-    const/4 v7, 0x0
+    const/4 v5, 0x0
 
-    const/4 v6, 0x4
-
-    const/4 v5, 0x1
-
+    :try_start_0
     const-string v1, "CameraThread"
 
-    const-string v2, "*************************************** run"
+    const-string v2, "***** START *****"
 
     invoke-static {v1, v2}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -15299,7 +16239,9 @@
 
     iget-object v2, p0, Lcom/android/camera/CameraThread;->mPropertyOwnerKey:Ljava/lang/Object;
 
-    invoke-static {v1, v2, v5}, Lcom/android/camera/property/Property;->createAsReadOnlyBoolean(Ljava/lang/String;Ljava/lang/Object;Z)Lcom/android/camera/property/Property;
+    const/4 v3, 0x1
+
+    invoke-static {v1, v2, v3}, Lcom/android/camera/property/Property;->createAsReadOnlyBoolean(Ljava/lang/String;Ljava/lang/Object;Z)Lcom/android/camera/property/Property;
 
     move-result-object v1
 
@@ -15389,9 +16331,13 @@
 
     const-string v1, "CameraThread.PreviewSize"
 
-    iget-object v2, p0, Lcom/android/camera/CameraThread;->mPropertyOwnerKey:Ljava/lang/Object;
+    const/4 v2, 0x1
 
-    invoke-static {v1, v5, v2, v7}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+    iget-object v3, p0, Lcom/android/camera/CameraThread;->mPropertyOwnerKey:Ljava/lang/Object;
+
+    const/4 v4, 0x0
+
+    invoke-static {v1, v2, v3, v4}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
 
     move-result-object v1
 
@@ -15449,9 +16395,13 @@
 
     const-string v1, "CameraThread.ZoomRange"
 
-    iget-object v2, p0, Lcom/android/camera/CameraThread;->mPropertyOwnerKey:Ljava/lang/Object;
+    const/4 v2, 0x1
 
-    invoke-static {v1, v5, v2, v7}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+    iget-object v3, p0, Lcom/android/camera/CameraThread;->mPropertyOwnerKey:Ljava/lang/Object;
+
+    const/4 v4, 0x0
+
+    invoke-static {v1, v2, v3, v4}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
 
     move-result-object v1
 
@@ -15793,11 +16743,15 @@
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->isRecording:Lcom/android/camera/property/Property;
 
-    invoke-virtual {v1, v6}, Lcom/android/camera/property/Property;->enableLogs(I)V
+    const/4 v2, 0x4
+
+    invoke-virtual {v1, v2}, Lcom/android/camera/property/Property;->enableLogs(I)V
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->takingPictureState:Lcom/android/camera/property/Property;
 
-    invoke-virtual {v1, v6}, Lcom/android/camera/property/Property;->enableLogs(I)V
+    const/4 v2, 0x4
+
+    invoke-virtual {v1, v2}, Lcom/android/camera/property/Property;->enableLogs(I)V
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->previewFrameRetrievedEvent:Lcom/android/camera/event/Event;
 
@@ -15807,7 +16761,9 @@
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->recordingState:Lcom/android/camera/property/Property;
 
-    invoke-virtual {v1, v6}, Lcom/android/camera/property/Property;->enableLogs(I)V
+    const/4 v2, 0x4
+
+    invoke-virtual {v1, v2}, Lcom/android/camera/property/Property;->enableLogs(I)V
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->cameraOpenFailedEvent:Lcom/android/camera/event/Event;
 
@@ -15837,7 +16793,9 @@
 
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mComponentManager:Lcom/android/camera/component/CameraThreadComponentManager;
 
-    invoke-virtual {v1, v5}, Lcom/android/camera/component/CameraThreadComponentManager;->enableAutoInitialization(Z)V
+    const/4 v2, 0x1
+
+    invoke-virtual {v1, v2}, Lcom/android/camera/component/CameraThreadComponentManager;->enableAutoInitialization(Z)V
 
     invoke-direct {p0}, Lcom/android/camera/CameraThread;->linkToRequiredServiceComponents()Z
 
@@ -15850,11 +16808,22 @@
     const-string v2, "[Fatal] Some required interface is missing"
 
     invoke-static {v1, v2}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    const-string v1, "CameraThread"
+
+    const-string v2, "***** STOP *****"
+
+    invoke-static {v1, v2}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+
+    iput-boolean v5, p0, Lcom/android/camera/CameraThread;->mIsRunning:Z
 
     :goto_0
     return-void
 
     :cond_1
+    :try_start_1
     iget-object v1, p0, Lcom/android/camera/CameraThread;->mComponentManager:Lcom/android/camera/component/CameraThreadComponentManager;
 
     const-class v2, Lcom/android/camera/debug/IOperationTimeoutController;
@@ -15911,20 +16880,49 @@
     invoke-virtual {p0, v1}, Lcom/android/camera/CameraThread;->openCamera(Lcom/android/camera/CameraType;)Lcom/android/camera/Handle;
 
     :goto_2
+    invoke-direct {p0}, Lcom/android/camera/CameraThread;->initializeStorageSlot()V
+
     invoke-static {}, Landroid/os/Looper;->loop()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    const-string v1, "CameraThread"
+
+    const-string v2, "***** STOP *****"
+
+    invoke-static {v1, v2}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+
+    iput-boolean v5, p0, Lcom/android/camera/CameraThread;->mIsRunning:Z
 
     goto :goto_0
 
     :cond_4
+    :try_start_2
     const-string v1, "CameraThread"
 
     const-string v2, "Cannot notify UI that camera thread is running, because there is no UI handler"
 
     invoke-static {v1, v2}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     goto :goto_1
 
+    :catchall_0
+    move-exception v1
+
+    const-string v2, "CameraThread"
+
+    const-string v3, "***** STOP *****"
+
+    invoke-static {v2, v3}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+
+    iput-boolean v5, p0, Lcom/android/camera/CameraThread;->mIsRunning:Z
+
+    throw v1
+
     :cond_5
+    :try_start_3
     sget-object v1, Lcom/android/camera/CameraType;->Front:Lcom/android/camera/CameraType;
 
     iget-boolean v1, v1, Lcom/android/camera/CameraType;->isSupported:Z
@@ -15943,6 +16941,8 @@
     const-string v2, "Cannot open camera first, because there is no supported camera"
 
     invoke-static {v1, v2}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     goto :goto_2
 .end method
@@ -16064,7 +17064,9 @@
 
     if-eq v0, v1, :cond_6
 
-    invoke-static {}, Lcom/android/camera/IntentManager;->getSaveUri()Landroid/net/Uri;
+    iget-object v0, p0, Lcom/android/camera/CameraThread;->mCameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getRequestedUri()Landroid/net/Uri;
 
     move-result-object v0
 

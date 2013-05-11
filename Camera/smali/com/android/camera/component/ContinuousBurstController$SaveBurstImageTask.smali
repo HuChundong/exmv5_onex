@@ -240,6 +240,21 @@
     return-object v2
 .end method
 
+.method protected bridge synthetic getAvailableFileName()Lcom/android/camera/io/Path;
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    invoke-virtual {p0}, Lcom/android/camera/component/ContinuousBurstController$SaveBurstImageTask;->getAvailableFileName()Lcom/android/camera/io/DCFPath;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
 .method protected onMediaSaveFailed(Lcom/android/camera/io/Path;Ljava/lang/Throwable;)V
     .locals 6
 

@@ -56,6 +56,8 @@
 
 .field public static PHOTO_16_9_1280x720:Lcom/android/camera/Resolution;
 
+.field public static PHOTO_16_9_1456x828:Lcom/android/camera/Resolution;
+
 .field public static PHOTO_16_9_1600x896:Lcom/android/camera/Resolution;
 
 .field public static PHOTO_16_9_1920x1088:Lcom/android/camera/Resolution;
@@ -72,6 +74,8 @@
 
 .field public static PHOTO_4_3_1440x1088:Lcom/android/camera/Resolution;
 
+.field public static PHOTO_4_3_1456x1088:Lcom/android/camera/Resolution;
+
 .field public static PHOTO_4_3_1600x1200:Lcom/android/camera/Resolution;
 
 .field public static PHOTO_4_3_2048x1536:Lcom/android/camera/Resolution;
@@ -87,6 +91,8 @@
 .field public static PHOTO_4_3_960x720:Lcom/android/camera/Resolution;
 
 .field public static PHOTO_5_3_1280x768:Lcom/android/camera/Resolution;
+
+.field public static PHOTO_5_3_1456x880:Lcom/android/camera/Resolution;
 
 .field public static PHOTO_5_3_2048x1216:Lcom/android/camera/Resolution;
 
@@ -242,7 +248,7 @@
 
     const v3, 0x7f0a0134
 
-    const v4, 0x7f0a017a
+    const v4, 0x7f0a017d
 
     const-string v5, "1080p"
 
@@ -262,7 +268,7 @@
 
     const v3, 0x7f0a0133
 
-    const v4, 0x7f0a017b
+    const v4, 0x7f0a017e
 
     const-string v5, "720p"
 
@@ -282,7 +288,7 @@
 
     const v3, 0x7f0a0132
 
-    const v4, 0x7f0a017c
+    const v4, 0x7f0a017f
 
     const-string v5, "QHD"
 
@@ -302,7 +308,7 @@
 
     const v3, 0x7f0a0131
 
-    const v4, 0x7f0a017d
+    const v4, 0x7f0a0180
 
     const-string v5, "WVGA"
 
@@ -322,7 +328,7 @@
 
     const v3, 0x7f0a012f
 
-    const v4, 0x7f0a017e
+    const v4, 0x7f0a0181
 
     const-string v5, "HVGA"
 
@@ -342,7 +348,7 @@
 
     const v3, 0x7f0a0138
 
-    const v4, 0x7f0a0180
+    const v4, 0x7f0a0183
 
     const-string v5, "VGA"
 
@@ -362,7 +368,7 @@
 
     const v3, 0x7f0a0130
 
-    const v4, 0x7f0a017f
+    const v4, 0x7f0a0182
 
     const-string v5, "HVGA480"
 
@@ -382,7 +388,7 @@
 
     const v3, 0x7f0a012e
 
-    const v4, 0x7f0a0181
+    const v4, 0x7f0a0184
 
     const-string v5, "QVGA"
 
@@ -402,7 +408,7 @@
 
     const v3, 0x7f0a012d
 
-    const v4, 0x7f0a0182
+    const v4, 0x7f0a0185
 
     const-string v5, "QCIF"
 
@@ -422,7 +428,7 @@
 
     const v3, 0x7f0a0133
 
-    const v4, 0x7f0a0183
+    const v4, 0x7f0a0186
 
     const-string v5, "720p_ONLINE"
 
@@ -442,7 +448,7 @@
 
     const v3, 0x7f0a0134
 
-    const v4, 0x7f0a0184
+    const v4, 0x7f0a0187
 
     const-string v5, "1080p_ONLINE"
 
@@ -462,7 +468,7 @@
 
     const v3, 0x7f0a0138
 
-    const v4, 0x7f0a0185
+    const v4, 0x7f0a0188
 
     const-string v5, "VGA_ONLINE"
 
@@ -482,7 +488,7 @@
 
     const v3, 0x7f0a012e
 
-    const v4, 0x7f0a0178
+    const v4, 0x7f0a017b
 
     const-string v5, "QVGA"
 
@@ -502,7 +508,7 @@
 
     const v3, 0x7f0a012d
 
-    const v4, 0x7f0a0179
+    const v4, 0x7f0a017c
 
     const-string v5, "QCIF"
 
@@ -582,7 +588,7 @@
 
     const v3, 0x7f0a012e
 
-    const v4, 0x7f0a018f
+    const v4, 0x7f0a0192
 
     const-string v5, "QVGA"
 
@@ -598,7 +604,7 @@
 
     const v3, 0x7f0a0138
 
-    const v4, 0x7f0a018e
+    const v4, 0x7f0a0191
 
     const-string v5, "VGA"
 
@@ -614,7 +620,7 @@
 
     const v3, 0x7f0a0138
 
-    const v4, 0x7f0a018d
+    const v4, 0x7f0a0190
 
     const-string v5, "VGA"
 
@@ -630,7 +636,7 @@
 
     const v3, 0x7f0a013a
 
-    const v4, 0x7f0a018b
+    const v4, 0x7f0a018e
 
     const-string v5, "SXGA"
 
@@ -646,7 +652,7 @@
 
     const v3, 0x7f0a0139
 
-    const v4, 0x7f0a018c
+    const v4, 0x7f0a018f
 
     const-string v5, "Capture_720P_4_3"
 
@@ -662,7 +668,7 @@
 
     const v3, 0x7f0a013b
 
-    const v4, 0x7f0a018a
+    const v4, 0x7f0a018d
 
     const-string v5, "UXGA"
 
@@ -678,7 +684,7 @@
 
     const v3, 0x7f0a013c
 
-    const v4, 0x7f0a0189
+    const v4, 0x7f0a018c
 
     const-string v5, "THREE_MEGA"
 
@@ -694,7 +700,7 @@
 
     const v3, 0x7f0a013d
 
-    const v4, 0x7f0a0188
+    const v4, 0x7f0a018b
 
     const-string v5, "FOUR_MEGA"
 
@@ -710,7 +716,7 @@
 
     const v3, 0x7f0a013e
 
-    const v4, 0x7f0a0187
+    const v4, 0x7f0a018a
 
     const-string v5, "FIVE_MEGA"
 
@@ -726,7 +732,7 @@
 
     const v3, 0x7f0a013f
 
-    const v4, 0x7f0a0186
+    const v4, 0x7f0a0189
 
     const-string v5, "EIGHT_MEGA"
 
@@ -742,7 +748,7 @@
 
     const v3, 0x7f0a0140
 
-    const v4, 0x7f0a0192
+    const v4, 0x7f0a0195
 
     const-string v5, "PHOTO_4_3_3264x2448"
 
@@ -758,7 +764,7 @@
 
     const v3, 0x7f0a0141
 
-    const v4, 0x7f0a0193
+    const v4, 0x7f0a0196
 
     const-string v5, "PHOTO_4_3_2592x1952"
 
@@ -774,7 +780,7 @@
 
     const v3, 0x7f0a0142
 
-    const v4, 0x7f0a0194
+    const v4, 0x7f0a0197
 
     const-string v5, "PHOTO_4_3_2048x1536"
 
@@ -790,7 +796,7 @@
 
     const v3, 0x7f0a0143
 
-    const v4, 0x7f0a0195
+    const v4, 0x7f0a0198
 
     const-string v5, "PHOTO_4_3_1600x1200"
 
@@ -800,13 +806,29 @@
 
     new-instance v0, Lcom/android/camera/Resolution;
 
-    const/16 v1, 0x5a0
+    const/16 v1, 0x5b0
 
     const/16 v2, 0x440
 
     const v3, 0x7f0a0144
 
-    const v4, 0x7f0a0196
+    const v4, 0x7f0a0199
+
+    const-string v5, "PHOTO_4_3_1456x1088"
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/Resolution;-><init>(IIIILjava/lang/String;)V
+
+    sput-object v0, Lcom/android/camera/Resolution;->PHOTO_4_3_1456x1088:Lcom/android/camera/Resolution;
+
+    new-instance v0, Lcom/android/camera/Resolution;
+
+    const/16 v1, 0x5a0
+
+    const/16 v2, 0x440
+
+    const v3, 0x7f0a0145
+
+    const v4, 0x7f0a019a
 
     const-string v5, "PHOTO_4_3_1440x1088"
 
@@ -820,9 +842,9 @@
 
     const/16 v2, 0x3c0
 
-    const v3, 0x7f0a0145
+    const v3, 0x7f0a0146
 
-    const v4, 0x7f0a0197
+    const v4, 0x7f0a019b
 
     const-string v5, "PHOTO_4_3_1280x960"
 
@@ -836,9 +858,9 @@
 
     const/16 v2, 0x2d0
 
-    const v3, 0x7f0a0146
+    const v3, 0x7f0a0147
 
-    const v4, 0x7f0a0198
+    const v4, 0x7f0a019c
 
     const-string v5, "PHOTO_4_3_960x720"
 
@@ -852,9 +874,9 @@
 
     const/16 v2, 0x1e0
 
-    const v3, 0x7f0a0147
+    const v3, 0x7f0a0148
 
-    const v4, 0x7f0a0199
+    const v4, 0x7f0a019d
 
     const-string v5, "PHOTO_4_3_640x480"
 
@@ -868,9 +890,9 @@
 
     const/16 v2, 0x400
 
-    const v3, 0x7f0a0148
+    const v3, 0x7f0a0149
 
-    const v4, 0x7f0a0191
+    const v4, 0x7f0a0194
 
     const-string v5, "SXGA_5_4"
 
@@ -884,9 +906,9 @@
 
     const/16 v2, 0x110
 
-    const v3, 0x7f0a0149
+    const v3, 0x7f0a014a
 
-    const v4, 0x7f0a0190
+    const v4, 0x7f0a0193
 
     const-string v5, "CONTACT_1_1_272x272"
 
@@ -900,9 +922,9 @@
 
     const/16 v2, 0x2d0
 
-    const v3, 0x7f0a0149
+    const v3, 0x7f0a014a
 
-    const v4, 0x7f0a0190
+    const v4, 0x7f0a0193
 
     const-string v5, "CONTACT_1_1_720x720"
 
@@ -916,9 +938,9 @@
 
     const/4 v2, 0x0
 
-    const v3, 0x7f0a0149
+    const v3, 0x7f0a014a
 
-    const v4, 0x7f0a0190
+    const v4, 0x7f0a0193
 
     const-string v5, "SQUARE_STYLE"
 
@@ -932,9 +954,9 @@
 
     const/16 v2, 0x1a0
 
-    const v3, 0x7f0a014a
+    const v3, 0x7f0a014b
 
-    const v4, 0x7f0a01a0
+    const v4, 0x7f0a01a4
 
     const-string v5, "VGA_3_2"
 
@@ -950,9 +972,9 @@
 
     const/16 v2, 0x350
 
-    const v3, 0x7f0a014b
+    const v3, 0x7f0a014c
 
-    const v4, 0x7f0a019f
+    const v4, 0x7f0a01a3
 
     const-string v5, "SXGA_3_2"
 
@@ -968,9 +990,9 @@
 
     const/16 v2, 0x420
 
-    const v3, 0x7f0a014c
+    const v3, 0x7f0a014d
 
-    const v4, 0x7f0a019e
+    const v4, 0x7f0a01a2
 
     const-string v5, "UXGA_3_2"
 
@@ -986,9 +1008,9 @@
 
     const/16 v2, 0x550
 
-    const v3, 0x7f0a014d
+    const v3, 0x7f0a014e
 
-    const v4, 0x7f0a019d
+    const v4, 0x7f0a01a1
 
     const-string v5, "THREE_MEGA_3_2"
 
@@ -1004,9 +1026,9 @@
 
     const/16 v2, 0x600
 
-    const v3, 0x7f0a014e
+    const v3, 0x7f0a014f
 
-    const v4, 0x7f0a019c
+    const v4, 0x7f0a01a0
 
     const-string v5, "FOUR_MEGA_3_2"
 
@@ -1022,9 +1044,9 @@
 
     const/16 v2, 0x6c0
 
-    const v3, 0x7f0a014f
+    const v3, 0x7f0a0150
 
-    const v4, 0x7f0a019b
+    const v4, 0x7f0a019f
 
     const-string v5, "FIVE_3_2"
 
@@ -1040,9 +1062,9 @@
 
     const/16 v2, 0x880
 
-    const v3, 0x7f0a0150
+    const v3, 0x7f0a0151
 
-    const v4, 0x7f0a019a
+    const v4, 0x7f0a019e
 
     const-string v5, "EIGHT_MEGA_3_2"
 
@@ -1058,9 +1080,9 @@
 
     const/16 v2, 0x180
 
-    const v3, 0x7f0a0151
+    const v3, 0x7f0a0152
 
-    const v4, 0x7f0a01a5
+    const v4, 0x7f0a01a9
 
     const-string v5, "VGA_5_3"
 
@@ -1076,9 +1098,9 @@
 
     const/16 v2, 0x300
 
-    const v3, 0x7f0a0152
+    const v3, 0x7f0a0153
 
-    const v4, 0x7f0a01a4
+    const v4, 0x7f0a01a8
 
     const-string v5, "SXGA_5_3"
 
@@ -1094,9 +1116,9 @@
 
     const/16 v2, 0x4c0
 
-    const v3, 0x7f0a0153
+    const v3, 0x7f0a0154
 
-    const v4, 0x7f0a01a3
+    const v4, 0x7f0a01a7
 
     const-string v5, "THREE_MEGA_5_3"
 
@@ -1112,9 +1134,9 @@
 
     const/16 v2, 0x610
 
-    const v3, 0x7f0a0154
+    const v3, 0x7f0a0155
 
-    const v4, 0x7f0a01a2
+    const v4, 0x7f0a01a6
 
     const-string v5, "FIVE_5_3"
 
@@ -1130,9 +1152,9 @@
 
     const/16 v2, 0x7a0
 
-    const v3, 0x7f0a0155
+    const v3, 0x7f0a0156
 
-    const v4, 0x7f0a01a1
+    const v4, 0x7f0a01a5
 
     const-string v5, "EIGHT_MEGA_5_3"
 
@@ -1148,9 +1170,9 @@
 
     const/16 v2, 0x170
 
-    const v3, 0x7f0a0156
+    const v3, 0x7f0a0157
 
-    const v4, 0x7f0a01ab
+    const v4, 0x7f0a01af
 
     const-string v5, "VGA_16_9"
 
@@ -1166,9 +1188,9 @@
 
     const/16 v2, 0x2d0
 
-    const v3, 0x7f0a0157
+    const v3, 0x7f0a0158
 
-    const v4, 0x7f0a01aa
+    const v4, 0x7f0a01ae
 
     const-string v5, "SXGA_16_9"
 
@@ -1184,9 +1206,9 @@
 
     const/16 v2, 0x380
 
-    const v3, 0x7f0a0158
+    const v3, 0x7f0a0159
 
-    const v4, 0x7f0a01a9
+    const v4, 0x7f0a01ad
 
     const-string v5, "UXGA_16_9"
 
@@ -1202,9 +1224,9 @@
 
     const/16 v2, 0x480
 
-    const v3, 0x7f0a0159
+    const v3, 0x7f0a015a
 
-    const v4, 0x7f0a01a8
+    const v4, 0x7f0a01ac
 
     const-string v5, "THREE_MEGA_16_9"
 
@@ -1220,9 +1242,9 @@
 
     const/16 v2, 0x5b0
 
-    const v3, 0x7f0a015a
+    const v3, 0x7f0a015b
 
-    const v4, 0x7f0a01a7
+    const v4, 0x7f0a01ab
 
     const-string v5, "FIVE_16_9"
 
@@ -1238,9 +1260,9 @@
 
     const/16 v2, 0x730
 
-    const v3, 0x7f0a015b
+    const v3, 0x7f0a015c
 
-    const v4, 0x7f0a01a6
+    const v4, 0x7f0a01aa
 
     const-string v5, "EIGHT_16_9"
 
@@ -1256,9 +1278,9 @@
 
     const/16 v2, 0x7a0
 
-    const v3, 0x7f0a015c
+    const v3, 0x7f0a015d
 
-    const v4, 0x7f0a01ac
+    const v4, 0x7f0a01b0
 
     const-string v5, "PHOTO_5_3_3264x1952"
 
@@ -1274,9 +1296,9 @@
 
     const/16 v2, 0x610
 
-    const v3, 0x7f0a015d
+    const v3, 0x7f0a015e
 
-    const v4, 0x7f0a01ad
+    const v4, 0x7f0a01b1
 
     const-string v5, "PHOTO_5_3_2592x1552"
 
@@ -1292,9 +1314,9 @@
 
     const/16 v2, 0x4c0
 
-    const v3, 0x7f0a015e
+    const v3, 0x7f0a015f
 
-    const v4, 0x7f0a01ae
+    const v4, 0x7f0a01b2
 
     const-string v5, "PHOTO_5_3_2048x1216"
 
@@ -1306,13 +1328,31 @@
 
     new-instance v0, Lcom/android/camera/Resolution;
 
+    const/16 v1, 0x5b0
+
+    const/16 v2, 0x370
+
+    const v3, 0x7f0a0160
+
+    const v4, 0x7f0a01b3
+
+    const-string v5, "PHOTO_5_3_1456x880"
+
+    const/4 v6, 0x1
+
+    invoke-direct/range {v0 .. v6}, Lcom/android/camera/Resolution;-><init>(IIIILjava/lang/String;Z)V
+
+    sput-object v0, Lcom/android/camera/Resolution;->PHOTO_5_3_1456x880:Lcom/android/camera/Resolution;
+
+    new-instance v0, Lcom/android/camera/Resolution;
+
     const/16 v1, 0x500
 
     const/16 v2, 0x300
 
-    const v3, 0x7f0a015f
+    const v3, 0x7f0a0161
 
-    const v4, 0x7f0a01af
+    const v4, 0x7f0a01b4
 
     const-string v5, "PHOTO_5_3_1280x768"
 
@@ -1328,9 +1368,9 @@
 
     const/16 v2, 0x180
 
-    const v3, 0x7f0a0160
+    const v3, 0x7f0a0162
 
-    const v4, 0x7f0a01b0
+    const v4, 0x7f0a01b5
 
     const-string v5, "PHOTO_5_3_640x384"
 
@@ -1346,9 +1386,9 @@
 
     const/16 v2, 0x730
 
-    const v3, 0x7f0a0161
+    const v3, 0x7f0a0163
 
-    const v4, 0x7f0a01b1
+    const v4, 0x7f0a01b6
 
     const-string v5, "PHOTO_16_9_3264x1840"
 
@@ -1364,9 +1404,9 @@
 
     const/16 v2, 0x5b0
 
-    const v3, 0x7f0a0162
+    const v3, 0x7f0a0164
 
-    const v4, 0x7f0a01b2
+    const v4, 0x7f0a01b7
 
     const-string v5, "PHOTO_16_9_2592x1456"
 
@@ -1382,9 +1422,9 @@
 
     const/16 v2, 0x480
 
-    const v3, 0x7f0a0163
+    const v3, 0x7f0a0165
 
-    const v4, 0x7f0a01b3
+    const v4, 0x7f0a01b8
 
     const-string v5, "PHOTO_16_9_2048x1152"
 
@@ -1400,9 +1440,9 @@
 
     const/16 v2, 0x440
 
-    const v3, 0x7f0a0164
+    const v3, 0x7f0a0166
 
-    const v4, 0x7f0a01b4
+    const v4, 0x7f0a01b9
 
     const-string v5, "PHOTO_16_9_1920x1088"
 
@@ -1418,9 +1458,9 @@
 
     const/16 v2, 0x380
 
-    const v3, 0x7f0a0165
+    const v3, 0x7f0a0167
 
-    const v4, 0x7f0a01b5
+    const v4, 0x7f0a01ba
 
     const-string v5, "PHOTO_16_9_1600x896"
 
@@ -1432,13 +1472,31 @@
 
     new-instance v0, Lcom/android/camera/Resolution;
 
+    const/16 v1, 0x5b0
+
+    const/16 v2, 0x33c
+
+    const v3, 0x7f0a0168
+
+    const v4, 0x7f0a01bb
+
+    const-string v5, "PHOTO_16_9_1456x828"
+
+    const/4 v6, 0x1
+
+    invoke-direct/range {v0 .. v6}, Lcom/android/camera/Resolution;-><init>(IIIILjava/lang/String;Z)V
+
+    sput-object v0, Lcom/android/camera/Resolution;->PHOTO_16_9_1456x828:Lcom/android/camera/Resolution;
+
+    new-instance v0, Lcom/android/camera/Resolution;
+
     const/16 v1, 0x500
 
     const/16 v2, 0x2d0
 
-    const v3, 0x7f0a0166
+    const v3, 0x7f0a0169
 
-    const v4, 0x7f0a01b6
+    const v4, 0x7f0a01bc
 
     const-string v5, "PHOTO_16_9_1280x720"
 
@@ -1454,9 +1512,9 @@
 
     const/16 v2, 0x170
 
-    const v3, 0x7f0a0167
+    const v3, 0x7f0a016a
 
-    const v4, 0x7f0a01b7
+    const v4, 0x7f0a01bd
 
     const-string v5, "PHOTO_16_9_640x368"
 
@@ -1472,9 +1530,9 @@
 
     const/16 v2, 0x170
 
-    const v3, 0x7f0a0168
+    const v3, 0x7f0a016b
 
-    const v4, 0x7f0a01bb
+    const v4, 0x7f0a01c1
 
     const-string v5, "Tablet_VGA_16_9"
 
@@ -1490,9 +1548,9 @@
 
     const/16 v2, 0x2f0
 
-    const v3, 0x7f0a0169
+    const v3, 0x7f0a016c
 
-    const v4, 0x7f0a01ba
+    const v4, 0x7f0a01c0
 
     const-string v5, "Tablet_SXGA_16_9"
 
@@ -1508,9 +1566,9 @@
 
     const/16 v2, 0x2d0
 
-    const v3, 0x7f0a016a
+    const v3, 0x7f0a016d
 
-    const v4, 0x7f0a01ba
+    const v4, 0x7f0a01c0
 
     const-string v5, "Tablet_FrontCam_SXGA_16_9"
 
@@ -1526,9 +1584,9 @@
 
     const/16 v2, 0x4b0
 
-    const v3, 0x7f0a016b
+    const v3, 0x7f0a016e
 
-    const v4, 0x7f0a01b9
+    const v4, 0x7f0a01bf
 
     const-string v5, "Tablet_THREE_MEGA_16_9"
 
@@ -1544,9 +1602,9 @@
 
     const/16 v2, 0x5f0
 
-    const v3, 0x7f0a016c
+    const v3, 0x7f0a016f
 
-    const v4, 0x7f0a01b8
+    const v4, 0x7f0a01be
 
     const-string v5, "Tablet_FIVE_16_9"
 
@@ -1562,9 +1620,9 @@
 
     const/16 v2, 0x170
 
-    const v3, 0x7f0a016d
+    const v3, 0x7f0a0170
 
-    const v4, 0x7f0a01c1
+    const v4, 0x7f0a01c7
 
     const-string v5, "Tablet_VGA_16_10"
 
@@ -1580,9 +1638,9 @@
 
     const/16 v2, 0x2f0
 
-    const v3, 0x7f0a016e
+    const v3, 0x7f0a0171
 
-    const v4, 0x7f0a01c0
+    const v4, 0x7f0a01c6
 
     const-string v5, "Tablet_SXGA_16_10"
 
@@ -1598,9 +1656,9 @@
 
     const/16 v2, 0x2d0
 
-    const v3, 0x7f0a016f
+    const v3, 0x7f0a0172
 
-    const v4, 0x7f0a01bf
+    const v4, 0x7f0a01c5
 
     const-string v5, "Tablet_FrontCam_SXGA_16_10"
 
@@ -1616,9 +1674,9 @@
 
     const/16 v2, 0x4b0
 
-    const v3, 0x7f0a0170
+    const v3, 0x7f0a0173
 
-    const v4, 0x7f0a01be
+    const v4, 0x7f0a01c4
 
     const-string v5, "Tablet_THREE_MEGA_16_10"
 
@@ -1634,9 +1692,9 @@
 
     const/16 v2, 0x5f0
 
-    const v3, 0x7f0a0171
+    const v3, 0x7f0a0174
 
-    const v4, 0x7f0a01bd
+    const v4, 0x7f0a01c3
 
     const-string v5, "Tablet_FIVE_16_10"
 
@@ -1652,9 +1710,9 @@
 
     const/16 v2, 0x780
 
-    const v3, 0x7f0a0172
+    const v3, 0x7f0a0175
 
-    const v4, 0x7f0a01bc
+    const v4, 0x7f0a01c2
 
     const-string v5, "Tablet_EIGHT_16_10"
 
@@ -1670,9 +1728,9 @@
 
     const/16 v2, 0x440
 
-    const v3, 0x7f0a0173
+    const v3, 0x7f0a0176
 
-    const v4, 0x7f0a01c2
+    const v4, 0x7f0a01c8
 
     const-string v5, "Capture_1080P_3D"
 
@@ -1688,9 +1746,9 @@
 
     const/16 v2, 0x2d0
 
-    const v3, 0x7f0a0174
+    const v3, 0x7f0a0177
 
-    const v4, 0x7f0a01c3
+    const v4, 0x7f0a01c9
 
     const-string v5, "Video_720P_3D"
 
@@ -1706,9 +1764,9 @@
 
     const/16 v2, 0x780
 
-    const v3, 0x7f0a0175
+    const v3, 0x7f0a0178
 
-    const v4, 0x7f0a01c4
+    const v4, 0x7f0a01ca
 
     const-string v5, "SHARP_FIVE_MEGA"
 
@@ -1722,9 +1780,9 @@
 
     const/16 v2, 0x5a0
 
-    const v3, 0x7f0a0176
+    const v3, 0x7f0a0179
 
-    const v4, 0x7f0a01c5
+    const v4, 0x7f0a01cb
 
     const-string v5, "SHARP_FIVE_16_9"
 
@@ -1740,9 +1798,9 @@
 
     const/16 v2, 0x600
 
-    const v3, 0x7f0a0177
+    const v3, 0x7f0a017a
 
-    const v4, 0x7f0a01c6
+    const v4, 0x7f0a01cc
 
     const-string v5, "SHARP_FIVE_5_3"
 
@@ -1760,7 +1818,7 @@
 
     const v3, 0x7f0a0141
 
-    const v4, 0x7f0a01c7
+    const v4, 0x7f0a01cd
 
     const-string v5, "PHOTO_4_3_2592x1936"
 
@@ -1945,6 +2003,12 @@
     sget-object v0, Lcom/android/camera/Resolution;->resolutionStorage:Ljava/util/ArrayList;
 
     sget-object v1, Lcom/android/camera/Resolution;->PHOTO_4_3_1600x1200:Lcom/android/camera/Resolution;
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    sget-object v0, Lcom/android/camera/Resolution;->resolutionStorage:Ljava/util/ArrayList;
+
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_4_3_1456x1088:Lcom/android/camera/Resolution;
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
@@ -2149,6 +2213,12 @@
     sget-object v0, Lcom/android/camera/Resolution;->resolutionStorage:Ljava/util/ArrayList;
 
     sget-object v1, Lcom/android/camera/Resolution;->PHOTO_16_9_1600x896:Lcom/android/camera/Resolution;
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    sget-object v0, Lcom/android/camera/Resolution;->resolutionStorage:Ljava/util/ArrayList;
+
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_16_9_1456x828:Lcom/android/camera/Resolution;
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 

@@ -15,21 +15,21 @@
 
 
 # static fields
-.field public static final action_screen_button_delete:I = 0x7f0a01d4
+.field public static final action_screen_button_delete:I = 0x7f0a01da
 
-.field public static final action_screen_button_set_as:I = 0x7f0a01d5
+.field public static final action_screen_button_set_as:I = 0x7f0a01db
 
-.field public static final action_screen_button_share:I = 0x7f0a01d6
+.field public static final action_screen_button_share:I = 0x7f0a01dc
 
-.field public static final action_screen_confirm_delete_message:I = 0x7f0a01d0
+.field public static final action_screen_confirm_delete_message:I = 0x7f0a01d6
 
-.field public static final action_screen_confirm_delete_message_burst:I = 0x7f0a01d1
+.field public static final action_screen_confirm_delete_message_burst:I = 0x7f0a01d7
 
-.field public static final action_screen_share_image:I = 0x7f0a01d2
+.field public static final action_screen_share_image:I = 0x7f0a01d8
 
-.field public static final action_screen_share_video:I = 0x7f0a01d3
+.field public static final action_screen_share_video:I = 0x7f0a01d9
 
-.field public static final ap_version_id:I = 0x7f0a025b
+.field public static final ap_version_id:I = 0x7f0a0261
 
 .field public static final auto:I = 0x7f0a0067
 
@@ -55,33 +55,33 @@
 
 .field public static final camera_3D_status:I = 0x7f0a0091
 
-.field public static final camera_back_description:I = 0x7f0a0252
+.field public static final camera_back_description:I = 0x7f0a0258
 
 .field public static final camera_demo_video:I = 0x7f0a002a
 
-.field public static final camera_front_description:I = 0x7f0a0251
+.field public static final camera_front_description:I = 0x7f0a0257
 
 .field public static final camera_hw_open_fail:I = 0x7f0a005a
 
-.field public static final camera_page_title:I = 0x7f0a0247
+.field public static final camera_page_title:I = 0x7f0a024d
 
 .field public static final camera_switch:I = 0x7f0a0090
 
-.field public static final camera_tutorial_item:I = 0x7f0a024b
+.field public static final camera_tutorial_item:I = 0x7f0a0251
 
-.field public static final camera_tutorial_text:I = 0x7f0a0248
+.field public static final camera_tutorial_text:I = 0x7f0a024e
 
 .field public static final capture_bar_recording:I = 0x7f0a006f
 
 .field public static final capture_format:I = 0x7f0a0095
 
-.field public static final center_button:I = 0x7f0a0231
+.field public static final center_button:I = 0x7f0a0237
 
-.field public static final choose_scene:I = 0x7f0a0230
+.field public static final choose_scene:I = 0x7f0a0236
 
-.field public static final click_screensave_msg:I = 0x7f0a01cc
+.field public static final click_screensave_msg:I = 0x7f0a01d2
 
-.field public static final click_screensave_msg_camcorder:I = 0x7f0a01cd
+.field public static final click_screensave_msg_camcorder:I = 0x7f0a01d3
 
 .field public static final close_camera_while_error_happened:I = 0x7f0a0060
 
@@ -187,69 +187,69 @@
 
 .field public static final custom_res_tumbler:I = 0x7f0a000b
 
-.field public static final demo_btn_label:I = 0x7f0a024a
+.field public static final demo_btn_label:I = 0x7f0a0250
 
 .field public static final dialog_button_delete:I = 0x7f0a0066
 
-.field public static final done_btn_label:I = 0x7f0a0249
+.field public static final done_btn_label:I = 0x7f0a024f
 
-.field public static final doubleshot_hint_arrow_land:I = 0x7f0a022f
+.field public static final doubleshot_hint_arrow_land:I = 0x7f0a0235
 
-.field public static final doubleshot_hint_arrow_port:I = 0x7f0a022e
+.field public static final doubleshot_hint_arrow_port:I = 0x7f0a0234
 
-.field public static final doubleshot_hint_blink:I = 0x7f0a022c
+.field public static final doubleshot_hint_blink:I = 0x7f0a0232
 
-.field public static final doubleshot_hint_handshake:I = 0x7f0a022b
+.field public static final doubleshot_hint_handshake:I = 0x7f0a0231
 
-.field public static final doubleshot_hint_scene_landscape_level:I = 0x7f0a022a
+.field public static final doubleshot_hint_scene_landscape_level:I = 0x7f0a0230
 
-.field public static final doubleshot_hint_scene_landscape_not_level:I = 0x7f0a0229
+.field public static final doubleshot_hint_scene_landscape_not_level:I = 0x7f0a022f
 
-.field public static final doubleshot_hint_scene_portrait:I = 0x7f0a0227
+.field public static final doubleshot_hint_scene_portrait:I = 0x7f0a022d
 
-.field public static final doubleshot_hint_scene_sun_night:I = 0x7f0a0228
+.field public static final doubleshot_hint_scene_sun_night:I = 0x7f0a022e
 
-.field public static final doubleshot_hint_smile:I = 0x7f0a022d
+.field public static final doubleshot_hint_smile:I = 0x7f0a0233
 
-.field public static final doubleshot_main_bar_back:I = 0x7f0a01ff
+.field public static final doubleshot_main_bar_back:I = 0x7f0a0205
 
-.field public static final doubleshot_main_bar_camera:I = 0x7f0a01fd
+.field public static final doubleshot_main_bar_camera:I = 0x7f0a0203
 
-.field public static final doubleshot_main_bar_flash_auto:I = 0x7f0a0201
+.field public static final doubleshot_main_bar_flash_auto:I = 0x7f0a0207
 
-.field public static final doubleshot_main_bar_flash_off:I = 0x7f0a0203
+.field public static final doubleshot_main_bar_flash_off:I = 0x7f0a0209
 
-.field public static final doubleshot_main_bar_flash_on:I = 0x7f0a0202
+.field public static final doubleshot_main_bar_flash_on:I = 0x7f0a0208
 
-.field public static final doubleshot_main_bar_front:I = 0x7f0a0200
+.field public static final doubleshot_main_bar_front:I = 0x7f0a0206
 
-.field public static final doubleshot_main_bar_scene_action:I = 0x7f0a0208
+.field public static final doubleshot_main_bar_scene_action:I = 0x7f0a020e
 
-.field public static final doubleshot_main_bar_scene_auto:I = 0x7f0a0204
+.field public static final doubleshot_main_bar_scene_auto:I = 0x7f0a020a
 
-.field public static final doubleshot_main_bar_scene_beach_snow:I = 0x7f0a0209
+.field public static final doubleshot_main_bar_scene_beach_snow:I = 0x7f0a020f
 
-.field public static final doubleshot_main_bar_scene_burst:I = 0x7f0a020d
+.field public static final doubleshot_main_bar_scene_burst:I = 0x7f0a0213
 
-.field public static final doubleshot_main_bar_scene_closeup:I = 0x7f0a020b
+.field public static final doubleshot_main_bar_scene_closeup:I = 0x7f0a0211
 
-.field public static final doubleshot_main_bar_scene_hdr:I = 0x7f0a020e
+.field public static final doubleshot_main_bar_scene_hdr:I = 0x7f0a0214
 
-.field public static final doubleshot_main_bar_scene_landscape:I = 0x7f0a0207
+.field public static final doubleshot_main_bar_scene_landscape:I = 0x7f0a020d
 
-.field public static final doubleshot_main_bar_scene_lowlight:I = 0x7f0a0210
+.field public static final doubleshot_main_bar_scene_lowlight:I = 0x7f0a0216
 
-.field public static final doubleshot_main_bar_scene_manual:I = 0x7f0a020f
+.field public static final doubleshot_main_bar_scene_manual:I = 0x7f0a0215
 
-.field public static final doubleshot_main_bar_scene_night:I = 0x7f0a0206
+.field public static final doubleshot_main_bar_scene_night:I = 0x7f0a020c
 
-.field public static final doubleshot_main_bar_scene_panorama:I = 0x7f0a020c
+.field public static final doubleshot_main_bar_scene_panorama:I = 0x7f0a0212
 
-.field public static final doubleshot_main_bar_scene_portrait:I = 0x7f0a0205
+.field public static final doubleshot_main_bar_scene_portrait:I = 0x7f0a020b
 
-.field public static final doubleshot_main_bar_scene_sunset:I = 0x7f0a020a
+.field public static final doubleshot_main_bar_scene_sunset:I = 0x7f0a0210
 
-.field public static final doubleshot_main_bar_video:I = 0x7f0a01fe
+.field public static final doubleshot_main_bar_video:I = 0x7f0a0204
 
 .field public static final effect:I = 0x7f0a0074
 
@@ -293,15 +293,15 @@
 
 .field public static final group_portrait_processing_images:I = 0x7f0a0053
 
-.field public static final hint_auto_capture_no_face:I = 0x7f0a01d8
+.field public static final hint_auto_capture_no_face:I = 0x7f0a01de
 
-.field public static final hint_auto_capture_one_face:I = 0x7f0a01d9
+.field public static final hint_auto_capture_one_face:I = 0x7f0a01df
 
-.field public static final hint_auto_capture_smile_face:I = 0x7f0a01da
+.field public static final hint_auto_capture_smile_face:I = 0x7f0a01e0
 
-.field public static final hint_auto_capture_two_face:I = 0x7f0a01db
+.field public static final hint_auto_capture_two_face:I = 0x7f0a01e1
 
-.field public static final hint_drag_effect_bar:I = 0x7f0a01d7
+.field public static final hint_drag_effect_bar:I = 0x7f0a01dd
 
 .field public static final how_to_start_group_portrait:I = 0x7f0a0052
 
@@ -331,33 +331,33 @@
 
 .field public static final image_ratio_wideon_5_3:I = 0x7f0a009b
 
-.field public static final incoming_call_dialog_answer:I = 0x7f0a0259
+.field public static final incoming_call_dialog_answer:I = 0x7f0a025f
 
-.field public static final incoming_call_dialog_decline:I = 0x7f0a025a
+.field public static final incoming_call_dialog_decline:I = 0x7f0a0260
 
-.field public static final incoming_call_dialog_title:I = 0x7f0a0258
+.field public static final incoming_call_dialog_title:I = 0x7f0a025e
 
 .field public static final iso:I = 0x7f0a00b1
 
 .field public static final jps_file_format:I = 0x7f0a008a
 
-.field public static final limit_size_unit:I = 0x7f0a01ce
+.field public static final limit_size_unit:I = 0x7f0a01d4
 
-.field public static final main_bar_flash_auto:I = 0x7f0a0255
+.field public static final main_bar_flash_auto:I = 0x7f0a025b
 
-.field public static final main_bar_flash_description:I = 0x7f0a024e
+.field public static final main_bar_flash_description:I = 0x7f0a0254
 
-.field public static final main_bar_flash_off:I = 0x7f0a0257
+.field public static final main_bar_flash_off:I = 0x7f0a025d
 
-.field public static final main_bar_flash_on:I = 0x7f0a0256
+.field public static final main_bar_flash_on:I = 0x7f0a025c
 
-.field public static final main_bar_quality_description:I = 0x7f0a0250
+.field public static final main_bar_quality_description:I = 0x7f0a0256
 
-.field public static final main_bar_scene_description:I = 0x7f0a024d
+.field public static final main_bar_scene_description:I = 0x7f0a0253
 
-.field public static final main_bar_settings_description:I = 0x7f0a024c
+.field public static final main_bar_settings_description:I = 0x7f0a0252
 
-.field public static final main_bar_switch_description:I = 0x7f0a024f
+.field public static final main_bar_switch_description:I = 0x7f0a0255
 
 .field public static final mass_storage_camcorder:I = 0x7f0a003d
 
@@ -373,19 +373,19 @@
 
 .field public static final metering_mode:I = 0x7f0a00af
 
-.field public static final mirror_error_msg_cannot_start_preview:I = 0x7f0a01fb
+.field public static final mirror_error_msg_cannot_start_preview:I = 0x7f0a0201
 
-.field public static final mirror_error_msg_no_front_camera:I = 0x7f0a01fa
+.field public static final mirror_error_msg_no_front_camera:I = 0x7f0a0200
 
-.field public static final mirror_error_msg_unknown_error:I = 0x7f0a01fc
+.field public static final mirror_error_msg_unknown_error:I = 0x7f0a0202
 
 .field public static final mirror_name:I = 0x7f0a0035
 
-.field public static final mms_recording_limit_size:I = 0x7f0a01cf
+.field public static final mms_recording_limit_size:I = 0x7f0a01d5
 
-.field public static final mode_camera_description:I = 0x7f0a0253
+.field public static final mode_camera_description:I = 0x7f0a0259
 
-.field public static final mode_video_description:I = 0x7f0a0254
+.field public static final mode_video_description:I = 0x7f0a025a
 
 .field public static final mpo_file_format:I = 0x7f0a008b
 
@@ -439,7 +439,7 @@
 
 .field public static final post_processing:I = 0x7f0a00a8
 
-.field public static final power_warning_msg:I = 0x7f0a0246
+.field public static final power_warning_msg:I = 0x7f0a024c
 
 .field public static final pref_flicker_50:I = 0x7f0a011e
 
@@ -509,13 +509,13 @@
 
 .field public static final recording_limit:I = 0x7f0a0098
 
-.field public static final recording_time:I = 0x7f0a01c8
+.field public static final recording_time:I = 0x7f0a01ce
 
 .field public static final reset_preference:I = 0x7f0a012c
 
 .field public static final resolution:I = 0x7f0a0070
 
-.field public static final resolution_07m_description:I = 0x7f0a018c
+.field public static final resolution_07m_description:I = 0x7f0a018f
 
 .field public static final resolution_1080p:I = 0x7f0a0134
 
@@ -523,85 +523,85 @@
 
 .field public static final resolution_1_1:I = 0x7f0a007f
 
-.field public static final resolution_1m_16_9_description:I = 0x7f0a01aa
+.field public static final resolution_1m_16_9_description:I = 0x7f0a01ae
 
-.field public static final resolution_1m_3_2_description:I = 0x7f0a019f
+.field public static final resolution_1m_3_2_description:I = 0x7f0a01a3
 
-.field public static final resolution_1m_5_3_description:I = 0x7f0a01a4
+.field public static final resolution_1m_5_3_description:I = 0x7f0a01a8
 
-.field public static final resolution_1m_5_4_description:I = 0x7f0a0191
+.field public static final resolution_1m_5_4_description:I = 0x7f0a0194
 
-.field public static final resolution_1m_description:I = 0x7f0a018b
+.field public static final resolution_1m_description:I = 0x7f0a018e
 
-.field public static final resolution_2m_16_9_description:I = 0x7f0a01a9
+.field public static final resolution_2m_16_9_description:I = 0x7f0a01ad
 
-.field public static final resolution_2m_3_2_description:I = 0x7f0a019e
+.field public static final resolution_2m_3_2_description:I = 0x7f0a01a2
 
-.field public static final resolution_2m_description:I = 0x7f0a018a
+.field public static final resolution_2m_description:I = 0x7f0a018d
 
 .field public static final resolution_3_2:I = 0x7f0a0084
 
-.field public static final resolution_3m_16_9_description:I = 0x7f0a01a8
+.field public static final resolution_3m_16_9_description:I = 0x7f0a01ac
 
-.field public static final resolution_3m_3_2_description:I = 0x7f0a019d
+.field public static final resolution_3m_3_2_description:I = 0x7f0a01a1
 
-.field public static final resolution_3m_5_3_description:I = 0x7f0a01a3
+.field public static final resolution_3m_5_3_description:I = 0x7f0a01a7
 
-.field public static final resolution_3m_description:I = 0x7f0a0189
+.field public static final resolution_3m_description:I = 0x7f0a018c
 
 .field public static final resolution_4_3:I = 0x7f0a0085
 
-.field public static final resolution_4m_3_2_description:I = 0x7f0a019c
+.field public static final resolution_4m_3_2_description:I = 0x7f0a01a0
 
-.field public static final resolution_4m_description:I = 0x7f0a0188
+.field public static final resolution_4m_description:I = 0x7f0a018b
 
 .field public static final resolution_5_3:I = 0x7f0a0080
 
-.field public static final resolution_5m_16_9_description:I = 0x7f0a01a7
+.field public static final resolution_5m_16_9_description:I = 0x7f0a01ab
 
-.field public static final resolution_5m_3_2_description:I = 0x7f0a019b
+.field public static final resolution_5m_3_2_description:I = 0x7f0a019f
 
-.field public static final resolution_5m_5_3_description:I = 0x7f0a01a2
+.field public static final resolution_5m_5_3_description:I = 0x7f0a01a6
 
-.field public static final resolution_5m_description:I = 0x7f0a0187
+.field public static final resolution_5m_description:I = 0x7f0a018a
 
 .field public static final resolution_720P_4_3:I = 0x7f0a0139
 
 .field public static final resolution_720p:I = 0x7f0a0133
 
-.field public static final resolution_8m_16_9_description:I = 0x7f0a01a6
+.field public static final resolution_8m_16_9_description:I = 0x7f0a01aa
 
-.field public static final resolution_8m_3_2_description:I = 0x7f0a019a
+.field public static final resolution_8m_3_2_description:I = 0x7f0a019e
 
-.field public static final resolution_8m_5_3_description:I = 0x7f0a01a1
+.field public static final resolution_8m_5_3_description:I = 0x7f0a01a5
 
-.field public static final resolution_8m_description:I = 0x7f0a0186
+.field public static final resolution_8m_description:I = 0x7f0a0189
 
-.field public static final resolution_CONTACT_STYLE:I = 0x7f0a0149
+.field public static final resolution_CONTACT_STYLE:I = 0x7f0a014a
 
-.field public static final resolution_Capture_1080P_3D:I = 0x7f0a0173
+.field public static final resolution_Capture_1080P_3D:I = 0x7f0a0176
 
-.field public static final resolution_Capture_1080P_3D_description:I = 0x7f0a01c2
+.field public static final resolution_Capture_1080P_3D_description:I = 0x7f0a01c8
 
 .field public static final resolution_EIGHT_MEGA:I = 0x7f0a013f
 
-.field public static final resolution_EIGHT_MEGA_16_9:I = 0x7f0a015b
+.field public static final resolution_EIGHT_MEGA_16_9:I = 0x7f0a015c
 
-.field public static final resolution_EIGHT_MEGA_3_2:I = 0x7f0a0150
+.field public static final resolution_EIGHT_MEGA_3_2:I = 0x7f0a0151
 
-.field public static final resolution_EIGHT_MEGA_5_3:I = 0x7f0a0155
+.field public static final resolution_EIGHT_MEGA_5_3:I = 0x7f0a0156
 
 .field public static final resolution_FIVE_MEGA:I = 0x7f0a013e
 
-.field public static final resolution_FIVE_MEGA_16_9:I = 0x7f0a015a
+.field public static final resolution_FIVE_MEGA_16_9:I = 0x7f0a015b
 
-.field public static final resolution_FIVE_MEGA_3_2:I = 0x7f0a014f
+.field public static final resolution_FIVE_MEGA_3_2:I = 0x7f0a0150
 
-.field public static final resolution_FIVE_MEGA_5_3:I = 0x7f0a0154
+.field public static final resolution_FIVE_MEGA_5_3:I = 0x7f0a0155
 
 .field public static final resolution_FOUR_MEGA:I = 0x7f0a013d
 
-.field public static final resolution_FOUR_MEGA_3_2:I = 0x7f0a014e
+.field public static final resolution_FOUR_MEGA_3_2:I = 0x7f0a014f
 
 .field public static final resolution_HVGA:I = 0x7f0a012f
 
@@ -613,105 +613,105 @@
 
 .field public static final resolution_QVGA:I = 0x7f0a012e
 
-.field public static final resolution_QVGA_description:I = 0x7f0a018f
+.field public static final resolution_QVGA_description:I = 0x7f0a0192
 
-.field public static final resolution_SHARP_FIVE_MEGA:I = 0x7f0a0175
+.field public static final resolution_SHARP_FIVE_MEGA:I = 0x7f0a0178
 
-.field public static final resolution_SHARP_FIVE_MEGA_16_9:I = 0x7f0a0176
+.field public static final resolution_SHARP_FIVE_MEGA_16_9:I = 0x7f0a0179
 
-.field public static final resolution_SHARP_FIVE_MEGA_5_3:I = 0x7f0a0177
+.field public static final resolution_SHARP_FIVE_MEGA_5_3:I = 0x7f0a017a
 
 .field public static final resolution_SXGA:I = 0x7f0a013a
 
-.field public static final resolution_SXGA_16_9:I = 0x7f0a0157
+.field public static final resolution_SXGA_16_9:I = 0x7f0a0158
 
-.field public static final resolution_SXGA_3_2:I = 0x7f0a014b
+.field public static final resolution_SXGA_3_2:I = 0x7f0a014c
 
-.field public static final resolution_SXGA_5_3:I = 0x7f0a0152
+.field public static final resolution_SXGA_5_3:I = 0x7f0a0153
 
-.field public static final resolution_SXGA_5_4:I = 0x7f0a0148
+.field public static final resolution_SXGA_5_4:I = 0x7f0a0149
 
 .field public static final resolution_THREE_MEGA:I = 0x7f0a013c
 
-.field public static final resolution_THREE_MEGA_16_9:I = 0x7f0a0159
+.field public static final resolution_THREE_MEGA_16_9:I = 0x7f0a015a
 
-.field public static final resolution_THREE_MEGA_3_2:I = 0x7f0a014d
+.field public static final resolution_THREE_MEGA_3_2:I = 0x7f0a014e
 
-.field public static final resolution_THREE_MEGA_5_3:I = 0x7f0a0153
+.field public static final resolution_THREE_MEGA_5_3:I = 0x7f0a0154
 
 .field public static final resolution_Tablet_16_10:I = 0x7f0a0083
 
 .field public static final resolution_Tablet_16_9:I = 0x7f0a0082
 
-.field public static final resolution_Tablet_1m_16_10_description:I = 0x7f0a01c0
+.field public static final resolution_Tablet_1m_16_10_description:I = 0x7f0a01c6
 
-.field public static final resolution_Tablet_1m_16_9_description:I = 0x7f0a01ba
+.field public static final resolution_Tablet_1m_16_9_description:I = 0x7f0a01c0
 
-.field public static final resolution_Tablet_3m_16_10_description:I = 0x7f0a01be
+.field public static final resolution_Tablet_3m_16_10_description:I = 0x7f0a01c4
 
-.field public static final resolution_Tablet_3m_16_9_description:I = 0x7f0a01b9
+.field public static final resolution_Tablet_3m_16_9_description:I = 0x7f0a01bf
 
-.field public static final resolution_Tablet_5m_16_10_description:I = 0x7f0a01bd
+.field public static final resolution_Tablet_5m_16_10_description:I = 0x7f0a01c3
 
-.field public static final resolution_Tablet_5m_16_9_description:I = 0x7f0a01b8
+.field public static final resolution_Tablet_5m_16_9_description:I = 0x7f0a01be
 
-.field public static final resolution_Tablet_8m_16_10_description:I = 0x7f0a01bc
+.field public static final resolution_Tablet_8m_16_10_description:I = 0x7f0a01c2
 
-.field public static final resolution_Tablet_EIGHT_MEGA_16_10:I = 0x7f0a0172
+.field public static final resolution_Tablet_EIGHT_MEGA_16_10:I = 0x7f0a0175
 
-.field public static final resolution_Tablet_FIVE_MEGA_16_10:I = 0x7f0a0171
+.field public static final resolution_Tablet_FIVE_MEGA_16_10:I = 0x7f0a0174
 
-.field public static final resolution_Tablet_FIVE_MEGA_16_9:I = 0x7f0a016c
+.field public static final resolution_Tablet_FIVE_MEGA_16_9:I = 0x7f0a016f
 
-.field public static final resolution_Tablet_FrontCam_1m_16_10_description:I = 0x7f0a01bf
+.field public static final resolution_Tablet_FrontCam_1m_16_10_description:I = 0x7f0a01c5
 
-.field public static final resolution_Tablet_FrontCam_SXGA_16_10:I = 0x7f0a016f
+.field public static final resolution_Tablet_FrontCam_SXGA_16_10:I = 0x7f0a0172
 
-.field public static final resolution_Tablet_FrontCam_SXGA_16_9:I = 0x7f0a016a
+.field public static final resolution_Tablet_FrontCam_SXGA_16_9:I = 0x7f0a016d
 
-.field public static final resolution_Tablet_SXGA_16_10:I = 0x7f0a016e
+.field public static final resolution_Tablet_SXGA_16_10:I = 0x7f0a0171
 
-.field public static final resolution_Tablet_SXGA_16_9:I = 0x7f0a0169
+.field public static final resolution_Tablet_SXGA_16_9:I = 0x7f0a016c
 
-.field public static final resolution_Tablet_THREE_MEGA_16_10:I = 0x7f0a0170
+.field public static final resolution_Tablet_THREE_MEGA_16_10:I = 0x7f0a0173
 
-.field public static final resolution_Tablet_THREE_MEGA_16_9:I = 0x7f0a016b
+.field public static final resolution_Tablet_THREE_MEGA_16_9:I = 0x7f0a016e
 
-.field public static final resolution_Tablet_VGA_16_10:I = 0x7f0a016d
+.field public static final resolution_Tablet_VGA_16_10:I = 0x7f0a0170
 
-.field public static final resolution_Tablet_VGA_16_10_description:I = 0x7f0a01c1
+.field public static final resolution_Tablet_VGA_16_10_description:I = 0x7f0a01c7
 
-.field public static final resolution_Tablet_VGA_16_9:I = 0x7f0a0168
+.field public static final resolution_Tablet_VGA_16_9:I = 0x7f0a016b
 
-.field public static final resolution_Tablet_VGA_16_9_description:I = 0x7f0a01bb
+.field public static final resolution_Tablet_VGA_16_9_description:I = 0x7f0a01c1
 
 .field public static final resolution_UXGA:I = 0x7f0a013b
 
-.field public static final resolution_UXGA_16_9:I = 0x7f0a0158
+.field public static final resolution_UXGA_16_9:I = 0x7f0a0159
 
-.field public static final resolution_UXGA_3_2:I = 0x7f0a014c
+.field public static final resolution_UXGA_3_2:I = 0x7f0a014d
 
 .field public static final resolution_VGA:I = 0x7f0a0138
 
-.field public static final resolution_VGA_16_9:I = 0x7f0a0156
+.field public static final resolution_VGA_16_9:I = 0x7f0a0157
 
-.field public static final resolution_VGA_16_9_description:I = 0x7f0a01ab
+.field public static final resolution_VGA_16_9_description:I = 0x7f0a01af
 
-.field public static final resolution_VGA_2nd_description:I = 0x7f0a018e
+.field public static final resolution_VGA_2nd_description:I = 0x7f0a0191
 
-.field public static final resolution_VGA_3_2:I = 0x7f0a014a
+.field public static final resolution_VGA_3_2:I = 0x7f0a014b
 
-.field public static final resolution_VGA_3_2_description:I = 0x7f0a01a0
+.field public static final resolution_VGA_3_2_description:I = 0x7f0a01a4
 
-.field public static final resolution_VGA_5_3:I = 0x7f0a0151
+.field public static final resolution_VGA_5_3:I = 0x7f0a0152
 
-.field public static final resolution_VGA_5_3_description:I = 0x7f0a01a5
+.field public static final resolution_VGA_5_3_description:I = 0x7f0a01a9
 
-.field public static final resolution_VGA_description:I = 0x7f0a018d
+.field public static final resolution_VGA_description:I = 0x7f0a0190
 
-.field public static final resolution_Video_720P_3D:I = 0x7f0a0174
+.field public static final resolution_Video_720P_3D:I = 0x7f0a0177
 
-.field public static final resolution_Video_720P_3D_description:I = 0x7f0a01c3
+.field public static final resolution_Video_720P_3D_description:I = 0x7f0a01c9
 
 .field public static final resolution_WVGA:I = 0x7f0a0131
 
@@ -721,133 +721,145 @@
 
 .field public static final resolution_category_small:I = 0x7f0a0137
 
-.field public static final resolution_contact_description:I = 0x7f0a0190
+.field public static final resolution_contact_description:I = 0x7f0a0193
 
-.field public static final resolution_photo_16_9_1280x720:I = 0x7f0a0166
+.field public static final resolution_photo_16_9_1280x720:I = 0x7f0a0169
 
-.field public static final resolution_photo_16_9_1280x720_description:I = 0x7f0a01b6
+.field public static final resolution_photo_16_9_1280x720_description:I = 0x7f0a01bc
 
-.field public static final resolution_photo_16_9_1600x896:I = 0x7f0a0165
+.field public static final resolution_photo_16_9_1456x828:I = 0x7f0a0168
 
-.field public static final resolution_photo_16_9_1600x896_description:I = 0x7f0a01b5
+.field public static final resolution_photo_16_9_1456x828_description:I = 0x7f0a01bb
 
-.field public static final resolution_photo_16_9_1920x1088:I = 0x7f0a0164
+.field public static final resolution_photo_16_9_1600x896:I = 0x7f0a0167
 
-.field public static final resolution_photo_16_9_1920x1088_description:I = 0x7f0a01b4
+.field public static final resolution_photo_16_9_1600x896_description:I = 0x7f0a01ba
 
-.field public static final resolution_photo_16_9_2048x1152:I = 0x7f0a0163
+.field public static final resolution_photo_16_9_1920x1088:I = 0x7f0a0166
 
-.field public static final resolution_photo_16_9_2048x1152_description:I = 0x7f0a01b3
+.field public static final resolution_photo_16_9_1920x1088_description:I = 0x7f0a01b9
 
-.field public static final resolution_photo_16_9_2592x1456:I = 0x7f0a0162
+.field public static final resolution_photo_16_9_2048x1152:I = 0x7f0a0165
 
-.field public static final resolution_photo_16_9_2592x1456_description:I = 0x7f0a01b2
+.field public static final resolution_photo_16_9_2048x1152_description:I = 0x7f0a01b8
 
-.field public static final resolution_photo_16_9_3264x1840:I = 0x7f0a0161
+.field public static final resolution_photo_16_9_2592x1456:I = 0x7f0a0164
 
-.field public static final resolution_photo_16_9_3264x1840_description:I = 0x7f0a01b1
+.field public static final resolution_photo_16_9_2592x1456_description:I = 0x7f0a01b7
 
-.field public static final resolution_photo_16_9_640x368:I = 0x7f0a0167
+.field public static final resolution_photo_16_9_3264x1840:I = 0x7f0a0163
 
-.field public static final resolution_photo_16_9_640x368_description:I = 0x7f0a01b7
+.field public static final resolution_photo_16_9_3264x1840_description:I = 0x7f0a01b6
 
-.field public static final resolution_photo_4_3_1280x960:I = 0x7f0a0145
+.field public static final resolution_photo_16_9_640x368:I = 0x7f0a016a
 
-.field public static final resolution_photo_4_3_1280x960_description:I = 0x7f0a0197
+.field public static final resolution_photo_16_9_640x368_description:I = 0x7f0a01bd
 
-.field public static final resolution_photo_4_3_1440x1088:I = 0x7f0a0144
+.field public static final resolution_photo_4_3_1280x960:I = 0x7f0a0146
 
-.field public static final resolution_photo_4_3_1440x1088_description:I = 0x7f0a0196
+.field public static final resolution_photo_4_3_1280x960_description:I = 0x7f0a019b
+
+.field public static final resolution_photo_4_3_1440x1088:I = 0x7f0a0145
+
+.field public static final resolution_photo_4_3_1440x1088_description:I = 0x7f0a019a
+
+.field public static final resolution_photo_4_3_1456x1088:I = 0x7f0a0144
+
+.field public static final resolution_photo_4_3_1456x1088_description:I = 0x7f0a0199
 
 .field public static final resolution_photo_4_3_1600x1200:I = 0x7f0a0143
 
-.field public static final resolution_photo_4_3_1600x1200_description:I = 0x7f0a0195
+.field public static final resolution_photo_4_3_1600x1200_description:I = 0x7f0a0198
 
 .field public static final resolution_photo_4_3_2048x1536:I = 0x7f0a0142
 
-.field public static final resolution_photo_4_3_2048x1536_description:I = 0x7f0a0194
+.field public static final resolution_photo_4_3_2048x1536_description:I = 0x7f0a0197
 
-.field public static final resolution_photo_4_3_2592x1936_description:I = 0x7f0a01c7
+.field public static final resolution_photo_4_3_2592x1936_description:I = 0x7f0a01cd
 
 .field public static final resolution_photo_4_3_2592x1952:I = 0x7f0a0141
 
-.field public static final resolution_photo_4_3_2592x1952_description:I = 0x7f0a0193
+.field public static final resolution_photo_4_3_2592x1952_description:I = 0x7f0a0196
 
 .field public static final resolution_photo_4_3_3264x2448:I = 0x7f0a0140
 
-.field public static final resolution_photo_4_3_3264x2448_description:I = 0x7f0a0192
+.field public static final resolution_photo_4_3_3264x2448_description:I = 0x7f0a0195
 
-.field public static final resolution_photo_4_3_640x480:I = 0x7f0a0147
+.field public static final resolution_photo_4_3_640x480:I = 0x7f0a0148
 
-.field public static final resolution_photo_4_3_640x480_description:I = 0x7f0a0199
+.field public static final resolution_photo_4_3_640x480_description:I = 0x7f0a019d
 
-.field public static final resolution_photo_4_3_960x720:I = 0x7f0a0146
+.field public static final resolution_photo_4_3_960x720:I = 0x7f0a0147
 
-.field public static final resolution_photo_4_3_960x720_description:I = 0x7f0a0198
+.field public static final resolution_photo_4_3_960x720_description:I = 0x7f0a019c
 
-.field public static final resolution_photo_5_3_1280x768:I = 0x7f0a015f
+.field public static final resolution_photo_5_3_1280x768:I = 0x7f0a0161
 
-.field public static final resolution_photo_5_3_1280x768_description:I = 0x7f0a01af
+.field public static final resolution_photo_5_3_1280x768_description:I = 0x7f0a01b4
 
-.field public static final resolution_photo_5_3_2048x1216:I = 0x7f0a015e
+.field public static final resolution_photo_5_3_1456x880:I = 0x7f0a0160
 
-.field public static final resolution_photo_5_3_2048x1216_description:I = 0x7f0a01ae
+.field public static final resolution_photo_5_3_1456x880_description:I = 0x7f0a01b3
 
-.field public static final resolution_photo_5_3_2592x1552:I = 0x7f0a015d
+.field public static final resolution_photo_5_3_2048x1216:I = 0x7f0a015f
 
-.field public static final resolution_photo_5_3_2592x1552_description:I = 0x7f0a01ad
+.field public static final resolution_photo_5_3_2048x1216_description:I = 0x7f0a01b2
 
-.field public static final resolution_photo_5_3_3264x1952:I = 0x7f0a015c
+.field public static final resolution_photo_5_3_2592x1552:I = 0x7f0a015e
 
-.field public static final resolution_photo_5_3_3264x1952_description:I = 0x7f0a01ac
+.field public static final resolution_photo_5_3_2592x1552_description:I = 0x7f0a01b1
 
-.field public static final resolution_photo_5_3_640x384:I = 0x7f0a0160
+.field public static final resolution_photo_5_3_3264x1952:I = 0x7f0a015d
 
-.field public static final resolution_photo_5_3_640x384_description:I = 0x7f0a01b0
+.field public static final resolution_photo_5_3_3264x1952_description:I = 0x7f0a01b0
 
-.field public static final resolution_sharp_5m_16_9_description:I = 0x7f0a01c5
+.field public static final resolution_photo_5_3_640x384:I = 0x7f0a0162
 
-.field public static final resolution_sharp_5m_5_3_description:I = 0x7f0a01c6
+.field public static final resolution_photo_5_3_640x384_description:I = 0x7f0a01b5
 
-.field public static final resolution_sharp_5m_description:I = 0x7f0a01c4
+.field public static final resolution_sharp_5m_16_9_description:I = 0x7f0a01cb
 
-.field public static final resolution_video_1080p_description_2:I = 0x7f0a017a
+.field public static final resolution_sharp_5m_5_3_description:I = 0x7f0a01cc
 
-.field public static final resolution_video_1080p_description_3:I = 0x7f0a0184
+.field public static final resolution_sharp_5m_description:I = 0x7f0a01ca
 
-.field public static final resolution_video_720p_description_2:I = 0x7f0a017b
+.field public static final resolution_video_1080p_description_2:I = 0x7f0a017d
 
-.field public static final resolution_video_720p_description_3:I = 0x7f0a0183
+.field public static final resolution_video_1080p_description_3:I = 0x7f0a0187
 
-.field public static final resolution_video_QVGA_description_2:I = 0x7f0a0178
+.field public static final resolution_video_720p_description_2:I = 0x7f0a017e
 
-.field public static final resolution_video_QVGA_description_3:I = 0x7f0a0181
+.field public static final resolution_video_720p_description_3:I = 0x7f0a0186
 
-.field public static final resolution_video_hvga_description_2:I = 0x7f0a017e
+.field public static final resolution_video_QVGA_description_2:I = 0x7f0a017b
 
-.field public static final resolution_video_hvga_description_3:I = 0x7f0a017f
+.field public static final resolution_video_QVGA_description_3:I = 0x7f0a0184
 
-.field public static final resolution_video_qcif_description_2:I = 0x7f0a0179
+.field public static final resolution_video_hvga_description_2:I = 0x7f0a0181
 
-.field public static final resolution_video_qcif_description_3:I = 0x7f0a0182
+.field public static final resolution_video_hvga_description_3:I = 0x7f0a0182
 
-.field public static final resolution_video_qhd_description_2:I = 0x7f0a017c
+.field public static final resolution_video_qcif_description_2:I = 0x7f0a017c
 
-.field public static final resolution_video_vga_description_2:I = 0x7f0a0180
+.field public static final resolution_video_qcif_description_3:I = 0x7f0a0185
 
-.field public static final resolution_video_vga_description_3:I = 0x7f0a0185
+.field public static final resolution_video_qhd_description_2:I = 0x7f0a017f
 
-.field public static final resolution_video_wvga_description_2:I = 0x7f0a017d
+.field public static final resolution_video_vga_description_2:I = 0x7f0a0183
 
-.field public static final review_btn_capture:I = 0x7f0a01e8
+.field public static final resolution_video_vga_description_3:I = 0x7f0a0188
 
-.field public static final review_btn_delete:I = 0x7f0a01e7
+.field public static final resolution_video_wvga_description_2:I = 0x7f0a0180
 
-.field public static final review_btn_play:I = 0x7f0a01e5
+.field public static final review_btn_capture:I = 0x7f0a01ee
 
-.field public static final review_btn_setas:I = 0x7f0a01e4
+.field public static final review_btn_delete:I = 0x7f0a01ed
 
-.field public static final review_btn_share:I = 0x7f0a01e6
+.field public static final review_btn_play:I = 0x7f0a01eb
+
+.field public static final review_btn_setas:I = 0x7f0a01ea
+
+.field public static final review_btn_share:I = 0x7f0a01ec
 
 .field public static final review_duration:I = 0x7f0a008e
 
@@ -857,95 +869,95 @@
 
 .field public static final scene:I = 0x7f0a0077
 
-.field public static final scene_auto:I = 0x7f0a0214
+.field public static final scene_auto:I = 0x7f0a021a
 
-.field public static final scene_backlight:I = 0x7f0a021f
+.field public static final scene_backlight:I = 0x7f0a0225
 
-.field public static final scene_backlight_portrait:I = 0x7f0a0226
+.field public static final scene_backlight_portrait:I = 0x7f0a022c
 
-.field public static final scene_beach:I = 0x7f0a0220
+.field public static final scene_beach:I = 0x7f0a0226
 
-.field public static final scene_burst:I = 0x7f0a0218
+.field public static final scene_burst:I = 0x7f0a021e
 
-.field public static final scene_candlelight:I = 0x7f0a0223
+.field public static final scene_candlelight:I = 0x7f0a0229
 
-.field public static final scene_continuous_burst:I = 0x7f0a0219
+.field public static final scene_continuous_burst:I = 0x7f0a021f
 
-.field public static final scene_description_action:I = 0x7f0a0241
+.field public static final scene_description_action:I = 0x7f0a0247
 
-.field public static final scene_description_auto:I = 0x7f0a023c
+.field public static final scene_description_auto:I = 0x7f0a0242
 
-.field public static final scene_description_burst:I = 0x7f0a023f
+.field public static final scene_description_burst:I = 0x7f0a0245
 
-.field public static final scene_description_hdr:I = 0x7f0a023e
+.field public static final scene_description_hdr:I = 0x7f0a0244
 
-.field public static final scene_description_lowlight:I = 0x7f0a0244
+.field public static final scene_description_lowlight:I = 0x7f0a024a
 
-.field public static final scene_description_macro:I = 0x7f0a0242
+.field public static final scene_description_macro:I = 0x7f0a0248
 
-.field public static final scene_description_manual:I = 0x7f0a0245
+.field public static final scene_description_manual:I = 0x7f0a024b
 
-.field public static final scene_description_night:I = 0x7f0a0240
+.field public static final scene_description_night:I = 0x7f0a0246
 
-.field public static final scene_description_panorama:I = 0x7f0a023d
+.field public static final scene_description_panorama:I = 0x7f0a0243
 
-.field public static final scene_description_portrait:I = 0x7f0a0243
+.field public static final scene_description_portrait:I = 0x7f0a0249
 
-.field public static final scene_hdr:I = 0x7f0a021b
+.field public static final scene_hdr:I = 0x7f0a0221
 
-.field public static final scene_header:I = 0x7f0a0211
+.field public static final scene_header:I = 0x7f0a0217
 
-.field public static final scene_landscape:I = 0x7f0a0216
+.field public static final scene_landscape:I = 0x7f0a021c
 
-.field public static final scene_lowlight:I = 0x7f0a0224
+.field public static final scene_lowlight:I = 0x7f0a022a
 
-.field public static final scene_lowlight_portrait:I = 0x7f0a0225
+.field public static final scene_lowlight_portrait:I = 0x7f0a022b
 
-.field public static final scene_macro:I = 0x7f0a021e
+.field public static final scene_macro:I = 0x7f0a0224
 
-.field public static final scene_panorama:I = 0x7f0a021a
+.field public static final scene_panorama:I = 0x7f0a0220
 
-.field public static final scene_portrait:I = 0x7f0a0215
+.field public static final scene_portrait:I = 0x7f0a021b
 
-.field public static final scene_selection:I = 0x7f0a0212
+.field public static final scene_selection:I = 0x7f0a0218
 
-.field public static final scene_smart_detection:I = 0x7f0a0213
+.field public static final scene_smart_detection:I = 0x7f0a0219
 
-.field public static final scene_smartshot:I = 0x7f0a0217
+.field public static final scene_smartshot:I = 0x7f0a021d
 
-.field public static final scene_snow:I = 0x7f0a0221
+.field public static final scene_snow:I = 0x7f0a0227
 
-.field public static final scene_sports:I = 0x7f0a021d
+.field public static final scene_sports:I = 0x7f0a0223
 
-.field public static final scene_sunset:I = 0x7f0a0222
+.field public static final scene_sunset:I = 0x7f0a0228
 
-.field public static final scene_type_action:I = 0x7f0a0237
+.field public static final scene_type_action:I = 0x7f0a023d
 
-.field public static final scene_type_auto:I = 0x7f0a0232
+.field public static final scene_type_auto:I = 0x7f0a0238
 
-.field public static final scene_type_burst:I = 0x7f0a0235
+.field public static final scene_type_burst:I = 0x7f0a023b
 
-.field public static final scene_type_hdr:I = 0x7f0a0234
+.field public static final scene_type_hdr:I = 0x7f0a023a
 
-.field public static final scene_type_lowlight:I = 0x7f0a023a
+.field public static final scene_type_lowlight:I = 0x7f0a0240
 
-.field public static final scene_type_macro:I = 0x7f0a0238
+.field public static final scene_type_macro:I = 0x7f0a023e
 
-.field public static final scene_type_manual:I = 0x7f0a023b
+.field public static final scene_type_manual:I = 0x7f0a0241
 
-.field public static final scene_type_night:I = 0x7f0a0236
+.field public static final scene_type_night:I = 0x7f0a023c
 
-.field public static final scene_type_panorama:I = 0x7f0a0233
+.field public static final scene_type_panorama:I = 0x7f0a0239
 
-.field public static final scene_type_portrait:I = 0x7f0a0239
+.field public static final scene_type_portrait:I = 0x7f0a023f
 
-.field public static final scene_whiteboard:I = 0x7f0a021c
+.field public static final scene_whiteboard:I = 0x7f0a0222
 
-.field public static final screensave_msg:I = 0x7f0a01c9
+.field public static final screensave_msg:I = 0x7f0a01cf
 
-.field public static final screensave_msg_camcorder:I = 0x7f0a01ca
+.field public static final screensave_msg_camcorder:I = 0x7f0a01d0
 
-.field public static final screensave_msg_snapbooth:I = 0x7f0a01cb
+.field public static final screensave_msg_snapbooth:I = 0x7f0a01d1
 
 .field public static final self_portrait:I = 0x7f0a007c
 
@@ -1067,41 +1079,41 @@
 
 .field public static final smile_capture:I = 0x7f0a00b3
 
-.field public static final snapbooth_effect_bulge:I = 0x7f0a01f0
+.field public static final snapbooth_effect_bulge:I = 0x7f0a01f6
 
-.field public static final snapbooth_effect_contrast:I = 0x7f0a01f3
+.field public static final snapbooth_effect_contrast:I = 0x7f0a01f9
 
-.field public static final snapbooth_effect_dots:I = 0x7f0a01f7
+.field public static final snapbooth_effect_dots:I = 0x7f0a01fd
 
-.field public static final snapbooth_effect_glow:I = 0x7f0a01f4
+.field public static final snapbooth_effect_glow:I = 0x7f0a01fa
 
-.field public static final snapbooth_effect_mirror:I = 0x7f0a01f2
+.field public static final snapbooth_effect_mirror:I = 0x7f0a01f8
 
-.field public static final snapbooth_effect_normal:I = 0x7f0a01ef
+.field public static final snapbooth_effect_normal:I = 0x7f0a01f5
 
-.field public static final snapbooth_effect_pucker:I = 0x7f0a01f1
+.field public static final snapbooth_effect_pucker:I = 0x7f0a01f7
 
-.field public static final snapbooth_effect_sepia:I = 0x7f0a01f5
+.field public static final snapbooth_effect_sepia:I = 0x7f0a01fb
 
-.field public static final snapbooth_effect_vintage:I = 0x7f0a01f6
+.field public static final snapbooth_effect_vintage:I = 0x7f0a01fc
 
 .field public static final snapbooth_name:I = 0x7f0a0034
 
-.field public static final snapbooth_no_storage:I = 0x7f0a01f8
+.field public static final snapbooth_no_storage:I = 0x7f0a01fe
 
-.field public static final snapbooth_review_screen_btn_delete:I = 0x7f0a01ea
+.field public static final snapbooth_review_screen_btn_delete:I = 0x7f0a01f0
 
-.field public static final snapbooth_review_screen_btn_share:I = 0x7f0a01e9
+.field public static final snapbooth_review_screen_btn_share:I = 0x7f0a01ef
 
-.field public static final snapbooth_service_review_btn_done:I = 0x7f0a01eb
+.field public static final snapbooth_service_review_btn_done:I = 0x7f0a01f1
 
-.field public static final snapbooth_service_review_btn_redo:I = 0x7f0a01ec
+.field public static final snapbooth_service_review_btn_redo:I = 0x7f0a01f2
 
-.field public static final snapbooth_store_image_failed:I = 0x7f0a01f9
+.field public static final snapbooth_store_image_failed:I = 0x7f0a01ff
 
-.field public static final snapbooth_switch_item_text_four:I = 0x7f0a01ee
+.field public static final snapbooth_switch_item_text_four:I = 0x7f0a01f4
 
-.field public static final snapbooth_switch_item_text_one:I = 0x7f0a01ed
+.field public static final snapbooth_switch_item_text_one:I = 0x7f0a01f3
 
 .field public static final stereo_recording:I = 0x7f0a00a4
 
@@ -1121,9 +1133,9 @@
 
 .field public static final tap_capture_with_timer:I = 0x7f0a007e
 
-.field public static final text_message_location_disable:I = 0x7f0a01dd
+.field public static final text_message_location_disable:I = 0x7f0a01e3
 
-.field public static final text_title_location_disable:I = 0x7f0a01dc
+.field public static final text_title_location_disable:I = 0x7f0a01e2
 
 .field public static final time_10_seconds:I = 0x7f0a006d
 
@@ -1137,15 +1149,15 @@
 
 .field public static final two_faces:I = 0x7f0a007a
 
-.field public static final txt_query_switch_storage_title:I = 0x7f0a01de
+.field public static final txt_query_switch_storage_title:I = 0x7f0a01e4
 
-.field public static final txt_query_switch_to_phone_storage:I = 0x7f0a01df
+.field public static final txt_query_switch_to_phone_storage:I = 0x7f0a01e5
 
-.field public static final txt_query_switch_to_sdcard:I = 0x7f0a01e0
+.field public static final txt_query_switch_to_sdcard:I = 0x7f0a01e6
 
-.field public static final txt_switch_to_phone_storage:I = 0x7f0a01e1
+.field public static final txt_switch_to_phone_storage:I = 0x7f0a01e7
 
-.field public static final txt_switch_to_sdcard:I = 0x7f0a01e2
+.field public static final txt_switch_to_sdcard:I = 0x7f0a01e8
 
 .field public static final ui_effect_aqua:I = 0x7f0a00fb
 
@@ -1205,7 +1217,7 @@
 
 .field public static final unable_launch_camera:I = 0x7f0a005f
 
-.field public static final usc_online_album:I = 0x7f0a01e3
+.field public static final usc_online_album:I = 0x7f0a01e9
 
 .field public static final video_quality:I = 0x7f0a0071
 

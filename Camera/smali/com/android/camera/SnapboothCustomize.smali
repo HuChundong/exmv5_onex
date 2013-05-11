@@ -1754,7 +1754,7 @@
 
     iget-object v6, p0, Lcom/android/camera/SnapboothCustomize;->mLandSwitchButtonText:Landroid/widget/TextView;
 
-    const v7, 0x7f0a01ed
+    const v7, 0x7f0a01f3
 
     invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(I)V
 
@@ -2326,7 +2326,7 @@
 
     iget-object v5, p0, Lcom/android/camera/SnapboothCustomize;->mPortSwitchButtonText:Landroid/widget/TextView;
 
-    const v6, 0x7f0a01ed
+    const v6, 0x7f0a01f3
 
     invoke-virtual {v5, v6}, Landroid/widget/TextView;->setText(I)V
 
@@ -3538,9 +3538,9 @@
 .method public switchMultiBtn()V
     .locals 6
 
-    const v5, 0x7f0a01ee
+    const v5, 0x7f0a01f4
 
-    const v4, 0x7f0a01ed
+    const v4, 0x7f0a01f3
 
     const v3, 0x7f0200f1
 

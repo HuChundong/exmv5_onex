@@ -64,7 +64,7 @@
 
     const/4 v5, 0x0
 
-    sget-object v4, Lcom/android/camera/component/PhoneCallUI$7;->$SwitchMap$com$android$camera$RecordingState:[I
+    sget-object v4, Lcom/android/camera/component/PhoneCallUI$8;->$SwitchMap$com$android$camera$RecordingState:[I
 
     iget-object v3, p2, Lcom/android/camera/property/PropertyChangedEventArgs;->newValue:Ljava/lang/Object;
 

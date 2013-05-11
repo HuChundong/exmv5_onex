@@ -39,12 +39,15 @@
 
     iget-object v0, p0, Lcom/android/camera/component/PhoneCallUI$5;->this$0:Lcom/android/camera/component/PhoneCallUI;
 
-    #calls: Lcom/android/camera/component/PhoneCallUI;->closePopupObjects()V
-    invoke-static {v0}, Lcom/android/camera/component/PhoneCallUI;->access$100(Lcom/android/camera/component/PhoneCallUI;)V
+    invoke-virtual {v0}, Lcom/android/camera/component/PhoneCallUI;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->triggerRecord()V
 
     iget-object v0, p0, Lcom/android/camera/component/PhoneCallUI$5;->this$0:Lcom/android/camera/component/PhoneCallUI;
 
-    #calls: Lcom/android/camera/component/PhoneCallUI;->endCall()V
+    #calls: Lcom/android/camera/component/PhoneCallUI;->answerCall()V
     invoke-static {v0}, Lcom/android/camera/component/PhoneCallUI;->access$1800(Lcom/android/camera/component/PhoneCallUI;)V
 
     return-void

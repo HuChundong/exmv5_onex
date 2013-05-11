@@ -370,4 +370,8 @@
     <item type="id" name="zoom_bar">false</item>
     <item type="id" name="zoom_in">false</item>
     <item type="id" name="zoom_bar_touch_receiver">false</item>
+    <item type="id" name="function_bar_item_iso_container">false</item>
+    <item type="id" name="function_bar_item_iso">false</item>
+    <item type="id" name="function_bar_item_wb_container">false</item>
+    <item type="id" name="function_bar_item_wb">false</item>
 </resources>

@@ -1675,7 +1675,7 @@
 
     move-result-object v4
 
-    const v5, 0x7f0a01d0
+    const v5, 0x7f0a01d6
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3622,7 +3622,7 @@
     invoke-direct {p0}, Lcom/android/camera/HTCSnapbooth;->cancelCapture()V
 
     :cond_1
-    const v0, 0x7f0a01f8
+    const v0, 0x7f0a01fe
 
     const/4 v1, 0x0
 

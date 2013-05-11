@@ -59,7 +59,11 @@
 
 .field private static final TAG:Ljava/lang/String; = "IntentManager"
 
-.field private static mCropValue:Ljava/lang/String;
+.field public static final TYPE_CONTENT_URI:I = 0xb
+
+.field public static final TYPE_FILE_URI:I = 0xc
+
+.field public static final TYPE_NONE:I = 0xa
 
 .field private static mHasExtraVideoQuality:Z
 
@@ -71,13 +75,13 @@
 
 .field private static mMMS_maximum_size:I
 
-.field private static mSaveUri:Landroid/net/Uri;
-
 .field private static mVideo_maximum_size:J
 
 
 # instance fields
 .field private mCameralaunchedBy:I
+
+.field private mCropValue:Ljava/lang/String;
 
 .field private mHTCCamera:Lcom/android/camera/HTCCamera;
 
@@ -87,12 +91,12 @@
 
 .field public mRequestName:Lcom/android/camera/IntentManager$RequestName;
 
+.field private mSaveUri:Landroid/net/Uri;
+
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 4
-
-    const/4 v3, 0x0
+    .locals 3
 
     const/4 v2, 0x0
 
@@ -110,23 +114,25 @@
 
     sput-boolean v2, Lcom/android/camera/IntentManager;->mMMS_isVideoQVGA:Z
 
-    sput-object v3, Lcom/android/camera/IntentManager;->mSaveUri:Landroid/net/Uri;
-
-    sput-object v3, Lcom/android/camera/IntentManager;->mCropValue:Ljava/lang/String;
-
     sput-boolean v2, Lcom/android/camera/IntentManager;->mHasExtraVideoQuality:Z
 
     return-void
 .end method
 
 .method public constructor <init>(Lcom/android/camera/HTCCamera;Lcom/android/camera/CameraThread;)V
-    .locals 1
+    .locals 2
 
     const/4 v0, 0x0
+
+    const/4 v1, 0x0
 
     invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
 
     iput v0, p0, Lcom/android/camera/IntentManager;->mCameralaunchedBy:I
+
+    iput-object v1, p0, Lcom/android/camera/IntentManager;->mSaveUri:Landroid/net/Uri;
+
+    iput-object v1, p0, Lcom/android/camera/IntentManager;->mCropValue:Ljava/lang/String;
 
     iput-boolean v0, p0, Lcom/android/camera/IntentManager;->mIsCamcorder:Z
 
@@ -138,9 +144,7 @@
 
     iput-object v0, p0, Lcom/android/camera/IntentManager;->mRequestName:Lcom/android/camera/IntentManager$RequestName;
 
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lcom/android/camera/IntentManager;->mHTCCamera:Lcom/android/camera/HTCCamera;
+    iput-object v1, p0, Lcom/android/camera/IntentManager;->mHTCCamera:Lcom/android/camera/HTCCamera;
 
     iput-object p1, p0, Lcom/android/camera/IntentManager;->mHTCCamera:Lcom/android/camera/HTCCamera;
 
@@ -170,9 +174,9 @@
 
     if-nez p1, :cond_0
 
-    sput-object v4, Lcom/android/camera/IntentManager;->mSaveUri:Landroid/net/Uri;
+    iput-object v4, p0, Lcom/android/camera/IntentManager;->mSaveUri:Landroid/net/Uri;
 
-    sput-object v4, Lcom/android/camera/IntentManager;->mCropValue:Ljava/lang/String;
+    iput-object v4, p0, Lcom/android/camera/IntentManager;->mCropValue:Ljava/lang/String;
 
     iget-object v4, p0, Lcom/android/camera/IntentManager;->mHTCCamera:Lcom/android/camera/HTCCamera;
 
@@ -196,7 +200,7 @@
 
     check-cast v4, Landroid/net/Uri;
 
-    sput-object v4, Lcom/android/camera/IntentManager;->mSaveUri:Landroid/net/Uri;
+    iput-object v4, p0, Lcom/android/camera/IntentManager;->mSaveUri:Landroid/net/Uri;
 
     const-string v4, "crop"
 
@@ -204,7 +208,7 @@
 
     move-result-object v4
 
-    sput-object v4, Lcom/android/camera/IntentManager;->mCropValue:Ljava/lang/String;
+    iput-object v4, p0, Lcom/android/camera/IntentManager;->mCropValue:Ljava/lang/String;
 
     const-string v4, "android.intent.extra.sizeLimit"
 
@@ -364,14 +368,6 @@
     goto/16 :goto_0
 .end method
 
-.method public static getCropValue()Ljava/lang/String;
-    .locals 1
-
-    sget-object v0, Lcom/android/camera/IntentManager;->mCropValue:Ljava/lang/String;
-
-    return-object v0
-.end method
-
 .method public static getMMS_MaximumSize()I
     .locals 1
 
@@ -394,14 +390,6 @@
     sget-boolean v0, Lcom/android/camera/IntentManager;->mMMS_isWideScreen:Z
 
     return v0
-.end method
-
-.method public static getSaveUri()Landroid/net/Uri;
-    .locals 1
-
-    sget-object v0, Lcom/android/camera/IntentManager;->mSaveUri:Landroid/net/Uri;
-
-    return-object v0
 .end method
 
 .method public static getVideoMaximum_Size()J
@@ -990,12 +978,28 @@
     goto/16 :goto_0
 .end method
 
+.method public final getCropValue()Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/camera/IntentManager;->mCropValue:Ljava/lang/String;
+
+    return-object v0
+.end method
+
 .method public getLaunchedby()I
     .locals 1
 
     iget v0, p0, Lcom/android/camera/IntentManager;->mCameralaunchedBy:I
 
     return v0
+.end method
+
+.method public final getSaveUri()Landroid/net/Uri;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/camera/IntentManager;->mSaveUri:Landroid/net/Uri;
+
+    return-object v0
 .end method
 
 .method public initManager(Landroid/content/Intent;)V

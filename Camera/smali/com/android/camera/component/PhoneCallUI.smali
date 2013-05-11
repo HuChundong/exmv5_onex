@@ -6,7 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lcom/android/camera/component/PhoneCallUI$7;,
+        Lcom/android/camera/component/PhoneCallUI$8;,
         Lcom/android/camera/component/PhoneCallUI$ContactIconDrawable;,
         Lcom/android/camera/component/PhoneCallUI$GetCallerContentThread;
     }
@@ -26,6 +26,19 @@
 
 
 # instance fields
+.field private final isAnswerPhoneCall:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/Boolean;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private final mPropertyOwnerKey:Ljava/lang/Object;
+
 .field private m_AnswerDialog:Lcom/htc/widget/HtcAlertDialog;
 
 .field private m_ContactBmp:Landroid/graphics/Bitmap;
@@ -65,11 +78,45 @@
 
     iput-boolean v2, p0, Lcom/android/camera/component/PhoneCallUI;->m_IsPhoneListenStarted:Z
 
+    new-instance v0, Ljava/lang/Object;
+
+    invoke-direct/range {v0 .. v0}, Ljava/lang/Object;-><init>()V
+
+    iput-object v0, p0, Lcom/android/camera/component/PhoneCallUI;->mPropertyOwnerKey:Ljava/lang/Object;
+
     new-instance v0, Lcom/android/camera/component/PhoneCallUI$1;
 
     invoke-direct {v0, p0}, Lcom/android/camera/component/PhoneCallUI$1;-><init>(Lcom/android/camera/component/PhoneCallUI;)V
 
     iput-object v0, p0, Lcom/android/camera/component/PhoneCallUI;->m_phoneStateListener:Lcom/htc/wrap/android/telephony/HtcWrapPhoneStateListener;
+
+    const-string v0, "PhoneCallUI.isAnswerPhoneCall"
+
+    iget-object v1, p0, Lcom/android/camera/component/PhoneCallUI;->mPropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-static {v0, v1, v2}, Lcom/android/camera/property/Property;->createAsReadOnlyBoolean(Ljava/lang/String;Ljava/lang/Object;Z)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/component/PhoneCallUI;->isAnswerPhoneCall:Lcom/android/camera/property/Property;
+
+    return-void
+.end method
+
+.method private InternalendCall()V
+    .locals 3
+
+    iget-object v0, p0, Lcom/android/camera/component/PhoneCallUI;->isAnswerPhoneCall:Lcom/android/camera/property/Property;
+
+    iget-object v1, p0, Lcom/android/camera/component/PhoneCallUI;->mPropertyOwnerKey:Ljava/lang/Object;
+
+    const/4 v2, 0x0
+
+    invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v1, v2}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
 
     return-void
 .end method
@@ -130,12 +177,12 @@
     return-object v0
 .end method
 
-.method static synthetic access$1400(Lcom/android/camera/component/PhoneCallUI;)Ljava/lang/String;
-    .locals 1
+.method static synthetic access$1400(Lcom/android/camera/component/PhoneCallUI;)V
+    .locals 0
 
-    iget-object v0, p0, Lcom/android/camera/ThreadDependencyObject;->TAG:Ljava/lang/String;
+    invoke-direct {p0}, Lcom/android/camera/component/PhoneCallUI;->InternalendCall()V
 
-    return-object v0
+    return-void
 .end method
 
 .method static synthetic access$1500(Lcom/android/camera/component/PhoneCallUI;)Ljava/lang/String;
@@ -154,7 +201,15 @@
     return-object v0
 .end method
 
-.method static synthetic access$1700(Lcom/android/camera/component/PhoneCallUI;)V
+.method static synthetic access$1700(Lcom/android/camera/component/PhoneCallUI;)Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/camera/ThreadDependencyObject;->TAG:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method static synthetic access$1800(Lcom/android/camera/component/PhoneCallUI;)V
     .locals 0
 
     invoke-direct {p0}, Lcom/android/camera/component/PhoneCallUI;->answerCall()V
@@ -162,7 +217,7 @@
     return-void
 .end method
 
-.method static synthetic access$1800(Lcom/android/camera/component/PhoneCallUI;)V
+.method static synthetic access$1900(Lcom/android/camera/component/PhoneCallUI;)V
     .locals 0
 
     invoke-direct {p0}, Lcom/android/camera/component/PhoneCallUI;->endCall()V
@@ -170,18 +225,10 @@
     return-void
 .end method
 
-.method static synthetic access$1900(Lcom/android/camera/component/PhoneCallUI;)Lcom/htc/widget/HtcAlertDialog;
+.method static synthetic access$2000(Lcom/android/camera/component/PhoneCallUI;)Lcom/htc/widget/HtcAlertDialog;
     .locals 1
 
     iget-object v0, p0, Lcom/android/camera/component/PhoneCallUI;->m_AnswerDialog:Lcom/htc/widget/HtcAlertDialog;
-
-    return-object v0
-.end method
-
-.method static synthetic access$2000(Lcom/android/camera/component/PhoneCallUI;)Ljava/lang/String;
-    .locals 1
-
-    iget-object v0, p0, Lcom/android/camera/ThreadDependencyObject;->TAG:Ljava/lang/String;
 
     return-object v0
 .end method
@@ -203,6 +250,14 @@
 .end method
 
 .method static synthetic access$2200(Lcom/android/camera/component/PhoneCallUI;)Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/camera/ThreadDependencyObject;->TAG:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method static synthetic access$2300(Lcom/android/camera/component/PhoneCallUI;)Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lcom/android/camera/ThreadDependencyObject;->TAG:Ljava/lang/String;
@@ -275,7 +330,7 @@
 .end method
 
 .method private answerCall()V
-    .locals 3
+    .locals 4
 
     iget-object v1, p0, Lcom/android/camera/ThreadDependencyObject;->TAG:Ljava/lang/String;
 
@@ -284,6 +339,18 @@
     invoke-static {v1, v2}, Lcom/android/camera/LOG;->W(Ljava/lang/String;Ljava/lang/String;)V
 
     :try_start_0
+    iget-object v1, p0, Lcom/android/camera/component/PhoneCallUI;->isAnswerPhoneCall:Lcom/android/camera/property/Property;
+
+    iget-object v2, p0, Lcom/android/camera/component/PhoneCallUI;->mPropertyOwnerKey:Ljava/lang/Object;
+
+    const/4 v3, 0x1
+
+    invoke-static {v3}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v3
+
+    invoke-virtual {v1, v2, v3}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
+
     invoke-static {}, Lcom/htc/service/HtcTelephonyManager;->getDefault()Lcom/htc/service/HtcTelephonyManager;
 
     move-result-object v1
@@ -528,11 +595,19 @@
 
     invoke-virtual {v1, v2}, Lcom/android/camera/property/Property;->addChangedCallback(Lcom/android/camera/property/PropertyChangedCallback;)V
 
-    iget-object v1, v0, Lcom/android/camera/HTCCamera;->pausingEvent:Lcom/android/camera/event/Event;
+    iget-object v1, v0, Lcom/android/camera/HTCCamera;->isActivityPaused:Lcom/android/camera/property/Property;
 
     new-instance v2, Lcom/android/camera/component/PhoneCallUI$3;
 
     invoke-direct {v2, p0}, Lcom/android/camera/component/PhoneCallUI$3;-><init>(Lcom/android/camera/component/PhoneCallUI;)V
+
+    invoke-virtual {v1, v2}, Lcom/android/camera/property/Property;->addChangedCallback(Lcom/android/camera/property/PropertyChangedCallback;)V
+
+    iget-object v1, v0, Lcom/android/camera/HTCCamera;->pausingEvent:Lcom/android/camera/event/Event;
+
+    new-instance v2, Lcom/android/camera/component/PhoneCallUI$4;
+
+    invoke-direct {v2, p0}, Lcom/android/camera/component/PhoneCallUI$4;-><init>(Lcom/android/camera/component/PhoneCallUI;)V
 
     invoke-virtual {v1, v2}, Lcom/android/camera/event/Event;->addHandler(Lcom/android/camera/event/EventHandler;)V
 
@@ -542,7 +617,11 @@
 
 # virtual methods
 .method protected deinitializeOverride()V
-    .locals 0
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/camera/component/PhoneCallUI;->mPropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-static {v0}, Lcom/android/camera/property/Property;->destroyAllProperties(Ljava/lang/Object;)V
 
     invoke-super {p0}, Lcom/android/camera/component/UIComponent;->deinitializeOverride()V
 
@@ -881,29 +960,39 @@
 .end method
 
 .method protected initializeOverride()V
-    .locals 3
+    .locals 4
+
+    invoke-virtual {p0}, Lcom/android/camera/component/PhoneCallUI;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/android/camera/component/PhoneCallUI;->isAnswerPhoneCall:Lcom/android/camera/property/Property;
+
+    iget-object v2, v0, Lcom/android/camera/HTCCamera;->isAnswerPhoneCall:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v0, v1, v2}, Lcom/android/camera/HTCCamera;->bindProperties(Lcom/android/camera/property/Property;Lcom/android/camera/property/Property;)V
 
     invoke-super {p0}, Lcom/android/camera/component/UIComponent;->initializeOverride()V
 
     invoke-virtual {p0}, Lcom/android/camera/component/PhoneCallUI;->getSettings()Lcom/android/camera/CameraSettings;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string v1, "Camera_Application_hashCode"
+    const-string v2, "Camera_Application_hashCode"
 
     invoke-static {}, Lcom/android/camera/CameraApplication;->current()Lcom/android/camera/CameraApplication;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v2}, Ljava/lang/Object;->hashCode()I
+    invoke-virtual {v3}, Ljava/lang/Object;->hashCode()I
 
-    move-result v2
+    move-result v3
 
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v0, v1, v2}, Lcom/android/camera/CameraSettings;->set(Ljava/lang/String;Ljava/lang/Object;)Z
+    invoke-virtual {v1, v2, v3}, Lcom/android/camera/CameraSettings;->set(Ljava/lang/String;Ljava/lang/Object;)Z
 
     invoke-direct {p0}, Lcom/android/camera/component/PhoneCallUI;->setupPropertyChangedCallbacks()V
 
@@ -1064,17 +1153,17 @@
     invoke-virtual {v4, v8}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     :goto_2
-    new-instance v7, Lcom/android/camera/component/PhoneCallUI$4;
+    new-instance v7, Lcom/android/camera/component/PhoneCallUI$5;
 
-    invoke-direct {v7, p0}, Lcom/android/camera/component/PhoneCallUI$4;-><init>(Lcom/android/camera/component/PhoneCallUI;)V
+    invoke-direct {v7, p0}, Lcom/android/camera/component/PhoneCallUI$5;-><init>(Lcom/android/camera/component/PhoneCallUI;)V
 
-    new-instance v5, Lcom/android/camera/component/PhoneCallUI$5;
+    new-instance v5, Lcom/android/camera/component/PhoneCallUI$6;
 
-    invoke-direct {v5, p0}, Lcom/android/camera/component/PhoneCallUI$5;-><init>(Lcom/android/camera/component/PhoneCallUI;)V
+    invoke-direct {v5, p0}, Lcom/android/camera/component/PhoneCallUI$6;-><init>(Lcom/android/camera/component/PhoneCallUI;)V
 
-    new-instance v6, Lcom/android/camera/component/PhoneCallUI$6;
+    new-instance v6, Lcom/android/camera/component/PhoneCallUI$7;
 
-    invoke-direct {v6, p0}, Lcom/android/camera/component/PhoneCallUI$6;-><init>(Lcom/android/camera/component/PhoneCallUI;)V
+    invoke-direct {v6, p0}, Lcom/android/camera/component/PhoneCallUI$7;-><init>(Lcom/android/camera/component/PhoneCallUI;)V
 
     new-instance v8, Lcom/htc/widget/HtcAlertDialog$Builder;
 
@@ -1084,7 +1173,7 @@
 
     invoke-direct {v8, v9}, Lcom/htc/widget/HtcAlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    const v9, 0x7f0a0258
+    const v9, 0x7f0a025e
 
     invoke-virtual {v8, v9}, Lcom/htc/widget/HtcAlertDialog$Builder;->setTitle(I)Lcom/htc/widget/HtcAlertDialog$Builder;
 
@@ -1096,13 +1185,13 @@
 
     move-result-object v8
 
-    const v9, 0x7f0a0259
+    const v9, 0x7f0a025f
 
     invoke-virtual {v8, v9, v7}, Lcom/htc/widget/HtcAlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Lcom/htc/widget/HtcAlertDialog$Builder;
 
     move-result-object v8
 
-    const v9, 0x7f0a025a
+    const v9, 0x7f0a0260
 
     invoke-virtual {v8, v9, v5}, Lcom/htc/widget/HtcAlertDialog$Builder;->setNegativeButton(ILandroid/content/DialogInterface$OnClickListener;)Lcom/htc/widget/HtcAlertDialog$Builder;
 

@@ -152,7 +152,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a0214
+    const v1, 0x7f0a021a
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -178,7 +178,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a0213
+    const v1, 0x7f0a0219
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -207,7 +207,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a0215
+    const v1, 0x7f0a021b
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -232,7 +232,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a0216
+    const v1, 0x7f0a021c
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -280,7 +280,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a021d
+    const v1, 0x7f0a0223
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -303,7 +303,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a0218
+    const v1, 0x7f0a021e
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -326,7 +326,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a0219
+    const v1, 0x7f0a021f
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -399,7 +399,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a021c
+    const v1, 0x7f0a0222
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -424,7 +424,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a021e
+    const v1, 0x7f0a0224
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -449,7 +449,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a021f
+    const v1, 0x7f0a0225
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -474,7 +474,7 @@
 
     aput-object v1, v0, v2
 
-    const v1, 0x7f0a0224
+    const v1, 0x7f0a022a
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -638,7 +638,7 @@
     :goto_0
     new-instance v3, Lcom/android/camera/menu/ScenesMenu$UserScenesHeaderBarItem;
 
-    const v4, 0x7f0a0211
+    const v4, 0x7f0a0217
 
     move-object/from16 v0, p0
 
@@ -678,7 +678,7 @@
 
     iget-object v3, v0, Lcom/android/camera/menu/ScenesMenu;->m_UserScenesExpandMenuItem:Lcom/android/camera/menu/MenuItem;
 
-    const v4, 0x7f0a0212
+    const v4, 0x7f0a0218
 
     invoke-virtual {v3, v4}, Lcom/android/camera/menu/MenuItem;->setTitle(I)V
 

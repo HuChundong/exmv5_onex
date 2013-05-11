@@ -276,9 +276,49 @@
 .method private applyImageSetting(Ljava/lang/String;ILcom/android/camera/CameraController;Z)V
     .locals 5
 
-    if-eqz p3, :cond_0
+    if-eqz p3, :cond_3
 
     :try_start_0
+    const-string v1, "contrast"
+
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    const/16 v0, 0x19
+
+    if-ne p2, v0, :cond_0
+
+    const/16 v3, 0x5
+
+    move/from16 p2, v3
+
+    goto :goto_0
+
+    :cond_0
+    const/16 v0, 0x32
+
+    if-ne p2, v0, :cond_1
+
+    const/16 v3, 0x7
+
+    move/from16 p2, v3
+
+    goto :goto_0
+
+    :cond_1
+    const/16 v0, 0x4b
+
+    if-ne p2, v0, :cond_2
+
+    const/16 v3, 0x32
+
+    move/from16 p2, v3
+
+    :cond_2
+    :goto_0
     iget-object v1, p0, Lcom/android/camera/ThreadDependencyObject;->TAG:Ljava/lang/String;
 
     const-string v2, "applyImageSetting() - Set "
@@ -293,14 +333,14 @@
 
     invoke-virtual {p3, p1, p2}, Lcom/android/camera/CameraController;->setCameraParameter(Ljava/lang/String;I)V
 
-    if-eqz p4, :cond_0
+    if-eqz p4, :cond_3
 
     invoke-virtual {p3}, Lcom/android/camera/CameraController;->doSetCameraParameters()V
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
-    :cond_0
-    :goto_0
+    :cond_3
+    :goto_1
     return-void
 
     :catch_0
@@ -334,7 +374,7 @@
 
     invoke-static {v1, v2, v0}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    goto :goto_0
+    goto :goto_1
 .end method
 
 .method private applyImageSettings(Z)V
@@ -428,7 +468,7 @@
 
     const/high16 v1, 0x3f80
 
-    const/high16 v0, -0x4080
+    const/high16 v0, -0x2050
 
     cmpg-float v2, p1, v0
 

@@ -27,13 +27,13 @@
 
     const/16 v1, 0x2b
 
-    if-ne v0, v1, :cond_0
+    if-eq v0, v1, :cond_0
 
     sget-short v0, Lcom/htc/htcjavaflag/HtcBuildFlag;->Htc_PROJECT_flag:S
 
     const/16 v1, 0xa8
 
-    if-ne v0, v1, :cond_0
+    if-eq v0, v1, :cond_0
 
     const/4 v0, 0x1
 
@@ -213,7 +213,7 @@
 .method public static isExperimentalFeatureEnabled()Z
     .locals 1
 
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     return v0
 .end method
@@ -221,7 +221,7 @@
 .method public static isFrontCameraFaceBeautifierSupported()Z
     .locals 1
 
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     return v0
 .end method
@@ -239,7 +239,7 @@
 .method public static isInitialFakeRotationEnabled()Z
     .locals 1
 
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     return v0
 .end method
@@ -247,7 +247,7 @@
 .method public static isVideoSceneSupported()Z
     .locals 1
 
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     return v0
 .end method

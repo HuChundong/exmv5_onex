@@ -324,6 +324,7 @@
     <string name="resolution_photo_4_3_2592x1952">PHOTO_4_3_2592x1952</string>
     <string name="resolution_photo_4_3_2048x1536">PHOTO_4_3_2048x1536</string>
     <string name="resolution_photo_4_3_1600x1200">PHOTO_4_3_1600x1200</string>
+    <string name="resolution_photo_4_3_1456x1088">PHOTO_4_3_1456x1088</string>
     <string name="resolution_photo_4_3_1440x1088">PHOTO_4_3_1440x1088</string>
     <string name="resolution_photo_4_3_1280x960">PHOTO_4_3_1280x960</string>
     <string name="resolution_photo_4_3_960x720">PHOTO_4_3_960x720</string>
@@ -351,6 +352,7 @@
     <string name="resolution_photo_5_3_3264x1952">PHOTO_5_3_3264x1952</string>
     <string name="resolution_photo_5_3_2592x1552">PHOTO_5_3_2592x1552</string>
     <string name="resolution_photo_5_3_2048x1216">PHOTO_5_3_2048x1216</string>
+    <string name="resolution_photo_5_3_1456x880">PHOTO_5_3_1456x880</string>
     <string name="resolution_photo_5_3_1280x768">PHOTO_5_3_1280x768</string>
     <string name="resolution_photo_5_3_640x384">PHOTO_5_3_640x384</string>
     <string name="resolution_photo_16_9_3264x1840">PHOTO_16_9_3264x1840</string>
@@ -358,6 +360,7 @@
     <string name="resolution_photo_16_9_2048x1152">PHOTO_16_9_2048x1152</string>
     <string name="resolution_photo_16_9_1920x1088">PHOTO_16_9_1920x1088</string>
     <string name="resolution_photo_16_9_1600x896">PHOTO_16_9_1600x896</string>
+    <string name="resolution_photo_16_9_1456x828">PHOTO_16_9_1456x828</string>
     <string name="resolution_photo_16_9_1280x720">PHOTO_16_9_1280x720</string>
     <string name="resolution_photo_16_9_640x368">PHOTO_16_9_640x368</string>
     <string name="resolution_Tablet_VGA_16_9">Tablet_VGA_16_9</string>
@@ -406,6 +409,7 @@
     <string name="resolution_photo_4_3_2592x1952_description">2592 x 1952</string>
     <string name="resolution_photo_4_3_2048x1536_description">2048 x 1536</string>
     <string name="resolution_photo_4_3_1600x1200_description">1600 x 1200</string>
+    <string name="resolution_photo_4_3_1456x1088_description">1456 x 1088</string>
     <string name="resolution_photo_4_3_1440x1088_description">1440 x 1088</string>
     <string name="resolution_photo_4_3_1280x960_description">1280 x 960</string>
     <string name="resolution_photo_4_3_960x720_description">960 x 720</string>
@@ -431,6 +435,7 @@
     <string name="resolution_photo_5_3_3264x1952_description">3264 x 1952</string>
     <string name="resolution_photo_5_3_2592x1552_description">2592 x 1552</string>
     <string name="resolution_photo_5_3_2048x1216_description">2048 x 1216</string>
+    <string name="resolution_photo_5_3_1456x880_description">1456 x 880</string>
     <string name="resolution_photo_5_3_1280x768_description">1280 x 768</string>
     <string name="resolution_photo_5_3_640x384_description">640 x 384</string>
     <string name="resolution_photo_16_9_3264x1840_description">3264 x 1840</string>
@@ -438,6 +443,7 @@
     <string name="resolution_photo_16_9_2048x1152_description">2048 x 1152</string>
     <string name="resolution_photo_16_9_1920x1088_description">1920 x 1088</string>
     <string name="resolution_photo_16_9_1600x896_description">1600 x 896</string>
+    <string name="resolution_photo_16_9_1456x828_description">1456 x 828</string>
     <string name="resolution_photo_16_9_1280x720_description">1280 x 720</string>
     <string name="resolution_photo_16_9_640x368_description">640 x 368</string>
     <string name="resolution_Tablet_5m_16_9_description">5 M (2592 x 1520)</string>
@@ -604,4 +610,33 @@
     <string name="incoming_call_dialog_answer">Answer</string>
     <string name="incoming_call_dialog_decline">Decline</string>
     <string name="ap_version_id">3.00.0001</string>
+    <string name="image_quality_90">90%</string>
+    <string name="image_quality_80">80%</string>
+    <string name="image_quality_60">60%</string>
+    <string name="image_quality_40">40%</string>
+    <string name="settings_image_quality">Image encoding quality</string>
+    <string name="settings_miscellaneous">Miscellaneous</string>
+    <string name="force_video_quality">Force video bitrate</string>
+    <string name="force_audio_quality">Force audio bitrate</string>
+    <string name="hook_vol_keys">Hook volume keys</string>
+    <string name="image_quality_100">100%</string>
+    <string name="image_quality_70">70%</string>
+    <string name="image_quality_50">50%</string>
+    <string name="property_level_p4">+4</string>
+    <string name="property_level_p3">+3</string>
+    <string name="property_level_m3">-3</string>
+    <string name="property_level_m4">-4</string>
+    <string name="settings_force_image_quality">Force</string>
+    <string name="pref_vol_plus_camera">Vol+ shoot/Vol- record</string>
+    <string name="pref_vol_plus_camecoder">Vol+ record/Vol- shoot</string>
+    <string name="force_frame_rate">Force video frame rate</string>
+    <string name="settings_stamp">Stamp on image</string>
+    <string name="settings_stamp_date">Date stamp</string>
+    <string name="settings_stamp_location">Location stamp</string>
+    <string name="settings_menu_bar_transparence">Menu bar transparence</string>
+    <string name="settings_menu_bar_trans_toast">To apply the changes You must restart Camera application.</string>
+    <string name="settings_antibanding">Antibanding</string>
+    <string name="settings_zsl_cam_mode">ZSL camera mode</string>
+    <string name="settings_audio_focus">Gain audio focus</string>
+    <string name="file_name_format">File name format</string>
 </resources>

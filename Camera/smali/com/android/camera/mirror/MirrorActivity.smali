@@ -191,14 +191,14 @@
     :sswitch_4
     iput-boolean v1, p0, Lcom/android/camera/mirror/MirrorActivity;->m_IsPreviewStarted:Z
 
-    const v0, 0x7f0a01fb
+    const v0, 0x7f0a0201
 
     invoke-direct {p0, v0}, Lcom/android/camera/mirror/MirrorActivity;->showErrorMessage(I)V
 
     goto :goto_0
 
     :sswitch_5
-    const v0, 0x7f0a01fc
+    const v0, 0x7f0a0202
 
     invoke-direct {p0, v0}, Lcom/android/camera/mirror/MirrorActivity;->showErrorMessage(I)V
 

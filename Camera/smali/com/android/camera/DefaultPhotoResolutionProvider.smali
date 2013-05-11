@@ -319,7 +319,6 @@
 
     packed-switch v0, :pswitch_data_0
 
-    :pswitch_0
     sget-object v0, Lcom/android/camera/Resolution;->THREE_MEGA_3_2:Lcom/android/camera/Resolution;
 
     invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
@@ -335,7 +334,7 @@
     :goto_0
     return-void
 
-    :pswitch_1
+    :pswitch_0
     sget-object v0, Lcom/android/camera/Resolution;->THREE_MEGA_16_9:Lcom/android/camera/Resolution;
 
     invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
@@ -350,7 +349,7 @@
 
     goto :goto_0
 
-    :pswitch_2
+    :pswitch_1
     sget-object v0, Lcom/android/camera/Resolution;->THREE_MEGA_5_3:Lcom/android/camera/Resolution;
 
     invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
@@ -367,15 +366,13 @@
 
     :pswitch_data_0
     .packed-switch 0x1
+        :pswitch_0
         :pswitch_1
-        :pswitch_0
-        :pswitch_0
-        :pswitch_2
     .end packed-switch
 .end method
 
 .method private static initializeDefault5mpResolutions(Ljava/util/ArrayList;)V
-    .locals 2
+    .locals 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -386,108 +383,134 @@
         }
     .end annotation
 
-    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportSharpSensorResolution()Z
+    sget-object v0, Lcom/android/camera/DisplayDevice;->SCREEN_RATIO:Lcom/android/camera/DisplayDevice$ScreenRatio;
 
-    move-result v0
+    sget-object v1, Lcom/android/camera/DisplayDevice$ScreenRatio;->Ratio_16_9:Lcom/android/camera/DisplayDevice$ScreenRatio;
 
-    if-eqz v0, :cond_0
+    if-ne v0, v1, :cond_1
 
-    sget-object v0, Lcom/android/camera/Resolution;->SHARP_FIVE_MEGA:Lcom/android/camera/Resolution;
+    new-instance v0, Lcom/android/camera/Resolution;
 
-    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_16_9_2592x1456:Lcom/android/camera/Resolution;
 
-    :goto_0
-    sget-object v0, Lcom/android/camera/DefaultPhotoResolutionProvider$1;->$SwitchMap$com$android$camera$DisplayDevice$ScreenRatio:[I
+    sget-object v2, Lcom/android/camera/Resolution$Category;->Large:Lcom/android/camera/Resolution$Category;
 
-    sget-object v1, Lcom/android/camera/DisplayDevice;->SCREEN_RATIO:Lcom/android/camera/DisplayDevice$ScreenRatio;
-
-    invoke-virtual {v1}, Lcom/android/camera/DisplayDevice$ScreenRatio;->ordinal()I
-
-    move-result v1
-
-    aget v0, v0, v1
-
-    packed-switch v0, :pswitch_data_0
-
-    sget-object v0, Lcom/android/camera/Resolution;->FIVE_MEGA_3_2:Lcom/android/camera/Resolution;
+    invoke-direct {v0, v1, v2}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
 
     invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :goto_1
-    invoke-static {p0}, Lcom/android/camera/DefaultPhotoResolutionProvider;->initializeDefault3mpResolutions(Ljava/util/ArrayList;)V
+    new-instance v0, Lcom/android/camera/Resolution;
 
-    return-void
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_16_9_2048x1152:Lcom/android/camera/Resolution;
+
+    sget-object v2, Lcom/android/camera/Resolution$Category;->Medium:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v0, v1, v2}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v0, Lcom/android/camera/Resolution;
+
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_16_9_1280x720:Lcom/android/camera/Resolution;
+
+    sget-object v2, Lcom/android/camera/Resolution$Category;->Small:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v0, v1, v2}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     :cond_0
-    sget-object v0, Lcom/android/camera/Resolution;->FIVE_MEGA:Lcom/android/camera/Resolution;
-
-    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    goto :goto_0
-
-    :pswitch_0
-    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportSharpSensorResolution()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    sget-object v0, Lcom/android/camera/Resolution;->SHARP_FIVE_MEGA_16_9:Lcom/android/camera/Resolution;
-
-    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    goto :goto_1
-
-    :cond_1
-    sget-object v0, Lcom/android/camera/Resolution;->FIVE_MEGA_16_9:Lcom/android/camera/Resolution;
-
-    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    goto :goto_1
-
-    :pswitch_1
-    sget-object v0, Lcom/android/camera/Resolution;->Tablet_FIVE_MEGA_16_9:Lcom/android/camera/Resolution;
-
-    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    goto :goto_1
-
-    :pswitch_2
-    sget-object v0, Lcom/android/camera/Resolution;->Tablet_FIVE_MEGA_16_10:Lcom/android/camera/Resolution;
-
-    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    goto :goto_1
-
-    :pswitch_3
-    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportSharpSensorResolution()Z
+    :goto_0
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportOVSensorResolution()Z
 
     move-result v0
 
     if-eqz v0, :cond_2
 
-    sget-object v0, Lcom/android/camera/Resolution;->SHARP_FIVE_MEGA_5_3:Lcom/android/camera/Resolution;
+    new-instance v0, Lcom/android/camera/Resolution;
+
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_4_3_2592x1936:Lcom/android/camera/Resolution;
+
+    sget-object v2, Lcom/android/camera/Resolution$Category;->Large:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v0, v1, v2}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
 
     invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    goto :goto_1
+    :goto_1
+    new-instance v0, Lcom/android/camera/Resolution;
+
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_4_3_2048x1536:Lcom/android/camera/Resolution;
+
+    sget-object v2, Lcom/android/camera/Resolution$Category;->Medium:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v0, v1, v2}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v0, Lcom/android/camera/Resolution;
+
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_4_3_1280x960:Lcom/android/camera/Resolution;
+
+    sget-object v2, Lcom/android/camera/Resolution$Category;->Small:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v0, v1, v2}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    return-void
+
+    :cond_1
+    sget-object v0, Lcom/android/camera/DisplayDevice;->SCREEN_RATIO:Lcom/android/camera/DisplayDevice$ScreenRatio;
+
+    sget-object v1, Lcom/android/camera/DisplayDevice$ScreenRatio;->Ratio_5_3:Lcom/android/camera/DisplayDevice$ScreenRatio;
+
+    if-ne v0, v1, :cond_0
+
+    new-instance v0, Lcom/android/camera/Resolution;
+
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_5_3_2592x1552:Lcom/android/camera/Resolution;
+
+    sget-object v2, Lcom/android/camera/Resolution$Category;->Large:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v0, v1, v2}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v0, Lcom/android/camera/Resolution;
+
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_5_3_2048x1216:Lcom/android/camera/Resolution;
+
+    sget-object v2, Lcom/android/camera/Resolution$Category;->Medium:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v0, v1, v2}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v0, Lcom/android/camera/Resolution;
+
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_5_3_1280x768:Lcom/android/camera/Resolution;
+
+    sget-object v2, Lcom/android/camera/Resolution$Category;->Small:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v0, v1, v2}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    goto :goto_0
 
     :cond_2
-    sget-object v0, Lcom/android/camera/Resolution;->FIVE_MEGA_5_3:Lcom/android/camera/Resolution;
+    new-instance v0, Lcom/android/camera/Resolution;
+
+    sget-object v1, Lcom/android/camera/Resolution;->PHOTO_4_3_2592x1952:Lcom/android/camera/Resolution;
+
+    sget-object v2, Lcom/android/camera/Resolution$Category;->Large:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v0, v1, v2}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
 
     invoke-virtual {p0, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_1
-
-    nop
-
-    :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_0
-        :pswitch_1
-        :pswitch_2
-        :pswitch_3
-    .end packed-switch
 .end method
 
 .method private static initializeDefault8mpResolutions(Ljava/util/ArrayList;)V
@@ -797,13 +820,13 @@
 
     sget-object v4, Lcom/android/camera/DisplayDevice$ScreenRatio;->Ratio_16_9:Lcom/android/camera/DisplayDevice$ScreenRatio;
 
-    if-ne v3, v4, :cond_6
+    if-ne v3, v4, :cond_d
 
     invoke-static {}, Lcom/android/camera/DisplayDevice;->support2M2ndCam()Z
 
     move-result v3
 
-    if-eqz v3, :cond_a
+    if-eqz v3, :cond_b
 
     invoke-static {}, Lcom/android/camera/DisplayDevice;->isDlxSeries()Z
 
@@ -813,7 +836,7 @@
 
     sget-short v3, Lcom/htc/htcjavaflag/HtcBuildFlag;->Htc_DEVICE_flag:S
 
-    if-ne v3, v6, :cond_9
+    if-ne v3, v6, :cond_a
 
     :cond_5
     new-instance v3, Lcom/android/camera/Resolution;
@@ -854,6 +877,25 @@
     goto :goto_2
 
     :cond_8
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->support1_6M2ndCam()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_9
+
+    new-instance v3, Lcom/android/camera/Resolution;
+
+    sget-object v4, Lcom/android/camera/Resolution;->PHOTO_4_3_1456x1088:Lcom/android/camera/Resolution;
+
+    sget-object v5, Lcom/android/camera/Resolution$Category;->Large:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v3, v4, v5}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {v0, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    goto :goto_2
+
+    :cond_9
     invoke-static {}, Lcom/android/camera/DisplayDevice;->support1M2ndCam()Z
 
     move-result v3
@@ -872,7 +914,7 @@
 
     goto :goto_2
 
-    :cond_9
+    :cond_a
     new-instance v3, Lcom/android/camera/Resolution;
 
     sget-object v4, Lcom/android/camera/Resolution;->PHOTO_16_9_1600x896:Lcom/android/camera/Resolution;
@@ -885,7 +927,26 @@
 
     goto :goto_3
 
-    :cond_a
+    :cond_b
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->support1_6M2ndCam()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_c
+
+    new-instance v3, Lcom/android/camera/Resolution;
+
+    sget-object v4, Lcom/android/camera/Resolution;->PHOTO_16_9_1456x828:Lcom/android/camera/Resolution;
+
+    sget-object v5, Lcom/android/camera/Resolution$Category;->Large:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v3, v4, v5}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {v0, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    goto :goto_3
+
+    :cond_c
     invoke-static {}, Lcom/android/camera/DisplayDevice;->support1M2ndCam()Z
 
     move-result v3
@@ -903,6 +964,42 @@
     invoke-virtual {v0, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_3
+
+    :cond_d
+    sget-object v3, Lcom/android/camera/DisplayDevice;->SCREEN_RATIO:Lcom/android/camera/DisplayDevice$ScreenRatio;
+
+    sget-object v4, Lcom/android/camera/DisplayDevice$ScreenRatio;->Ratio_5_3:Lcom/android/camera/DisplayDevice$ScreenRatio;
+
+    if-ne v3, v4, :cond_1
+
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->support1_6M2ndCam()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_e
+
+    new-instance v3, Lcom/android/camera/Resolution;
+
+    sget-object v4, Lcom/android/camera/Resolution;->PHOTO_5_3_1456x880:Lcom/android/camera/Resolution;
+
+    sget-object v5, Lcom/android/camera/Resolution$Category;->Large:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v3, v4, v5}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {v0, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    :cond_e
+    new-instance v3, Lcom/android/camera/Resolution;
+
+    sget-object v4, Lcom/android/camera/Resolution;->PHOTO_5_3_640x384:Lcom/android/camera/Resolution;
+
+    sget-object v5, Lcom/android/camera/Resolution$Category;->Small:Lcom/android/camera/Resolution$Category;
+
+    invoke-direct {v3, v4, v5}, Lcom/android/camera/Resolution;-><init>(Lcom/android/camera/Resolution;Lcom/android/camera/Resolution$Category;)V
+
+    invoke-virtual {v0, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    goto/16 :goto_0
 
     :pswitch_0
     invoke-static {v2}, Lcom/android/camera/DefaultPhotoResolutionProvider;->initializeDefault8mpResolutions(Ljava/util/ArrayList;)V

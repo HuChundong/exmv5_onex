@@ -424,7 +424,7 @@
 
     iput-object v9, v8, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    const v9, 0x7f0a01e3
+    const v9, 0x7f0a01e9
 
     iput v9, v8, Landroid/content/pm/ResolveInfo;->labelRes:I
 
@@ -802,7 +802,7 @@
 
     move-result-object v17
 
-    const v18, 0x7f0a01e3
+    const v18, 0x7f0a01e9
 
     invoke-virtual/range {v17 .. v18}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -1265,7 +1265,7 @@
 
     move-result-object v18
 
-    const v19, 0x7f0a01e3
+    const v19, 0x7f0a01e9
 
     invoke-virtual/range {v18 .. v19}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

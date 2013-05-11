@@ -538,4 +538,8 @@
     <dimen name="snapbooth_P_countbubble_margin_left">252.0px</dimen>
     <dimen name="snapbooth_effect_item_height">110.0px</dimen>
     <dimen name="snapbooth_effect_list_layout_height">120.0px</dimen>
+    <dimen name="level_m2_left_margin">15.0px</dimen>
+    <dimen name="level_m3_left_margin">7.0px</dimen>
+    <dimen name="level_p2_right_margin">15.0px</dimen>
+    <dimen name="level_p3_right_margin">22.0px</dimen>
 </resources>

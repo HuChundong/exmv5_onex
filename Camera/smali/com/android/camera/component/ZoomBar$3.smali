@@ -69,6 +69,33 @@
         }
     .end annotation
 
+    iget-object v0, p0, Lcom/android/camera/component/ZoomBar$3;->this$0:Lcom/android/camera/component/ZoomBar;
+
+    #getter for: Lcom/android/camera/component/ZoomBar;->m_HTCCamera:Lcom/android/camera/HTCCamera;
+    invoke-static {v0}, Lcom/android/camera/component/ZoomBar;->access$900(Lcom/android/camera/component/ZoomBar;)Lcom/android/camera/HTCCamera;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v0, v0, Lcom/android/camera/CameraSettings;->HookVolKeys:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v0}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/String;
+
+    const-string v4, "default"
+
+    invoke-virtual {v0, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
     const/4 v5, 0x0
 
     const/16 v2, 0x2712
@@ -81,10 +108,15 @@
 
     packed-switch v0, :pswitch_data_0
 
+    :cond_0
     :goto_0
     return-void
 
     :pswitch_0
+    iget v0, p3, Lcom/android/camera/input/KeyEventArgs;->repeatCount:I
+
+    if-le v0, v6, :cond_0
+
     iget-object v0, p0, Lcom/android/camera/component/ZoomBar$3;->this$0:Lcom/android/camera/component/ZoomBar;
 
     iget-object v1, p0, Lcom/android/camera/component/ZoomBar$3;->this$0:Lcom/android/camera/component/ZoomBar;
@@ -99,6 +131,10 @@
     goto :goto_0
 
     :pswitch_1
+    iget v0, p3, Lcom/android/camera/input/KeyEventArgs;->repeatCount:I
+
+    if-le v0, v6, :cond_0
+
     iget-object v0, p0, Lcom/android/camera/component/ZoomBar$3;->this$0:Lcom/android/camera/component/ZoomBar;
 
     iget-object v1, p0, Lcom/android/camera/component/ZoomBar$3;->this$0:Lcom/android/camera/component/ZoomBar;

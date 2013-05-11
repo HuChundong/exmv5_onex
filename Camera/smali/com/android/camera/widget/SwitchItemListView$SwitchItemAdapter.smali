@@ -54,17 +54,17 @@
 
     iget-object v0, p0, Lcom/android/camera/widget/SwitchItemListView$SwitchItemAdapter;->m_CameraSwitchItem:Lcom/android/camera/widget/SwitchItem;
 
-    const v1, 0x7f0a0251
+    const v1, 0x7f0a0257
 
-    const v2, 0x7f0a0252
+    const v2, 0x7f0a0258
 
     invoke-virtual {v0, v1, v2}, Lcom/android/camera/widget/SwitchItem;->setText(II)V
 
     iget-object v0, p0, Lcom/android/camera/widget/SwitchItemListView$SwitchItemAdapter;->m_ModeSwitchItem:Lcom/android/camera/widget/SwitchItem;
 
-    const v1, 0x7f0a0253
+    const v1, 0x7f0a0259
 
-    const v2, 0x7f0a0254
+    const v2, 0x7f0a025a
 
     invoke-virtual {v0, v1, v2}, Lcom/android/camera/widget/SwitchItem;->setText(II)V
 

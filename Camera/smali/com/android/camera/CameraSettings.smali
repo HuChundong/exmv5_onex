@@ -12,6 +12,83 @@
 
 
 # instance fields
+.field public final Antibanding:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final FileNameFormat:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final ForceAudioQuality:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final ForceFrameRate:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final ForceVideoQuality:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final HookVolKeys:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final VideoFileFormat:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
 .field public final brightness:Lcom/android/camera/property/Property;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -56,6 +133,17 @@
     .end annotation
 .end field
 
+.field public final forceImageQuality:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/Boolean;",
+            ">;"
+        }
+    .end annotation
+.end field
+
 .field public final frontSelfTimerInterval:Lcom/android/camera/property/Property;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -73,6 +161,28 @@
             "Lcom/android/camera/property/Property",
             "<",
             "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final imageQuality:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final isAudioFocusEnabled:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/Boolean;",
             ">;"
         }
     .end annotation
@@ -188,6 +298,17 @@
     .end annotation
 .end field
 
+.field public final isMenuBarTransEnabled:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/Boolean;",
+            ">;"
+        }
+    .end annotation
+.end field
+
 .field public final isObjectTrackingEnabled:Lcom/android/camera/property/Property;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -222,6 +343,28 @@
 .end field
 
 .field public final isSlowMotionEnabled:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/Boolean;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final isStampDateEnabled:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/Boolean;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final isStampLocationEnabled:Lcom/android/camera/property/Property;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Lcom/android/camera/property/Property",
@@ -277,6 +420,17 @@
 .end field
 
 .field public final isWideRatioPhoto:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/Boolean;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final isZSLEnabled:Lcom/android/camera/property/Property;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Lcom/android/camera/property/Property",
@@ -387,6 +541,17 @@
     .end annotation
 .end field
 
+.field public final supportCAF:Lcom/android/camera/property/Property;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/android/camera/property/Property",
+            "<",
+            "Ljava/lang/Boolean;",
+            ">;"
+        }
+    .end annotation
+.end field
+
 
 # direct methods
 .method constructor <init>(Lcom/android/camera/HTCCamera;)V
@@ -435,6 +600,24 @@
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/camera/CameraSettings;->canAutoFocus:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.supportCAF"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportCAF()Z
+
+    move-result v2
+
+    invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->supportCAF:Lcom/android/camera/property/Property;
 
     const-string v0, "Settings.Contrast"
 
@@ -490,7 +673,7 @@
 
     iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
 
-    invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+    invoke-static {v5}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v2
 
@@ -682,6 +865,120 @@
 
     iput-object v0, p0, Lcom/android/camera/CameraSettings;->isShutterSoundEnabled:Lcom/android/camera/property/Property;
 
+    const-string v0, "Settings.isMenuBarTransEnabled"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-static {v5}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->isMenuBarTransEnabled:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.ForceVideoQuality"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v2, "auto"
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->ForceVideoQuality:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.ForceFrameRate"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v2, "auto"
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->ForceFrameRate:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.VideoFileFormat"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v2, "mp4"
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->VideoFileFormat:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.ForceAudioQuality"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v2, "auto"
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->ForceAudioQuality:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.HookVolKeys"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v2, "default"
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->HookVolKeys:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.FileNameFormat"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v2, "default"
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->FileNameFormat:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.isStampDateEnabled"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-static {v5}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->isStampDateEnabled:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.isStampLocationEnabled"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-static {v5}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->isStampLocationEnabled:Lcom/android/camera/property/Property;
+
     const-string v0, "Settings.IsSlowMotionEnabled"
 
     iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
@@ -709,6 +1006,20 @@
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/camera/CameraSettings;->isStereoRecordingEnabled:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.isAudioFocusEnabled"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-static {v5}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->isAudioFocusEnabled:Lcom/android/camera/property/Property;
 
     const-string v0, "Settings.IsTapCaptureEnabled"
 
@@ -777,6 +1088,36 @@
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/camera/CameraSettings;->mainSelfTimerInterval:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.forceImageQuality"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->forceImageQuality:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.imageQuality"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    sget v2, Lcom/android/camera/CameraSettings$DefaultValues;->imageQuality:I
+
+    invoke-static {v2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->imageQuality:Lcom/android/camera/property/Property;
 
     const-string v0, "Settings.MainWhiteBalance"
 
@@ -856,6 +1197,32 @@
 
     iput-object v0, p0, Lcom/android/camera/CameraSettings;->storageSlot:Lcom/android/camera/property/Property;
 
+    const-string v0, "Settings.Antibanding"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v2, "auto"
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->Antibanding:Lcom/android/camera/property/Property;
+
+    const-string v0, "Settings.isZSLEnabled"
+
+    iget-object v1, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v2
+
+    invoke-static {v0, v3, v1, v2}, Lcom/android/camera/property/Property;->create(Ljava/lang/String;ILjava/lang/Object;Ljava/lang/Object;)Lcom/android/camera/property/Property;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/CameraSettings;->isZSLEnabled:Lcom/android/camera/property/Property;
+
     return-void
 .end method
 
@@ -864,7 +1231,7 @@
 .method bindPreferences(Lcom/android/camera/HTCCamera;)V
     .locals 8
 
-    const/16 v0, 0x21
+    const/16 v0, 0x30
 
     new-array v6, v0, [Lcom/android/camera/preferences/PreferenceBinder;
 
@@ -986,7 +1353,7 @@
 
     iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
 
-    const/4 v5, 0x1
+    const/4 v5, 0x0
 
     move-object v1, p1
 
@@ -1458,7 +1825,287 @@
 
     aput-object v0, v6, v7
 
+    const/16 v7, 0x21
+
+    new-instance v0, Lcom/android/camera/preferences/StringPreferenceBinder;
+
+    const-string v2, "pref_image_encoding_quality"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->imageQuality:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v5, "90"
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/StringPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Ljava/lang/String;)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x22
+
+    new-instance v0, Lcom/android/camera/preferences/StringPreferenceBinder;
+
+    const-string v2, "pref_camera_video_force"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->ForceVideoQuality:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v5, "auto"
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/StringPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Ljava/lang/String;)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x23
+
+    new-instance v0, Lcom/android/camera/preferences/StringPreferenceBinder;
+
+    const-string v2, "pref_camera_audio_force"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->ForceAudioQuality:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v5, "auto"
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/StringPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Ljava/lang/String;)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x24
+
+    new-instance v0, Lcom/android/camera/preferences/StringPreferenceBinder;
+
+    const-string v2, "pref_camera_hook_keys"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->HookVolKeys:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v5, "default"
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/StringPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Ljava/lang/String;)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x25
+
+    new-instance v0, Lcom/android/camera/preferences/BooleanPreferenceBinder;
+
+    const-string v2, "pref_camera_force_image_quality"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->forceImageQuality:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const/4 v5, 0x1
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/BooleanPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Z)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x26
+
+    new-instance v0, Lcom/android/camera/preferences/StringPreferenceBinder;
+
+    const-string v2, "pref_camera_video_file_format"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->VideoFileFormat:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v5, "mp4"
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/StringPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Ljava/lang/String;)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x27
+
+    new-instance v0, Lcom/android/camera/preferences/StringPreferenceBinder;
+
+    const-string v2, "pref_camera_frame_rate"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->ForceFrameRate:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v5, "auto"
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/StringPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Ljava/lang/String;)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x28
+
+    new-instance v0, Lcom/android/camera/preferences/BooleanPreferenceBinder;
+
+    const-string v2, "pref_camera_caf"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->supportCAF:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportCAF()Z
+
+    move-result v5
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/BooleanPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Z)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x29
+
+    new-instance v0, Lcom/android/camera/preferences/BooleanPreferenceBinder;
+
+    const-string v2, "pref_stamp_date"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->isStampDateEnabled:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const/4 v5, 0x0
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/BooleanPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Z)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x2a
+
+    new-instance v0, Lcom/android/camera/preferences/BooleanPreferenceBinder;
+
+    const-string v2, "pref_stamp_location"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->isStampLocationEnabled:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const/4 v5, 0x0
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/BooleanPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Z)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x2b
+
+    new-instance v0, Lcom/android/camera/preferences/BooleanPreferenceBinder;
+
+    const-string v2, "pref_menu_bar_transparence"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->isMenuBarTransEnabled:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const/4 v5, 0x0
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/BooleanPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Z)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x2c
+
+    new-instance v0, Lcom/android/camera/preferences/StringPreferenceBinder;
+
+    const-string v2, "pref_camera_antibanding"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->Antibanding:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v5, "auto"
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/StringPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Ljava/lang/String;)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x2d
+
+    new-instance v0, Lcom/android/camera/preferences/BooleanPreferenceBinder;
+
+    const-string v2, "pref_zsl_cam_mode"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->isZSLEnabled:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const/4 v5, 0x1
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/BooleanPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Z)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x2e
+
+    new-instance v0, Lcom/android/camera/preferences/BooleanPreferenceBinder;
+
+    const-string v2, "pref_audio_focus"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->isAudioFocusEnabled:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const/4 v5, 0x1
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/BooleanPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Z)V
+
+    aput-object v0, v6, v7
+
+    const/16 v7, 0x2f
+
+    new-instance v0, Lcom/android/camera/preferences/StringPreferenceBinder;
+
+    const-string v2, "pref_camera_file_name"
+
+    iget-object v3, p0, Lcom/android/camera/CameraSettings;->FileNameFormat:Lcom/android/camera/property/Property;
+
+    iget-object v4, p0, Lcom/android/camera/CameraSettings;->m_PropertyOwnerKey:Ljava/lang/Object;
+
+    const-string v5, "default"
+
+    move-object v1, p1
+
+    invoke-direct/range {v0 .. v5}, Lcom/android/camera/preferences/StringPreferenceBinder;-><init>(Lcom/android/camera/ISettingsOwner;Ljava/lang/String;Lcom/android/camera/property/Property;Ljava/lang/Object;Ljava/lang/String;)V
+
+    aput-object v0, v6, v7
+
     iput-object v6, p0, Lcom/android/camera/CameraSettings;->m_PreferenceBinders:[Lcom/android/camera/preferences/PreferenceBinder;
+
+    invoke-virtual {v3}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/String;
+
+    sput-object v0, Lcom/android/camera/DisplayDevice;->FILE_NAME_FORMAT:Ljava/lang/String;
 
     invoke-static {}, Lcom/android/camera/FeatureConfig;->useSeparateWhiteBalanceSettings()Z
 

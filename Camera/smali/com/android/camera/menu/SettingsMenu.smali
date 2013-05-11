@@ -60,11 +60,19 @@
 
 
 # instance fields
+.field private m_AntibandingItem:Lcom/android/camera/menu/MenuItem;
+
+.field private m_AudioFocusItem:Lcom/android/camera/menu/MenuItem;
+
+.field private m_AudioQualityItem:Lcom/android/camera/menu/MenuItem;
+
 .field private m_AutoFiveShotsItem:Lcom/android/camera/menu/MenuItem;
 
 .field private m_AutoFocusItem:Lcom/android/camera/menu/MenuItem;
 
 .field private m_AutoUploadItem:Lcom/android/camera/menu/MenuItem;
+
+.field private m_CAFItem:Lcom/android/camera/menu/MenuItem;
 
 .field private m_CameraActivity:Lcom/android/camera/HTCCamera;
 
@@ -82,15 +90,25 @@
 
 .field private m_ContinuousBurstLimitedItem:Lcom/android/camera/menu/MenuItem;
 
+.field private m_DateStampItem:Lcom/android/camera/menu/MenuItem;
+
 .field private m_EffectManager:Lcom/android/camera/effect/IEffectManager;
 
 .field private m_FaceDetectionItem:Lcom/android/camera/menu/MenuItem;
+
+.field private m_FileNameItem:Lcom/android/camera/menu/MenuItem;
+
+.field private m_FrameRateItem:Lcom/android/camera/menu/MenuItem;
 
 .field private m_FrontFaceBeautifierMenuItem:Lcom/android/camera/menu/MenuItem;
 
 .field private m_FrontWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
 
+.field private m_HookVolItem:Lcom/android/camera/menu/MenuItem;
+
 .field private m_ImageAdjustmentItem:Lcom/android/camera/menu/MenuItem;
+
+.field private m_ImageQualityItem:Lcom/android/camera/menu/ImageQualityMenuItem;
 
 .field private m_IsItemInitialized:Z
 
@@ -98,7 +116,11 @@
 
 .field private m_Items:[Lcom/android/camera/menu/MenuItem;
 
+.field private m_LocationStampItem:Lcom/android/camera/menu/MenuItem;
+
 .field private m_MainWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
+
+.field private m_MenuBarTransItem:Lcom/android/camera/menu/MenuItem;
 
 .field private m_ObjectTrackingItem:Lcom/android/camera/menu/MenuItem;
 
@@ -125,6 +147,10 @@
 .field private m_TapToCaptureFrontItem:Lcom/android/camera/menu/MenuItem;
 
 .field private m_TapToCaptureItem:Lcom/android/camera/menu/MenuItem;
+
+.field private m_VideoFormatItem:Lcom/android/camera/menu/MenuItem;
+
+.field private m_VideoQualityItem:Lcom/android/camera/menu/MenuItem;
 
 .field private m_VideoStabilizationItem:Lcom/android/camera/menu/MenuItem;
 
@@ -267,6 +293,33 @@
     goto :goto_0
 .end method
 
+.method private showTransMenuBarToast()V
+    .locals 2
+
+    iget-object v0, p0, Lcom/android/camera/menu/SettingsMenu;->m_CameraActivity:Lcom/android/camera/HTCCamera;
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getComponentManager()Lcom/android/camera/component/UIComponentManager;
+
+    move-result-object v0
+
+    const-class v1, Lcom/android/camera/IToastManager;
+
+    invoke-virtual {v0, v1}, Lcom/android/camera/component/UIComponentManager;->getComponent(Ljava/lang/Class;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/camera/IToastManager;
+
+    if-eqz v0, :cond_0
+
+    const v1, 0x7f0a027a
+
+    invoke-virtual {v0, v1}, Lcom/android/camera/IToastManager;->showToast(I)Lcom/android/camera/Handle;
+
+    :cond_0
+    return-void
+.end method
+
 .method private updateAutoFocusRelatedItem()V
     .locals 7
 
@@ -278,7 +331,7 @@
 
     iget-object v3, p0, Lcom/android/camera/menu/SettingsMenu;->m_EffectManager:Lcom/android/camera/effect/IEffectManager;
 
-    if-eqz v3, :cond_4
+    if-eqz v3, :cond_5
 
     iget-object v3, p0, Lcom/android/camera/menu/SettingsMenu;->m_EffectManager:Lcom/android/camera/effect/IEffectManager;
 
@@ -316,15 +369,50 @@
     invoke-virtual {v4, v3}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
 
     :cond_0
+    iget-object v3, p0, Lcom/android/camera/menu/SettingsMenu;->m_CAFItem:Lcom/android/camera/menu/MenuItem;
+
+    if-eqz v3, :cond_1
+
+    iget-object v4, p0, Lcom/android/camera/menu/SettingsMenu;->m_CAFItem:Lcom/android/camera/menu/MenuItem;
+
+    iget-object v3, v2, Lcom/android/camera/CameraSettings;->supportCAF:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v3}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/Boolean;
+
+    invoke-virtual {v3}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v3
+
+    sput-boolean v3, Lcom/android/camera/DisplayDevice;->SUPPORT_CAF:Z
+
+    iget-object v3, v2, Lcom/android/camera/CameraSettings;->canAutoFocus:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v3}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/Boolean;
+
+    invoke-virtual {v3}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v3
+
+    invoke-virtual {v4, v3}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
+
+    :cond_1
     iget-object v3, p0, Lcom/android/camera/menu/SettingsMenu;->m_FaceDetectionItem:Lcom/android/camera/menu/MenuItem;
 
-    if-eqz v3, :cond_2
+    if-eqz v3, :cond_3
 
     sget-object v3, Lcom/android/camera/DisplayDevice;->CAPTURE_BUTTON:Lcom/android/camera/DisplayDevice$CaptureButton;
 
     sget-object v4, Lcom/android/camera/DisplayDevice$CaptureButton;->HWKey:Lcom/android/camera/DisplayDevice$CaptureButton;
 
-    if-eq v3, v4, :cond_1
+    if-eq v3, v4, :cond_2
 
     iget-object v4, p0, Lcom/android/camera/menu/SettingsMenu;->m_FaceDetectionItem:Lcom/android/camera/menu/MenuItem;
 
@@ -342,7 +430,7 @@
 
     invoke-virtual {v4, v3}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
 
-    :cond_1
+    :cond_2
     iget-object v4, p0, Lcom/android/camera/menu/SettingsMenu;->m_FaceDetectionItem:Lcom/android/camera/menu/MenuItem;
 
     iget-object v3, p0, Lcom/android/camera/menu/SettingsMenu;->m_CameraActivity:Lcom/android/camera/HTCCamera;
@@ -361,14 +449,14 @@
 
     invoke-virtual {v4, v3}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
 
-    :cond_2
+    :cond_3
     iget-object v3, p0, Lcom/android/camera/menu/SettingsMenu;->m_SmileCaptureItem:Lcom/android/camera/menu/MenuItem;
 
-    if-eqz v3, :cond_3
+    if-eqz v3, :cond_4
 
     iget-object v3, p0, Lcom/android/camera/menu/SettingsMenu;->m_FaceDetectionItem:Lcom/android/camera/menu/MenuItem;
 
-    if-eqz v3, :cond_6
+    if-eqz v3, :cond_7
 
     iget-object v3, v2, Lcom/android/camera/CameraSettings;->isFaceDetectionEnabled:Lcom/android/camera/property/Property;
 
@@ -382,7 +470,7 @@
 
     move-result v3
 
-    if-eqz v3, :cond_5
+    if-eqz v3, :cond_6
 
     iget-object v3, p0, Lcom/android/camera/menu/SettingsMenu;->m_FaceDetectionItem:Lcom/android/camera/menu/MenuItem;
 
@@ -390,7 +478,7 @@
 
     move-result v3
 
-    if-eqz v3, :cond_5
+    if-eqz v3, :cond_6
 
     iget-object v3, p0, Lcom/android/camera/menu/SettingsMenu;->m_CameraActivity:Lcom/android/camera/HTCCamera;
 
@@ -410,15 +498,15 @@
 
     cmp-long v3, v3, v5
 
-    if-nez v3, :cond_5
+    if-nez v3, :cond_6
 
     instance-of v3, v1, Lcom/android/camera/effect/PanoramaScene;
 
-    if-nez v3, :cond_5
+    if-nez v3, :cond_6
 
     instance-of v3, v1, Lcom/android/camera/effect/SmartShotScene;
 
-    if-nez v3, :cond_5
+    if-nez v3, :cond_6
 
     const/4 v0, 0x1
 
@@ -445,20 +533,20 @@
 
     invoke-virtual {v4, v3}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
 
-    :cond_3
+    :cond_4
     return-void
 
-    :cond_4
+    :cond_5
     const/4 v1, 0x0
 
     goto/16 :goto_0
 
-    :cond_5
+    :cond_6
     const/4 v0, 0x0
 
     goto :goto_1
 
-    :cond_6
+    :cond_7
     const/4 v0, 0x0
 
     goto :goto_1
@@ -859,7 +947,7 @@
 
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_EffectManager:Lcom/android/camera/effect/IEffectManager;
 
-    if-eqz v8, :cond_12
+    if-eqz v8, :cond_13
 
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_EffectManager:Lcom/android/camera/effect/IEffectManager;
 
@@ -894,7 +982,7 @@
     move-object v4, v2
 
     :cond_1
-    if-eqz v4, :cond_13
+    if-eqz v4, :cond_14
 
     invoke-virtual {v4}, Lcom/android/camera/effect/EffectBase;->getDisabledImageSettings()I
 
@@ -958,7 +1046,7 @@
 
     move-result v8
 
-    if-nez v8, :cond_14
+    if-nez v8, :cond_15
 
     move v8, v10
 
@@ -977,7 +1065,7 @@
 
     iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_VideoStabilizationItem:Lcom/android/camera/menu/MenuItem;
 
-    if-nez v1, :cond_15
+    if-nez v1, :cond_16
 
     move v8, v9
 
@@ -1003,7 +1091,7 @@
 
     move-result v8
 
-    if-nez v8, :cond_16
+    if-nez v8, :cond_17
 
     move v8, v10
 
@@ -1029,7 +1117,7 @@
 
     move-result v8
 
-    if-nez v8, :cond_17
+    if-nez v8, :cond_18
 
     iget-object v8, v7, Lcom/android/camera/CameraSettings;->recordWithAudio:Lcom/android/camera/property/Property;
 
@@ -1043,7 +1131,7 @@
 
     move-result v8
 
-    if-eqz v8, :cond_17
+    if-eqz v8, :cond_18
 
     move v8, v10
 
@@ -1051,19 +1139,45 @@
     invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
 
     :cond_5
-    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_IsoItem:Lcom/android/camera/menu/MenuItem;
+    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_AudioFocusItem:Lcom/android/camera/menu/MenuItem;
 
     if-eqz v8, :cond_6
+
+    iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_AudioFocusItem:Lcom/android/camera/menu/MenuItem;
+
+    iget-object v8, v7, Lcom/android/camera/CameraSettings;->recordWithAudio:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v8}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Ljava/lang/Boolean;
+
+    invoke-virtual {v8}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v8
+
+    if-eqz v8, :cond_21
+
+    move v8, v10
+
+    :goto_6
+    invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
+
+    :cond_6
+    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_IsoItem:Lcom/android/camera/menu/MenuItem;
+
+    if-eqz v8, :cond_7
 
     iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_IsoItem:Lcom/android/camera/menu/MenuItem;
 
     and-int/lit8 v8, v5, 0x4
 
-    if-nez v8, :cond_18
+    if-nez v8, :cond_19
 
     move v8, v10
 
-    :goto_6
+    :goto_7
     invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
 
     iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_IsoItem:Lcom/android/camera/menu/MenuItem;
@@ -1084,10 +1198,10 @@
 
     invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
 
-    :cond_6
+    :cond_7
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_StorageLocationItem:Lcom/android/camera/menu/MenuItem;
 
-    if-eqz v8, :cond_7
+    if-eqz v8, :cond_8
 
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_StorageLocationItem:Lcom/android/camera/menu/MenuItem;
 
@@ -1105,7 +1219,7 @@
 
     invoke-virtual {v8, v11}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
 
-    :cond_7
+    :cond_8
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_CameraActivity:Lcom/android/camera/HTCCamera;
 
     iget-object v8, v8, Lcom/android/camera/HTCCamera;->cameraType:Lcom/android/camera/property/Property;
@@ -1122,29 +1236,9 @@
 
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_MainWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
 
-    if-eqz v8, :cond_8
-
-    iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_MainWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
-
-    and-int/lit8 v8, v5, 0x20
-
-    if-nez v8, :cond_19
-
-    move v8, v10
-
-    :goto_7
-    invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
-
-    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_MainWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
-
-    invoke-virtual {v8, v6}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
-
-    :cond_8
-    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_FrontWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
-
     if-eqz v8, :cond_9
 
-    iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_FrontWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
+    iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_MainWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
 
     and-int/lit8 v8, v5, 0x20
 
@@ -1155,30 +1249,27 @@
     :goto_8
     invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
 
+    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_MainWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v8, v6}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
+
+    :cond_9
+    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_FrontWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
+
+    if-eqz v8, :cond_a
+
     iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_FrontWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
 
-    if-nez v6, :cond_1b
+    and-int/lit8 v8, v5, 0x20
+
+    if-nez v8, :cond_1b
 
     move v8, v10
 
     :goto_9
-    invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
+    invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
 
-    :cond_9
-    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_TapToCaptureItem:Lcom/android/camera/menu/MenuItem;
-
-    if-eqz v8, :cond_a
-
-    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_TapToCaptureItem:Lcom/android/camera/menu/MenuItem;
-
-    invoke-virtual {v8, v6}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
-
-    :cond_a
-    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_TapToCaptureFrontItem:Lcom/android/camera/menu/MenuItem;
-
-    if-eqz v8, :cond_b
-
-    iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_TapToCaptureFrontItem:Lcom/android/camera/menu/MenuItem;
+    iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_FrontWhiteBalanceItem:Lcom/android/camera/menu/MenuItem;
 
     if-nez v6, :cond_1c
 
@@ -1187,12 +1278,21 @@
     :goto_a
     invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
 
+    :cond_a
+    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_TapToCaptureItem:Lcom/android/camera/menu/MenuItem;
+
+    if-eqz v8, :cond_b
+
+    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_TapToCaptureItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v8, v6}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
+
     :cond_b
-    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_FrontFaceBeautifierMenuItem:Lcom/android/camera/menu/MenuItem;
+    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_TapToCaptureFrontItem:Lcom/android/camera/menu/MenuItem;
 
     if-eqz v8, :cond_c
 
-    iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_FrontFaceBeautifierMenuItem:Lcom/android/camera/menu/MenuItem;
+    iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_TapToCaptureFrontItem:Lcom/android/camera/menu/MenuItem;
 
     if-nez v6, :cond_1d
 
@@ -1202,9 +1302,23 @@
     invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
 
     :cond_c
-    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_ImageAdjustmentItem:Lcom/android/camera/menu/MenuItem;
+    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_FrontFaceBeautifierMenuItem:Lcom/android/camera/menu/MenuItem;
 
     if-eqz v8, :cond_d
+
+    iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_FrontFaceBeautifierMenuItem:Lcom/android/camera/menu/MenuItem;
+
+    if-nez v6, :cond_1e
+
+    move v8, v10
+
+    :goto_c
+    invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
+
+    :cond_d
+    iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_ImageAdjustmentItem:Lcom/android/camera/menu/MenuItem;
+
+    if-eqz v8, :cond_e
 
     iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_ImageAdjustmentItem:Lcom/android/camera/menu/MenuItem;
 
@@ -1212,17 +1326,17 @@
 
     and-int/2addr v8, v5
 
-    if-nez v8, :cond_1e
+    if-nez v8, :cond_1f
 
     move v8, v10
 
-    :goto_c
+    :goto_d
     invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
 
-    :cond_d
+    :cond_e
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_ObjectTrackingItem:Lcom/android/camera/menu/MenuItem;
 
-    if-eqz v8, :cond_e
+    if-eqz v8, :cond_f
 
     iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_ObjectTrackingItem:Lcom/android/camera/menu/MenuItem;
 
@@ -1242,10 +1356,10 @@
 
     invoke-virtual {v11, v8}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
 
-    :cond_e
+    :cond_f
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_SelfTimerItem:Lcom/android/camera/menu/SelfTimerMenuItem;
 
-    if-eqz v8, :cond_f
+    if-eqz v8, :cond_10
 
     iget-object v11, p0, Lcom/android/camera/menu/SettingsMenu;->m_SelfTimerItem:Lcom/android/camera/menu/SelfTimerMenuItem;
 
@@ -1263,15 +1377,15 @@
 
     move-result v8
 
-    if-nez v8, :cond_1f
+    if-nez v8, :cond_20
 
-    :goto_d
+    :goto_e
     invoke-virtual {v11, v10}, Lcom/android/camera/menu/SelfTimerMenuItem;->setEnabled(Z)V
 
-    :cond_f
+    :cond_10
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_ReviewDurationItem:Lcom/android/camera/menu/MenuItem;
 
-    if-eqz v8, :cond_10
+    if-eqz v8, :cond_11
 
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_ReviewDurationItem:Lcom/android/camera/menu/MenuItem;
 
@@ -1283,10 +1397,10 @@
 
     invoke-virtual {v8, v9}, Lcom/android/camera/menu/MenuItem;->setEnabled(Z)V
 
-    :cond_10
+    :cond_11
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_SaveMirrorImageItem:Lcom/android/camera/menu/MenuItem;
 
-    if-eqz v8, :cond_11
+    if-eqz v8, :cond_12
 
     iget-object v8, p0, Lcom/android/camera/menu/SettingsMenu;->m_CameraActivity:Lcom/android/camera/HTCCamera;
 
@@ -1306,47 +1420,42 @@
 
     invoke-virtual {v8, v0}, Lcom/android/camera/menu/MenuItem;->setVisibility(Z)V
 
-    :cond_11
+    :cond_12
     return-void
 
-    :cond_12
+    :cond_13
     const/4 v2, 0x0
 
     const/4 v3, 0x0
 
     goto/16 :goto_0
 
-    :cond_13
+    :cond_14
     move v5, v9
 
     goto/16 :goto_1
 
-    :cond_14
+    :cond_15
     move v8, v9
 
     goto/16 :goto_2
 
-    :cond_15
+    :cond_16
     invoke-virtual {v1}, Lcom/android/camera/CameraController;->isVideoStabilizationSupported()Z
 
     move-result v8
 
     goto/16 :goto_3
 
-    :cond_16
+    :cond_17
     move v8, v9
 
     goto/16 :goto_4
 
-    :cond_17
-    move v8, v9
-
-    goto/16 :goto_5
-
     :cond_18
     move v8, v9
 
-    goto/16 :goto_6
+    goto/16 :goto_5
 
     :cond_19
     move v8, v9
@@ -1379,9 +1488,19 @@
     goto/16 :goto_c
 
     :cond_1f
+    move v8, v9
+
+    goto/16 :goto_d
+
+    :cond_20
     move v10, v9
 
-    goto :goto_d
+    goto :goto_e
+
+    :cond_21
+    move v10, v9
+
+    goto/16 :goto_6
 .end method
 
 
@@ -1611,6 +1730,12 @@
 
     if-nez v1, :cond_7
 
+    invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->isStorageSlotLocked()Z
+
+    move-result v1
+
+    if-nez v1, :cond_7
+
     new-instance v1, Lcom/android/camera/menu/CameraStorageLocationMenuItem;
 
     const v4, 0x7f0a00a1
@@ -1725,7 +1850,7 @@
 
     iget-boolean v1, v0, Lcom/android/camera/CameraStartMode;->supportsPhotoMode:Z
 
-    if-eqz v1, :cond_d
+    if-eqz v1, :cond_c
 
     new-instance v10, Lcom/android/camera/menu/MenuItem;
 
@@ -1738,12 +1863,6 @@
     invoke-virtual {v12, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     invoke-virtual {v13}, Ljava/util/ArrayList;->clear()V
-
-    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportCAF()Z
-
-    move-result v1
-
-    if-nez v1, :cond_9
 
     invoke-static {}, Lcom/android/camera/DisplayDevice;->hasAutoFocus()Z
 
@@ -1776,6 +1895,40 @@
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_AutoFocusItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportCAF_hw()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_9
+
+    new-instance v1, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;
+
+    const-string v4, "pref_camera_caf"
+
+    const v5, 0x7f0a00d7
+
+    const/4 v6, 0x1
+
+    invoke-direct {v1, v3, v4, v5, v6}, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;-><init>(Lcom/android/camera/Settings;Ljava/lang/String;IZ)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_CAFItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_CAFItem:Lcom/android/camera/menu/MenuItem;
+
+    const/16 v4, 0x3e
+
+    invoke-virtual {v1, v4}, Lcom/android/camera/menu/MenuItem;->setId(I)V
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_CAFItem:Lcom/android/camera/menu/MenuItem;
 
     invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
@@ -1925,7 +2078,7 @@
 
     const v4, 0x7f0a00dd
 
-    sget-boolean v5, Lcom/android/camera/CameraSettings$DefaultValues;->isGeoTaggingEnabled:Z
+    const/4 v5, 0x1
 
     invoke-direct {v11, v3, v1, v4, v5}, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;-><init>(Lcom/android/camera/Settings;Ljava/lang/String;IZ)V
 
@@ -1939,13 +2092,23 @@
 
     move-result v1
 
-    if-nez v1, :cond_b
-
     new-instance v1, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;
 
     const-string v4, "pref_post_processing"
 
     const v5, 0x7f0a00de
+
+    const/4 v6, 0x0
+
+    invoke-direct {v1, v3, v4, v5, v6}, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;-><init>(Lcom/android/camera/Settings;Ljava/lang/String;IZ)V
+
+    invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v1, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;
+
+    const-string v4, "pref_zsl_cam_mode"
+
+    const v5, 0x7f0a027c
 
     const/4 v6, 0x1
 
@@ -1953,12 +2116,11 @@
 
     invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :cond_b
     invoke-static {}, Lcom/android/camera/DisplayDevice;->supportSaveMirrorImage()Z
 
     move-result v1
 
-    if-eqz v1, :cond_c
+    if-eqz v1, :cond_b
 
     new-instance v1, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;
 
@@ -1980,15 +2142,15 @@
 
     invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :cond_c
+    :cond_b
     invoke-virtual {v10, v13}, Lcom/android/camera/menu/MenuItem;->setItems(Ljava/util/List;)V
 
-    :cond_d
+    :cond_c
     move-object/from16 v0, v16
 
     iget-boolean v1, v0, Lcom/android/camera/CameraStartMode;->supportsVideoMode:Z
 
-    if-eqz v1, :cond_f
+    if-eqz v1, :cond_e
 
     new-instance v10, Lcom/android/camera/menu/MenuItem;
 
@@ -2054,7 +2216,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_e
+    if-eqz v1, :cond_d
 
     new-instance v1, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;
 
@@ -2076,7 +2238,88 @@
 
     invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
+    :cond_d
+    new-instance v1, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;
+
+    const-string v4, "pref_audio_focus"
+
+    const v5, 0x7f0a027d
+
+    const/4 v6, 0x1
+
+    invoke-direct {v1, v3, v4, v5, v6}, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;-><init>(Lcom/android/camera/Settings;Ljava/lang/String;IZ)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_AudioFocusItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_AudioFocusItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    invoke-virtual {v10, v13}, Lcom/android/camera/menu/MenuItem;->setItems(Ljava/util/List;)V
+
     :cond_e
+    move-object/from16 v0, v16
+
+    iget-boolean v1, v0, Lcom/android/camera/CameraStartMode;->supportsPhotoMode:Z
+
+    if-eqz v1, :cond_f
+
+    new-instance v10, Lcom/android/camera/menu/MenuItem;
+
+    const v1, 0x7f0a0276
+
+    const/4 v4, 0x0
+
+    invoke-direct {v10, v1, v4}, Lcom/android/camera/menu/MenuItem;-><init>(II)V
+
+    invoke-virtual {v12, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    invoke-virtual {v13}, Ljava/util/ArrayList;->clear()V
+
+    new-instance v1, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;
+
+    const-string v4, "pref_stamp_date"
+
+    const v5, 0x7f0a0277
+
+    const/4 v6, 0x0
+
+    invoke-direct {v1, v3, v4, v5, v6}, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;-><init>(Lcom/android/camera/Settings;Ljava/lang/String;IZ)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_DateStampItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_DateStampItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v1, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;
+
+    const-string v4, "pref_stamp_location"
+
+    const v5, 0x7f0a0278
+
+    const/4 v6, 0x0
+
+    invoke-direct {v1, v3, v4, v5, v6}, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;-><init>(Lcom/android/camera/Settings;Ljava/lang/String;IZ)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_LocationStampItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_LocationStampItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
     invoke-virtual {v10, v13}, Lcom/android/camera/menu/MenuItem;->setItems(Ljava/util/List;)V
 
     :cond_f
@@ -2156,6 +2399,32 @@
     invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     :cond_11
+    new-instance v1, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;
+
+    const-string v4, "pref_menu_bar_transparence"
+
+    const v5, 0x7f0a0279
+
+    const/4 v6, 0x0
+
+    invoke-direct {v1, v3, v4, v5, v6}, Lcom/android/camera/menu/CheckBoxPreferenceMenuItem;-><init>(Lcom/android/camera/Settings;Ljava/lang/String;IZ)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_MenuBarTransItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_MenuBarTransItem:Lcom/android/camera/menu/MenuItem;
+
+    const/16 v4, 0x3d
+
+    invoke-virtual {v1, v4}, Lcom/android/camera/menu/MenuItem;->setId(I)V
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v13, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
     invoke-virtual {v10, v13}, Lcom/android/camera/menu/MenuItem;->setItems(Ljava/util/List;)V
 
     invoke-virtual {v10}, Lcom/android/camera/menu/MenuItem;->getItems()[Lcom/android/camera/menu/MenuItem;
@@ -2233,7 +2502,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_15
+    if-eqz v1, :cond_17
 
     :cond_13
     move-object/from16 v0, p0
@@ -2246,6 +2515,148 @@
 
     :cond_14
     :goto_1
+    move-object/from16 v0, v16
+
+    iget-boolean v1, v0, Lcom/android/camera/CameraStartMode;->supportsPhotoMode:Z
+
+    if-eqz v1, :cond_15
+
+    new-instance v1, Lcom/android/camera/menu/ImageQualityMenuItem;
+
+    const v4, 0x7f0a0266
+
+    invoke-direct {v1, v2, v4}, Lcom/android/camera/menu/ImageQualityMenuItem;-><init>(Lcom/android/camera/HTCCamera;I)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_ImageQualityItem:Lcom/android/camera/menu/ImageQualityMenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_ImageQualityItem:Lcom/android/camera/menu/ImageQualityMenuItem;
+
+    invoke-virtual {v12, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v1, Lcom/android/camera/menu/CameraAntibandingMenuItem;
+
+    const v4, 0x7f0a027b
+
+    invoke-direct {v1, v2, v4}, Lcom/android/camera/menu/CameraAntibandingMenuItem;-><init>(Lcom/android/camera/HTCCamera;I)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_AntibandingItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_AntibandingItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v12, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    :cond_15
+    move-object/from16 v0, v16
+
+    iget-boolean v1, v0, Lcom/android/camera/CameraStartMode;->supportsVideoMode:Z
+
+    if-eqz v1, :cond_16
+
+    new-instance v1, Lcom/android/camera/menu/CameraVideoQualityMenuItem;
+
+    const v4, 0x7f0a0268
+
+    invoke-direct {v1, v2, v4}, Lcom/android/camera/menu/CameraVideoQualityMenuItem;-><init>(Lcom/android/camera/HTCCamera;I)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_VideoQualityItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_VideoQualityItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v12, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v1, Lcom/android/camera/menu/CameraAudioQualityMenuItem;
+
+    const v4, 0x7f0a0269
+
+    invoke-direct {v1, v2, v4}, Lcom/android/camera/menu/CameraAudioQualityMenuItem;-><init>(Lcom/android/camera/HTCCamera;I)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_AudioQualityItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_AudioQualityItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v12, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v1, Lcom/android/camera/menu/CameraFrameRateMenuItem;
+
+    const v4, 0x7f0a0275
+
+    invoke-direct {v1, v2, v4}, Lcom/android/camera/menu/CameraFrameRateMenuItem;-><init>(Lcom/android/camera/HTCCamera;I)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_FrameRateItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_FrameRateItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v12, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v1, Lcom/android/camera/menu/VideoFormatMenuItem;
+
+    const v4, 0x7f0a008f
+
+    invoke-direct {v1, v2, v4}, Lcom/android/camera/menu/VideoFormatMenuItem;-><init>(Lcom/android/camera/HTCCamera;I)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_VideoFormatItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_VideoFormatItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v12, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    new-instance v1, Lcom/android/camera/menu/FileNameMenuItem;
+
+    const v4, 0x7f0a027e
+
+    invoke-direct {v1, v2, v4}, Lcom/android/camera/menu/FileNameMenuItem;-><init>(Lcom/android/camera/HTCCamera;I)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_FileNameItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_FileNameItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v12, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    :cond_16
+    new-instance v1, Lcom/android/camera/menu/HookVolMenuItem;
+
+    const v4, 0x7f0a026a
+
+    invoke-direct {v1, v2, v4}, Lcom/android/camera/menu/HookVolMenuItem;-><init>(Lcom/android/camera/HTCCamera;I)V
+
+    move-object/from16 v0, p0
+
+    iput-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_HookVolItem:Lcom/android/camera/menu/MenuItem;
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/android/camera/menu/SettingsMenu;->m_HookVolItem:Lcom/android/camera/menu/MenuItem;
+
+    invoke-virtual {v12, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
     new-instance v10, Lcom/android/camera/menu/MenuItem;
 
     const v1, 0x7f0a00ea
@@ -2286,7 +2697,7 @@
 
     goto/16 :goto_0
 
-    :cond_15
+    :cond_17
     const-string v1, "pref_auto_upload_label"
 
     invoke-virtual {v3, v1}, Lcom/android/camera/Settings;->getString(Ljava/lang/String;)Ljava/lang/String;
@@ -2299,7 +2710,7 @@
 
     invoke-virtual {v1, v15}, Lcom/android/camera/menu/MenuItem;->setSummary(Ljava/lang/String;)V
 
-    goto :goto_1
+    goto/16 :goto_1
 .end method
 
 .method protected onMenuItemClicked(Lcom/android/camera/menu/MenuItem;II)V
@@ -2450,6 +2861,11 @@
 
     goto :goto_0
 
+    :sswitch_a
+    invoke-direct {p0}, Lcom/android/camera/menu/SettingsMenu;->showTransMenuBarToast()V
+
+    goto :goto_0
+
     :sswitch_data_0
     .sparse-switch
         0x1e -> :sswitch_4
@@ -2462,6 +2878,8 @@
         0x32 -> :sswitch_1
         0x33 -> :sswitch_0
         0x3c -> :sswitch_6
+        0x3d -> :sswitch_a
+        0x3e -> :sswitch_0
     .end sparse-switch
 .end method
 

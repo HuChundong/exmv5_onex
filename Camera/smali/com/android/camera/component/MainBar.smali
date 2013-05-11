@@ -32,6 +32,10 @@
 
 .field private m_FunctionBar:Landroid/view/View;
 
+.field private m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+.field private m_IsoButtonContainter:Landroid/widget/RelativeLayout;
+
 .field private final m_PopupClosedListener:Lcom/android/camera/widget/PopupBubble$OnClosedListener;
 
 .field private m_PopupOffsetX:I
@@ -53,6 +57,10 @@
 .field private m_SwitchButton:Lcom/htc/widget/HtcIconButton;
 
 .field private m_SwitchButtonContainter:Landroid/widget/RelativeLayout;
+
+.field private m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+.field private m_WbButtonContainter:Landroid/widget/RelativeLayout;
 
 .field private final settingsMenuState:Lcom/android/camera/property/Property;
     .annotation system Ldalvik/annotation/Signature;
@@ -265,6 +273,54 @@
     .locals 0
 
     invoke-direct {p0, p1}, Lcom/android/camera/component/MainBar;->setSceneButtonIcon(Lcom/android/camera/effect/EffectBase;)V
+
+    return-void
+.end method
+
+.method static synthetic access$IsoButton(Lcom/android/camera/component/MainBar;)Lcom/htc/widget/HtcIconButton;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    return-object v0
+.end method
+
+.method static synthetic access$WbButton(Lcom/android/camera/component/MainBar;)Lcom/htc/widget/HtcIconButton;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    return-object v0
+.end method
+
+.method static synthetic access$switchIsoMode(Lcom/android/camera/component/MainBar;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/camera/component/MainBar;->switchIsoMode()V
+
+    return-void
+.end method
+
+.method static synthetic access$switchWbMode(Lcom/android/camera/component/MainBar;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/camera/component/MainBar;->switchWbMode()V
+
+    return-void
+.end method
+
+.method static synthetic access$updateIsoIcon(Lcom/android/camera/component/MainBar;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/camera/component/MainBar;->updateIsoIcon()V
+
+    return-void
+.end method
+
+.method static synthetic access$updateWbIcon(Lcom/android/camera/component/MainBar;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/camera/component/MainBar;->updateWbIcon()V
 
     return-void
 .end method
@@ -676,6 +732,28 @@
     :goto_2
     invoke-direct {p0, v3, v0}, Lcom/android/camera/component/MainBar;->setButtonVisibility(Landroid/view/View;Z)V
 
+    iget-object v3, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    sget-object v0, Lcom/android/camera/UIState;->Closed:Lcom/android/camera/UIState;
+
+    if-ne p1, v0, :cond_6
+
+    move v0, v1
+
+    :goto_3
+    invoke-direct {p0, v3, v0}, Lcom/android/camera/component/MainBar;->setButtonVisibility(Landroid/view/View;Z)V
+
+    iget-object v3, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    sget-object v0, Lcom/android/camera/UIState;->Closed:Lcom/android/camera/UIState;
+
+    if-ne p1, v0, :cond_7
+
+    move v0, v1
+
+    :goto_4
+    invoke-direct {p0, v3, v0}, Lcom/android/camera/component/MainBar;->setButtonVisibility(Landroid/view/View;Z)V
+
     iget-object v3, p0, Lcom/android/camera/component/MainBar;->m_ScenesButton:Lcom/htc/widget/HtcIconButton;
 
     sget-object v0, Lcom/android/camera/UIState;->Closed:Lcom/android/camera/UIState;
@@ -718,6 +796,16 @@
     move v0, v2
 
     goto :goto_2
+
+    :cond_6
+    move v0, v2
+
+    goto :goto_3
+
+    :cond_7
+    move v0, v2
+
+    goto :goto_4
 .end method
 
 .method private resetCloseMenuTimer()V
@@ -1642,6 +1730,302 @@
     .end packed-switch
 .end method
 
+.method private switchIsoMode()V
+    .locals 13
+
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    if-nez v11, :cond_0
+
+    :goto_0
+    return-void
+
+    :cond_0
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    iget-object v11, v0, Lcom/android/camera/HTCCamera;->takingPictureState:Lcom/android/camera/property/Property;
+
+    sget-object v12, Lcom/android/camera/TakingPictureState;->Ready:Lcom/android/camera/TakingPictureState;
+
+    invoke-virtual {v11, v12}, Lcom/android/camera/property/Property;->isValueEquals(Ljava/lang/Object;)Z
+
+    move-result v9
+
+    if-nez v9, :cond_1
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraMode()Lcom/android/camera/CameraMode;
+
+    move-result-object v11
+
+    sget-object v12, Lcom/android/camera/CameraMode;->Photo:Lcom/android/camera/CameraMode;
+
+    if-ne v11, v12, :cond_1
+
+    goto :goto_0
+
+    :cond_1
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v3, v0, Lcom/android/camera/CameraSettings;->iso:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v3}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/String;
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v10
+
+    const v11, 0x7f07001c
+
+    invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
+
+    move-result-object v5
+
+    const/4 v2, -0x1
+
+    array-length v9, v5
+
+    add-int/lit8 v9, v9, -0x1
+
+    add-int/lit8 v8, v9, -0x1
+
+    :goto_1
+    if-ltz v8, :cond_2
+
+    aget-object v12, v5, v8
+
+    invoke-virtual {v4, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v11
+
+    if-eqz v11, :cond_6
+
+    move v2, v8
+
+    :cond_2
+    if-gez v2, :cond_3
+
+    const/4 v2, 0x0
+
+    :cond_3
+    add-int/lit8 v2, v2, 0x1
+
+    if-lt v2, v9, :cond_4
+
+    const/4 v2, 0x0
+
+    :cond_4
+    aget-object v12, v5, v2
+
+    invoke-virtual {v3, v12}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;)Z
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    new-instance v1, Lcom/android/camera/ImageSettings;
+
+    invoke-direct {v1, v0}, Lcom/android/camera/ImageSettings;-><init>(Lcom/android/camera/HTCCamera;)V
+
+    iput-object v12, v1, Lcom/android/camera/ImageSettings;->iso:Ljava/lang/String;
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getComponentManager()Lcom/android/camera/component/UIComponentManager;
+
+    move-result-object v2
+
+    const-class v3, Lcom/android/camera/IImageSettingsController;
+
+    invoke-virtual {v2, v3}, Lcom/android/camera/component/UIComponentManager;->getComponent(Ljava/lang/Class;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/camera/IImageSettingsController;
+
+    if-eqz v0, :cond_5
+
+    const/4 v3, 0x1
+
+    invoke-virtual {v0, v1, v3}, Lcom/android/camera/IImageSettingsController;->applyImageSettings(Lcom/android/camera/ImageSettings;Z)V
+
+    :cond_5
+    goto/16 :goto_0
+
+    :cond_6
+    add-int/lit8 v8, v8, -0x1
+
+    goto :goto_1
+.end method
+
+.method private switchWbMode()V
+    .locals 13
+
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    if-nez v11, :cond_0
+
+    :goto_0
+    return-void
+
+    :cond_0
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    iget-object v11, v0, Lcom/android/camera/HTCCamera;->takingPictureState:Lcom/android/camera/property/Property;
+
+    sget-object v12, Lcom/android/camera/TakingPictureState;->Ready:Lcom/android/camera/TakingPictureState;
+
+    invoke-virtual {v11, v12}, Lcom/android/camera/property/Property;->isValueEquals(Ljava/lang/Object;)Z
+
+    move-result v9
+
+    if-nez v9, :cond_1
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraMode()Lcom/android/camera/CameraMode;
+
+    move-result-object v11
+
+    sget-object v12, Lcom/android/camera/CameraMode;->Photo:Lcom/android/camera/CameraMode;
+
+    if-ne v11, v12, :cond_1
+
+    goto :goto_0
+
+    :cond_1
+    iget-object v3, v0, Lcom/android/camera/HTCCamera;->cameraType:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v3}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/camera/CameraType;
+
+    invoke-virtual {v3}, Lcom/android/camera/CameraType;->isMainCamera()Z
+
+    move-result v10
+
+    if-eqz v10, :cond_2
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v3, v0, Lcom/android/camera/CameraSettings;->mainWhiteBalance:Lcom/android/camera/property/Property;
+
+    goto :goto_1
+
+    :cond_2
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v3, v0, Lcom/android/camera/CameraSettings;->frontWhiteBalance:Lcom/android/camera/property/Property;
+
+    :goto_1
+    invoke-virtual {v3}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/String;
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    const v11, 0x7f07001e
+
+    invoke-virtual {v2, v11}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
+
+    move-result-object v5
+
+    const/4 v2, -0x1
+
+    array-length v9, v5
+
+    add-int/lit8 v8, v9, -0x1
+
+    :goto_2
+    if-ltz v8, :cond_3
+
+    aget-object v12, v5, v8
+
+    invoke-virtual {v4, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v11
+
+    if-eqz v11, :cond_8
+
+    move v2, v8
+
+    :cond_3
+    if-gez v2, :cond_4
+
+    const/4 v2, 0x0
+
+    :cond_4
+    add-int/lit8 v2, v2, 0x1
+
+    if-lt v2, v9, :cond_5
+
+    const/4 v2, 0x0
+
+    :cond_5
+    aget-object v12, v5, v2
+
+    invoke-virtual {v3, v12}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;)Z
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    new-instance v1, Lcom/android/camera/ImageSettings;
+
+    invoke-direct {v1, v0}, Lcom/android/camera/ImageSettings;-><init>(Lcom/android/camera/HTCCamera;)V
+
+    if-eqz v10, :cond_6
+
+    iput-object v12, v1, Lcom/android/camera/ImageSettings;->whiteBalanceMain:Ljava/lang/String;
+
+    goto :goto_3
+
+    :cond_6
+    iput-object v12, v1, Lcom/android/camera/ImageSettings;->whiteBalanceFront:Ljava/lang/String;
+
+    :goto_3
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getComponentManager()Lcom/android/camera/component/UIComponentManager;
+
+    move-result-object v2
+
+    const-class v3, Lcom/android/camera/IImageSettingsController;
+
+    invoke-virtual {v2, v3}, Lcom/android/camera/component/UIComponentManager;->getComponent(Ljava/lang/Class;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/camera/IImageSettingsController;
+
+    if-eqz v0, :cond_7
+
+    const/4 v3, 0x1
+
+    invoke-virtual {v0, v1, v3}, Lcom/android/camera/IImageSettingsController;->applyImageSettings(Lcom/android/camera/ImageSettings;Z)V
+
+    :cond_7
+    goto/16 :goto_0
+
+    :cond_8
+    add-int/lit8 v8, v8, -0x1
+
+    goto :goto_2
+.end method
+
 .method private toggleSettingsPanel()V
     .locals 2
 
@@ -1719,6 +2103,10 @@
     invoke-direct {p0}, Lcom/android/camera/component/MainBar;->updateSceneButtonStates()V
 
     invoke-direct {p0}, Lcom/android/camera/component/MainBar;->updateFlashIcon()V
+
+    invoke-direct {p0}, Lcom/android/camera/component/MainBar;->updateIsoIcon()V
+
+    invoke-direct {p0}, Lcom/android/camera/component/MainBar;->updateWbIcon()V
 
     return-void
 .end method
@@ -1930,7 +2318,7 @@
 
     const v1, 0x7f020043
 
-    const v6, 0x7f0a0257
+    const v6, 0x7f0a025d
 
     :goto_3
     iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_FlashButton:Lcom/htc/widget/HtcIconButton;
@@ -1942,7 +2330,7 @@
     :cond_9
     const v1, 0x7f020044
 
-    const v6, 0x7f0a0256
+    const v6, 0x7f0a025c
 
     goto :goto_3
 
@@ -1953,6 +2341,149 @@
         0x42t 0x0t 0x2t 0x7ft
         0x44t 0x0t 0x2t 0x7ft
         0x43t 0x0t 0x2t 0x7ft
+    .end array-data
+.end method
+
+.method private updateIsoIcon()V
+    .locals 13
+
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    if-nez v11, :cond_0
+
+    :goto_0
+    return-void
+
+    :cond_0
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    iget-object v11, v0, Lcom/android/camera/HTCCamera;->takingPictureState:Lcom/android/camera/property/Property;
+
+    sget-object v12, Lcom/android/camera/TakingPictureState;->Ready:Lcom/android/camera/TakingPictureState;
+
+    invoke-virtual {v11, v12}, Lcom/android/camera/property/Property;->isValueEquals(Ljava/lang/Object;)Z
+
+    move-result v9
+
+    if-nez v9, :cond_1
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraMode()Lcom/android/camera/CameraMode;
+
+    move-result-object v11
+
+    sget-object v12, Lcom/android/camera/CameraMode;->Photo:Lcom/android/camera/CameraMode;
+
+    if-ne v11, v12, :cond_1
+
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    const v12, 0x7f020121
+
+    invoke-virtual {v11, v12}, Lcom/htc/widget/HtcIconButton;->setIconResource(I)V
+
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    const/4 v12, 0x0
+
+    invoke-virtual {v11, v12}, Lcom/htc/widget/HtcIconButton;->setEnabled(Z)V
+
+    goto :goto_0
+
+    :cond_1
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v3, v0, Lcom/android/camera/CameraSettings;->iso:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v3}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/String;
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v10
+
+    const v11, 0x7f07001c
+
+    invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
+
+    move-result-object v5
+
+    const/4 v11, 0x6
+
+    new-array v3, v11, [I
+
+    fill-array-data v3, :array_0
+
+    const v11, 0x7f07001b
+
+    invoke-virtual {v10, v11}, Landroid/content/res/Resources;->obtainTypedArray(I)Landroid/content/res/TypedArray;
+
+    move-result-object v7
+
+    const/4 v2, -0x1
+
+    array-length v11, v5
+
+    add-int/lit8 v8, v11, -0x1
+
+    :goto_1
+    if-ltz v8, :cond_2
+
+    aget-object v12, v5, v8
+
+    invoke-virtual {v4, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v11
+
+    if-eqz v11, :cond_4
+
+    move v2, v8
+
+    :cond_2
+    if-gez v2, :cond_3
+
+    const/4 v2, 0x0
+
+    const-string v4, "auto"
+
+    :cond_3
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    aget v12, v3, v2
+
+    invoke-virtual {v11, v12}, Lcom/htc/widget/HtcIconButton;->setIconResource(I)V
+
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    const/4 v12, 0x1
+
+    invoke-virtual {v11, v12}, Lcom/htc/widget/HtcIconButton;->setEnabled(Z)V
+
+    goto/16 :goto_0
+
+    :cond_4
+    add-int/lit8 v8, v8, -0x1
+
+    goto :goto_1
+
+    nop
+
+    nop
+
+    :array_0
+    .array-data 0x4
+        0x21t 0x1t 0x2t 0x7ft
+        0x22t 0x1t 0x2t 0x7ft
+        0x23t 0x1t 0x2t 0x7ft
+        0x24t 0x1t 0x2t 0x7ft
+        0x25t 0x1t 0x2t 0x7ft
+        0x26t 0x1t 0x2t 0x7ft
     .end array-data
 .end method
 
@@ -2249,6 +2780,170 @@
     goto :goto_1
 .end method
 
+.method private updateWbIcon()V
+    .locals 13
+
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    if-nez v11, :cond_0
+
+    :goto_0
+    return-void
+
+    :cond_0
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    iget-object v11, v0, Lcom/android/camera/HTCCamera;->takingPictureState:Lcom/android/camera/property/Property;
+
+    sget-object v12, Lcom/android/camera/TakingPictureState;->Ready:Lcom/android/camera/TakingPictureState;
+
+    invoke-virtual {v11, v12}, Lcom/android/camera/property/Property;->isValueEquals(Ljava/lang/Object;)Z
+
+    move-result v9
+
+    if-nez v9, :cond_1
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraMode()Lcom/android/camera/CameraMode;
+
+    move-result-object v11
+
+    sget-object v12, Lcom/android/camera/CameraMode;->Photo:Lcom/android/camera/CameraMode;
+
+    if-ne v11, v12, :cond_1
+
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    const v12, 0x7f02011c
+
+    invoke-virtual {v11, v12}, Lcom/htc/widget/HtcIconButton;->setIconResource(I)V
+
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    const/4 v12, 0x0
+
+    invoke-virtual {v11, v12}, Lcom/htc/widget/HtcIconButton;->setEnabled(Z)V
+
+    goto :goto_0
+
+    :cond_1
+    iget-object v3, v0, Lcom/android/camera/HTCCamera;->cameraType:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v3}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/camera/CameraType;
+
+    invoke-virtual {v3}, Lcom/android/camera/CameraType;->isMainCamera()Z
+
+    move-result v10
+
+    if-eqz v10, :cond_2
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v3, v0, Lcom/android/camera/CameraSettings;->mainWhiteBalance:Lcom/android/camera/property/Property;
+
+    goto :goto_1
+
+    :cond_2
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v3, v0, Lcom/android/camera/CameraSettings;->frontWhiteBalance:Lcom/android/camera/property/Property;
+
+    :goto_1
+    invoke-virtual {v3}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Ljava/lang/String;
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v10
+
+    const v11, 0x7f07001e
+
+    invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
+
+    move-result-object v5
+
+    const/4 v11, 0x5
+
+    new-array v3, v11, [I
+
+    fill-array-data v3, :array_0
+
+    const v11, 0x7f07001d
+
+    invoke-virtual {v10, v11}, Landroid/content/res/Resources;->obtainTypedArray(I)Landroid/content/res/TypedArray;
+
+    move-result-object v7
+
+    const/4 v2, -0x1
+
+    array-length v11, v5
+
+    add-int/lit8 v8, v11, -0x1
+
+    :goto_2
+    if-ltz v8, :cond_3
+
+    aget-object v12, v5, v8
+
+    invoke-virtual {v4, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v11
+
+    if-eqz v11, :cond_5
+
+    move v2, v8
+
+    :cond_3
+    if-gez v2, :cond_4
+
+    const/4 v2, 0x0
+
+    const-string v4, "auto"
+
+    :cond_4
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    aget v12, v3, v2
+
+    invoke-virtual {v11, v12}, Lcom/htc/widget/HtcIconButton;->setIconResource(I)V
+
+    iget-object v11, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    const/4 v12, 0x1
+
+    invoke-virtual {v11, v12}, Lcom/htc/widget/HtcIconButton;->setEnabled(Z)V
+
+    goto/16 :goto_0
+
+    :cond_5
+    add-int/lit8 v8, v8, -0x1
+
+    goto :goto_2
+
+    nop
+
+    :array_0
+    .array-data 0x4
+        0x1ct 0x1t 0x2t 0x7ft
+        0x1dt 0x1t 0x2t 0x7ft
+        0x1et 0x1t 0x2t 0x7ft
+        0x1ft 0x1t 0x2t 0x7ft
+        0x20t 0x1t 0x2t 0x7ft
+    .end array-data
+.end method
+
 
 # virtual methods
 .method protected deinitializeOverride()V
@@ -2432,6 +3127,54 @@
 
     iget-object v6, p0, Lcom/android/camera/component/MainBar;->m_FunctionBar:Landroid/view/View;
 
+    const v7, 0x7f080176
+
+    invoke-virtual {v6, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v6
+
+    check-cast v6, Landroid/widget/RelativeLayout;
+
+    iput-object v6, p0, Lcom/android/camera/component/MainBar;->m_IsoButtonContainter:Landroid/widget/RelativeLayout;
+
+    iget-object v6, p0, Lcom/android/camera/component/MainBar;->m_FunctionBar:Landroid/view/View;
+
+    const v7, 0x7f080177
+
+    invoke-virtual {v6, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v6
+
+    check-cast v6, Lcom/htc/widget/HtcIconButton;
+
+    iput-object v6, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    iget-object v6, p0, Lcom/android/camera/component/MainBar;->m_FunctionBar:Landroid/view/View;
+
+    const v7, 0x7f080178
+
+    invoke-virtual {v6, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v6
+
+    check-cast v6, Landroid/widget/RelativeLayout;
+
+    iput-object v6, p0, Lcom/android/camera/component/MainBar;->m_WbButtonContainter:Landroid/widget/RelativeLayout;
+
+    iget-object v6, p0, Lcom/android/camera/component/MainBar;->m_FunctionBar:Landroid/view/View;
+
+    const v7, 0x7f080179
+
+    invoke-virtual {v6, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v6
+
+    check-cast v6, Lcom/htc/widget/HtcIconButton;
+
+    iput-object v6, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    iget-object v6, p0, Lcom/android/camera/component/MainBar;->m_FunctionBar:Landroid/view/View;
+
     const v7, 0x7f0800a5
 
     invoke-virtual {v6, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -2595,6 +3338,22 @@
 
     invoke-virtual {v6, v7}, Lcom/htc/widget/HtcIconButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
+    iget-object v6, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    new-instance v7, Lcom/android/camera/component/MainBar$IsoOnClickListener;
+
+    invoke-direct {v7, p0}, Lcom/android/camera/component/MainBar$IsoOnClickListener;-><init>(Lcom/android/camera/component/MainBar;)V
+
+    invoke-virtual {v6, v7}, Lcom/htc/widget/HtcIconButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    iget-object v6, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    new-instance v7, Lcom/android/camera/component/MainBar$WbOnClickListener;
+
+    invoke-direct {v7, p0}, Lcom/android/camera/component/MainBar$WbOnClickListener;-><init>(Lcom/android/camera/component/MainBar;)V
+
+    invoke-virtual {v6, v7}, Lcom/htc/widget/HtcIconButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
     const-class v6, Lcom/android/camera/effect/IEffectManager;
 
     invoke-virtual {p0, v6}, Lcom/android/camera/component/MainBar;->getUIComponent(Ljava/lang/Class;)Ljava/lang/Object;
@@ -2635,6 +3394,38 @@
     invoke-direct {v4, p0}, Lcom/android/camera/component/MainBar$10;-><init>(Lcom/android/camera/component/MainBar;)V
 
     iget-object v6, v0, Lcom/android/camera/HTCCamera;->flashMode:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v6, v4}, Lcom/android/camera/property/Property;->addChangedCallback(Lcom/android/camera/property/PropertyChangedCallback;)V
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    invoke-virtual {p0}, Lcom/android/camera/component/MainBar;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v1
+
+    new-instance v4, Lcom/android/camera/component/MainBar$isoPropChanges;
+
+    invoke-direct {v4, p0}, Lcom/android/camera/component/MainBar$isoPropChanges;-><init>(Lcom/android/camera/component/MainBar;)V
+
+    iget-object v6, v1, Lcom/android/camera/CameraSettings;->iso:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v6, v4}, Lcom/android/camera/property/Property;->addChangedCallback(Lcom/android/camera/property/PropertyChangedCallback;)V
+
+    new-instance v4, Lcom/android/camera/component/MainBar$wbPropChanges;
+
+    invoke-direct {v4, p0}, Lcom/android/camera/component/MainBar$wbPropChanges;-><init>(Lcom/android/camera/component/MainBar;)V
+
+    iget-object v6, v1, Lcom/android/camera/CameraSettings;->mainWhiteBalance:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v6, v4}, Lcom/android/camera/property/Property;->addChangedCallback(Lcom/android/camera/property/PropertyChangedCallback;)V
+
+    iget-object v6, v1, Lcom/android/camera/CameraSettings;->frontWhiteBalance:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v6, v4}, Lcom/android/camera/property/Property;->addChangedCallback(Lcom/android/camera/property/PropertyChangedCallback;)V
+
+    iget-object v6, v0, Lcom/android/camera/HTCCamera;->cameraType:Lcom/android/camera/property/Property;
 
     invoke-virtual {v6, v4}, Lcom/android/camera/property/Property;->addChangedCallback(Lcom/android/camera/property/PropertyChangedCallback;)V
 
@@ -2785,6 +3576,14 @@
 
     invoke-virtual {p0, v0, p1, v1}, Lcom/android/camera/component/MainBar;->rotateView(Landroid/view/View;Lcom/android/camera/rotate/UIRotation;I)V
 
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    invoke-virtual {p0, v0, p1, v1}, Lcom/android/camera/component/MainBar;->rotateView(Landroid/view/View;Lcom/android/camera/rotate/UIRotation;I)V
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    invoke-virtual {p0, v0, p1, v1}, Lcom/android/camera/component/MainBar;->rotateView(Landroid/view/View;Lcom/android/camera/rotate/UIRotation;I)V
+
     invoke-direct {p0, p1}, Lcom/android/camera/component/MainBar;->updateSettingsPanelRotation(Lcom/android/camera/rotate/UIRotation;)V
 
     invoke-direct {p0, p1}, Lcom/android/camera/component/MainBar;->updateScenesPanelRotation(Lcom/android/camera/rotate/UIRotation;)V
@@ -2808,6 +3607,14 @@
     invoke-virtual {p0, v0, p1, p2}, Lcom/android/camera/component/MainBar;->rotateView(Landroid/view/View;Lcom/android/camera/rotate/UIRotation;Lcom/android/camera/rotate/UIRotation;)V
 
     iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_FlashButton:Lcom/htc/widget/HtcIconButton;
+
+    invoke-virtual {p0, v0, p1, p2}, Lcom/android/camera/component/MainBar;->rotateView(Landroid/view/View;Lcom/android/camera/rotate/UIRotation;Lcom/android/camera/rotate/UIRotation;)V
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    invoke-virtual {p0, v0, p1, p2}, Lcom/android/camera/component/MainBar;->rotateView(Landroid/view/View;Lcom/android/camera/rotate/UIRotation;Lcom/android/camera/rotate/UIRotation;)V
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
 
     invoke-virtual {p0, v0, p1, p2}, Lcom/android/camera/component/MainBar;->rotateView(Landroid/view/View;Lcom/android/camera/rotate/UIRotation;Lcom/android/camera/rotate/UIRotation;)V
 
@@ -2924,6 +3731,40 @@
     invoke-virtual {p0, v0, p2}, Lcom/android/camera/component/MainBar;->rotateView(Landroid/view/View;Lcom/android/camera/rotate/UIRotation;)V
 
     :cond_3
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    if-eqz v0, :cond_4
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    invoke-virtual {v0}, Lcom/htc/widget/HtcIconButton;->getVisibility()I
+
+    move-result v0
+
+    if-nez v0, :cond_4
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+
+    invoke-virtual {p0, v0, p2}, Lcom/android/camera/component/MainBar;->rotateView(Landroid/view/View;Lcom/android/camera/rotate/UIRotation;)V
+
+    :cond_4
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    if-eqz v0, :cond_5
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    invoke-virtual {v0}, Lcom/htc/widget/HtcIconButton;->getVisibility()I
+
+    move-result v0
+
+    if-nez v0, :cond_5
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+
+    invoke-virtual {p0, v0, p2}, Lcom/android/camera/component/MainBar;->rotateView(Landroid/view/View;Lcom/android/camera/rotate/UIRotation;)V
+
+    :cond_5
     invoke-direct {p0, p2}, Lcom/android/camera/component/MainBar;->updateSettingsPanelRotation(Lcom/android/camera/rotate/UIRotation;)V
 
     invoke-direct {p0, p2}, Lcom/android/camera/component/MainBar;->updateScenesPanelRotation(Lcom/android/camera/rotate/UIRotation;)V
@@ -2932,7 +3773,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_4
+    if-eqz v0, :cond_6
 
     const-wide/16 v3, 0x1f40
 
@@ -2944,6 +3785,6 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/android/camera/component/MainBar;->sendMessage(Lcom/android/camera/component/Component;IJZ)Z
 
-    :cond_4
+    :cond_6
     return-void
 .end method

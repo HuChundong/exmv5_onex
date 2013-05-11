@@ -676,7 +676,7 @@
 
     if-eqz v3, :cond_1
 
-    const v6, 0x7f0a01d7
+    const v6, 0x7f0a01dd
 
     invoke-virtual {v3, v6}, Lcom/android/camera/IToastManager;->showToast(I)Lcom/android/camera/Handle;
 

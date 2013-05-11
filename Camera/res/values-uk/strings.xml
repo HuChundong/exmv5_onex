@@ -160,7 +160,7 @@
     <string name="settings_geo_tags">Додавання до фото геотегів</string>
     <string name="settings_auto_enhance">Автопокращення</string>
     <string name="settings_save_mirror_image">Зберегти дзеркальне зображення</string>
-    <string name="settings_auto_retouch">Автопокращення</string>
+    <string name="settings_auto_retouch">Авторетушування</string>
     <string name="settings_video_settings">Параметри відеозапису</string>
     <string name="settings_video_stabilization">Стабілізація відео</string>
     <string name="settings_slow_motion">Уповільнене відео (4x)</string>

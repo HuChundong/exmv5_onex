@@ -609,3 +609,213 @@
 
     goto/16 :goto_1
 .end method
+
+.method public static updateVideo(Landroid/content/Context;Landroid/net/Uri;Lcom/android/camera/io/Path;Landroid/location/Location;Lcom/android/camera/io/FileFormat;JJ)I
+    .locals 9
+
+    const-string v6, "MediaProvider(Camera)"
+
+    const-string v7, "updateVideo() - start"
+
+    invoke-static {v6, v7}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+
+    if-nez p0, :cond_0
+
+    const-string v6, "context"
+
+    invoke-static {v6}, Lcom/android/camera/debug/Debugger;->printArgumentNullLog(Ljava/lang/String;)V
+
+    const/4 v4, 0x0
+
+    :goto_0
+    return v4
+
+    :cond_0
+    if-nez p1, :cond_1
+
+    const-string v6, "storageSlot"
+
+    invoke-static {v6}, Lcom/android/camera/debug/Debugger;->printArgumentNullLog(Ljava/lang/String;)V
+
+    const/4 v4, 0x0
+
+    goto :goto_0
+
+    :cond_1
+    if-nez p2, :cond_2
+
+    const-string v6, "filePath"
+
+    invoke-static {v6}, Lcom/android/camera/debug/Debugger;->printArgumentNullLog(Ljava/lang/String;)V
+
+    const/4 v4, 0x0
+
+    goto :goto_0
+
+    :cond_2
+    :try_start_0
+    invoke-virtual {p2}, Lcom/android/camera/io/Path;->getFullPath()Ljava/lang/String;
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result-object v3
+
+    :try_start_1
+    new-instance v6, Ljava/io/File;
+
+    invoke-direct {v6, v3}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v6}, Ljava/io/File;->length()J
+    :try_end_1
+    .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_1
+
+    move-result-wide v1
+
+    :goto_1
+    :try_start_2
+    new-instance v5, Landroid/content/ContentValues;
+
+    const/16 v6, 0xa
+
+    invoke-direct {v5, v6}, Landroid/content/ContentValues;-><init>(I)V
+
+    const-string v6, "_data"
+
+    invoke-virtual {v5, v6, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v6, "datetaken"
+
+    invoke-static {p5, p6}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v7
+
+    invoke-virtual {v5, v6, v7}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
+
+    const-string v6, "mime_type"
+
+    iget-object v7, p4, Lcom/android/camera/io/FileFormat;->mimeType:Ljava/lang/String;
+
+    invoke-virtual {v5, v6, v7}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v6, "duration"
+
+    invoke-static/range {p7 .. p8}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v7
+
+    invoke-virtual {v5, v6, v7}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
+
+    const-string v6, "_size"
+
+    invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v7
+
+    invoke-virtual {v5, v6, v7}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
+
+    if-eqz p3, :cond_3
+
+    const-string v6, "latitude"
+
+    invoke-virtual {p3}, Landroid/location/Location;->getLatitude()D
+
+    move-result-wide v7
+
+    invoke-static {v7, v8}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    move-result-object v7
+
+    invoke-virtual {v5, v6, v7}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Double;)V
+
+    const-string v6, "longitude"
+
+    invoke-virtual {p3}, Landroid/location/Location;->getLongitude()D
+
+    move-result-wide v7
+
+    invoke-static {v7, v8}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    move-result-object v7
+
+    invoke-virtual {v5, v6, v7}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Double;)V
+
+    :cond_3
+    const-string v6, "MediaProvider(Camera)"
+
+    const-string v7, "updateVideo() - ContentResolver.update()"
+
+    invoke-static {v6, v7}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+
+    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v6
+
+    const/4 v7, 0x0
+
+    const/4 v8, 0x0
+
+    invoke-virtual {v6, p1, v5, v7, v8}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+
+    move-result v4
+
+    const-string v6, "MediaProvider(Camera)"
+
+    const-string v7, "updateVideo() - end"
+
+    invoke-static {v6, v7}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_2
+    .catch Ljava/lang/Throwable; {:try_start_2 .. :try_end_2} :catch_0
+
+    goto/16 :goto_0
+
+    :catch_0
+    move-exception v0
+
+    const-string v6, "MediaProvider(Camera)"
+
+    const-string v7, "updateVideo() - failed"
+
+    invoke-static {v6, v7, v0}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    const/4 v4, 0x0
+
+    goto/16 :goto_0
+
+    :catch_1
+    move-exception v0
+
+    :try_start_3
+    const-string v6, "MediaProvider(Camera)"
+
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v8, "insertVideo() - Cannot get file size for \'"
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    const-string v8, "\'"
+
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
+
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-static {v6, v7, v0}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_3
+    .catch Ljava/lang/Throwable; {:try_start_3 .. :try_end_3} :catch_0
+
+    const-wide/16 v1, 0x0
+
+    goto/16 :goto_1
+.end method

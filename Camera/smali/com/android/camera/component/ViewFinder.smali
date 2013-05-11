@@ -3270,186 +3270,273 @@
 .end method
 
 .method private updateViewFinderSize()V
-    .locals 8
+    .locals 12
 
-    invoke-virtual {p0}, Lcom/android/camera/component/ViewFinder;->getCameraMode()Lcom/android/camera/CameraMode;
+    invoke-virtual {p0}, Lcom/android/camera/component/ViewFinder;->getCameraThread()Lcom/android/camera/CameraThread;
 
-    move-result-object v6
+    move-result-object v10
 
-    sget-object v7, Lcom/android/camera/CameraMode;->Photo:Lcom/android/camera/CameraMode;
+    iget-object v10, v10, Lcom/android/camera/CameraThread;->previewSize:Lcom/android/camera/property/Property;
 
-    if-ne v6, v7, :cond_4
+    invoke-virtual {v10}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
-    invoke-virtual {p0}, Lcom/android/camera/component/ViewFinder;->getCameraType()Lcom/android/camera/CameraType;
+    move-result-object v5
 
-    move-result-object v6
+    check-cast v5, Lcom/android/camera/imaging/Size;
 
-    invoke-virtual {v6}, Lcom/android/camera/CameraType;->isMainCamera()Z
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->keepPreviewRatio()Z
+
+    move-result v10
+
+    if-eqz v10, :cond_2
+
+    if-eqz v5, :cond_1
+
+    sget v10, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
+
+    int-to-float v10, v10
+
+    iget v11, v5, Lcom/android/camera/imaging/Size;->width:I
+
+    int-to-float v11, v11
+
+    div-float v7, v10, v11
+
+    sget v10, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
+
+    int-to-float v10, v10
+
+    iget v11, v5, Lcom/android/camera/imaging/Size;->height:I
+
+    int-to-float v11, v11
+
+    div-float v8, v10, v11
+
+    invoke-static {v7, v8}, Ljava/lang/Math;->min(FF)F
 
     move-result v6
 
-    if-nez v6, :cond_0
+    iget v10, v5, Lcom/android/camera/imaging/Size;->width:I
 
-    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportWideScreen2ndCamera()Z
+    int-to-float v10, v10
 
-    move-result v6
+    mul-float/2addr v10, v6
 
-    if-eqz v6, :cond_2
+    float-to-int v9, v10
 
-    :cond_0
-    invoke-virtual {p0}, Lcom/android/camera/component/ViewFinder;->getSettings()Lcom/android/camera/CameraSettings;
+    iget v10, v5, Lcom/android/camera/imaging/Size;->height:I
 
-    move-result-object v6
+    int-to-float v10, v10
 
-    iget-object v6, v6, Lcom/android/camera/CameraSettings;->isWideRatioPhoto:Lcom/android/camera/property/Property;
+    mul-float/2addr v10, v6
 
-    invoke-virtual {v6}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
-
-    move-result-object v6
-
-    check-cast v6, Ljava/lang/Boolean;
-
-    invoke-virtual {v6}, Ljava/lang/Boolean;->booleanValue()Z
-
-    move-result v1
+    float-to-int v1, v10
 
     :goto_0
-    if-eqz v1, :cond_3
+    sget-object v10, Lcom/android/camera/rotate/UIRotation;->SCREEN_ROTATION:Lcom/android/camera/rotate/UIRotation;
 
-    sget v5, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
+    invoke-virtual {v10}, Lcom/android/camera/rotate/UIRotation;->isPortrait()Z
+
+    move-result v10
+
+    if-eqz v10, :cond_7
+
+    iget-object v10, p0, Lcom/android/camera/component/ViewFinder;->m_PreviewSurfaceView:Landroid/view/SurfaceView;
+
+    invoke-static {v10, v1, v9}, Lcom/android/camera/ViewUtil;->setSize(Landroid/view/View;II)V
 
     :goto_1
-    sget-object v6, Lcom/android/camera/rotate/UIRotation;->SCREEN_ROTATION:Lcom/android/camera/rotate/UIRotation;
-
-    invoke-virtual {v6}, Lcom/android/camera/rotate/UIRotation;->isPortrait()Z
-
-    move-result v6
-
-    if-eqz v6, :cond_5
-
-    iget-object v6, p0, Lcom/android/camera/component/ViewFinder;->m_PreviewSurfaceView:Landroid/view/SurfaceView;
-
-    invoke-static {v6, v5}, Lcom/android/camera/ViewUtil;->setHeight(Landroid/view/View;I)V
-
-    :goto_2
-    sget v6, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
-
-    sub-int/2addr v6, v5
-
-    div-int/lit8 v2, v6, 0x2
-
     new-instance v0, Landroid/graphics/Rect;
 
     invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
 
-    sget-object v6, Lcom/android/camera/rotate/UIRotation;->SCREEN_ROTATION:Lcom/android/camera/rotate/UIRotation;
+    sget-object v10, Lcom/android/camera/rotate/UIRotation;->SCREEN_ROTATION:Lcom/android/camera/rotate/UIRotation;
 
-    invoke-virtual {v6}, Lcom/android/camera/rotate/UIRotation;->isPortrait()Z
+    invoke-virtual {v10}, Lcom/android/camera/rotate/UIRotation;->isPortrait()Z
 
-    move-result v6
+    move-result v10
 
-    if-eqz v6, :cond_6
+    if-eqz v10, :cond_8
 
-    sget v6, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
+    sget v10, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
 
-    iput v6, v0, Landroid/graphics/Rect;->right:I
+    sub-int/2addr v10, v9
 
-    iput v2, v0, Landroid/graphics/Rect;->top:I
+    div-int/lit8 v4, v10, 0x2
 
-    sget v6, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
+    sget v10, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
 
-    sub-int/2addr v6, v2
+    sub-int/2addr v10, v1
 
-    iput v6, v0, Landroid/graphics/Rect;->bottom:I
+    div-int/lit8 v3, v10, 0x2
 
-    :goto_3
-    iget-object v6, p0, Lcom/android/camera/IViewFinder;->previewSurfaceBounds:Lcom/android/camera/property/Property;
+    iput v3, v0, Landroid/graphics/Rect;->left:I
 
-    iget-object v7, p0, Lcom/android/camera/component/Component;->propertyOwnerKey:Ljava/lang/Object;
+    iput v4, v0, Landroid/graphics/Rect;->top:I
 
-    invoke-virtual {v6, v7, v0}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
+    iget v10, v0, Landroid/graphics/Rect;->left:I
 
-    iget-object v6, p0, Lcom/android/camera/component/ViewFinder;->m_PreviewFilter:Landroid/view/View;
+    add-int/2addr v10, v1
 
-    if-eqz v6, :cond_1
+    iput v10, v0, Landroid/graphics/Rect;->right:I
 
-    iget-object v6, p0, Lcom/android/camera/component/ViewFinder;->m_PreviewFilter:Landroid/view/View;
+    iget v10, v0, Landroid/graphics/Rect;->top:I
 
-    invoke-virtual {v6}, Landroid/view/View;->invalidate()V
+    add-int/2addr v10, v9
 
-    :cond_1
+    iput v10, v0, Landroid/graphics/Rect;->bottom:I
+
+    :goto_2
+    iget-object v10, p0, Lcom/android/camera/IViewFinder;->previewSurfaceBounds:Lcom/android/camera/property/Property;
+
+    iget-object v11, p0, Lcom/android/camera/component/Component;->propertyOwnerKey:Ljava/lang/Object;
+
+    invoke-virtual {v10, v11, v0}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    iget-object v10, p0, Lcom/android/camera/component/ViewFinder;->m_PreviewFilter:Landroid/view/View;
+
+    if-eqz v10, :cond_0
+
+    iget-object v10, p0, Lcom/android/camera/component/ViewFinder;->m_PreviewFilter:Landroid/view/View;
+
+    invoke-virtual {v10}, Landroid/view/View;->invalidate()V
+
+    :cond_0
     return-void
 
-    :cond_2
-    const/4 v1, 0x0
+    :cond_1
+    sget v9, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
+
+    sget v1, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
 
     goto :goto_0
 
+    :cond_2
+    invoke-virtual {p0}, Lcom/android/camera/component/ViewFinder;->getCameraMode()Lcom/android/camera/CameraMode;
+
+    move-result-object v10
+
+    sget-object v11, Lcom/android/camera/CameraMode;->Photo:Lcom/android/camera/CameraMode;
+
+    if-ne v10, v11, :cond_6
+
+    invoke-virtual {p0}, Lcom/android/camera/component/ViewFinder;->getCameraType()Lcom/android/camera/CameraType;
+
+    move-result-object v10
+
+    invoke-virtual {v10}, Lcom/android/camera/CameraType;->isMainCamera()Z
+
+    move-result v10
+
+    if-nez v10, :cond_3
+
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportWideScreen2ndCamera()Z
+
+    move-result v10
+
+    if-eqz v10, :cond_4
+
     :cond_3
-    sget v6, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
+    invoke-virtual {p0}, Lcom/android/camera/component/ViewFinder;->getSettings()Lcom/android/camera/CameraSettings;
 
-    mul-int/lit8 v6, v6, 0x4
+    move-result-object v10
 
-    div-int/lit8 v5, v6, 0x3
+    iget-object v10, v10, Lcom/android/camera/CameraSettings;->isWideRatioPhoto:Lcom/android/camera/property/Property;
 
-    goto :goto_1
+    invoke-virtual {v10}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v10
+
+    check-cast v10, Ljava/lang/Boolean;
+
+    invoke-virtual {v10}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v2
+
+    :goto_3
+    if-eqz v2, :cond_5
+
+    sget v9, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
+
+    :goto_4
+    sget v1, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
+
+    goto :goto_0
 
     :cond_4
-    invoke-virtual {p0}, Lcom/android/camera/component/ViewFinder;->getCameraThread()Lcom/android/camera/CameraThread;
-
-    move-result-object v6
-
-    iget-object v6, v6, Lcom/android/camera/CameraThread;->previewSize:Lcom/android/camera/property/Property;
-
-    invoke-virtual {v6}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Lcom/android/camera/imaging/Size;
-
-    if-eqz v3, :cond_1
-
-    iget v6, v3, Lcom/android/camera/imaging/Size;->width:I
-
-    int-to-float v6, v6
-
-    iget v7, v3, Lcom/android/camera/imaging/Size;->height:I
-
-    int-to-float v7, v7
-
-    div-float v4, v6, v7
-
-    sget v6, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
-
-    int-to-float v6, v6
-
-    mul-float/2addr v6, v4
-
-    float-to-int v5, v6
-
-    goto :goto_1
-
-    :cond_5
-    iget-object v6, p0, Lcom/android/camera/component/ViewFinder;->m_PreviewSurfaceView:Landroid/view/SurfaceView;
-
-    invoke-static {v6, v5}, Lcom/android/camera/ViewUtil;->setWidth(Landroid/view/View;I)V
-
-    goto :goto_2
-
-    :cond_6
-    sget v6, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
-
-    iput v6, v0, Landroid/graphics/Rect;->bottom:I
-
-    iput v2, v0, Landroid/graphics/Rect;->left:I
-
-    sget v6, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
-
-    sub-int/2addr v6, v2
-
-    iput v6, v0, Landroid/graphics/Rect;->right:I
+    const/4 v2, 0x0
 
     goto :goto_3
+
+    :cond_5
+    sget v10, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
+
+    mul-int/lit8 v10, v10, 0x4
+
+    div-int/lit8 v9, v10, 0x3
+
+    goto :goto_4
+
+    :cond_6
+    if-eqz v5, :cond_0
+
+    iget v10, v5, Lcom/android/camera/imaging/Size;->width:I
+
+    int-to-float v10, v10
+
+    iget v11, v5, Lcom/android/camera/imaging/Size;->height:I
+
+    int-to-float v11, v11
+
+    div-float v6, v10, v11
+
+    sget v10, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
+
+    int-to-float v10, v10
+
+    mul-float/2addr v10, v6
+
+    float-to-int v9, v10
+
+    goto :goto_4
+
+    :cond_7
+    iget-object v10, p0, Lcom/android/camera/component/ViewFinder;->m_PreviewSurfaceView:Landroid/view/SurfaceView;
+
+    invoke-static {v10, v9, v1}, Lcom/android/camera/ViewUtil;->setSize(Landroid/view/View;II)V
+
+    goto/16 :goto_1
+
+    :cond_8
+    sget v10, Lcom/android/camera/DisplayDevice;->SCREEN_HEIGHT:I
+
+    sub-int/2addr v10, v1
+
+    div-int/lit8 v4, v10, 0x2
+
+    sget v10, Lcom/android/camera/DisplayDevice;->SCREEN_WIDTH:I
+
+    sub-int/2addr v10, v9
+
+    div-int/lit8 v3, v10, 0x2
+
+    iput v3, v0, Landroid/graphics/Rect;->left:I
+
+    iput v4, v0, Landroid/graphics/Rect;->top:I
+
+    iget v10, v0, Landroid/graphics/Rect;->left:I
+
+    add-int/2addr v10, v9
+
+    iput v10, v0, Landroid/graphics/Rect;->right:I
+
+    iget v10, v0, Landroid/graphics/Rect;->top:I
+
+    add-int/2addr v10, v1
+
+    iput v10, v0, Landroid/graphics/Rect;->bottom:I
+
+    goto :goto_2
 .end method
 
 

@@ -14,6 +14,8 @@
 
 
 # instance fields
+.field private m_HTCCamera:Lcom/android/camera/HTCCamera;
+
 .field private m_IsUpdatingZoom:Z
 
 .field private m_ZoomBar:Landroid/widget/SeekBar;
@@ -118,6 +120,14 @@
     .locals 1
 
     iget-object v0, p0, Lcom/android/camera/component/ZoomBar;->m_ZoomOutButton:Landroid/view/View;
+
+    return-object v0
+.end method
+
+.method static synthetic access$900(Lcom/android/camera/component/ZoomBar;)Lcom/android/camera/HTCCamera;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/camera/component/ZoomBar;->m_HTCCamera:Lcom/android/camera/HTCCamera;
 
     return-object v0
 .end method
@@ -603,6 +613,8 @@
     invoke-virtual {p0}, Lcom/android/camera/component/ZoomBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
 
     move-result-object v0
+
+    iput-object v0, p0, Lcom/android/camera/component/ZoomBar;->m_HTCCamera:Lcom/android/camera/HTCCamera;
 
     invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getCaptureUiContainer()Landroid/view/ViewGroup;
 

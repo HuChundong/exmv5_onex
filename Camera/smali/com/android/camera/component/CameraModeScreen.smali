@@ -67,6 +67,29 @@
 
     invoke-virtual {v1, v2}, Lcom/android/camera/property/Property;->addChangedCallback(Lcom/android/camera/property/PropertyChangedCallback;)V
 
+    invoke-static {}, Lcom/android/camera/DisplayDevice;->supportWideScreen2ndCamera()Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    iget-object v1, p1, Lcom/android/camera/HTCCamera;->cameraType:Lcom/android/camera/property/Property;
+
+    new-instance v2, Lcom/android/camera/component/CameraModeScreen$3;
+
+    invoke-direct {v2, p0}, Lcom/android/camera/component/CameraModeScreen$3;-><init>(Lcom/android/camera/component/CameraModeScreen;)V
+
+    invoke-virtual {v1, v2}, Lcom/android/camera/property/Property;->addChangedCallback(Lcom/android/camera/property/PropertyChangedCallback;)V
+
+    iget-object v1, p1, Lcom/android/camera/HTCCamera;->stoppingEvent:Lcom/android/camera/event/Event;
+
+    new-instance v2, Lcom/android/camera/component/CameraModeScreen$4;
+
+    invoke-direct {v2, p0}, Lcom/android/camera/component/CameraModeScreen$4;-><init>(Lcom/android/camera/component/CameraModeScreen;)V
+
+    invoke-virtual {v1, v2}, Lcom/android/camera/event/Event;->addHandler(Lcom/android/camera/event/EventHandler;)V
+
+    :cond_0
     return-void
 .end method
 

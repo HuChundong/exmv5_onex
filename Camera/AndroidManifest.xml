@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest android:versionCode="417069965" android:versionName="4.0.2221192044.484042.484042" package="com.android.camera"
+<manifest android:versionCode="417109786" android:versionName="4.0.2222242659.523863.518132" package="com.android.camera"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:pluto="http://www.w3.org/2001/pluto.html">
     <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -68,15 +68,23 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:theme="@style/mirror_window" android:label="@string/mirror_name" android:icon="@drawable/icon_launcher_mirror" android:name="MirrorEntry" android:taskAffinity="android.task.mirror" android:clearTaskOnLaunch="true" android:launchMode="singleTask" android:screenOrientation="sensorPortrait" android:configChanges="keyboardHidden|orientation|screenSize">
+            <meta-data android:name="android.app.default_searchable" android:value="*" />
             <intent-filter>
-                <action android:name="android.media.action.STILL_IMAGE_CAMERA" />
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:theme="@style/_window" android:label="@string/htc_private_app" android:icon="@com.htc:drawable/icon_launcher_camera" android:name="CameraServiceEntry" android:taskAffinity="android.task.Service" android:clearTaskOnLaunch="true" android:screenOrientation="sensorPortrait" android:configChanges="keyboardHidden|orientation|screenSize">
             <meta-data android:name="android.app.default_searchable" android:value="*" />
             <intent-filter>
                 <action android:name="android.media.action.IMAGE_CAPTURE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -92,5 +100,5 @@
             </intent-filter>
         </activity>
     </application>
-    <HTC-SDK version="4.63" senseVersion="Sense 4.5" />
+    <HTC-SDK version="4.63" senseVersion="Sense 4.5" srcChangelist="523863" arsChangelist="523820" />
 </manifest>

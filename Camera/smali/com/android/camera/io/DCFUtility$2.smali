@@ -53,7 +53,9 @@
 
     check-cast v7, [I
 
-    iget-object v5, v2, Lcom/android/camera/io/DCFInfo;->fileTag:Ljava/lang/String;
+    invoke-virtual {v2}, Lcom/android/camera/io/DCFInfo;->getFileTag()Ljava/lang/String;
+
+    move-result-object v5
 
     invoke-virtual {v5}, Ljava/lang/String;->length()I
 

@@ -443,13 +443,13 @@
 
     invoke-direct {v6, v7}, Lcom/htc/dialog/HtcAlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    const v7, 0x7f0a01dc
+    const v7, 0x7f0a01e2
 
     invoke-virtual {v6, v7}, Lcom/htc/dialog/HtcAlertDialog$Builder;->setTitle(I)Lcom/htc/dialog/HtcAlertDialog$Builder;
 
     move-result-object v6
 
-    const v7, 0x7f0a01dd
+    const v7, 0x7f0a01e3
 
     invoke-virtual {v6, v7}, Lcom/htc/dialog/HtcAlertDialog$Builder;->setMessage(I)Lcom/htc/dialog/HtcAlertDialog$Builder;
 

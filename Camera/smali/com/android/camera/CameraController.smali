@@ -582,7 +582,7 @@
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_2
 
     :goto_1
-    const/high16 v7, 0x40a0
+    const/high16 v7, 0x2050
 
     invoke-virtual {v2, v7}, Lcom/android/camera/CameraController$SettingInfo;->setStep(F)V
 
@@ -773,7 +773,7 @@
     .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_5
 
     :goto_3
-    const/high16 v7, 0x40a0
+    const/high16 v7, 0x2050
 
     invoke-virtual {v2, v7}, Lcom/android/camera/CameraController$SettingInfo;->setStep(F)V
 
@@ -972,7 +972,7 @@
     .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_8
 
     :goto_5
-    const/high16 v7, 0x40a0
+    const/high16 v7, 0x2050
 
     invoke-virtual {v2, v7}, Lcom/android/camera/CameraController$SettingInfo;->setStep(F)V
 

@@ -371,4 +371,22 @@
     <string name="incoming_call_dialog_title">来电</string>
     <string name="incoming_call_dialog_answer">接听</string>
     <string name="incoming_call_dialog_decline">拒绝</string>
+    <string name="settings_image_quality">图像编码质量</string>
+    <string name="settings_miscellaneous">其它杂项</string>
+    <string name="force_video_quality">强制视频比特率</string>
+    <string name="force_audio_quality">强制音频比特率</string>
+    <string name="hook_vol_keys">截获音量键</string>
+    <string name="settings_force_image_quality">强制</string>
+    <string name="pref_vol_plus_camera">音量+ 拍照/音量- 录像</string>
+    <string name="pref_vol_plus_camecoder">音量+ 录像/音量- 拍照</string>
+    <string name="force_frame_rate">强制视频帧率</string>
+    <string name="settings_stamp">照片标记</string>
+    <string name="settings_stamp_date">日期标记</string>
+    <string name="settings_stamp_location">位置标记</string>
+    <string name="settings_menu_bar_transparence">菜单条透明</string>
+    <string name="settings_menu_bar_trans_toast">要使设置生效,你需要重新启动相机程序.</string>
+    <string name="settings_antibanding">色彩平滑</string>
+    <string name="settings_zsl_cam_mode">ZSL(零秒快拍模式)</string>
+    <string name="settings_audio_focus">获取声音焦点</string>
+    <string name="file_name_format">文件名格式</string>
 </resources>

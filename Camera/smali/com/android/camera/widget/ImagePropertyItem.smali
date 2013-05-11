@@ -13,7 +13,7 @@
 
 
 # static fields
-.field public static final PROPERTY_LEVEL_NUMBER_MAX:I = 0x4
+.field public static final PROPERTY_LEVEL_NUMBER_MAX:I = 0x8
 
 .field public static final PROPERTY_LEVEL_NUMBER_MIN:I = 0x0
 
@@ -139,7 +139,7 @@
 .method private increaseLevel()V
     .locals 2
 
-    const/4 v1, 0x4
+    const/16 v1, 0x8
 
     iget v0, p0, Lcom/android/camera/widget/ImagePropertyItem;->m_Level:I
 
@@ -165,9 +165,9 @@
 .method private mapFromLevel(I)F
     .locals 3
 
-    const/4 v2, 0x2
+    const/4 v2, 0x4
 
-    const/4 v0, 0x2
+    const/4 v0, 0x4
 
     if-ge p1, v0, :cond_0
 
@@ -201,7 +201,7 @@
 .method private mapToLevel(F)I
     .locals 5
 
-    const/4 v4, 0x2
+    const/4 v4, 0x4
 
     const/high16 v2, 0x3f80
 
@@ -217,7 +217,7 @@
 
     :cond_0
     :goto_0
-    const/4 v0, 0x2
+    const/4 v0, 0x4
 
     const/4 v1, 0x0
 
@@ -440,27 +440,47 @@
     return v0
 
     :pswitch_0
-    const v0, 0x7f02008e
+    const v0, 0x7f020113
 
     goto :goto_0
 
     :pswitch_1
-    const v0, 0x7f02008d
+    const v0, 0x7f020114
 
     goto :goto_0
 
     :pswitch_2
-    const v0, 0x7f02008c
+    const v0, 0x7f020115
 
     goto :goto_0
 
     :pswitch_3
-    const v0, 0x7f02008f
+    const v0, 0x7f020116
 
     goto :goto_0
 
     :pswitch_4
-    const v0, 0x7f020090
+    const v0, 0x7f020117
+
+    goto :goto_0
+
+    :pswitch_5
+    const v0, 0x7f020118
+
+    goto :goto_0
+
+    :pswitch_6
+    const v0, 0x7f020119
+
+    goto :goto_0
+
+    :pswitch_7
+    const v0, 0x7f02011a
+
+    goto :goto_0
+
+    :pswitch_8
+    const v0, 0x7f02011b
 
     goto :goto_0
 
@@ -473,6 +493,10 @@
         :pswitch_2
         :pswitch_3
         :pswitch_4
+        :pswitch_5
+        :pswitch_6
+        :pswitch_7
+        :pswitch_8
     .end packed-switch
 .end method
 
@@ -797,7 +821,7 @@
 
     iget v0, p0, Lcom/android/camera/widget/ImagePropertyItem;->m_Level:I
 
-    const/4 v1, 0x2
+    const/4 v1, 0x4
 
     if-ne v0, v1, :cond_0
 
@@ -883,7 +907,7 @@
 .method public resetDefaultLevel()V
     .locals 1
 
-    const/4 v0, 0x2
+    const/4 v0, 0x4
 
     iput v0, p0, Lcom/android/camera/widget/ImagePropertyItem;->m_Level:I
 

@@ -75,6 +75,10 @@
 
 .field private m_IsTakingPicture:Z
 
+.field private m_NeedReccord:Z
+
+.field private m_NeedTakePicture:Z
+
 .field private m_PhotoCaptureButton:Landroid/widget/ImageView;
 
 .field private m_PopupOutsideTouchedView:Landroid/view/View;
@@ -1295,11 +1299,27 @@
 .end method
 
 .method private onKeyDown(Landroid/view/KeyEvent;)Z
-    .locals 7
+    .locals 8
 
     const/4 v4, 0x1
 
     const/4 v3, 0x0
+
+    invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v0, v0, Lcom/android/camera/CameraSettings;->HookVolKeys:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v0}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Ljava/lang/String;
 
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getKeyCode()I
 
@@ -1312,6 +1332,82 @@
     return v3
 
     :sswitch_0
+    const-string v2, "default"
+
+    invoke-virtual {v2, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    const-string v2, "camera"
+
+    invoke-virtual {v2, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_2
+
+    :cond_1
+    const/4 v2, 0x0
+
+    iput-boolean v2, p0, Lcom/android/camera/component/CaptureBar;->m_NeedReccord:Z
+
+    invoke-virtual {p1}, Landroid/view/KeyEvent;->getRepeatCount()I
+
+    move-result v5
+
+    if-gt v5, v4, :cond_0
+
+    move v3, v4
+
+    if-gtz v5, :cond_0
+
+    const/4 v2, 0x1
+
+    iput-boolean v2, p0, Lcom/android/camera/component/CaptureBar;->m_NeedReccord:Z
+
+    goto :goto_0
+
+    :sswitch_1
+    const-string v2, "default"
+
+    invoke-virtual {v2, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    const-string v2, "camera"
+
+    invoke-virtual {v2, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_1
+
+    :cond_2
+    const/4 v2, 0x0
+
+    iput-boolean v2, p0, Lcom/android/camera/component/CaptureBar;->m_NeedTakePicture:Z
+
+    invoke-virtual {p1}, Landroid/view/KeyEvent;->getRepeatCount()I
+
+    move-result v5
+
+    if-gt v5, v4, :cond_0
+
+    move v3, v4
+
+    if-gtz v5, :cond_0
+
+    const/4 v2, 0x1
+
+    iput-boolean v2, p0, Lcom/android/camera/component/CaptureBar;->m_NeedTakePicture:Z
+
+    goto :goto_0
+
+    :sswitch_2
     invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
 
     move-result-object v1
@@ -1324,7 +1420,7 @@
 
     iget-boolean v5, p0, Lcom/android/camera/component/CaptureBar;->m_IsTakingPicture:Z
 
-    if-eqz v5, :cond_1
+    if-eqz v5, :cond_3
 
     invoke-virtual {v1}, Lcom/android/camera/HTCCamera;->isFastShotToShotMode()Z
 
@@ -1332,7 +1428,7 @@
 
     if-eqz v5, :cond_0
 
-    :cond_1
+    :cond_3
     iget-object v5, v1, Lcom/android/camera/HTCCamera;->takingPictureState:Lcom/android/camera/property/Property;
 
     sget-object v6, Lcom/android/camera/TakingPictureState;->Reviewing:Lcom/android/camera/TakingPictureState;
@@ -1361,14 +1457,14 @@
 
     goto :goto_0
 
-    :sswitch_1
+    :sswitch_3
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getRepeatCount()I
 
     move-result v3
 
     const/4 v5, 0x3
 
-    if-ne v3, v5, :cond_3
+    if-ne v3, v5, :cond_5
 
     invoke-direct {p0}, Lcom/android/camera/component/CaptureBar;->unlock3A()V
 
@@ -1380,7 +1476,7 @@
 
     check-cast v0, Lcom/android/camera/IAutoFocusController;
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_4
 
     const-string v3, "Focus key"
 
@@ -1390,7 +1486,7 @@
 
     iput-object v3, p0, Lcom/android/camera/component/CaptureBar;->m_FocusLockHandle:Lcom/android/camera/Handle;
 
-    :cond_2
+    :cond_4
     const-class v3, Lcom/android/camera/IImageSettingsController;
 
     invoke-virtual {p0, v3}, Lcom/android/camera/component/CaptureBar;->getUIComponent(Ljava/lang/Class;)Ljava/lang/Object;
@@ -1399,7 +1495,7 @@
 
     check-cast v2, Lcom/android/camera/IImageSettingsController;
 
-    if-eqz v2, :cond_3
+    if-eqz v2, :cond_5
 
     const-string v3, "Focus key"
 
@@ -1409,27 +1505,47 @@
 
     iput-object v3, p0, Lcom/android/camera/component/CaptureBar;->m_AecLockHandle:Lcom/android/camera/Handle;
 
-    :cond_3
+    :cond_5
     move v3, v4
 
-    goto :goto_0
+    goto/16 :goto_0
+
+    nop
 
     :sswitch_data_0
     .sparse-switch
-        0x1b -> :sswitch_0
-        0x50 -> :sswitch_1
-        0x83 -> :sswitch_0
+        0x18 -> :sswitch_0
+        0x19 -> :sswitch_1
+        0x1b -> :sswitch_2
+        0x50 -> :sswitch_3
+        0x83 -> :sswitch_2
     .end sparse-switch
 .end method
 
 .method private onKeyUp(Landroid/view/KeyEvent;)Z
-    .locals 6
+    .locals 7
 
     const/4 v5, 0x2
 
     const/4 v2, 0x1
 
     const/4 v1, 0x0
+
+    invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v0, v0, Lcom/android/camera/CameraSettings;->HookVolKeys:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v0}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Ljava/lang/String;
 
     invoke-virtual {p1}, Landroid/view/KeyEvent;->getKeyCode()I
 
@@ -1442,6 +1558,78 @@
     return v1
 
     :sswitch_0
+    const-string v3, "default"
+
+    invoke-virtual {v3, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    const-string v3, "camera"
+
+    invoke-virtual {v3, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_2
+
+    :cond_1
+    iget-boolean v3, p0, Lcom/android/camera/component/CaptureBar;->m_NeedReccord:Z
+
+    if-eqz v3, :cond_0
+
+    invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->prepareRecording()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_0
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->triggerRecord()V
+
+    move v1, v2
+
+    goto :goto_0
+
+    :sswitch_1
+    const-string v2, "default"
+
+    invoke-virtual {v2, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    const-string v2, "camera"
+
+    invoke-virtual {v2, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_1
+
+    :cond_2
+    iget-boolean v3, p0, Lcom/android/camera/component/CaptureBar;->m_NeedTakePicture:Z
+
+    if-eqz v3, :cond_0
+
+    invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    const-string v1, "Press Camera Button"
+
+    invoke-virtual {v0, v1}, Lcom/android/camera/HTCCamera;->takePicture(Ljava/lang/String;)Z
+
+    move v1, v2
+
+    goto :goto_0
+
+    :sswitch_2
     invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
 
     move-result-object v0
@@ -1476,7 +1664,7 @@
 
     goto :goto_0
 
-    :sswitch_1
+    :sswitch_3
     invoke-direct {p0}, Lcom/android/camera/component/CaptureBar;->unlock3A()V
 
     move v1, v2
@@ -1487,9 +1675,11 @@
 
     :sswitch_data_0
     .sparse-switch
-        0x1b -> :sswitch_0
-        0x50 -> :sswitch_1
-        0x83 -> :sswitch_0
+        0x18 -> :sswitch_0
+        0x19 -> :sswitch_1
+        0x1b -> :sswitch_2
+        0x50 -> :sswitch_3
+        0x83 -> :sswitch_2
     .end sparse-switch
 .end method
 
@@ -1609,7 +1799,7 @@
 
     iget-object v0, p0, Lcom/android/camera/component/CaptureBar;->m_PhotoCaptureButton:Landroid/widget/ImageView;
 
-    if-ne p1, v0, :cond_1
+    if-ne p1, v0, :cond_2
 
     :cond_0
     invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
@@ -1628,22 +1818,50 @@
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_2
 
-    iget-object v0, p0, Lcom/android/camera/component/CaptureBar;->m_PhotoCaptureButton:Landroid/widget/ImageView;
+    invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
 
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v1
+
+    iget-object v2, v1, Lcom/android/camera/CameraSettings;->isMenuBarTransEnabled:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v2}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/Boolean;
+
+    invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    const v1, 0x7f02012a
+
+    goto :goto_0
+
+    :cond_1
     const v1, 0x7f02008b
+
+    :goto_0
+    iget-object v0, p0, Lcom/android/camera/component/CaptureBar;->m_PhotoCaptureButton:Landroid/widget/ImageView;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    :cond_1
-    if-eqz p1, :cond_2
+    :cond_2
+    if-eqz p1, :cond_3
 
     iget-object v0, p0, Lcom/android/camera/component/CaptureBar;->m_VideoCaptureButton:Landroid/widget/ImageView;
 
-    if-ne p1, v0, :cond_4
+    if-ne p1, v0, :cond_6
 
-    :cond_2
+    :cond_3
     invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
 
     move-result-object v0
@@ -1656,7 +1874,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_3
+    if-eqz v0, :cond_4
 
     invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
 
@@ -1674,7 +1892,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_3
+    if-nez v0, :cond_4
 
     invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
 
@@ -1692,18 +1910,46 @@
 
     move-result v0
 
-    if-eqz v0, :cond_6
+    if-eqz v0, :cond_8
 
-    :cond_3
-    iget-object v0, p0, Lcom/android/camera/component/CaptureBar;->m_VideoCaptureButton:Landroid/widget/ImageView;
+    :cond_4
+    invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
 
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v1
+
+    iget-object v2, v1, Lcom/android/camera/CameraSettings;->isMenuBarTransEnabled:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v2}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/Boolean;
+
+    invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_5
+
+    const v1, 0x7f02012b
+
+    goto :goto_1
+
+    :cond_5
     const v1, 0x7f02009a
+
+    :goto_1
+    iget-object v0, p0, Lcom/android/camera/component/CaptureBar;->m_VideoCaptureButton:Landroid/widget/ImageView;
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    :cond_4
-    :goto_0
-    if-eqz p2, :cond_5
+    :cond_6
+    :goto_2
+    if-eqz p2, :cond_7
 
     iput v4, p0, Lcom/android/camera/component/CaptureBar;->m_ActiveCaptureButtonType:I
 
@@ -1723,19 +1969,19 @@
 
     invoke-virtual {v0, v1}, Lcom/android/camera/property/Property;->setValue(Ljava/lang/Object;)Z
 
-    :cond_5
+    :cond_7
     iput-boolean v4, p0, Lcom/android/camera/component/CaptureBar;->m_IsPopupOutsideTouched:Z
 
     return-void
 
-    :cond_6
+    :cond_8
     iget-object v0, p0, Lcom/android/camera/component/CaptureBar;->m_VideoCaptureButton:Landroid/widget/ImageView;
 
     const v1, 0x7f020087
 
     invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    goto :goto_0
+    goto :goto_2
 .end method
 
 .method private setupEventHandlers()V
@@ -2091,11 +2337,39 @@
     return-void
 
     :cond_0
-    if-nez p1, :cond_1
+    if-nez p1, :cond_2
 
-    iget-object v2, p0, Lcom/android/camera/component/CaptureBar;->m_PhotoCaptureButton:Landroid/widget/ImageView;
+    invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
 
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v1
+
+    iget-object v2, v1, Lcom/android/camera/CameraSettings;->isMenuBarTransEnabled:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v2}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/Boolean;
+
+    invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    const v3, 0x7f02012a
+
+    goto :goto_1
+
+    :cond_1
     const v3, 0x7f02008b
+
+    :goto_1
+    iget-object v2, p0, Lcom/android/camera/component/CaptureBar;->m_PhotoCaptureButton:Landroid/widget/ImageView;
 
     invoke-virtual {v2, v3}, Landroid/widget/ImageView;->setImageResource(I)V
 
@@ -2105,7 +2379,7 @@
 
     goto :goto_0
 
-    :cond_1
+    :cond_2
     new-instance v0, Landroid/widget/RelativeLayout$LayoutParams;
 
     invoke-direct {v0, v3, v3}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
@@ -2118,7 +2392,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_2
+    if-eqz v2, :cond_3
 
     const v2, 0x7f0b0015
 
@@ -2144,7 +2418,7 @@
 
     invoke-virtual {v2, v6}, Landroid/widget/TextView;->setVisibility(I)V
 
-    :goto_1
+    :goto_2
     invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
 
     move-result-object v2
@@ -2169,7 +2443,7 @@
 
     invoke-virtual {v2, v7}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    :goto_2
+    :goto_3
     iget-object v2, p0, Lcom/android/camera/component/CaptureBar;->m_SelfTimerIcon:Landroid/widget/ImageView;
 
     invoke-virtual {v2, v0}, Landroid/widget/ImageView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
@@ -2186,9 +2460,9 @@
 
     invoke-virtual {p0, v2, v5, v5}, Lcom/android/camera/component/CaptureBar;->showUI(Landroid/view/View;ZZ)V
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    :cond_2
+    :cond_3
     const/16 v2, 0xd
 
     invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(I)V
@@ -2201,7 +2475,7 @@
 
     invoke-virtual {v2, v4}, Landroid/widget/TextView;->setVisibility(I)V
 
-    goto :goto_1
+    goto :goto_2
 
     :sswitch_0
     iget-object v2, p0, Lcom/android/camera/component/CaptureBar;->m_SelfTimerIcon:Landroid/widget/ImageView;
@@ -2210,7 +2484,7 @@
 
     invoke-virtual {v2, v3}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    goto :goto_2
+    goto :goto_3
 
     :sswitch_1
     iget-object v2, p0, Lcom/android/camera/component/CaptureBar;->m_SelfTimerIcon:Landroid/widget/ImageView;
@@ -2219,7 +2493,7 @@
 
     invoke-virtual {v2, v3}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    goto :goto_2
+    goto :goto_3
 
     :sswitch_2
     iget-object v2, p0, Lcom/android/camera/component/CaptureBar;->m_SelfTimerIcon:Landroid/widget/ImageView;
@@ -2228,7 +2502,9 @@
 
     invoke-virtual {v2, v3}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    goto :goto_2
+    goto :goto_3
+
+    nop
 
     :sswitch_data_0
     .sparse-switch
@@ -3077,6 +3353,47 @@
 
     invoke-virtual {v6, v2}, Landroid/widget/ImageView;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
+    invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v1
+
+    iget-object v2, v1, Lcom/android/camera/CameraSettings;->isMenuBarTransEnabled:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v2}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/Boolean;
+
+    invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    iget-object v6, p0, Lcom/android/camera/component/CaptureBar;->m_CaptureBar:Landroid/view/View;
+
+    const v7, 0x7f080032
+
+    invoke-virtual {v6, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v6
+
+    check-cast v6, Landroid/widget/ImageView;
+
+    const v7, 0x7f020129
+
+    invoke-virtual {v6, v7}, Landroid/widget/ImageView;->setImageResource(I)V
+
+    :cond_0
+    invoke-virtual {p0}, Lcom/android/camera/component/CaptureBar;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
     invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getStartMode()Lcom/android/camera/CameraStartMode;
 
     move-result-object v4
@@ -3085,7 +3402,7 @@
 
     move-result v6
 
-    if-nez v6, :cond_0
+    if-nez v6, :cond_1
 
     iget-object v6, p0, Lcom/android/camera/component/CaptureBar;->m_CaptureBar:Landroid/view/View;
 
@@ -3103,7 +3420,7 @@
 
     iget-boolean v6, v4, Lcom/android/camera/CameraStartMode;->supportsPhotoMode:Z
 
-    if-eqz v6, :cond_1
+    if-eqz v6, :cond_2
 
     iget-object v6, p0, Lcom/android/camera/component/CaptureBar;->m_CaptureBar:Landroid/view/View;
 
@@ -3130,7 +3447,7 @@
 
     invoke-static {v5, v6}, Lcom/android/camera/ViewUtil;->setWidth(Landroid/view/View;I)V
 
-    :cond_0
+    :cond_1
     invoke-direct {p0}, Lcom/android/camera/component/CaptureBar;->setupEventHandlers()V
 
     invoke-direct {p0}, Lcom/android/camera/component/CaptureBar;->setupPropertyChangedCallbacks()V
@@ -3143,7 +3460,7 @@
 
     return-void
 
-    :cond_1
+    :cond_2
     iget-object v6, p0, Lcom/android/camera/component/CaptureBar;->m_CaptureBar:Landroid/view/View;
 
     invoke-virtual {v6, v10}, Landroid/view/View;->findViewById(I)Landroid/view/View;

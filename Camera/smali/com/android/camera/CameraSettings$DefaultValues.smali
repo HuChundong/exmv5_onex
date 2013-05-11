@@ -23,11 +23,16 @@
 
 .field public static final flashMode:Lcom/android/camera/FlashMode; = null
 
+.field public static final forceImageQuality:Z = true
+
 .field public static final frontSelfTimerInterval:Lcom/android/camera/Duration; = null
 
 .field public static final frontWhiteBalance:Ljava/lang/String; = "auto"
 
-.field public static final isAutoEnhanceEnabled:Z = true
+#the value of this static final field might be set in the static constructor
+.field public static final imageQuality:I = 0x5a
+
+.field public static final isAutoEnhanceEnabled:Z = false
 
 .field public static final isAutoFiveShotsEnabled:Z = true
 
@@ -112,6 +117,10 @@
     move-result-object v0
 
     sput-object v0, Lcom/android/camera/CameraSettings$DefaultValues;->mainSelfTimerInterval:Lcom/android/camera/Duration;
+
+    const/16 v0, 0x5a
+
+    sput v0, Lcom/android/camera/CameraSettings$DefaultValues;->imageQuality:I
 
     invoke-static {v2, v3}, Lcom/android/camera/Duration;->fromSeconds(J)Lcom/android/camera/Duration;
 

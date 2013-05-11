@@ -1240,8 +1240,36 @@
 .method private updateEffectButtonContent()V
     .locals 5
 
+    invoke-virtual {p0}, Lcom/android/camera/effect/EffectPanelUI;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v2, v0, Lcom/android/camera/CameraSettings;->isMenuBarTransEnabled:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v2}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/Boolean;
+
+    invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
     const v4, 0x7f02005f
 
+    goto :goto_0
+
+    :cond_0
+    const v4, 0x7f020128
+
+    :goto_0
     const/4 v3, 0x0
 
     invoke-virtual {p0}, Lcom/android/camera/effect/EffectPanelUI;->getCameraActivity()Lcom/android/camera/HTCCamera;
@@ -1256,7 +1284,7 @@
 
     sget-object v2, Lcom/android/camera/UIState;->Opened:Lcom/android/camera/UIState;
 
-    if-eq v1, v2, :cond_1
+    if-eq v1, v2, :cond_2
 
     invoke-virtual {v0}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
 
@@ -1264,13 +1292,13 @@
 
     sget-object v2, Lcom/android/camera/UIState;->Opening:Lcom/android/camera/UIState;
 
-    if-eq v1, v2, :cond_1
+    if-eq v1, v2, :cond_2
 
     iget-object v1, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectButton:Landroid/view/View;
 
     instance-of v1, v1, Lcom/htc/widget/HtcIconButton;
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_1
 
     iget-object v1, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectButton:Landroid/view/View;
 
@@ -1284,11 +1312,11 @@
 
     invoke-virtual {v1, v3}, Lcom/htc/widget/HtcIconButton;->setIconDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    :cond_0
-    :goto_0
+    :cond_1
+    :goto_1
     return-void
 
-    :cond_1
+    :cond_2
     sget-object v1, Lcom/android/camera/effect/EffectPanelUI$18;->$SwitchMap$com$android$camera$CameraMode:[I
 
     invoke-virtual {p0}, Lcom/android/camera/effect/EffectPanelUI;->getCameraMode()Lcom/android/camera/CameraMode;
@@ -1303,14 +1331,14 @@
 
     packed-switch v1, :pswitch_data_0
 
-    goto :goto_0
+    goto :goto_1
 
     :pswitch_0
     iget-object v1, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectButton:Landroid/view/View;
 
     instance-of v1, v1, Lcom/htc/widget/HtcIconButton;
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_1
 
     iget-object v1, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectButton:Landroid/view/View;
 
@@ -1324,14 +1352,14 @@
 
     invoke-virtual {v1, v3}, Lcom/htc/widget/HtcIconButton;->setIconDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    goto :goto_0
+    goto :goto_1
 
     :pswitch_1
     iget-object v1, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectButton:Landroid/view/View;
 
     instance-of v1, v1, Lcom/htc/widget/HtcIconButton;
 
-    if-eqz v1, :cond_0
+    if-eqz v1, :cond_1
 
     iget-object v1, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectButton:Landroid/view/View;
 
@@ -1347,7 +1375,7 @@
 
     invoke-virtual {v1, v2}, Lcom/htc/widget/HtcIconButton;->setIconResource(I)V
 
-    goto :goto_0
+    goto :goto_1
 
     :pswitch_data_0
     .packed-switch 0x1
@@ -1473,11 +1501,42 @@
 
     iput-object v2, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectButton:Landroid/view/View;
 
+    invoke-virtual {v0}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v1
+
+    iget-object v2, v1, Lcom/android/camera/CameraSettings;->isMenuBarTransEnabled:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v2}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/Boolean;
+
+    invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    const v2, 0x7f020128
+
+    iget-object v1, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectButton:Landroid/view/View;
+
+    check-cast v1, Lcom/htc/widget/HtcIconButton;
+
+    invoke-virtual {v1, v2}, Lcom/htc/widget/HtcIconButton;->setBackgroundResource(I)V
+
+    :cond_0
+    invoke-virtual {p0}, Lcom/android/camera/effect/EffectPanelUI;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v0
+
     iget-object v2, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectButton:Landroid/view/View;
 
     instance-of v2, v2, Lcom/htc/widget/HtcIconButton;
 
-    if-eqz v2, :cond_0
+    if-eqz v2, :cond_1
 
     iget-object v2, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectButton:Landroid/view/View;
 
@@ -1487,7 +1546,7 @@
 
     invoke-virtual {v2, v3}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    :cond_0
+    :cond_1
     iget-object v2, v0, Lcom/android/camera/HTCCamera;->restartingCameraEvent:Lcom/android/camera/event/Event;
 
     new-instance v3, Lcom/android/camera/effect/EffectPanelUI$2;
@@ -1518,7 +1577,7 @@
 
     iget-object v2, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectManager:Lcom/android/camera/effect/IEffectManager;
 
-    if-eqz v2, :cond_1
+    if-eqz v2, :cond_2
 
     iget-object v2, p0, Lcom/android/camera/effect/EffectPanelUI;->m_EffectManager:Lcom/android/camera/effect/IEffectManager;
 
@@ -1550,7 +1609,7 @@
 
     invoke-virtual {v2, v3}, Lcom/android/camera/property/Property;->addChangedCallback(Lcom/android/camera/property/PropertyChangedCallback;)V
 
-    :cond_1
+    :cond_2
     iget-object v2, v0, Lcom/android/camera/HTCCamera;->isCaptureUIOpen:Lcom/android/camera/property/Property;
 
     new-instance v3, Lcom/android/camera/effect/EffectPanelUI$8;

@@ -50,10 +50,6 @@
 
     if-eqz v2, :cond_0
 
-    iget-object v2, p0, Lcom/android/camera/CameraThread$15;->val$contentUri:Landroid/net/Uri;
-
-    if-eqz v2, :cond_0
-
     const-string v2, "CameraThread"
 
     new-instance v3, Ljava/lang/StringBuilder;

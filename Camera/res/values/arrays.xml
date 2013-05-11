@@ -257,4 +257,102 @@
         <item>sdcard</item>
         <item>main_memory</item>
     </string-array>
+    <array name="pref_videoq_choices">
+        <item>@string/auto</item>
+        <item>20 Mbps</item>
+        <item>10 Mbps</item>
+        <item>8 Mbps</item>
+        <item>4 Mbps</item>
+        <item>1.5 Mbps</item>
+        <item>375 Kbps</item>
+    </array>
+    <string-array name="pref_videoq_values">
+        <item>auto</item>
+        <item>20000000</item>
+        <item>10000000</item>
+        <item>8000000</item>
+        <item>4000000</item>
+        <item>1536000</item>
+        <item>384000</item>
+    </string-array>
+    <array name="pref_audioq_choices">
+        <item>@string/auto</item>
+        <item>312 Kbps</item>
+        <item>160 Kbps</item>
+        <item>120 Kbps</item>
+        <item>93 Kbp</item>
+        <item>16 Kbs</item>
+        <item>11 Kbs</item>
+    </array>
+    <string-array name="pref_audioq_values">
+        <item>auto</item>
+        <item>320000</item>
+        <item>160000</item>
+        <item>122880</item>
+        <item>96000</item>
+        <item>16384</item>
+        <item>12200</item>
+    </string-array>
+    <array name="pref_hook_choices">
+        <item>@com.htc:string/st_default</item>
+        <item>@string/pref_vol_plus_camera</item>
+        <item>@string/pref_vol_plus_camecoder</item>
+    </array>
+    <string-array name="pref_hook_values">
+        <item>default</item>
+        <item>camera</item>
+        <item>camcoder</item>
+    </string-array>
+    <array name="pref_frame_rate_choices">
+        <item>@string/auto</item>
+        <item>30 Fps</item>
+        <item>25 Fps</item>
+        <item>24 Fps</item>
+        <item>20 Fps</item>
+        <item>15 Fps</item>
+    </array>
+    <string-array name="pref_frame_rate_values">
+        <item>auto</item>
+        <item>30</item>
+        <item>25</item>
+        <item>24</item>
+        <item>20</item>
+        <item>15</item>
+    </string-array>
+    <array name="pref_focus_choices">
+        <item>@string/settings_continuous_auto_focus</item>
+        <item>@string/auto_focus</item>
+        <item>@string/off_capital</item>
+    </array>
+    <string-array name="pref_focus_values">
+        <item>caf</item>
+        <item>auto</item>
+        <item>off</item>
+    </string-array>
+    <array name="pref_antibanding_choices">
+        <item>@string/auto</item>
+        <item>@string/pref_flicker_50</item>
+        <item>@string/pref_flicker_60</item>
+        <item>@string/off_capital</item>
+    </array>
+    <string-array name="pref_antibanding_values">
+        <item>auto</item>
+        <item>50hz</item>
+        <item>60hz</item>
+        <item>off</item>
+    </string-array>
+    <array name="pref_filename_choices">
+        <item>@com.htc:string/st_default</item>
+        <item>yyyy-MM-dd_hh-mm-ss_MEDIANNNN</item>
+        <item>yyyyMMddThhmmssMEDIANNNN</item>
+        <item>yyyy-MM-dd_hh-mm_MEDIANNNN</item>
+        <item>yyyyMMddThhmmMEDIANNNN</item>
+    </array>
+    <string-array name="pref_filename_values">
+        <item>default</item>
+        <item>%1$Y-%2$m-%3$d_%4$H-%5$M-%6$S_</item>
+        <item>%1$Y%2$m%3$dT%4$H%5$M%6$S_</item>
+        <item>%1$Y-%2$m-%3$d_%4$H-%5$M_</item>
+        <item>%1$Y%2$m%3$dT%4$H%5$M_</item>
+    </string-array>
 </resources>

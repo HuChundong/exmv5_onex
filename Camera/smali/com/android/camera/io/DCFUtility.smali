@@ -1266,7 +1266,9 @@
 
     invoke-direct {v1, v4}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    iget-object v4, p0, Lcom/android/camera/io/DCFInfo;->fileTag:Ljava/lang/String;
+    invoke-virtual {p0}, Lcom/android/camera/io/DCFInfo;->getFileTag()Ljava/lang/String;
+
+    move-result-object v4
 
     invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

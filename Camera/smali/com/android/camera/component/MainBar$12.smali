@@ -110,6 +110,44 @@
     invoke-virtual {v0}, Lcom/htc/widget/HtcIconButton;->clearAnimation()V
 
     :cond_3
+    iget-object v0, p0, Lcom/android/camera/component/MainBar$12;->this$0:Lcom/android/camera/component/MainBar;
+
+    #getter for: Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+    invoke-static {v0}, Lcom/android/camera/component/MainBar;->access$IsoButton(Lcom/android/camera/component/MainBar;)Lcom/htc/widget/HtcIconButton;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_4
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar$12;->this$0:Lcom/android/camera/component/MainBar;
+
+    #getter for: Lcom/android/camera/component/MainBar;->m_IsoButton:Lcom/htc/widget/HtcIconButton;
+    invoke-static {v0}, Lcom/android/camera/component/MainBar;->access$IsoButton(Lcom/android/camera/component/MainBar;)Lcom/htc/widget/HtcIconButton;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/htc/widget/HtcIconButton;->clearAnimation()V
+
+    :cond_4
+    iget-object v0, p0, Lcom/android/camera/component/MainBar$12;->this$0:Lcom/android/camera/component/MainBar;
+
+    #getter for: Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+    invoke-static {v0}, Lcom/android/camera/component/MainBar;->access$WbButton(Lcom/android/camera/component/MainBar;)Lcom/htc/widget/HtcIconButton;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_5
+
+    iget-object v0, p0, Lcom/android/camera/component/MainBar$12;->this$0:Lcom/android/camera/component/MainBar;
+
+    #getter for: Lcom/android/camera/component/MainBar;->m_WbButton:Lcom/htc/widget/HtcIconButton;
+    invoke-static {v0}, Lcom/android/camera/component/MainBar;->access$WbButton(Lcom/android/camera/component/MainBar;)Lcom/htc/widget/HtcIconButton;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/htc/widget/HtcIconButton;->clearAnimation()V
+
+    :cond_5
     return-void
 .end method
 

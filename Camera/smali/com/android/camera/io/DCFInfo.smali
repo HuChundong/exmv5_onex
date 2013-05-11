@@ -14,7 +14,7 @@
 
 .field public final fileCounterPrefKey:Ljava/lang/String;
 
-.field public final fileTag:Ljava/lang/String;
+.field private final fileTag:Ljava/lang/String;
 
 .field public final maxDirectoryCounter:I
 
@@ -116,4 +116,69 @@
     iput v0, p0, Lcom/android/camera/io/DCFInfo;->subCounterDigits:I
 
     return-void
+.end method
+
+
+# virtual methods
+.method public getFileTag()Ljava/lang/String;
+    .locals 4
+
+    :try_start_0
+    new-instance v1, Landroid/text/format/Time;
+
+    invoke-direct {v1}, Landroid/text/format/Time;-><init>()V
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v2
+
+    invoke-virtual {v1, v2, v3}, Landroid/text/format/Time;->set(J)V
+
+    sget-object v2, Lcom/android/camera/DisplayDevice;->FILE_NAME_FORMAT:Ljava/lang/String;
+
+    const-string v0, "default"
+
+    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const-string v0, ""
+
+    goto :goto_0
+
+    :cond_0
+    invoke-virtual {v1, v2}, Landroid/text/format/Time;->format(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    :goto_0
+    iget-object v1, p0, Lcom/android/camera/io/DCFInfo;->fileTag:Ljava/lang/String;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 482
+    :goto_1
+    return-object v0
+
+    .line 479
+    :catch_0
+    move-exception v1
+
+    iget-object v0, p0, Lcom/android/camera/io/DCFInfo;->fileTag:Ljava/lang/String;
+
+    goto :goto_1
 .end method

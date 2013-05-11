@@ -1,120 +1,132 @@
-.class synthetic Lcom/android/camera/component/PhoneCallUI$7;
+.class Lcom/android/camera/component/PhoneCallUI$7;
 .super Ljava/lang/Object;
 .source "PhoneCallUI.java"
 
+# interfaces
+.implements Landroid/content/DialogInterface$OnShowListener;
+
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lcom/android/camera/component/PhoneCallUI;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/camera/component/PhoneCallUI;->phoneCallPopUp(Ljava/lang/String;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x1008
+    accessFlags = 0x0
     name = null
 .end annotation
 
 
-# static fields
-.field static final synthetic $SwitchMap$com$android$camera$RecordingState:[I
+# instance fields
+.field final synthetic this$0:Lcom/android/camera/component/PhoneCallUI;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 3
+.method constructor <init>(Lcom/android/camera/component/PhoneCallUI;)V
+    .locals 0
 
-    invoke-static {}, Lcom/android/camera/RecordingState;->values()[Lcom/android/camera/RecordingState;
+    iput-object p1, p0, Lcom/android/camera/component/PhoneCallUI$7;->this$0:Lcom/android/camera/component/PhoneCallUI;
+
+    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public onShow(Landroid/content/DialogInterface;)V
+    .locals 4
+
+    iget-object v2, p0, Lcom/android/camera/component/PhoneCallUI$7;->this$0:Lcom/android/camera/component/PhoneCallUI;
+
+    #getter for: Lcom/android/camera/component/PhoneCallUI;->m_AnswerDialog:Lcom/htc/widget/HtcAlertDialog;
+    invoke-static {v2}, Lcom/android/camera/component/PhoneCallUI;->access$2000(Lcom/android/camera/component/PhoneCallUI;)Lcom/htc/widget/HtcAlertDialog;
+
+    move-result-object v2
+
+    if-eqz v2, :cond_2
+
+    iget-object v2, p0, Lcom/android/camera/component/PhoneCallUI$7;->this$0:Lcom/android/camera/component/PhoneCallUI;
+
+    #getter for: Lcom/android/camera/component/PhoneCallUI;->m_AnswerDialog:Lcom/htc/widget/HtcAlertDialog;
+    invoke-static {v2}, Lcom/android/camera/component/PhoneCallUI;->access$2000(Lcom/android/camera/component/PhoneCallUI;)Lcom/htc/widget/HtcAlertDialog;
+
+    move-result-object v2
+
+    const/4 v3, -0x1
+
+    invoke-virtual {v2, v3}, Lcom/htc/widget/HtcAlertDialog;->getButton(I)Landroid/widget/Button;
+
+    move-result-object v1
+
+    if-eqz v1, :cond_0
+
+    const v2, -0x9258df
+
+    invoke-virtual {v1, v2}, Landroid/widget/Button;->setTextColor(I)V
+
+    :goto_0
+    iget-object v2, p0, Lcom/android/camera/component/PhoneCallUI$7;->this$0:Lcom/android/camera/component/PhoneCallUI;
+
+    #getter for: Lcom/android/camera/component/PhoneCallUI;->m_AnswerDialog:Lcom/htc/widget/HtcAlertDialog;
+    invoke-static {v2}, Lcom/android/camera/component/PhoneCallUI;->access$2000(Lcom/android/camera/component/PhoneCallUI;)Lcom/htc/widget/HtcAlertDialog;
+
+    move-result-object v2
+
+    const/4 v3, -0x2
+
+    invoke-virtual {v2, v3}, Lcom/htc/widget/HtcAlertDialog;->getButton(I)Landroid/widget/Button;
 
     move-result-object v0
 
-    array-length v0, v0
+    if-eqz v0, :cond_1
 
-    new-array v0, v0, [I
+    const/high16 v2, -0x17
 
-    sput-object v0, Lcom/android/camera/component/PhoneCallUI$7;->$SwitchMap$com$android$camera$RecordingState:[I
-
-    :try_start_0
-    sget-object v0, Lcom/android/camera/component/PhoneCallUI$7;->$SwitchMap$com$android$camera$RecordingState:[I
-
-    sget-object v1, Lcom/android/camera/RecordingState;->Starting:Lcom/android/camera/RecordingState;
-
-    invoke-virtual {v1}, Lcom/android/camera/RecordingState;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x1
-
-    aput v2, v0, v1
-    :try_end_0
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_3
-
-    :goto_0
-    :try_start_1
-    sget-object v0, Lcom/android/camera/component/PhoneCallUI$7;->$SwitchMap$com$android$camera$RecordingState:[I
-
-    sget-object v1, Lcom/android/camera/RecordingState;->Stopping:Lcom/android/camera/RecordingState;
-
-    invoke-virtual {v1}, Lcom/android/camera/RecordingState;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x2
-
-    aput v2, v0, v1
-    :try_end_1
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_2
+    invoke-virtual {v0, v2}, Landroid/widget/Button;->setTextColor(I)V
 
     :goto_1
-    :try_start_2
-    sget-object v0, Lcom/android/camera/component/PhoneCallUI$7;->$SwitchMap$com$android$camera$RecordingState:[I
-
-    sget-object v1, Lcom/android/camera/RecordingState;->Preparing:Lcom/android/camera/RecordingState;
-
-    invoke-virtual {v1}, Lcom/android/camera/RecordingState;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x3
-
-    aput v2, v0, v1
-    :try_end_2
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_1
-
-    :goto_2
-    :try_start_3
-    sget-object v0, Lcom/android/camera/component/PhoneCallUI$7;->$SwitchMap$com$android$camera$RecordingState:[I
-
-    sget-object v1, Lcom/android/camera/RecordingState;->Ready:Lcom/android/camera/RecordingState;
-
-    invoke-virtual {v1}, Lcom/android/camera/RecordingState;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x4
-
-    aput v2, v0, v1
-    :try_end_3
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_0
-
-    :goto_3
     return-void
 
-    :catch_0
-    move-exception v0
+    :cond_0
+    iget-object v2, p0, Lcom/android/camera/component/PhoneCallUI$7;->this$0:Lcom/android/camera/component/PhoneCallUI;
 
-    goto :goto_3
+    #getter for: Lcom/android/camera/ThreadDependencyObject;->TAG:Ljava/lang/String;
+    invoke-static {v2}, Lcom/android/camera/component/PhoneCallUI;->access$2100(Lcom/android/camera/component/PhoneCallUI;)Ljava/lang/String;
 
-    :catch_1
-    move-exception v0
+    move-result-object v2
 
-    goto :goto_2
+    const-string v3, "null button"
 
-    :catch_2
-    move-exception v0
+    invoke-static {v2, v3}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto :goto_0
+
+    :cond_1
+    iget-object v2, p0, Lcom/android/camera/component/PhoneCallUI$7;->this$0:Lcom/android/camera/component/PhoneCallUI;
+
+    #getter for: Lcom/android/camera/ThreadDependencyObject;->TAG:Ljava/lang/String;
+    invoke-static {v2}, Lcom/android/camera/component/PhoneCallUI;->access$2200(Lcom/android/camera/component/PhoneCallUI;)Ljava/lang/String;
+
+    move-result-object v2
+
+    const-string v3, "null button"
+
+    invoke-static {v2, v3}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_1
 
-    :catch_3
-    move-exception v0
+    :cond_2
+    iget-object v2, p0, Lcom/android/camera/component/PhoneCallUI$7;->this$0:Lcom/android/camera/component/PhoneCallUI;
 
-    goto :goto_0
+    #getter for: Lcom/android/camera/ThreadDependencyObject;->TAG:Ljava/lang/String;
+    invoke-static {v2}, Lcom/android/camera/component/PhoneCallUI;->access$2300(Lcom/android/camera/component/PhoneCallUI;)Ljava/lang/String;
+
+    move-result-object v2
+
+    const-string v3, "null m_AnswerDialog"
+
+    invoke-static {v2, v3}, Lcom/android/camera/LOG;->E(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto :goto_1
 .end method

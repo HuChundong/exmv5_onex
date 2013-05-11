@@ -527,6 +527,28 @@
 
     if-eqz v2, :cond_2
 
+    invoke-virtual {v1}, Lcom/android/camera/CameraThread;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v3
+
+    iget-object v2, v3, Lcom/android/camera/CameraSettings;->isZSLEnabled:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v2}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/lang/Boolean;
+
+    invoke-virtual {v2}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
     const-string v2, "capture-mode"
 
     const-string v3, "zsl"

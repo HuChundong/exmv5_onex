@@ -948,6 +948,14 @@
 
     invoke-virtual {v5, v6}, Lcom/android/camera/event/Event;->addHandler(Lcom/android/camera/event/EventHandler;)V
 
+    iget-object v5, v1, Lcom/android/camera/HTCCamera;->isoButtonClickedEvent:Lcom/android/camera/event/Event;
+
+    invoke-virtual {v5, v6}, Lcom/android/camera/event/Event;->addHandler(Lcom/android/camera/event/EventHandler;)V
+
+    iget-object v5, v1, Lcom/android/camera/HTCCamera;->wbButtonClickedEvent:Lcom/android/camera/event/Event;
+
+    invoke-virtual {v5, v6}, Lcom/android/camera/event/Event;->addHandler(Lcom/android/camera/event/EventHandler;)V
+
     iget-object v5, p0, Lcom/android/camera/component/Component;->triggers:Ljava/util/ArrayList;
 
     new-instance v6, Lcom/android/camera/component/UIRotationManager$12;

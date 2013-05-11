@@ -26,8 +26,38 @@
 
     iput-object p1, p0, Lcom/android/camera/component/ThumbnailUI$ThumbnailDrawable;->this$0:Lcom/android/camera/component/ThumbnailUI;
 
+    iget-object v2, p0, Lcom/android/camera/component/ThumbnailUI$ThumbnailDrawable;->this$0:Lcom/android/camera/component/ThumbnailUI;
+
+    invoke-virtual {v2}, Lcom/android/camera/component/ThumbnailUI;->getCameraActivity()Lcom/android/camera/HTCCamera;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/camera/HTCCamera;->getSettings()Lcom/android/camera/CameraSettings;
+
+    move-result-object v0
+
+    iget-object v2, v0, Lcom/android/camera/CameraSettings;->isMenuBarTransEnabled:Lcom/android/camera/property/Property;
+
+    invoke-virtual {v2}, Lcom/android/camera/property/Property;->getValue()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/lang/Boolean;
+
+    invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
     const v0, 0x7f02005e
 
+    goto :goto_0
+
+    :cond_0
+    const v0, 0x7f020127
+
+    :goto_0
     invoke-virtual {p2, v0}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
