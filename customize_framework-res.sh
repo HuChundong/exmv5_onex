@@ -40,7 +40,7 @@ if [ `basename $1` = "drawable-hdpi" -o `basename $1` = "drawable-xhdpi" ];then
 	       	fi
 
 	done
-	rm -f $2/drawable-xhdpi/default_wallpaper.jpg
+	#rm -f $2/drawable-xhdpi/default_wallpaper.jpg
 	rm -f $2/drawable-hdpi/default_wallpaper.jpg
 fi
 

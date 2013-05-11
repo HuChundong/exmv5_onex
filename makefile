@@ -52,7 +52,10 @@ local-zip-misc:
 	rm $(ZIP_DIR)/system/bin/bootanimation
 	cp other/bootanimation $(ZIP_DIR)/system/bin/bootanimation
 	rm $(ZIP_DIR)/system/media/bootanimation.zip
+	rm $(ZIP_DIR)/system/media/theme/default/icons
 	cp other/bootanimation.zip $(ZIP_DIR)/system/media/bootanimation.zip
+	cp other/icons $(ZIP_DIR)/system/media/theme/default/icons
+	cp other/iconex/*.png $(ZIP_DIR)/system/media/theme/miui_mod_icons/
 
 	@echo add system app
 	cp other/system_app/* $(ZIP_DIR)/system/app/
