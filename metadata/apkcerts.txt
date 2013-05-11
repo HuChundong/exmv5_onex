@@ -1,3 +1,5 @@
+name="RE.apk" certificate="PRESIGNED" private_key=""
+name="PCSC.apk" certificate="PRESIGNED" private_key=""
 name="Aluminum.apk" certificate="PRESIGNED" private_key=""
 name="AndroidHtcSync.apk" certificate="PRESIGNED" private_key=""
 name="AppSharing.apk" certificate="PRESIGNED" private_key=""
