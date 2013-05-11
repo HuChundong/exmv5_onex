@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="dimen" name="workspace_icon_text_shadow_radius">2.0</item>
+    <item type="dimen" name="workspace_icon_text_shadow_dx">0.6</item>
+    <item type="dimen" name="workspace_icon_text_shadow_dy">1.3</item>
+</resources>

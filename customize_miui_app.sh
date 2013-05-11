@@ -52,6 +52,7 @@ fi
 
 if [ $1 = "MiuiHome" ];then
     $XMLMERGYTOOL $1/res/values $2/res/values
+    $XMLMERGYTOOL $1/res/values-xhdpi $2/res/values-xhdpi
 fi
 
 if [ $1 = "Music" ];then
