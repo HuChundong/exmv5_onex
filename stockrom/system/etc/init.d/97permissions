@@ -1,0 +1,21 @@
+#!/system/bin/sh
+#Permissions script
+
+sysrw
+
+echo "Setting permissions"
+		echo "Setting /app & /framework permissions"
+        for file in /system/app/* /system/framework/* /data/app/*; do
+                chmod 644 $file
+        done
+        
+        echo "Setting init.d permissions"
+        chmod 777 /system/etc/init.d
+        
+        for file in /system/etc/init.d/*; do
+        echo "    setting permissions (777) for $file"
+                chmod 777 $file
+        done
+
+
+echo " ~ Permissions fixes applied ~ " >> /data/exm_miui.log ;
