@@ -1,15 +1,13 @@
 #OTA SUPPORT
 otaupdater.otaid=kingme
-otaupdater.otatime=20130516-0000
-otaupdater.otaver=3.5.16
+otaupdater.otatime=20130523-1700
+otaupdater.otaver=3.5.23
 
-#Tweaks From MIUI Australia 
+#Tweaks From MIUI Australia
 wifi.supplicant_scan_interval=180
 windowsmgr.max_events_per_sec=300
-ro.max.fling_velocity=12000 
+ro.max.fling_velocity=12000
 ro.min.fling_velocity=8000
-ro.HOME_APP_MEM=4096
-ro.PERCEPTIBLE_APP_ADJ=0
 video.accelerate.hw=1
 debug.sf.hw=1
 debug.performance.tuning=1
@@ -21,9 +19,9 @@ ro.kernel.android.checkjni=0
 ro.kernel.checkjni=0
 dalvik.vm.checkjni=0
 pm.sleep_mode=1
-power.saving.mode=1 
+power.saving.mode=1
 ro.ril.disable.power.collapse=0
-persist.sys.NV_FPSLIMIT = 60 (UI FPS) 
+persist.sys.NV_FPSLIMIT = 60 (UI FPS)
 persist.sys.composition.type=gpu
 Persist.sys.fw.camera.status=1
 Persist.dmesg.mode=split
@@ -89,9 +87,9 @@ ro.aa.romver=3.14.707.24
 ro.onecid=1
 ro.cwkey=HTC__044
 ro.com.google.clientidbase=android-htc
-ro.build.id=JRO03C
-ro.build.display.id=JRO03C
-ro.build.version.incremental=128187.24
+ro.build.id=KIngme
+ro.build.display.id=KIngme
+ro.build.version.incremental=3.5.23
 ro.build.version.sdk=16
 ro.build.version.codename=REL
 ro.build.version.release=4.1.1
@@ -313,3 +311,47 @@ persist.usb.android_config = 1
 
 ro.miui.ui.version.code=3
 ro.miui.ui.version.name=V5
+ro.product.mod_device=Unknown
+ro.skia.use_data_fonts=1
+
+# SuperCharger Installation Marker.
+# V6 SuperCharger, OOM Grouping & Priority Fixes created by -=zeppelinrox=-
+# SuperMinFree Calculator & MFK Calculator (for min_free_kbytes) created by zeppelinrox also ;^]
+#
+# See http://goo.gl/krtf9 - Linux Memory Consumption - Nice article!
+# See http://goo.gl/hFdNO - Memory and SuperCharging Overview, or... "Why 'Free RAM' Is NOT Wasted RAM!"
+# See http://goo.gl/4w0ba - MFK Calculator Info - explanation for vm.min_free_kbytes.
+#
+# DO NOT DELETE COMMENTS. DELETING COMMENTS WILL BREAK UNINSTALL ROUTINE!
+#
+# BEGIN OOM_ADJ_Settings
+#
+# This ROM (Android 4.0 and greater) requires a PATCHED services.jar
+# If you don't have it patched yet, go to http://goo.gl/IvGL1
+# The ADJ priorities that were here DO NOT work anymore!
+#
+# END OOM_ADJ_Settings
+  #######################
+ #  Accessory Tweaks!  #
+#######################
+dalvik.vm.heapgrowthlimit=156m
+dalvik.vm.heapsize=156m
+persist.sys.purgeable_assets=1
+wifi.supplicant_scan_interval=180
+windowsmgr.max_events_per_sec=90
+pm.sleep_mode=1
+  ##################################
+ #  3G TurboCharger Enhancement!  #
+##################################
+net.dns1=8.8.8.8
+net.dns2=8.8.4.4
+net.tcp.buffersize.default=6144,87380,110208,6144,16384,110208
+net.tcp.buffersize.wifi=262144,524288,1048576,262144,524288,1048576
+net.tcp.buffersize.lte=262144,524288,3145728,262144,524288,3145728
+net.tcp.buffersize.hsdpa=6144,262144,1048576,6144,262144,1048576
+net.tcp.buffersize.evdo_b=6144,262144,1048576,6144,262144,1048576
+net.tcp.buffersize.umts=6144,87380,110208,6144,16384,110208
+net.tcp.buffersize.hspa=6144,87380,262144,6144,16384,262144
+net.tcp.buffersize.gprs=6144,8760,11680,6144,8760,11680
+net.tcp.buffersize.edge=6144,26280,35040,6144,16384,35040
+# End of V6 SuperCharged Entries.

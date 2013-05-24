@@ -16961,7 +16961,7 @@
 
     move/from16 v1, v24
 
-    if-lt v0, v1, :cond_9
+    if-ne v0, v1, :cond_9
 
     .line 11054
     const-string v23, "prev "
@@ -16994,7 +16994,7 @@
 
     move/from16 v1, v24
 
-    if-lt v0, v1, :cond_a
+    if-ne v0, v1, :cond_a
 
     .line 11057
     const-string v23, "svc  "
@@ -17027,7 +17027,7 @@
 
     move/from16 v1, v24
 
-    if-lt v0, v1, :cond_b
+    if-ne v0, v1, :cond_b
 
     .line 11059
     const-string v23, "home "
@@ -17060,7 +17060,7 @@
 
     move/from16 v1, v24
 
-    if-lt v0, v1, :cond_c
+    if-ne v0, v1, :cond_c
 
     .line 11062
     const-string v23, "bkup "
@@ -17093,7 +17093,7 @@
 
     move/from16 v1, v24
 
-    if-lt v0, v1, :cond_d
+    if-ne v0, v1, :cond_d
 
     .line 11064
     const-string v23, "hvy  "
@@ -17126,7 +17126,7 @@
 
     move/from16 v1, v24
 
-    if-lt v0, v1, :cond_e
+    if-ne v0, v1, :cond_e
 
     .line 11066
     const-string v23, "prcp "
@@ -17159,7 +17159,7 @@
 
     move/from16 v1, v24
 
-    if-lt v0, v1, :cond_f
+    if-ne v0, v1, :cond_f
 
     .line 11068
     const-string v23, "vis  "

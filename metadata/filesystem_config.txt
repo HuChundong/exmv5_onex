@@ -1,4 +1,7 @@
 system 0 0 755
+system/V6_SuperCharger 0 0 755
+system/V6_SuperCharger/SuperChargerMinfree 0 0 644
+system/V6_SuperCharger/SuperChargerOptions 0 0 644
 system/app 0 0 755
 system/app/Aluminum.apk 0 0 644
 system/app/AndroidHtcSync.apk 0 0 644
@@ -1024,6 +1027,8 @@ system/etc/init.d/97permissions 0 0 777
 system/etc/init.d/99complete 0 0 777
 system/etc/init.d/98bootcpu 0 0 777
 system/etc/init.d/99bootgpu 0 0 777
+system/etc/init.d/98swap_cache_v300 0 0 777
+system/etc/init.d/S99SuperCharger 0 0 777
 system/etc/soundimage 0 0 755
 system/etc/soundimage/board_version.txt 0 0 644
 system/etc/soundimage/CodecDSPID.txt 0 0 644
