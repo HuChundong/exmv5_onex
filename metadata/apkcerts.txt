@@ -1,5 +1,5 @@
 name="Kernel_Settings.apk" certificate="PRESIGNED" private_key=""
-name="RE.apk" certificate="PRESIGNED" private_key=""
+name="RE.CN.FINAL.WHITE.apk" certificate="PRESIGNED" private_key=""
 name="PCSC.apk" certificate="PRESIGNED" private_key=""
 name="Flashlight.apk" certificate="PRESIGNED" private_key=""
 name="ThemeManager2.apk" certificate="PRESIGNED" private_key=""
