@@ -116,9 +116,9 @@ Smart_Rename(){
 # Hey you should try BulletProofing Apps from within V6 SuperCharger instead!\
 #' /system/etc/init.d/zzloopy_runs_last_so_others_do_too;
 	fi 2>/dev/null;
-	mount -o remount,ro /system 2>/dev/null;
-	busybox mount -o remount,ro /system 2>/dev/null;
-	busybox mount -o remount,ro $(busybox mount | awk '$3=="/system"{print $1,$3}') 2>/dev/null;
+	mount -o remount,rw /system 2>/dev/null;
+	busybox mount -o remount,rw /system 2>/dev/null;
+	busybox mount -o remount,rw $(busybox mount | awk '$3=="/system"{print $1,$3}') 2>/dev/null;
 };
 3G_TCE(){
 	if [ "`cat /proc/sys/net/core/rmem_max`" -ne 1048576 ]; then

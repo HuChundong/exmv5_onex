@@ -8,7 +8,7 @@
 sysrw
 rm /system/lib/egl/libGLES_android.so
 busybox sed -i '/0 0 android/d' /system/lib/egl/egl.cfg
-sysro
+
 
 echo "   ~ GPU rendering Applied ~  " >> /data/exm_miui.log ;
 

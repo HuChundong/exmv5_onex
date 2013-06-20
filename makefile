@@ -1,6 +1,6 @@
 #
 # Makefile for onex
-#
+# ThemeManager 
 
 # The original zip file, MUST be specified by each product
 local-zip-file     := stockrom.zip

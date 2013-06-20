@@ -1,0 +1,14 @@
+#!/system/bin/sh
+# ========================================
+# init.d script for EXM IUI 
+# ========================================
+
+# Start SuperV6 service
+sysrw
+
+start super_service
+
+
+echo "START SUPER_SERVICE" >> /data/exm_miui.log ;
+
+# End of the script

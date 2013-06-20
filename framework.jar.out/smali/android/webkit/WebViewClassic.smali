@@ -36859,3 +36859,19 @@
 
     return v0
 .end method
+
+.method public isHitSelectionHandle()Z
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public hideFloatView()V
+    .locals 0
+
+    .prologue
+    return-void
+.end method
