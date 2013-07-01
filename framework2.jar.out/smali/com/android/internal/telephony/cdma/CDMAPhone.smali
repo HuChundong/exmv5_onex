@@ -6221,6 +6221,12 @@
 
     invoke-virtual {v0, v13, v14}, Lcom/android/internal/telephony/cdma/CDMAPhone;->setSystemProperty(Ljava/lang/String;Ljava/lang/String;)V
 
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/cdma/CDMAPhone;->sendDeviceIdReadyBroadcast()V
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/cdma/CDMAPhone;->setDeviceIdSystemProperty()V
+
     goto/16 :goto_0
 
     .line 2020
