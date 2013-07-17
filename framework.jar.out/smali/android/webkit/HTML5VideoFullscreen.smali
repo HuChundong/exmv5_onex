@@ -1021,6 +1021,8 @@
     .line 244
     iget-object v1, p0, Landroid/webkit/HTML5VideoFullscreen;->mFullscreenProxy:Landroid/webkit/HTML5VideoViewProxy;
 
+    if-eqz v1, :cond_4
+
     invoke-virtual {v1}, Landroid/webkit/HTML5VideoViewProxy;->getWebView()Landroid/webkit/WebViewClassic;
 
     move-result-object v1
