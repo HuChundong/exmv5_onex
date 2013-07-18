@@ -1,7 +1,7 @@
 #OTA SUPPORT
 otaupdater.otaid=kingme
-otaupdater.otatime=20130619-1700
-otaupdater.otaver=3.6.19
+otaupdater.otatime=20130718-1700
+otaupdater.otaver=3.7.18
 
 #Tweaks From MIUI Australia
 wifi.supplicant_scan_interval=180
