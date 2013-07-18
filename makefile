@@ -1,6 +1,6 @@
 #
 # Makefile for onex
-# ThemeManager 
+# 
 
 # The original zip file, MUST be specified by each product
 local-zip-file     := stockrom.zip
@@ -15,7 +15,7 @@ local-modified-jars := HTCExtension
 
 local-miui-modified-apps := Phone Mms MiuiHome Settings MiuiSystemUI Music MiuiGallery
 # All apks from MIUI
-local-miui-removed-apps  := LatinIME MediaProvider AirkanPhoneService Stk MiuiVideoPlayer
+local-miui-removed-apps  := LatinIME MediaProvider AirkanPhoneService Stk MiuiVideoPlayer 
 
 # All apps need to be reserved from original ZIP file
 local-phone-apps :=BackupRestoreConfirmation \
