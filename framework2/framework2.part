@@ -1,0 +1,39 @@
+From b3794e1d21ef26557ae3bf2f54ba536f715fc180 Mon Sep 17 00:00:00 2001
+From: qingchengl <qingchengl@opera.com>
+Date: Wed, 24 Jul 2013 11:41:09 +0800
+Subject: [PATCH 2/2] Fix getTotalPhysicalMemory() error for One X
+
+Change-Id: Ib3794e1d21ef26557ae3bf2f54ba536f715fc180
+Signed-off-by: qingchengl <qingchengl@opera.com>
+---
+ framework2/smali/miui/os/Environment.smali |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- a/framework2/smali/miui/os/Environment.smali
++++ b/framework2/smali/miui/os/Environment.smali
+@@ -791,11 +791,11 @@
+ 
+     move-result-wide v0
+ 
+-    const-wide/32 v2, 0x19000
++    const-wide/32 v2, 0xC800
+ 
+     add-long/2addr v0, v2
+ 
+-    const-wide/32 v2, 0x40000
++    const-wide/32 v2, 0x20000
+ 
+     div-long/2addr v0, v2
+ 
+@@ -803,7 +803,7 @@
+ 
+     add-long/2addr v0, v2
+ 
+-    const-wide/16 v2, 0x100
++    const-wide/16 v2, 0x80
+ 
+     mul-long/2addr v0, v2
+ 
+-- 
+1.7.9.5
+

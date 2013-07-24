@@ -5,6 +5,8 @@
 APKTOOL="$PORT_ROOT/tools/apktool --quiet"
 BUILD_OUT=out
 
+GIT_APPLY=$PORT_ROOT/tools/git.apply
+
 SEP_FRAME="framework2.jar.out"
 TMP_FILE=$BUILD_OUT/tmp.smali
 
@@ -41,6 +43,16 @@ then
 
     cp -rf "$BUILD_OUT/framework_miui/smali/com/google/android/mms" "$BUILD_OUT/framework2/smali/com/google/android"
     #mv "$BUILD_OUT/$SEP_FRAME/smali/miui/"  "$BUILD_OUT/framework2/smali/miui"
+
+    cp framework2/framework2.part $BUILD_OUT
+    cd $BUILD_OUT
+    $GIT_APPLY framework2.part
+    cd ..
+    for file in `find $2 -name *.rej`
+    do
+	echo "Fatal error: Settings patch fail"
+        exit 1
+    done
 fi
 
 if [ $2 = "$BUILD_OUT/android.policy" ];then
