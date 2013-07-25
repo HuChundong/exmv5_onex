@@ -3,6 +3,6 @@
     <bool name="has_led">true</bool>
     <bool name="has_button_light">true</bool>
     <bool name="stat_internal_sdcard_info">true</bool>
-	<bool name="emulated_available_internal_memroy">false</bool>
-	<bool name="has_dock_settings">false</bool>
+    <bool name="emulated_available_internal_memroy">false</bool>
+    <bool name="has_dock_settings">false</bool>
 </resources>
