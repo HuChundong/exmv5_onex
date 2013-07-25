@@ -1,0 +1,25 @@
+From 4609a2988581013e6a270394bf9f436560b8d111 Mon Sep 17 00:00:00 2001
+From: qingchengl <qingchengl@opera.com>
+Date: Thu, 25 Jul 2013 18:18:03 +0800
+Subject: [PATCH] Fix incall recoding
+
+Change-Id: I8458e683cec64f89c05808536eb5069739aa78fb
+Signed-off-by: qingchengl <qingchengl@opera.com>
+---
+ Phone/smali/com/android/phone/MiuiInCallScreen.smali |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Phone/smali/com/android/phone/MiuiInCallScreen.smali
++++ b/Phone/smali/com/android/phone/MiuiInCallScreen.smali
+@@ -606,7 +606,7 @@
+ 
+     iget-object v8, p0, Lcom/android/phone/MiuiInCallScreen;->mCallRecorder:Lmiui/media/Mp3Recorder;
+ 
+-    const/4 v9, 0x4
++    const/4 v9, 0x1
+ 
+     invoke-virtual {v8, v9}, Lmiui/media/Mp3Recorder;->setAudioSource(I)V
+ 
+-- 
+1.7.9.5
+

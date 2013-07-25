@@ -20,6 +20,17 @@ if [ $1 = "Phone" ];then
     $XMLMERGYTOOL $1/res/values $2/res/values
     $XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
     $XMLMERGYTOOL $1/res/values-zh-rTW $2/res/values-zh-rTW
+
+
+    cp $1/*.part out/
+    cd out
+    $GIT_APPLY Phone.part
+    cd ..
+    for file in `find $2 -name *.rej`
+    do
+	echo "Fatal error: Phone patch fail"
+        exit 1
+    done
 fi
 
 if [ $1 = "Mms" ];then

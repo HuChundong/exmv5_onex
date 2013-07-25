@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <bool name="send_mic_mute_to_AudioManager">true</bool>
-    <bool name="config_call_recording">false</bool>
+    <bool name="config_call_recording">true</bool>
+    <bool name="config_call_stream_recording">true</bool>
 </resources>
