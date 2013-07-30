@@ -390,7 +390,7 @@
 
     iget-object v2, p0, Landroid/content/pm/PackageItemInfo;->name:Ljava/lang/String;
 
-    invoke-static {p1, v3, v4, v5, v2}, Landroid/app/MiuiThemeHelper;->getDrawable(Landroid/content/pm/PackageManager;Ljava/lang/String;ILandroid/content/pm/ApplicationInfo;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
+    invoke-static {p1, v3, v2, v4, v5}, Landroid/app/MiuiThemeHelper;->getDrawable(Landroid/content/pm/PackageManager;Ljava/lang/String;Ljava/lang/String;ILandroid/content/pm/ApplicationInfo;)Landroid/graphics/drawable/Drawable;
 
     move-result-object v2
 
