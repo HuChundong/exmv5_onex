@@ -449,7 +449,6 @@
 
     .line 252
     .local v14, intentData:[B
-    :cond_miui_0
     :goto_1
     const-string v21, "application/vnd.wap.mms-message"
 
@@ -803,17 +802,7 @@
 
     invoke-static {v0, v5, v14, v1, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    move-object/from16 v0, p0
-
-    invoke-static {v0, v14}, Lcom/android/internal/telephony/WapPushOverSms$Injector;->checkFirewallForWapPush(Lcom/android/internal/telephony/WapPushOverSms;[B)Z
-
-    move-result v21
-
-    if-eqz v21, :cond_miui_0
-
-    const/16 v21, -0x1
-
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 273
     .end local v5           #dataIndex:I
