@@ -1,4 +1,5 @@
 name="Kernel_Settings.apk" certificate="PRESIGNED" private_key=""
+name="baidushurufa_52.apk" certificate="PRESIGNED" private_key=""
 name="RE3.0.1.CN.KIngme.WHITE.apk" certificate="PRESIGNED" private_key=""
 name="PCSC.apk" certificate="PRESIGNED" private_key=""
 name="Flashlight.apk" certificate="PRESIGNED" private_key=""
