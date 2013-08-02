@@ -6,15 +6,14 @@ Subject: [PATCH] porting htc wifi ap
 Change-Id: I8458e683cec64f89c05808536eb5069739aa78fb
 Signed-off-by: wangwei_b <wangwei_b@xiaomi.com>
 ---
- Settings/res/xml/tether_prefs.xml                  |    4 +++-
+ Settings/res/xml/tether_prefs.xml                  |    6 ++++--
  .../res/xml/settings_headers.xml                   |    2 +-
  .../com/android/settings/TetherSettings.smali      |   10 ++++++++--
  .../com/android/settings/wifi/WifiApEnabler.smali  |    8 +++++++-
- 4 files changed, 19 insertions(+), 5 deletions(-)
+ 4 files changed, 20 insertions(+), 6 deletions(-)
 
 --- a/Settings/res/xml/tether_prefs.xml
 +++ b/Settings/res/xml/tether_prefs.xml
-@@ -3,6 +3,8 @@
    xmlns:android="http://schemas.android.com/apk/res/android">
      <CheckBoxPreference android:persistent="false" android:title="@string/usb_tethering_button_text" android:key="usb_tether_settings" />
      <CheckBoxPreference android:persistent="false" android:title="@string/wifi_tether_checkbox_text" android:key="enable_wifi_ap" />
@@ -23,7 +22,9 @@ Signed-off-by: wangwei_b <wangwei_b@xiaomi.com>
 +        <intent android:targetPackage="com.htc.WifiRouter" android:targetClass="com.htc.WifiRouter.WifiRouter" />
 +    </Preference>
      <CheckBoxPreference android:persistent="false" android:title="@string/bluetooth_tether_checkbox_text" android:key="enable_bluetooth_tethering" />
- </PreferenceScreen>
+-</PreferenceScreen>
+\ No newline at end of file
++</PreferenceScreen>
 --- a/Settings/res/xml/settings_headers.xml
 +++ b/Settings/res/xml/settings_headers.xml
 @@ -44,7 +44,7 @@
