@@ -314,15 +314,6 @@
     return-object v0
 .end method
 
-.method public getTabContainer()Landroid/view/View;
-    .locals 1
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
-
-    return-object v0
-.end method
-
 .method public draw(Landroid/graphics/Canvas;)V
     .locals 6
     .parameter "canvas"

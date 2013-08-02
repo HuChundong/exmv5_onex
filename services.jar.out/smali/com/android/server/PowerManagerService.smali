@@ -16062,18 +16062,6 @@
     return v0
 .end method
 
-.method getProximitySensorActive()Z
-    .locals 1
-    .annotation build Landroid/annotation/MiuiHook;
-        value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
-    .end annotation
-
-    .prologue
-    iget-boolean v0, p0, Lcom/android/server/PowerManagerService;->mProximitySensorActive:Z
-
-    return v0
-.end method
-
 .method getScreenBrightnessHandler()Landroid/os/Handler;
     .locals 1
     .annotation build Landroid/annotation/MiuiHook;
