@@ -18,6 +18,8 @@ if [ $1 = "Phone" ];then
         cat $file >> $dstfile
     done
     $XMLMERGYTOOL $1/res/values $2/res/values
+    $XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
+    $XMLMERGYTOOL $1/res/values-zh-rTW $2/res/values-zh-rTW
 fi
 
 if [ $1 = "Mms" ];then
