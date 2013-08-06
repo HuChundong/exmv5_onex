@@ -10,7 +10,11 @@ Signed-off-by: wangwei_b <wangwei_b@xiaomi.com>
  .../res/xml/settings_headers.xml                   |    2 +-
  .../com/android/settings/TetherSettings.smali      |   10 ++++++++--
  .../com/android/settings/wifi/WifiApEnabler.smali  |    8 +++++++-
- 4 files changed, 20 insertions(+), 6 deletions(-)
+ Settings/res/values-zh-rCN/arrays.xml              |   17 ++++------
+ Settings/res/values-zh-rTW/arrays.xml              |   17 ++++------
+ Settings/res/values/arrays.xml                     |   34 +++++++-------------
+ .../android/settings/MiuiDeviceInfoSettings.smali  |    2 +-
+ 8 files changed, 45 insertions(+), 51 deletions(-)
 
 --- a/Settings/res/xml/tether_prefs.xml
 +++ b/Settings/res/xml/tether_prefs.xml
@@ -79,6 +83,228 @@ Signed-off-by: wangwei_b <wangwei_b@xiaomi.com>
  
      goto :goto_0
  .end method
+ 
+--- a/Settings/res/values-zh-rCN/arrays.xml
++++ b/Settings/res/values-zh-rCN/arrays.xml
+@@ -200,30 +200,30 @@
+     </string-array>
+     <string-array name="window_animation_scale_entries">
+         <item>关闭动画</item>
++        <item>动画缩放 0.3x</item>
+         <item>动画缩放 0.5x</item>
++        <item>动画缩放 0.75x</item>
+         <item>动画缩放 1x</item>
+         <item>动画缩放 1.5x</item>
+         <item>动画缩放 2x</item>
+-        <item>动画缩放 5x</item>
+-        <item>动画缩放 10x</item>
+     </string-array>
+     <string-array name="transition_animation_scale_entries">
+         <item>关闭动画</item>
++        <item>动画缩放 0.3x</item>
+         <item>动画缩放 0.5x</item>
++        <item>动画缩放 0.75x</item>
+         <item>动画缩放 1x</item>
+         <item>动画缩放 1.5x</item>
+         <item>动画缩放 2x</item>
+-        <item>动画缩放 5x</item>
+-        <item>动画缩放 10x</item>
+     </string-array>
+     <string-array name="animator_duration_scale_entries">
+         <item>关闭动画</item>
++        <item>动画缩放 0.3x</item>
+         <item>动画缩放 0.5x</item>
++        <item>动画缩放 0.75x</item>
+         <item>动画缩放 1x</item>
+         <item>动画缩放 1.5x</item>
+         <item>动画缩放 2x</item>
+-        <item>动画缩放 5x</item>
+-        <item>动画缩放 10x</item>
+     </string-array>
+     <string-array name="app_process_limit_entries">
+         <item>标准限制</item>
+@@ -283,13 +283,8 @@
+         <item>紫红</item>
+     </string-array>
+     <string-array name="led_color_entries">
+-        <item>蓝</item>
+         <item>红</item>
+-        <item>黄</item>
+         <item>绿</item>
+-        <item>青</item>
+-        <item>白</item>
+-        <item>紫</item>
+     </string-array>
+     <string-array name="screen_key_long_press_action">
+         <item>无</item>
+		 
+--- a/Settings/res/values-zh-rTW/arrays.xml
++++ b/Settings/res/values-zh-rTW/arrays.xml
+@@ -200,30 +200,30 @@
+     </string-array>
+     <string-array name="window_animation_scale_entries">
+         <item>關閉動畫</item>
++        <item>動畫比例 0.3x</item>
+         <item>動畫比例 0.5x</item>
++        <item>動畫比例 0.75x</item>
+         <item>動畫比例 1x</item>
+         <item>動畫比例 1.5x</item>
+         <item>動畫比例 2x</item>
+-        <item>動畫比例 5x</item>
+-        <item>動畫比例 10x</item>
+     </string-array>
+     <string-array name="transition_animation_scale_entries">
+         <item>關閉動畫</item>
++        <item>動畫比例 0.3x</item>
+         <item>動畫比例 0.5x</item>
++        <item>動畫比例 0.75x</item>
+         <item>動畫比例 1x</item>
+         <item>動畫比例 1.5x</item>
+         <item>動畫比例 2x</item>
+-        <item>動畫比例 5x</item>
+-        <item>動畫比例 10x</item>
+     </string-array>
+     <string-array name="animator_duration_scale_entries">
+         <item>關閉動畫</item>
++        <item>動畫比例 0.3x</item>
+         <item>動畫比例 0.5x</item>
++        <item>動畫比例 0.75x</item>
+         <item>動畫比例 1x</item>
+         <item>動畫比例 1.5x</item>
+         <item>動畫比例 2x</item>
+-        <item>動畫比例 5x</item>
+-        <item>動畫比例 10x</item>
+     </string-array>
+     <string-array name="app_process_limit_entries">
+         <item>標準限制</item>
+@@ -283,13 +283,8 @@
+         <item>紫紅</item>
+     </string-array>
+     <string-array name="led_color_entries">
+-        <item>藍</item>
+         <item>紅</item>
+-        <item>黃</item>
+         <item>綠</item>
+-        <item>青</item>
+-        <item>白</item>
+-        <item>紫</item>
+     </string-array>
+     <string-array name="screen_key_long_press_action">
+         <item>無</item>
+		 
+--- a/Settings/res/values/arrays.xml
++++ b/Settings/res/values/arrays.xml
+@@ -341,57 +341,57 @@
+     </string-array>
+     <string-array name="window_animation_scale_entries">
+         <item>Animation off</item>
++        <item>Animation scale .3x</item>
+         <item>Animation scale .5x</item>
++        <item>Animation scale .75x</item>
+         <item>Animation scale 1x</item>
+         <item>Animation scale 1.5x</item>
+         <item>Animation scale 2x</item>
+-        <item>Animation scale 5x</item>
+-        <item>Animation scale 10x</item>
+     </string-array>
+     <string-array name="window_animation_scale_values">
+         <item>0</item>
++        <item>.3</item>
+         <item>.5</item>
++        <item>.75</item>
+         <item>1</item>
+         <item>1.5</item>
+         <item>2</item>
+-        <item>5</item>
+-        <item>10</item>
+     </string-array>
+     <string-array name="transition_animation_scale_entries">
+         <item>Animation off</item>
++        <item>Animation scale .3x</item>
+         <item>Animation scale .5x</item>
++        <item>Animation scale .75x</item>
+         <item>Animation scale 1x</item>
+         <item>Animation scale 1.5x</item>
+         <item>Animation scale 2x</item>
+-        <item>Animation scale 5x</item>
+-        <item>Animation scale 10x</item>
+     </string-array>
+     <string-array name="transition_animation_scale_values">
+         <item>0</item>
++        <item>.3</item>
+         <item>.5</item>
++        <item>.75</item>
+         <item>1</item>
+         <item>1.5</item>
+         <item>2</item>
+-        <item>5</item>
+-        <item>10</item>
+     </string-array>
+     <string-array name="animator_duration_scale_entries">
+         <item>Animation off</item>
++        <item>Animation scale .3x</item>
+         <item>Animation scale .5x</item>
++        <item>Animation scale .75x</item>
+         <item>Animation scale 1x</item>
+         <item>Animation scale 1.5x</item>
+         <item>Animation scale 2x</item>
+-        <item>Animation scale 5x</item>
+-        <item>Animation scale 10x</item>
+     </string-array>
+     <string-array name="animator_duration_scale_values">
+         <item>0</item>
++        <item>.3</item>
+         <item>.5</item>
++        <item>.75</item>
+         <item>1</item>
+         <item>1.5</item>
+         <item>2</item>
+-        <item>5</item>
+-        <item>10</item>
+     </string-array>
+     <string-array name="app_process_limit_entries">
+         <item>Standard limit</item>
+@@ -508,13 +508,8 @@
+         <item>9000</item>
+     </string-array>
+     <string-array name="led_color_values">
+-        <item>blue</item>
+         <item>red</item>
+-        <item>yellow</item>
+         <item>green</item>
+-        <item>cyan</item>
+-        <item>white</item>
+-        <item>\#FFAA00AA</item>
+     </string-array>
+     <string-array name="mi1_led_color_values">
+         <item>blue</item>
+@@ -533,13 +528,8 @@
+         <item>Purple</item>
+     </string-array>
+     <string-array name="led_color_entries">
+-        <item>Blue</item>
+         <item>Red</item>
+-        <item>Yellow</item>
+         <item>Green</item>
+-        <item>Cyan</item>
+-        <item>White</item>
+-        <item>Violet</item>
+     </string-array>
+     <string-array name="always_enabled_app_list">
+         <item>com.android.providers.applications</item>
+		 
+--- a/Settings/smali/com/android/settings/MiuiDeviceInfoSettings.smali
++++ b/Settings/smali/com/android/settings/MiuiDeviceInfoSettings.smali
+@@ -1510,7 +1510,7 @@
+ 
+     invoke-direct/range {v23 .. v23}, Ljava/lang/StringBuilder;-><init>()V
+ 
+-    const-string v24, "MIUI-"
++    const-string v24, "EXM-MIUI-"
+ 
+     invoke-virtual/range {v23 .. v24}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+ 
+
 -- 
 1.7.9.5
 
