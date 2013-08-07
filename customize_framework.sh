@@ -64,4 +64,13 @@ if [ $2 = "$BUILD_OUT/android.policy" ];then
         cat $file >> $dstfile
     done
     cd -
+    cp android.policy/android.policy.part $BUILD_OUT
+    cd $BUILD_OUT
+    $GIT_APPLY android.policy.part
+    cd ..
+    for file in `find $2 -name *.rej`
+    do
+	echo "Fatal error: Settings patch fail"
+        exit 1
+    done
 fi
