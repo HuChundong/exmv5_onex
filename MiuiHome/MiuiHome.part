@@ -1,0 +1,155 @@
+From 17dba984128138d713fc0545f777941de9f3470b Mon Sep 17 00:00:00 2001
+From: Kingme <gycm520@gmail.com>
+Date: Tue, 6 Aug 2013 22:47:29 +0800
+Subject: [PATCH] add reflection contral
+
+Change-Id: I8458e683cec64f89c05808536eb5069739aa78fb
+Signed-off-by: Kingme <gycm520@gmail.com>
+---
+ MiuiHome/res/values/public.xml                     |    2 ++
+ MiuiHome/res/values/strings.xml                    |    2 ++
+ MiuiHome/res/xml/preferences.xml                   |   35 ++++++++++++++++++-----------------
+ .../smali/com/miui/home/launcher/ItemIcon.smali    |    6 +++++
+ .../smali/com/miui/home/launcher/Launcher.smali    |   25 ++++++++++++++++++++
+ 5 files changed, 53 insertions(+), 17 deletions(-)
+
+
+--- a/MiuiHome/res/values/public.xml
++++ b/MiuiHome/res/values/public.xml
+@@ -966,6 +966,8 @@
+     <public id="0x7f0c00ca" name="screen_rotation_freeze_message" type="string"/>
+     <public id="0x7f0c00cb" name="screen_button_disabled_message" type="string"/>
+     <public id="0x7f0c00cc" name="screen_button_enabled_message" type="string"/>
++    <public id="0x7f0c00cd" name="pref_icon_reflection_title" type="string" />
++    <public id="0x7f0c00ce" name="pref_icon_reflection_summary" type="string" />
+     <public id="0x7f0d0000" name="config_cell_editing_offset_v" type="fraction"/>
+     <public id="0x7f0d0001" name="config_dragViewScale" type="fraction"/>
+     <public id="0x7f0e0000" name="Theme" type="style"/>
+
+--- a/MiuiHome/res/values/strings.xml
++++ b/MiuiHome/res/values/strings.xml
+@@ -205,4 +205,6 @@
+     <string name="screen_rotation_freeze_message">Locked screen rotation to landscape mode</string>
+     <string name="screen_button_disabled_message">Functions of buttons on the lower screen are disabled. You may enable them by pressing \"Home\" and \"Power\"</string>
+     <string name="screen_button_enabled_message">Functions of buttons on the lower screen are enabled</string>
++    <string name="pref_icon_reflection_title">Icon reflection</string>
++    <string name="pref_icon_reflection_summary">Control icon reflection effect.</string>
+ </resources>
+
+
+--- a/MiuiHome/smali/com/miui/home/launcher/ItemIcon.smali
++++ b/MiuiHome/smali/com/miui/home/launcher/ItemIcon.smali
+@@ -318,6 +318,12 @@
+     .parameter "canvas"
+ 
+     .prologue
++    invoke-static {}, Lcom/miui/home/launcher/Launcher;->isEnableIconReflection()Z
++
++    move-result v2
++
++    if-eqz v2, :cond_0
++
+     const/high16 v6, 0x4000
+ 
+     const/4 v1, 0x0
+
+
+--- a/MiuiHome/smali/com/miui/home/launcher/Launcher.smali
++++ b/MiuiHome/smali/com/miui/home/launcher/Launcher.smali
+@@ -55,6 +55,8 @@
+ 
+ .field private static sIsHardwareAccelerated:Z
+ 
++.field private static sPrefShowIconReflection:Z
++
+ .field private static sPrefShowIconShadow:Z
+ 
+ 
+@@ -257,6 +259,8 @@
+ 
+     sput-boolean v1, Lcom/miui/home/launcher/Launcher;->sPrefShowIconShadow:Z
+ 
++    sput-boolean v2, Lcom/miui/home/launcher/Launcher;->sPrefShowIconReflection:Z
++
+     sget v0, Lcom/miui/home/launcher/Utilities;->sScreenWidth:I
+ 
+     int-to-float v0, v0
+@@ -1586,6 +1590,15 @@
+     return v0
+ .end method
+ 
++.method public static final isEnableIconReflection()Z
++    .locals 1
++
++    .prologue
++    sget-boolean v0, Lcom/miui/home/launcher/Launcher;->sPrefShowIconReflection:Z
++
++    return v0
++.end method
++
+ .method public static final isEnableIconShadow()Z
+     .locals 1
+ 
+@@ -7103,6 +7116,18 @@
+ 
+     sput-boolean v0, Lcom/miui/home/launcher/Launcher;->sPrefShowIconShadow:Z
+ 
++    invoke-static {p0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;
++
++    move-result-object v0
++
++    const-string v1, "pref_key_icon_reflection"
++
++    invoke-interface {v0, v1, v3}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
++
++    move-result v0
++
++    sput-boolean v0, Lcom/miui/home/launcher/Launcher;->sPrefShowIconReflection:Z
++
+     invoke-virtual {p0}, Lcom/miui/home/launcher/Launcher;->getContentResolver()Landroid/content/ContentResolver;
+ 
+     move-result-object v0
+
+--- a/MiuiHome/res/xml/preferences.xml
++++ b/MiuiHome/res/xml/preferences.xml
+@@ -1,17 +1,18 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<PreferenceScreen
+-  xmlns:android="http://schemas.android.com/apk/res/android">
+-    <PreferenceCategory>
+-        <ListPreference android:entries="@array/transformation_entries" android:title="@string/pref_screen_transformation_type_title" android:key="pref_key_transformation_type" android:entryValues="@array/transformation_values" />
+-        <ListPreference android:entries="@array/wallpaper_scroll_entries" android:title="@string/pref_wallpaper_scroll_type_title" android:key="pref_key_wallpaper_scroll_type" android:entryValues="@array/wallpaper_scroll_values" />
+-    </PreferenceCategory>
+-    <PreferenceCategory android:key="pref_key_cell_layout_group">
+-        <ListPreference android:entries="@array/cell_layout_size_entries" android:title="@string/pref_cell_layout_size" android:key="pref_key_cell_layout_size" android:entryValues="@array/cell_layout_size_values" />
+-        <CheckBoxPreference android:title="@string/pref_keep_layout_title" android:key="pref_key_keep_layout" android:summary="@string/pref_keep_layout_summary" android:defaultValue="true" />
+-    </PreferenceCategory>
+-    <PreferenceCategory android:title="@string/preferences_general_title" android:key="pref_key_checkboxes">
+-        <CheckBoxPreference android:title="@string/pref_keep_in_memory_title" android:key="pref_key_keep_in_memory" android:summary="@string/pref_keep_in_memory_summary" android:defaultValue="true" />
+-        <CheckBoxPreference android:title="@string/pref_icon_shadow_title" android:key="pref_key_icon_shadow" android:summary="@string/pref_icon_shadow_summary" android:defaultValue="true" />
+-        <CheckBoxPreference android:title="@string/pref_enable_drawing_cache_title" android:key="pref_key_enable_drawing_cache" android:summary="@string/pref_enable_drawing_cache_summary" android:defaultValue="true" />
+-    </PreferenceCategory>
+-</PreferenceScreen>
+\ No newline at end of file
++<?xml version="1.0" encoding="utf-8"?>
++<PreferenceScreen
++  xmlns:android="http://schemas.android.com/apk/res/android">
++    <PreferenceCategory>
++        <ListPreference android:entries="@array/transformation_entries" android:title="@string/pref_screen_transformation_type_title" android:key="pref_key_transformation_type" android:entryValues="@array/transformation_values" />
++        <ListPreference android:entries="@array/wallpaper_scroll_entries" android:title="@string/pref_wallpaper_scroll_type_title" android:key="pref_key_wallpaper_scroll_type" android:entryValues="@array/wallpaper_scroll_values" />
++    </PreferenceCategory>
++    <PreferenceCategory android:key="pref_key_cell_layout_group">
++        <ListPreference android:entries="@array/cell_layout_size_entries" android:title="@string/pref_cell_layout_size" android:key="pref_key_cell_layout_size" android:entryValues="@array/cell_layout_size_values" />
++        <CheckBoxPreference android:title="@string/pref_keep_layout_title" android:key="pref_key_keep_layout" android:summary="@string/pref_keep_layout_summary" android:defaultValue="true" />
++    </PreferenceCategory>
++    <PreferenceCategory android:title="@string/preferences_general_title" android:key="pref_key_checkboxes">
++        <CheckBoxPreference android:title="@string/pref_keep_in_memory_title" android:key="pref_key_keep_in_memory" android:summary="@string/pref_keep_in_memory_summary" android:defaultValue="true" />
++        <CheckBoxPreference android:title="@string/pref_icon_shadow_title" android:key="pref_key_icon_shadow" android:summary="@string/pref_icon_shadow_summary" android:defaultValue="true" />
++        <CheckBoxPreference android:title="@string/pref_icon_reflection_title" android:key="pref_key_icon_reflection" android:summary="@string/pref_icon_reflection_summary" android:defaultValue="false" />
++        <CheckBoxPreference android:title="@string/pref_enable_drawing_cache_title" android:key="pref_key_enable_drawing_cache" android:summary="@string/pref_enable_drawing_cache_summary" android:defaultValue="true" />
++    </PreferenceCategory>
++</PreferenceScreen>
+
+-- 
+1.7.9.5
+
