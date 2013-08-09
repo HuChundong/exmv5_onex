@@ -196,10 +196,10 @@ Signed-off-by: Kingme <gycm520@gmail.com>
 --- a/MiuiSystemUI/res/values/public.xml
 +++ b/MiuiSystemUI/res/values/public.xml
 @@ -357,6 +357,7 @@
-     <public type="drawable" name="usb_notification_ptp_n" id="0x7f02016b" />
-     <public type="drawable" name="usb_notification_ptp_p" id="0x7f02016c" />
-     <public type="drawable" name="usb_notification_top_bg" id="0x7f02016d" />
-+    <public type="drawable" name="kingme" id="0x7f020178" />
+     <public type="drawable" name="usb_notification_ptp_n" id="0x7f02016f" />
+     <public type="drawable" name="usb_notification_ptp_p" id="0x7f020170" />
+     <public type="drawable" name="usb_notification_top_bg" id="0x7f020171" />
++    <public type="drawable" name="kingme" id="0x7f02017c" />
      <public type="drawable" name="ic_sysbar_ime_pressed" id="0x7f020045" />
      <public type="drawable" name="ic_sysbar_zoom_default" id="0x7f020050" />
      <public type="drawable" name="ic_sysbar_zoom_pressed" id="0x7f020051" />
