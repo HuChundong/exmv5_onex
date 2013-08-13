@@ -48,6 +48,8 @@
 
 .field static final TRANSACTION_setShareLED:I = 0xb
 
+.field static final TRANSACTION_areNotificationsEnabled:I = 0xc
+
 
 # direct methods
 .method public constructor <init>()V
@@ -545,21 +547,43 @@
 
     invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 181
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
-    .line 182
     .local v1, _arg0:I
     invoke-virtual {p0, v1}, Landroid/app/INotificationManager$Stub;->setShareLED(I)V
 
-    .line 183
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
     goto/16 :goto_0
 
-    .line 40
+    :sswitch_c
+    const-string v0, "android.app.INotificationManager"
+
+    invoke-virtual {p2, v0}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v1
+
+    .restart local v1       #_arg0:Ljava/lang/String;
+    invoke-virtual {p0, v1}, Landroid/app/INotificationManager$Stub;->areNotificationsEnabled(Ljava/lang/String;)Z
+
+    move-result v6
+
+    .restart local v6       #_result:Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    if-eqz v6, :cond_miui_0
+
+    move v2, v7
+
+    :cond_miui_0
+    invoke-virtual {p3, v2}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_1
@@ -573,6 +597,7 @@
         0x9 -> :sswitch_9
         0xa -> :sswitch_a
         0xb -> :sswitch_b
+        0xc -> :sswitch_c
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method
