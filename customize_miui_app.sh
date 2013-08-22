@@ -99,3 +99,4 @@ if [ $1 = "MiuiSystemUI" ];then
         exit 1
     done
 fi
+
