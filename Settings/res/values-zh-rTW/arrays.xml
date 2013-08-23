@@ -250,9 +250,9 @@
         <item>失敗</item>
     </string-array>
     <string-array name="haptic_feedback_level_entries">
-        <item>較弱</item>
-        <item>適中</item>
         <item>較強</item>
+        <item>適中</item>
+        <item>較弱</item>
     </string-array>
     <string-array name="battery_indicator_style_entries">
         <item>圖形方式</item>
@@ -384,5 +384,9 @@
         <item>圖案解鎖</item>
         <item>數字密碼</item>
         <item>混合密碼</item>
+    </string-array>
+    <string-array name="phone_call_noise_suppression_title">
+        <item>單麥克降噪</item>
+        <item>雙麥克降噪</item>
     </string-array>
 </resources>
