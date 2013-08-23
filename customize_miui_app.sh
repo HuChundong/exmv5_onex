@@ -70,8 +70,8 @@ fi
 if [ $1 = "MiuiHome" ];then
     $XMLMERGYTOOL $1/res/values $2/res/values
     $XMLMERGYTOOL $1/res/values-xhdpi $2/res/values-xhdpi
-    $XMLMERGYTOOL $1/res/values-xhdpi $2/res/values-zh-rCN
-    $XMLMERGYTOOL $1/res/values-xhdpi $2/res/values-zh-rTW
+    $XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
+    $XMLMERGYTOOL $1/res/values-zh-rTW $2/res/values-zh-rTW
     cp $1/*.part out/
     cd out
     $GIT_APPLY MiuiHome.part
