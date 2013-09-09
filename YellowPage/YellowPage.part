@@ -1,0 +1,25 @@
+From ef2b755d064242baa0328f162052014c9e7f9b14 Mon Sep 17 00:00:00 2001
+From: HuChunDong <gycm520@gmail.com>
+Date: Mon, 9 Sep 2013 09:10:34 +0800
+Subject: [PATCH] remove button2
+
+Signed-off-by: HuChunDong <gycm520@gmail.com>
+---
+ YellowPage/res/layout/express_inquiry_fragment.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+
+--- a/YellowPage/res/layout/express_inquiry_fragment.xml
++++ b/YellowPage/res/layout/express_inquiry_fragment.xml
+@@ -4,7 +4,7 @@
+     <TextView android:id="@id/indication" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/express_inquiry_indication" style="@style/ExpressInquiryIndicationTextStyle" />
+     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+         <ClearableEditText android:layout_gravity="center" android:id="@id/serial_number" android:layout_width="0.0dip" android:layout_height="wrap_content" android:drawableRight="@miui:drawable/v5_edit_text_search_clear_btn_light" android:layout_weight="1.0" android:inputType="text" style="@miui:style/V5.Widget.EditText" />
+-        <Button android:layout_gravity="center" android:id="@id/scan" android:background="@drawable/scan_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/express_inquiry_scan_margin_left" android:text="@string/scan" />
++        <Button android:layout_gravity="center" android:id="@id/scan" android:background="@drawable/scan_bg" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginLeft="@dimen/express_inquiry_scan_margin_left" android:text="@string/scan" />
+     </LinearLayout>
+     <TextView android:textSize="@miui:dimen/v5_text_font_size_small" android:id="@id/remark" android:paddingLeft="@dimen/express_inquiry_remark_padding_horizontal" android:paddingTop="@dimen/express_inquiry_remark_padding_top" android:paddingRight="@dimen/express_inquiry_remark_padding_horizontal" android:paddingBottom="@dimen/express_inquiry_remark_padding_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+     <Button android:enabled="false" android:id="@id/button" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/express_inquiry_button_text" style="@miui:style/V5.Widget.Button.PositiveWarn" />
+-- 
+1.8.1.2
+
