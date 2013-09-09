@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/title_pbar_1x0" android:paddingLeft="10.0px" android:paddingTop="10.0px" android:visibility="invisible" android:layout_width="30.0px" android:layout_height="30.0px" android:layout_weight="0.0" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="?android:attr/progressBarStyleSmallTitle" />
-    <ProgressBar android:id="@id/title_pbar_1x1" android:paddingTop="10.0px" android:paddingRight="10.0px" android:visibility="invisible" android:layout_width="30.0px" android:layout_height="30.0px" android:layout_weight="0.0" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="?android:attr/progressBarStyleSmallTitle" />
-</RelativeLayout>

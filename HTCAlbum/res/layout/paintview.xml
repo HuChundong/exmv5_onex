@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.htc.painting.engine.HtcPaintingView android:orientation="horizontal" android:id="@id/Gallery_htcPaintView" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:gestureStrokeType="multiple" android:eventsInterceptionEnabled="true" />
-    <com.htc.painting.penmenu15.PenMenu android:id="@id/Gallery_htcPenMenu" android:layout_width="1.0px" android:layout_height="1.0px" />
-</RelativeLayout>

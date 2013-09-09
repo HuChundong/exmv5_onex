@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/burst_shot_image_item_layout" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/burst_shot_image_item_imageview_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/header_bar_burst_shots" />
-    <ImageView android:id="@id/burst_shot_image_item_imageview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/header_bar_burst_shots" />
-    <ImageView android:id="@id/burst_shot_image_item_indicator" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_indicator_set_as_cover_l" android:layout_alignLeft="@id/burst_shot_image_item_imageview" android:layout_alignBottom="@id/burst_shot_image_item_imageview" android:contentDescription="@string/header_bar_burst_shots" />
-</RelativeLayout>
