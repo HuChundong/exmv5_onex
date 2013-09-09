@@ -1,7 +1,7 @@
 #OTA SUPPORT
 otaupdater.otaid=kingme
-otaupdater.otatime=20130816-1700
-otaupdater.otaver=3.8.16
+otaupdater.otatime=20130909-1700
+otaupdater.otaver=3.9.9
 
 #Tweaks From MIUI Australia
 wifi.supplicant_scan_interval=180
@@ -343,8 +343,6 @@ pm.sleep_mode=1
   ##################################
  #  3G TurboCharger Enhancement!  #
 ##################################
-net.dns1=8.8.8.8
-net.dns2=8.8.4.4
 net.tcp.buffersize.default=6144,87380,110208,6144,16384,110208
 net.tcp.buffersize.wifi=262144,524288,1048576,262144,524288,1048576
 net.tcp.buffersize.lte=262144,524288,3145728,262144,524288,3145728
