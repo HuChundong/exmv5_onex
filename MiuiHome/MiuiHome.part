@@ -11,17 +11,19 @@ Signed-off-by: Kingme <gycm520@gmail.com>
  MiuiHome/res/xml/preferences.xml                   |   35 ++++++++++++++++++-----------------
  .../smali/com/miui/home/launcher/ItemIcon.smali    |    6 +++++
  .../smali/com/miui/home/launcher/Launcher.smali    |   25 ++++++++++++++++++++
- 5 files changed, 53 insertions(+), 17 deletions(-)
+ MiuiHome/res/values-zh-rCN/strings.xml             |    4 +++-
+ MiuiHome/res/values-zh-rTW/strings.xml             |    4 +++-
+ 7 files changed, 59 insertions(+), 19 deletions(-)
 
 
 --- a/MiuiHome/res/values/public.xml
 +++ b/MiuiHome/res/values/public.xml
 @@ -966,6 +966,8 @@
-     <public id="0x7f0c00cf" name="screen_rotation_freeze_message" type="string"/>
-     <public id="0x7f0c00d0" name="screen_button_disabled_message" type="string"/>
-     <public id="0x7f0c00d1" name="screen_button_enabled_message" type="string"/>
-+    <public id="0x7f0c00d2" name="pref_icon_reflection_title" type="string" />
-+    <public id="0x7f0c00d3" name="pref_icon_reflection_summary" type="string" />
+     <public id="0x7f0c00cc" name="screen_rotation_freeze_message" type="string"/>
+     <public id="0x7f0c00cd" name="screen_button_disabled_message" type="string"/>
+     <public id="0x7f0c00ce" name="screen_button_enabled_message" type="string"/>
++    <public id="0x7f0c00cf" name="pref_icon_reflection_title" type="string" />
++    <public id="0x7f0c00d0" name="pref_icon_reflection_summary" type="string" />
      <public id="0x7f0d0000" name="config_cell_editing_offset_v" type="fraction"/>
      <public id="0x7f0d0001" name="config_dragViewScale" type="fraction"/>
      <public id="0x7f0e0000" name="Theme" type="style"/>
@@ -149,6 +151,44 @@ Signed-off-by: Kingme <gycm520@gmail.com>
 +        <CheckBoxPreference android:title="@string/pref_enable_drawing_cache_title" android:key="pref_key_enable_drawing_cache" android:summary="@string/pref_enable_drawing_cache_summary" android:defaultValue="true" />
 +    </PreferenceCategory>
 +</PreferenceScreen>
+
+--- a/MiuiHome/res/values-zh-rCN/strings.xml
++++ b/MiuiHome/res/values-zh-rCN/strings.xml
+@@ -75,7 +75,7 @@
+     <string name="pref_enable_drawing_cache_summary">"关闭此选项会释放更多内存
+ 但是会降低流畅性"</string>
+     <string name="pref_icon_shadow_title">图标阴影</string>
+-    <string name="pref_icon_shadow_summary">控制图标阴影及底部dock栏倒影效果</string>
++    <string name="pref_icon_shadow_summary">控制图标阴影</string>
+     <string name="pref_screen_transformation_type_title">屏幕切换效果</string>
+     <string name="transformation_type_classic">经典</string>
+     <string name="transformation_type_classic_no_overshoot">经典(无回弹)</string>
+@@ -187,4 +187,6 @@
+     <string name="screen_rotation_freeze_message">锁定屏幕为横屏模式</string>
+     <string name="screen_button_disabled_message">手机屏幕下方按键功能已停用，可通过“桌面键+电源键”恢复。</string>
+     <string name="screen_button_enabled_message">手机屏幕下方按键功能已恢复</string>
++    <string name="pref_icon_reflection_title">图标倒影</string>
++    <string name="pref_icon_reflection_summary">控制图标底部dock栏倒影效果</string>
+ </resources>
+
+--- a/MiuiHome/res/values-zh-rTW/strings.xml
++++ b/MiuiHome/res/values-zh-rTW/strings.xml
+@@ -75,7 +75,7 @@
+     <string name="pref_enable_drawing_cache_summary">"關閉此選項會釋放更多記憶體
+ 但是會降低流暢性"</string>
+     <string name="pref_icon_shadow_title">圖標陰影</string>
+-    <string name="pref_icon_shadow_summary">控製圖標陰影及底部dock欄倒影效果</string>
++    <string name="pref_icon_shadow_summary">控製圖標陰影</string>
+     <string name="pref_screen_transformation_type_title">螢幕切換效果</string>
+     <string name="transformation_type_classic">經典</string>
+     <string name="transformation_type_classic_no_overshoot">經典(無回彈)</string>
+@@ -187,4 +187,6 @@
+     <string name="screen_rotation_freeze_message">鎖定螢幕為橫向模式</string>
+     <string name="screen_button_disabled_message">手機螢幕下方按鍵功能已停用，可通過「桌面鍵+電源鍵」恢復。</string>
+     <string name="screen_button_enabled_message">手機螢幕下方按鍵功能已恢復</string>
++    <string name="pref_icon_reflection_title">圖標倒影</string>
++    <string name="pref_icon_reflection_summary">控制圖標底部dock倒影效果</string>
+ </resources>
 
 -- 
 1.7.9.5
