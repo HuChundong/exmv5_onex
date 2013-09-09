@@ -9,13 +9,14 @@ local-zip-file     := stockrom.zip
 # local-out-zip-file :=
 
 # All apps from original ZIP, but has smali files chanded
-local-modified-apps := Camera HTCAlbum
+local-modified-apps := Camera 
+#HTCAlbum
 
 local-modified-jars := HTCExtension
 
-local-miui-modified-apps := Phone Mms MiuiHome Settings MiuiSystemUI Music MiuiGallery
+local-miui-modified-apps := Phone Mms MiuiHome Settings MiuiSystemUI Music MiuiGallery YellowPage Weather
 # All apks from MIUI
-local-miui-removed-apps  := LatinIME MediaProvider AirkanPhoneService Stk 
+local-miui-removed-apps  := LatinIME MediaProvider AirkanPhoneService Stk QuickSearchBox
 
 # All apps need to be reserved from original ZIP file
 local-phone-apps :=BackupRestoreConfirmation \
@@ -23,8 +24,8 @@ local-phone-apps :=BackupRestoreConfirmation \
 	FilePicker FaceLock FM_Radio FMRadioService HtcBeatsNotify \
 	HTMLViewer LMW MarketUpdater \
 	Nfc OneTimeInitializer SharedStorageBackup \
-	WifiRouter MediaProvider HTCAlbum \
-	HtcSoundEnhancerSetting HtcDMC DLNAMiddleLayer HtcPhotoEnhancer
+	WifiRouter MediaProvider \
+	HtcSoundEnhancerSetting HtcDMC HtcPhotoEnhancer
 
 # To include the local targets before and after zip the final ZIP file, 
 # and the local-targets should:
