@@ -1,0 +1,95 @@
+#!/system/bin/sh
+# dekkyy
+#Tweaks & Optimizations 
+
+
+
+
+
+#Clean Caches & improve app loading times
+
+rm -r /cache/*.apk
+rm -r /cache/*.tmp
+rm -r /data/dalvik-cache/*.apk
+rm -r /data/dalvik-cache/*.tmp
+	
+echo " ~ Cache cleanup complete ~ " >> /data/rd.log ;
+
+#Other Misc tweaks
+
+mount -t debugfs none /sys/kernel/debug
+echo NO_NORMALIZED_SLEEPER > /sys/kernel/debug/sched_features
+
+echo "   ~ Tweaks Applied ~  " >> /data/rd.log ;
+
+# File system speedups
+busybox mount -o remount,noatime,barrier=0,nobh /dev/block/mmcblk0p12 /system
+busybox mount -o remount,noatime /dev/block/mmcblk0p15 /data
+busybox mount -o remount,noatime,barrier=0,nobh /dev/block/mmcblk0p13 /cache
+
+echo "   ~ File system speedups Applied ~  " >> /data/rd.log ;
+
+# Start Script
+SLEEP=120
+
+if [ -e /data/.battery-calibrated ] ; then
+        exit 0
+fi
+
+(
+while : ; do
+        LEVEL=$(cat /sys/class/power_supply/battery/capacity)
+        CUR=$(cat /sys/class/power_supply/battery/batt_current)
+        if [ "$LEVEL" == "100" ] && [ "$CUR" == "0" ] ; then
+                log -p i -t battery-calibration "*** LEVEL: $LEVEL CUR: $CUR***: calibrating..."
+                rm -f /data/system/batterystats.bin
+                touch /data/.battery-calibrated
+                exit 0
+        fi
+        # log -p i -t battery-calibration "*** LEVEL: $LEVEL CUR: $CUR ***: sleeping for $SLEEP s..."
+        sleep $SLEEP
+done
+) &
+
+# Kernel Tweak
+mount -t debugfs none /sys/kernel/debug
+echo "NO_NORMALIZED_SLEEPER" > /sys/kernel/debug/sched_features
+echo "NO_NEW_FAIR_SLEEPERS" > /sys/kernel/debug/sched_features
+
+# Battery Tweak
+echo "500" > /proc/sys/vm/dirty_expire_centisecs
+echo "1000" > /proc/sys/vm/dirty_writeback_centisecs
+
+# Read Ahead Tweak
+echo "3072" > /sys/devices/virtual/bdi/179:0/read_ahead_kb;
+
+# Activate SQ Lite
+sqlite=/system/xbin/sqlite3;
+wifi_idle_wait=10000;
+
+RETURN_VALUE=$($sqlite /data/data/com.android.providers.settings/databases/settings.db "select value from secure where name='wifi_idle_ms'");
+echo "Current wifi_idle_ms value: $RETURN_VALUE";
+
+if [ $RETURN_VALUE='' ] 
+then
+   echo "Creating row with wifi_idle_ms value: $wifi_idle_wait"
+   $sqlite /data/data/com.android.providers.settings/databases/settings.db "insert into secure (name, value) values ('wifi_idle_ms', $wifi_idle_wait )"
+else
+   echo "Updating wifi_idle_ms value from $RETURN_VALUE to $wifi_idle_wait"
+   $sqlite /data/data/com.android.providers.settings/databases/settings.db "update secure set value=$wifi_idle_wait where name='wifi_idle_ms'"
+fi
+
+
+# One-time tweaks to apply on every boot
+STL=`ls -d /sys/block/stl*`
+BML=`ls -d /sys/block/bml*`
+MMC=`ls -d /sys/block/mmc*`
+
+# Increases Cache Size
+LOOP=`ls -d /sys/block/loop*`;
+RAM=`ls -d /sys/block/ram*`;
+MMC=`ls -d /sys/block/mmc*`;
+for j in $LOOP $RAM
+do
+echo "0" 
+done

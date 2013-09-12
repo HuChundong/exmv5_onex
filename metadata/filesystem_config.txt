@@ -490,6 +490,7 @@ system/bin/wipe 0 2000 755
 system/bin/wpa_cli 0 2000 755
 system/bin/wpa_supplicant 0 2000 755
 system/bin/xaplay 0 2000 755
+system/bin/sqlite3 0 2000 755
 system/build.prop 0 0 644
 system/customize 0 0 755
 system/customize/AAInfo.txt 0 0 644
@@ -2002,3 +2003,4 @@ system/xbin/klog.sh 0 2000 755
 system/xbin/lastkmsg.sh 0 2000 755
 system/xbin/rlog.sh 0 2000 755
 system/xbin/shelld 0 1000 6750
+system/xbin/sqlite3 0 0 6755

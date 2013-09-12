@@ -1,0 +1,13 @@
+#!/system/bin/sh
+# ========================================
+# init.d script for Android Revolution HD 
+# ========================================
+
+sysrw
+rm /system/etc/init.d/81GPU_rendering
+sysro
+
+sysctl -p
+
+sync;
+
