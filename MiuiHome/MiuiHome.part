@@ -19,14 +19,14 @@ Signed-off-by: Kingme <gycm520@gmail.com>
 --- a/MiuiHome/res/values/public.xml
 +++ b/MiuiHome/res/values/public.xml
 @@ -966,6 +966,8 @@
-     <public id="0x7f0c00cc" name="screen_rotation_freeze_message" type="string"/>
-     <public id="0x7f0c00cd" name="screen_button_disabled_message" type="string"/>
-     <public id="0x7f0c00ce" name="screen_button_enabled_message" type="string"/>
-+    <public id="0x7f0c00cf" name="pref_icon_reflection_title" type="string" />
-+    <public id="0x7f0c00d0" name="pref_icon_reflection_summary" type="string" />
-     <public id="0x7f0d0000" name="config_cell_editing_offset_v" type="fraction"/>
-     <public id="0x7f0d0001" name="config_dragViewScale" type="fraction"/>
-     <public id="0x7f0e0000" name="Theme" type="style"/>
+     <public id="0x7f0d010f" name="screen_rotation_freeze_message" type="string"/>
+     <public id="0x7f0d0110" name="screen_button_disabled_message" type="string"/>
+     <public id="0x7f0d0111" name="screen_button_enabled_message" type="string"/>
++    <public id="0x7f0d0112" name="pref_icon_reflection_title" type="string" />
++    <public id="0x7f0d0113" name="pref_icon_reflection_summary" type="string" />    
+     <public id="0x7f0e0000" name="config_cell_editing_offset_v" type="fraction"/>
+     <public id="0x7f0e0001" name="config_dragViewScale" type="fraction"/>
+     <public id="0x7f0e0002" name="resource_thumbnail_ratio" type="fraction"/>
 
 --- a/MiuiHome/res/values/strings.xml
 +++ b/MiuiHome/res/values/strings.xml
