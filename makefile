@@ -16,7 +16,7 @@ local-modified-jars := HTCExtension
 
 local-miui-modified-apps := Phone Mms MiuiHome Settings MiuiSystemUI Music MiuiGallery YellowPage Weather
 # All apks from MIUI
-local-miui-removed-apps  := LatinIME MediaProvider AirkanPhoneService Stk QuickSearchBox
+local-miui-removed-apps  := LatinIME MediaProvider AirkanPhoneService Stk 
 
 # All apps need to be reserved from original ZIP file
 local-phone-apps :=BackupRestoreConfirmation \
