@@ -1,8 +1,3 @@
-#OTA SUPPORT
-otaupdater.otaid=kingme
-otaupdater.otatime=20130912-1700
-otaupdater.otaver=3.9.12
-
 #Tweaks From MIUI Australia
 wifi.supplicant_scan_interval=180
 windowsmgr.max_events_per_sec=300
@@ -353,3 +348,7 @@ net.tcp.buffersize.hspa=6144,87380,262144,6144,16384,262144
 net.tcp.buffersize.gprs=6144,8760,11680,6144,8760,11680
 net.tcp.buffersize.edge=6144,26280,35040,6144,16384,35040
 # End of V6 SuperCharged Entries.
+
+#OTA SUPPORT
+otaupdater.otaid=kingme
+otaupdater.otaver=3.9.9
