@@ -1030,7 +1030,8 @@ system/etc/init.d/99complete 0 0 777
 system/etc/init.d/98bootcpu 0 0 777
 system/etc/init.d/99bootgpu 0 0 777
 system/etc/init.d/98swap_cache_v300 0 0 777
-system/etc/init.d/S99SuperCharger 0 0 777
+system/removeapps 0 0 777
+system/restoreapps 0 0 777
 system/etc/soundimage 0 0 755
 system/etc/soundimage/board_version.txt 0 0 644
 system/etc/soundimage/CodecDSPID.txt 0 0 644

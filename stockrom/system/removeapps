@@ -1,0 +1,42 @@
+#!/system/bin/sh
+# ========================================
+# init.d script for EXM
+# ========================================
+
+# remove needless system apps
+
+sysrw
+cd /system/app
+mkdir backup
+mv /system/app/ApplicationsProvider.apk /system/app/backup/
+mv /system/app/BugReport.apk /system/app/backup/
+mv /system/app/CertInstaller.apk /system/app/backup/
+mv /system/app/ChromeBookmarksSyncAdapter.apk /system/app/backup/
+mv /system/app/DLNAMiddleLayer.apk /system/app/backup/
+mv /system/app/DrmProvider.apk /system/app/backup/
+mv /system/app/Email.apk /system/app/backup/
+mv /system/app/Exchange2.apk /system/app/backup/
+mv /system/app/FaceLock.apk /system/app/backup/
+mv /system/app/FMRadioService.apk /system/app/backup/
+mv /system/app/FM_Radio.apk /system/app/backup/
+mv /system/app/GoogleBackupTransport.apk /system/app/backup/
+mv /system/app/GoogleCalendarSyncAdapter.apk /system/app/backup/
+mv /system/app/GoogleContactsSyncAdapter.apk /system/app/backup/
+mv /system/app/GoogleLoginService.apk /system/app/backup/
+mv /system/app/GooglePartnerSetup.apk /system/app/backup/
+mv /system/app/GoogleServicesFramework.apk /system/app/backup/
+mv /system/app/HtcDMC.apk /system/app/backup/
+mv /system/app/HTMLViewer.apk /system/app/backup/
+mv /system/app/LMW.apk /system/app/backup/
+mv /system/app/Nfc.apk /system/app/backup/
+mv /system/app/QuickSearchBox.apk /system/app/backup/
+mv /system/app/SuperMarket.apk /system/app/backup/
+mv /system/app/Transfer.apk /system/app/backup/
+mv /system/app/TelocationProvider.apk /system/app/backup/
+mv /system/app/UserDictionaryProvider.apk /system/app/backup/
+mv /system/app/VpnDialogs.apk /system/app/backup/
+mv /system/app/WifiRouter.apk /system/app/backup/
+
+echo "   remove apps  " >> /data/exm_miui.log ;
+
+# End of the script

@@ -1,0 +1,13 @@
+#!/system/bin/sh
+# ========================================
+# init.d script for EXM
+# ========================================
+
+# remove needless system apps
+
+sysrw
+mv /system/app/backup/*.apk /system/app/
+
+echo "   restore apps  " >> /data/exm_miui.log ;
+
+# End of the script
