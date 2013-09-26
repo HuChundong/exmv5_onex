@@ -1,3 +1,4 @@
+name="MiWallpaper.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
 name="Kernel_Settings.apk" certificate="PRESIGNED" private_key=""
 name="baidushurufa_52.apk" certificate="PRESIGNED" private_key=""
 name="RE.apk" certificate="PRESIGNED" private_key=""
