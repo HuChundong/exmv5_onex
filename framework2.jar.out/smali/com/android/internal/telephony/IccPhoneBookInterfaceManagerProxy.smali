@@ -114,19 +114,6 @@
     goto :goto_0
 .end method
 
-.method public getAdnCapacity()I
-    .locals 1
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->mIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
-
-    invoke-virtual {v0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->getAdnCapacity()I
-
-    move-result v0
-
-    return v0
-.end method
-
 .method public dropSimPbkEntries()V
     .locals 1
 
@@ -214,19 +201,6 @@
     move-result-object v0
 
     return-object v0
-.end method
-
-.method public getFreeAdn()I
-    .locals 1
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->mIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
-
-    invoke-virtual {v0}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;->getFreeAdn()I
-
-    move-result v0
-
-    return v0
 .end method
 
 .method public getAdnRecordsSizeExt(II)[I
@@ -474,4 +448,13 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method getIccPhoneBookInterfaceManager()Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->mIccPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
+
+    return-object v0
 .end method

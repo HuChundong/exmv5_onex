@@ -1306,11 +1306,11 @@
     const/4 v4, 0x0
 
     .line 436
-    new-instance v1, Lcom/android/internal/telephony/AdnRecordCache;
+    new-instance v1, Lcom/android/internal/telephony/MiuiAdnRecordCache;
 
     iget-object v2, p0, Lcom/android/internal/telephony/gsm/SIMRecords;->mFh:Lcom/android/internal/telephony/IccFileHandler;
 
-    invoke-direct {v1, v2}, Lcom/android/internal/telephony/AdnRecordCache;-><init>(Lcom/android/internal/telephony/IccFileHandler;)V
+    invoke-direct {v1, v2}, Lcom/android/internal/telephony/MiuiAdnRecordCache;-><init>(Lcom/android/internal/telephony/IccFileHandler;)V
 
     iput-object v1, p0, Lcom/android/internal/telephony/gsm/SIMRecords;->adnCache:Lcom/android/internal/telephony/AdnRecordCache;
 
