@@ -515,7 +515,7 @@
     .line 349
     new-instance v1, Lcom/android/internal/telephony/gsm/MiuiSimPhoneBookInterfaceManager;
 
-    invoke-direct {v1, p0}, Lcom/android/internal/telephony/gsm/MiuiSimPhoneBookInterfaceManager;-><init>(Lcom/android/internal/telephony/PhoneBase;)V
+    invoke-direct {v1, p0}, Lcom/android/internal/telephony/gsm/MiuiSimPhoneBookInterfaceManager;-><init>(Lcom/android/internal/telephony/gsm/GSMPhone;)V
 
     iput-object v1, p0, Lcom/android/internal/telephony/gsm/GSMPhone;->mSimPhoneBookIntManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
