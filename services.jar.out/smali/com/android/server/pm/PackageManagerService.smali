@@ -12780,6 +12780,16 @@
     .line 8509
     invoke-direct/range {v2 .. v7}, Lcom/android/server/pm/PackageManagerService;->installNewPackageLI(Landroid/content/pm/PackageParser$Package;IILjava/lang/String;Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;)V
 
+    iget-object v2, v3, Landroid/content/pm/PackageParser$Package;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+
+    move-object/from16 v0, p0
+
+    iget-object v7, v0, Lcom/android/server/pm/PackageManagerService;->mSettings:Lcom/android/server/pm/Settings;
+
+    iget-object v0, v0, Lcom/android/server/pm/PackageManagerService;->mContext:Landroid/content/Context;
+
+    invoke-static {v0, v2, v7}, Lcom/android/server/pm/ExtraPackageManagerServices;->postProcessNewInstall(Landroid/content/Context;Landroid/content/pm/ApplicationInfo;Lcom/android/server/pm/Settings;)V
+
     goto/16 :goto_6
 .end method
 
@@ -22198,9 +22208,11 @@
 
     move-object/from16 v0, p0
 
+    iget-object v2, v0, Lcom/android/server/pm/PackageManagerService;->mContext:Landroid/content/Context;
+
     iget-object v10, v0, Lcom/android/server/pm/PackageManagerService;->mSettings:Lcom/android/server/pm/Settings;
 
-    invoke-static {v3, v10}, Lcom/android/server/pm/ExtraPackageManagerServices;->blockAutoStartedApp(Landroid/content/pm/ApplicationInfo;Lcom/android/server/pm/Settings;)V
+    invoke-static {v2, v3, v10}, Lcom/android/server/pm/ExtraPackageManagerServices;->blockAutoStartedApp(Landroid/content/Context;Landroid/content/pm/ApplicationInfo;Lcom/android/server/pm/Settings;)V
 
     move-object/from16 v0, p1
 
@@ -46168,7 +46180,10 @@
     :goto_0
     invoke-static {v0}, Landroid/content/pm/PackageParser;->setCompatibilityModeEnabled(Z)V
 
-    .line 9746
+    iget-object v1, p0, Lcom/android/server/pm/PackageManagerService;->mContext:Landroid/content/Context;
+
+    invoke-static {v1}, Lmiui/provider/ExtraGuard;->init(Landroid/content/Context;)V
+
     const-string v1, "PackageManager"
 
     const-string v2, "enable Dialer Launcher..."
