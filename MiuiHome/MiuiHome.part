@@ -31,9 +31,9 @@ Signed-off-by: Kingme <gycm520@gmail.com>
 --- a/MiuiHome/res/values/strings.xml
 +++ b/MiuiHome/res/values/strings.xml
 @@ -205,4 +205,6 @@
-     <string name="screen_rotation_freeze_message">Locked screen rotation to landscape mode</string>
-     <string name="screen_button_disabled_message">Functions of buttons on the lower screen are disabled. You may enable them by pressing \"Home\" and \"Power\"</string>
-     <string name="screen_button_enabled_message">Functions of buttons on the lower screen are enabled</string>
+     <string name="screen_rotation_freeze_message">Auto-rotate disabled.</string>
+     <string name="screen_button_disabled_message">Navigation buttons disabled. To re-enable them, touch Home and the Power button simultaneously.</string>
+     <string name="screen_button_enabled_message">Navigation buttons enabled.</string>
 +    <string name="pref_icon_reflection_title">Icon reflection</string>
 +    <string name="pref_icon_reflection_summary">Control icon reflection effect.</string>
  </resources>

@@ -14,7 +14,7 @@ local-modified-apps := Camera
 
 local-modified-jars := HTCExtension
 
-local-miui-modified-apps := Phone Mms MiuiHome Settings MiuiSystemUI Music MiuiGallery YellowPage Weather
+local-miui-modified-apps := Phone Mms MiuiHome Settings MiuiSystemUI Music MiuiGallery Weather
 # All apks from MIUI
 local-miui-removed-apps  := LatinIME MediaProvider AirkanPhoneService Stk 
 
