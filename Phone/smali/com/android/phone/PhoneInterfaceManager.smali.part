@@ -160,3 +160,14 @@
 
     return v0
 .end method
+
+.method public getHtcServiceStateExt(I)I
+    .locals 1
+    .parameter "phoneType"
+
+    .prologue
+    .line 4351
+    const/4 v0, 0x0
+
+    return v0
+.end method
