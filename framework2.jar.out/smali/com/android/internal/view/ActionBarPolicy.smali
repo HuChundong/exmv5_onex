@@ -246,6 +246,9 @@
     .locals 1
 
     .prologue
+    const/4 v0, 0x1
+    
+    return v0
     .line 47
     iget-object v0, p0, Lcom/android/internal/view/ActionBarPolicy;->mContext:Landroid/content/Context;
 
