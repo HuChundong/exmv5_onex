@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="icon" id="0x7f020000" />
+    <public type="xml" name="main" id="0x7f030000" />
+    <public type="array" name="s2w_stroke_entries" id="0x7f040000" />
+    <public type="array" name="s2w_length_entries" id="0x7f040001" />
+    <public type="array" name="s2w_stroke_entries_values" id="0x7f040002" />
+    <public type="array" name="s2w_length_entries_values" id="0x7f040003" />
+    <public type="string" name="app_name" id="0x7f050000" />
+    <public type="string" name="category_s2w_title" id="0x7f050001" />
+    <public type="string" name="s2w_switch_title_head" id="0x7f050002" />
+    <public type="string" name="s2w_switch_summary_head" id="0x7f050003" />
+    <public type="string" name="s2w_stroke_title_head" id="0x7f050004" />
+    <public type="string" name="s2w_stroke_summary_head" id="0x7f050005" />
+    <public type="string" name="s2w_length_title_head" id="0x7f050006" />
+    <public type="string" name="s2w_length_summary_head" id="0x7f050007" />
+    <public type="string" name="category_usb_title" id="0x7f050008" />
+    <public type="string" name="fastcharge_title_head" id="0x7f050009" />
+    <public type="string" name="fastcharge_summary_head" id="0x7f05000a" />
+    <public type="string" name="category_backlightdisable_title" id="0x7f05000b" />
+    <public type="string" name="backlightdisable_title_head" id="0x7f05000c" />
+    <public type="string" name="backlightdisable_summary_head" id="0x7f05000d" />
+    <public type="string" name="backlightnotification_title_head" id="0x7f05000e" />
+    <public type="string" name="backlightnotification_summary_head" id="0x7f05000f" />
+    <public type="string" name="category_smartdimmer_title" id="0x7f050010" />
+    <public type="string" name="smartdimmer_switch_title_head" id="0x7f050011" />
+    <public type="string" name="smartdimmer_switch_summary_head" id="0x7f050012" />
+</resources>
