@@ -351,4 +351,5 @@ net.tcp.buffersize.edge=6144,26280,35040,6144,16384,35040
 
 #OTA SUPPORT
 otaupdater.otaid=kingme
-otaupdater.otaver=3.9.9
+otaupdater.otaver=3.12.13
+otaupdater.otaTIME=20131213-1700
