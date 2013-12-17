@@ -10,6 +10,18 @@ GIT_APPLY=$PORT_ROOT/tools/git.apply
 SEP_FRAME="framework2.jar.out"
 TMP_FILE=$BUILD_OUT/tmp.smali
 
+function appendSmaliPart() {
+	cd overlay
+    for file in `find $1/smali -name *.part`
+    do
+        filepath=`dirname $file`
+        filename=`basename $file .part`
+        dstfile="../out/$filepath/$filename"
+        cat $file >> $dstfile
+    done
+	cd ..
+}
+
 if [ $2 = "$BUILD_OUT/framework" ]
 then
     # remove all files at out/framework those exist in framework2.jar.out
@@ -56,6 +68,7 @@ then
 fi
 
 if [ $2 = "$BUILD_OUT/android.policy" ];then
+    appendSmaliPart "android.policy.jar.out"
     curdir=`pwd`
     cd overlay/android.policy.jar.out
     for file in `find . -name *.smali`

@@ -14217,7 +14217,7 @@
 
     move/from16 v1, v20
 
-    invoke-virtual {v0, v13, v1}, Lcom/android/internal/policy/impl/MiuiKeyguardViewMediator;->isWakeKeyWhenKeyguardShowing(IZ)Z
+    invoke-virtual {v0, v13, v1}, Lcom/android/internal/policy/impl/MiuiKeyguardViewMediator;->HTCisWakeKeyWhenKeyguardShowing(IZ)Z
 
     move-result v20
 
