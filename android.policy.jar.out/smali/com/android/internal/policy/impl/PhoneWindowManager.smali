@@ -8448,13 +8448,13 @@
 
     if-nez v6, :cond_4
 
-    iget-object v6, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardMediator:Lcom/android/internal/policy/impl/MiuiKeyguardViewMediator;
+#    iget-object v6, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardMediator:Lcom/android/internal/policy/impl/MiuiKeyguardViewMediator;
 
-    invoke-virtual {v6, v5}, Lcom/android/internal/policy/impl/MiuiKeyguardViewMediator;->getNeedToShowKeyguard(Z)Z
+#    invoke-virtual {v6, v5}, Lcom/android/internal/policy/impl/MiuiKeyguardViewMediator;->getNeedToShowKeyguard(Z)Z
 
-    move-result v5
+#    move-result v5
 
-    if-eqz v5, :cond_4
+#    if-eqz v5, :cond_4
 
     iget-object v5, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mKeyguardMediator:Lcom/android/internal/policy/impl/MiuiKeyguardViewMediator;
 
@@ -14725,7 +14725,7 @@
 
     move-object/from16 v20, v0
 
-    const/4 v20, 0x0
+    const/16 v20, 0x0
 
     if-eqz v20, :cond_2b
 
@@ -15202,7 +15202,7 @@
 
     move-object/from16 v20, v0
 
-    const/4 v20, 0x0
+    const/16 v20, 0x0
 
     if-eqz v20, :cond_3e
 
