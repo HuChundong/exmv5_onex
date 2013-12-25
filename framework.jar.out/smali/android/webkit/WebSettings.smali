@@ -87,7 +87,7 @@
 .method public abstract getAllowUniversalAccessFromFileURLs()Z
 .end method
 
-.method public declared-synchronized getBlockNetworkImage()Z
+.method public declared-synchronized getBlockFloatPopupWindows()Z
     .locals 1
 
     .prologue
@@ -111,11 +111,34 @@
     throw v0
 .end method
 
-.method public declared-synchronized getBlockNetworkLoads()Z
+.method public declared-synchronized getBlockNetworkImage()Z
     .locals 1
 
     .prologue
     .line 848
+    monitor-enter p0
+
+    :try_start_0
+    new-instance v0, Landroid/webkit/MustOverrideException;
+
+    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
+
+    throw v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+.end method
+
+.method public declared-synchronized getBlockNetworkLoads()Z
+    .locals 1
+
+    .prologue
     monitor-enter p0
 
     :try_start_0
@@ -1012,7 +1035,7 @@
     throw v0
 .end method
 
-.method public declared-synchronized setBlockNetworkImage(Z)V
+.method public declared-synchronized setBlockFloatPopupWindows(Z)V
     .locals 1
     .parameter "flag"
 
@@ -1037,12 +1060,36 @@
     throw v0
 .end method
 
-.method public declared-synchronized setBlockNetworkLoads(Z)V
+.method public declared-synchronized setBlockNetworkImage(Z)V
     .locals 1
     .parameter "flag"
 
     .prologue
     .line 838
+    monitor-enter p0
+
+    :try_start_0
+    new-instance v0, Landroid/webkit/MustOverrideException;
+
+    invoke-direct {v0}, Landroid/webkit/MustOverrideException;-><init>()V
+
+    throw v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+
+    throw v0
+.end method
+
+.method public declared-synchronized setBlockNetworkLoads(Z)V
+    .locals 1
+    .parameter "flag"
+
+    .prologue
     monitor-enter p0
 
     :try_start_0
