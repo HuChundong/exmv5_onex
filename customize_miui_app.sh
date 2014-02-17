@@ -88,15 +88,4 @@ if [ $1 = "MiuiSystemUI" ];then
     done
 fi
 
-if [ $1 = "NetworkAssistant" ];then
-    cp $1/*.part out/
-    cd out
-    $GIT_APPLY remove-icon.part
-    cd ..
-    for file in `find $2 -name *.rej`
-    do
-	echo "Fatal error: NetworkAssistant patch fail"
-        exit 1
-    done
-fi
 

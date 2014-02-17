@@ -14,7 +14,8 @@ local-modified-apps := Camera StockSettings
 
 local-modified-jars := HTCExtension
 
-local-miui-modified-apps := Phone Mms MiuiHome Settings MiuiSystemUI Music MiuiGallery Weather NetworkAssistant
+local-miui-modified-apps := Phone Mms MiuiHome Settings MiuiGallery Weather 
+# MiuiSystemUI 
 # All apks from MIUI
 local-miui-removed-apps  := LatinIME MediaProvider AirkanPhoneService Stk 
 
@@ -22,7 +23,7 @@ local-miui-removed-apps  := LatinIME MediaProvider AirkanPhoneService Stk
 local-phone-apps :=BackupRestoreConfirmation \
 	CertInstaller CustomizationSettingsProvider Camera DefaultContainerService DFPI DrmProvider \
 	FilePicker FaceLock FM_Radio FMRadioService HtcBeatsNotify \
-	HTMLViewer LMW MarketUpdater \
+	HTMLViewer LMW MarketUpdater HTCSyncManager \
 	Nfc OneTimeInitializer SharedStorageBackup \
 	WifiRouter MediaProvider \
 	HtcSoundEnhancerSetting HtcDMC HtcPhotoEnhancer

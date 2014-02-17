@@ -349,7 +349,3 @@ net.tcp.buffersize.gprs=6144,8760,11680,6144,8760,11680
 net.tcp.buffersize.edge=6144,26280,35040,6144,16384,35040
 # End of V6 SuperCharged Entries.
 
-#OTA SUPPORT
-otaupdater.otaid=kingme
-otaupdater.otaver=3.12.13
-otaupdater.otaTIME=20131213-1700
