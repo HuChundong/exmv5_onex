@@ -22154,6 +22154,8 @@
 .method public final startAlbum(Landroid/content/Intent;Lcom/android/camera/MediaInfo;)Z
     .locals 12
 
+    goto :goto_modify
+
     if-nez p1, :cond_0
 
     const-string v8, "HTCCamera"
@@ -22374,9 +22376,10 @@
 
     invoke-interface {v8, v1}, Lcom/android/camera/ICaptureUIBlockManager;->unblockCaptureUI(Lcom/android/camera/Handle;)Z
 
+    :goto_modify
     new-instance v4, Landroid/content/Intent;
 
-    const-string v8, "android.intent.action.VIEW"
+    const-string v8, "com.android.camera.action.REVIEW"
 
     invoke-direct {v4, v8}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
@@ -22384,15 +22387,17 @@
 
     if-eqz p2, :cond_6
 
-    new-instance v6, Ljava/io/File;
+    #new-instance v6, Ljava/io/File;
 
-    invoke-virtual {p2}, Lcom/android/camera/MediaInfo;->getFullPath()Ljava/lang/String;
+    #invoke-virtual {p2}, Lcom/android/camera/MediaInfo;->getFullPath()Ljava/lang/String;
 
-    move-result-object v8
+    #move-result-object v8
 
-    invoke-direct {v6, v8}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+    #invoke-direct {v6, v8}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    invoke-static {v6}, Landroid/net/Uri;->fromFile(Ljava/io/File;)Landroid/net/Uri;
+    #invoke-static {v6}, Landroid/net/Uri;->fromFile(Ljava/io/File;)Landroid/net/Uri;
+
+    invoke-direct {p0, p2}, Lcom/android/camera/HTCCamera;->contentUriFromMediaInfo(Lcom/android/camera/MediaInfo;)Landroid/net/Uri;
 
     move-result-object v7
 
@@ -24354,4 +24359,82 @@
     invoke-static {v0, v1}, Lcom/android/camera/LOG;->V(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_0
+.end method
+
+.method private contentUriFromMediaInfo(Lcom/android/camera/MediaInfo;)Landroid/net/Uri;
+    .locals 8
+    .parameter
+
+    .prologue
+    const/4 v5, 0x0
+
+    const/4 v4, 0x1
+
+    const/4 v7, 0x0
+
+    invoke-virtual {p1}, Lcom/android/camera/MediaInfo;->getFullPath()Ljava/lang/String;
+
+    move-result-object v6
+
+    if-eqz v6, :cond_1
+
+    sget-object v1, Landroid/provider/MediaStore$Images$Media;->EXTERNAL_CONTENT_URI:Landroid/net/Uri;
+
+    invoke-virtual {p1}, Lcom/android/camera/MediaInfo;->isVideo()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    sget-object v1, Landroid/provider/MediaStore$Video$Media;->EXTERNAL_CONTENT_URI:Landroid/net/Uri;
+
+    :cond_0
+    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v0
+
+    new-array v2, v4, [Ljava/lang/String;
+
+    const-string v3, "_id"
+
+    aput-object v3, v2, v7
+
+    const-string v3, "_data=? "
+
+    new-array v4, v4, [Ljava/lang/String;
+
+    aput-object v6, v4, v7
+
+    invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_1
+
+    invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    const-string v2, "_id"
+
+    invoke-interface {v0, v2}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+
+    move-result v2
+
+    invoke-interface {v0, v2}, Landroid/database/Cursor;->getInt(I)I
+
+    move-result v0
+
+    invoke-static {v0}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v1, v0}, Landroid/net/Uri;->withAppendedPath(Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
+
+    move-result-object v5
+
+    :cond_1
+    return-object v5
 .end method
