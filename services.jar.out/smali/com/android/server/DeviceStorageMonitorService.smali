@@ -3087,6 +3087,8 @@
     const-string v6, "android.settings.INTERNAL_STORAGE_SETTINGS"
 
     :goto_0
+    const-string v6, "miui.intent.action.GARBAGE_CLEANUP"
+
     invoke-direct {v2, v6}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     .line 646
@@ -3141,51 +3143,44 @@
 
     move-result-object v1
 
-    .line 656
     .local v1, intent:Landroid/app/PendingIntent;
     new-instance v4, Landroid/app/Notification;
 
     invoke-direct {v4}, Landroid/app/Notification;-><init>()V
 
-    .line 657
     .local v4, notification:Landroid/app/Notification;
     const v6, 0x1080507
 
     iput v6, v4, Landroid/app/Notification;->icon:I
 
-    .line 658
     iput-object v5, v4, Landroid/app/Notification;->tickerText:Ljava/lang/CharSequence;
 
-    .line 659
     const-wide/16 v6, 0x0
 
     iput-wide v6, v4, Landroid/app/Notification;->when:J
 
-    .line 660
     iget v6, v4, Landroid/app/Notification;->flags:I
 
     or-int/lit8 v6, v6, 0x2
 
     iput v6, v4, Landroid/app/Notification;->flags:I
 
-    .line 662
+    invoke-direct {p0, v4}, Lcom/android/server/DeviceStorageMonitorService;->useMiuiIconForNotification(Landroid/app/Notification;)V
+
     iget-object v6, p0, Lcom/android/server/DeviceStorageMonitorService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v4, v6, v5, v0, v1}, Landroid/app/Notification;->setLatestEventInfo(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
 
-    .line 663
     invoke-direct {p0}, Lcom/android/server/DeviceStorageMonitorService;->HasLowMemoryWizardApp()Z
 
     move-result v6
 
     if-nez v6, :cond_2
 
-    .line 664
     const/4 v6, 0x1
 
     invoke-virtual {v3, v6, v4}, Landroid/app/NotificationManager;->notify(ILandroid/app/Notification;)V
 
-    .line 669
     :cond_0
     :goto_1
     iget-object v6, p0, Lcom/android/server/DeviceStorageMonitorService;->mContext:Landroid/content/Context;
@@ -3576,3 +3571,30 @@
 
     goto :goto_0
 .end method
+
+.method private useMiuiIconForNotification(Landroid/app/Notification;)V
+    .locals 2
+    .parameter "notification"
+
+    .prologue
+    const v0, 0x6020361
+
+    iput v0, p1, Landroid/app/Notification;->icon:I
+
+    iget-object v0, p0, Lcom/android/server/DeviceStorageMonitorService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    const v1, 0x6020360
+
+    invoke-static {v0, v1}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    iput-object v0, p1, Landroid/app/Notification;->largeIcon:Landroid/graphics/Bitmap;
+
+    return-void
+.end method
+
